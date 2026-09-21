@@ -8,7 +8,7 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ## Contents
 
-- [**Developer Comparison Matrix (27)**](#developer-comparison-matrix)
+- [**Developer Comparison Matrix (24)**](#developer-comparison-matrix)
 1. [Campaign lifecycle and budget execution (9)](#1-campaign-lifecycle-and-budget-execution)
    - [Automated campaign and ad set launching (4)](#automated-campaign-and-ad-set-launching)
    - [Budget pacing and automated pause triggers (3)](#budget-pacing-and-automated-pause-triggers)
@@ -16,15 +16,14 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 2. [Performance reporting and Insights analytics (4)](#2-performance-reporting-and-insights-analytics)
    - [Real-time Marketing API Insights reporting (3)](#real-time-marketing-api-insights-reporting)
    - [SQLite and edge-cached reporting daemons (1)](#sqlite-and-edge-cached-reporting-daemons)
-3. [Cross-platform advertising orchestrators (7)](#3-cross-platform-advertising-orchestrators)
-   - [Universal advertising routers and schema abstractions (3)](#universal-advertising-routers-and-schema-abstractions)
+3. [Cross-platform advertising orchestrators (6)](#3-cross-platform-advertising-orchestrators)
+   - [Universal advertising routers and schema abstractions (2)](#universal-advertising-routers-and-schema-abstractions)
    - [Multi-channel performance marketing skill packs (4)](#multi-channel-performance-marketing-skill-packs)
-4. [Conversion tracking and CAPI engineering (2)](#4-conversion-tracking-and-capi-engineering)
-   - [Conversions API (CAPI) event dispatch (1)](#conversions-api-capi-event-dispatch)
-   - [Pixel validation and SHA-256 PII linters (1)](#pixel-validation-and-sha-256-pii-linters)
-5. [Creative intelligence and Ad Library discovery (5)](#5-creative-intelligence-and-ad-library-discovery)
+4. [Conversion tracking and CAPI engineering (1)](#4-conversion-tracking-and-capi-engineering)
+   - [Conversions API (CAPI) and pixel validation (1)](#conversions-api-capi-and-pixel-validation)
+5. [Creative intelligence and Ad Library discovery (4)](#5-creative-intelligence-and-ad-library-discovery)
    - [Meta Ad Library competitor intelligence (2)](#meta-ad-library-competitor-intelligence)
-   - [Ad creative generation and asset staging (3)](#ad-creative-generation-and-asset-staging)
+   - [Ad creative generation and asset staging (2)](#ad-creative-generation-and-asset-staging)
 - [Resources](#resources)
 - [Reference](#reference)
 - [Contributing](#contributing)
@@ -33,7 +32,7 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ## Developer Comparison Matrix
 
-*27 projects. Side-by-side technical comparison across API mutations, dynamic multi-account routing, server-side CAPI tracking, and safety guardrails. Project names jump directly to their detailed section entries.*
+*24 projects. Side-by-side technical comparison across API mutations, dynamic multi-account routing, server-side CAPI tracking, and safety guardrails. Project names jump directly to their detailed section entries.*
 
 | Project | Stars | Writes | Multi-Acc | CAPI | Ad Lib | Safety | Runtime | Tier |
 |---|---|---|---|:---:|:---:|---|---|---|
@@ -52,18 +51,15 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 | [**brijr/meta-mcp**](#brijr-meta-mcp) | ⭐ 200 | ✅ CRUD | ✅ Dynamic | — | — | — | TypeScript | Tier 1 |
 | [**markifact/markifact-mcp**](#markifact-markifact-mcp) | ⭐ 48 | ✅ CRUD | ✅ Dynamic | — | — | 🛡️ Dry-Run | TypeScript | Tier 1 |
 | [**amekala/ads-mcp**](#amekala-ads-mcp) | ⭐ 94 | ✅ CRUD | ✅ Dynamic | — | ✅ | 🛡️ Dry-Run | Python/Skill | Tier 1 |
-| [**itallstartedwithaidea/advertising-hub**](#itallstartedwithaidea-advertising-hub) | ⭐ 42 | ✅ CRUD | ✅ Dynamic | ✅ | ✅ | — | Python/Skill | Tier 1 |
 | [**irinabuht12-oss/google-meta-ads-ga4-mcp**](#irinabuht12-oss-google-meta-ads-ga4-mcp) | ⭐ 2.0k | ✅ CRUD | ✅ Dynamic | — | ✅ | — | Python/Skill | Tier 1 |
 | [**irinabuht12-oss/marketing-skills**](#irinabuht12-oss-marketing-skills) | ⭐ 1.6k | 🔍 Read | ✅ Dynamic | — | ✅ | — | Python/Skill | Tier 2 |
 | [**eduardocornelsen/full-funnel-ai-analytics**](#eduardocornelsen-full-funnel-ai-analytics) | ⭐ 22 | 🔍 Read | ⚠️ Single | — | — | 🛡️ Dry-Run | Python | Tier 2 |
 | [**Dataslayer-AI/Marketing-skills**](#dataslayer-ai-marketing-skills) | ⭐ 23 | 🔍 Read | ✅ Dynamic | — | — | — | Python | Tier 1 |
-| [**Lifecycle-Innovations-Limited/claude-ops**](#lifecycle-innovations-limited-claude-ops) | ⭐ 210 | 🔍 Read | ✅ Dynamic | ✅ | ✅ | 🛡️ Dry-Run | Python/Skill | Tier 1 |
 | [**aleksUIX/pixellint**](#aleksuix-pixellint) | ⭐ 0 | 🔍 Read | ✅ Dynamic | ✅ | — | — | Rust | Tier 1 |
 | [**proxy-intell/facebook-ads-library-mcp**](#proxy-intell-facebook-ads-library-mcp) | ⭐ 300 | 🔍 Read | ⚠️ Single | — | ✅ | — | Python | Tier 1 |
 | [**RamsesAguirre777/facebook-ads-library-mcp**](#ramsesaguirre777-facebook-ads-library-mcp) | ⭐ 256 | 🔍 Read | ⚠️ Single | — | ✅ | — | Python | Tier 2 |
-| [**DV0x/creative-ad-agent**](#dv0x-creative-ad-agent) | ⭐ 117 | 🔍 Read | ⚠️ Single | — | ✅ | — | TypeScript | Tier 2 |
+| [**DV0x/creative-ad-agent**](#dv0x-creative-ad-agent) | ⭐ 117 | 🔍 Read | ⚠️ Single | — | — | — | TypeScript | Tier 2 |
 | [**tenfoldmarc/meta-ads-generator-skill**](#tenfoldmarc-meta-ads-generator-skill) | ⭐ 22 | 🔍 Read | ⚠️ Single | — | ✅ | — | Python/Skill | Tier 3 |
-| [**guimatheus92/mcp-video-analyzer**](#guimatheus92-mcp-video-analyzer) | ⭐ 71 | 🔍 Read | ⚠️ Single | — | — | 🛡️ Dry-Run | TypeScript | Tier 2 |
 
 ---
 
@@ -90,7 +86,7 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 |---|---|
 | <a id="brandu-mos-konquest-meta-ads-mcp"></a>[**brandu-mos/konquest-meta-ads-mcp**](https://github.com/brandu-mos/konquest-meta-ads-mcp) | Safety-first Meta Ads MCP server designed for agency teams, featuring 57 tools, daily budget caps, spend velocity monitors, and automated pause triggers. |
 | <a id="gomarble-ai-facebook-ads-mcp-server"></a>[**gomarble-ai/facebook-ads-mcp-server**](https://github.com/gomarble-ai/facebook-ads-mcp-server) | Python FastMCP server tailored for e-commerce performance marketers, providing 21 tools for spend threshold alerts and automated campaign pausing. |
-| <a id="dengineproblem-meta-ads-mcp-extended"></a>[**dengineproblem/meta-ads-mcp-extended**](https://github.com/dengineproblem/meta-ads-mcp-extended) | Extended Python FastMCP server offering 59 tools for ad set flight scheduling, dayparting adjustments, and placement-level budget pacing. |
+| <a id="dengineproblem-meta-ads-mcp-extended"></a>[**dengineproblem/meta-ads-mcp-extended**](https://github.com/dengineproblem/meta-ads-mcp-extended) | Extended Python FastMCP server offering 60 tools including campaign and ad set status toggling, lookalike audience provisioning, CAPI event dispatch, and chunked creative video uploads. |
 
 ### Mutation safety gates and dry-run execution
 
@@ -123,23 +119,22 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 | Project | What it does |
 |---|---|
-| <a id="brijr-meta-mcp"></a>[**brijr/meta-mcp**](https://github.com/brijr/meta-mcp) | Serverless TypeScript MCP server deployed on Cloudflare Workers, using an edge D1 SQLite cache to answer performance queries in 12ms. |
+| <a id="brijr-meta-mcp"></a>[**brijr/meta-mcp**](https://github.com/brijr/meta-mcp) | Serverless TypeScript MCP server deployed on Cloudflare Workers, using an edge D1 SQLite cache to answer performance queries and minimize Meta Graph API rate limit pressure. |
 
 ---
 
 ## 3. Cross-platform advertising orchestrators
 
-*7 projects. Multi-network hubs and skill packs coordinating Meta Ads alongside Google Ads, TikTok, LinkedIn, and GA4.*
+*6 projects. Multi-network hubs and skill packs coordinating Meta Ads alongside Google Ads, TikTok, LinkedIn, and GA4.*
 
 ### Universal advertising routers and schema abstractions
 
-*3 projects. Normalized multi-platform MCP routers abstracting ad concepts across Meta and complementary advertising networks.*
+*2 projects. Normalized multi-platform MCP routers abstracting ad concepts across Meta and complementary advertising networks.*
 
 | Project | What it does |
 |---|---|
 | <a id="markifact-markifact-mcp"></a>[**markifact/markifact-mcp**](https://github.com/markifact/markifact-mcp) | Ultra-lean 8-tool dynamic dispatch router (<1,800 prompt tokens) coordinating cross-platform ad campaigns across Meta and Google Ads with human-in-the-loop gates. |
 | <a id="amekala-ads-mcp"></a>[**amekala/ads-mcp**](https://github.com/amekala/ads-mcp) | Sophisticated multi-platform router with 20 tools normalizing advertising operations across Meta Ads, Google Ads, TikTok Ads, and LinkedIn Ads. |
-| <a id="itallstartedwithaidea-advertising-hub"></a>[**itallstartedwithaidea/advertising-hub**](https://github.com/itallstartedwithaidea/advertising-hub) | Standardized cross-platform advertising MCP specification and FastMCP template defining universal campaign, ad set, and reporting schemas. |
 
 ### Multi-channel performance marketing skill packs
 
@@ -156,19 +151,11 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ## 4. Conversion tracking and CAPI engineering
 
-*2 projects. Server-side event dispatchers and offline tracking linters enforcing Meta Conversions API (CAPI) contracts.*
+*1 project. Static analysis engines verifying Meta Pixel events, URL leak hazards, and Conversions API (CAPI) contracts.*
 
-### Conversions API (CAPI) event dispatch
+### Conversions API (CAPI) and pixel validation
 
-*1 project. Operations engines that transmit server-side conversion payloads with deduplication and event match quality checks.*
-
-| Project | What it does |
-|---|---|
-| <a id="lifecycle-innovations-limited-claude-ops"></a>[**Lifecycle-Innovations-Limited/claude-ops**](https://github.com/Lifecycle-Innovations-Limited/claude-ops) | Enterprise operations engine with 66 tools providing secure, production-grade Meta Conversions API (CAPI) event dispatch and telemetry logging. |
-
-### Pixel validation and SHA-256 PII linters
-
-*1 project. Static analysis engines verifying Meta Pixel events, URL leak hazards, and SHA-256 hashing format compliance.*
+*1 project. Static analysis engines verifying Meta Pixel tags, URL leak hazards, and SHA-256 PII payload contracts.*
 
 | Project | What it does |
 |---|---|
@@ -178,7 +165,7 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ## 5. Creative intelligence and Ad Library discovery
 
-*5 projects. Competitor ad scrapers, creative hook synthesizers, and aspect-ratio linters for Instagram and Facebook placements.*
+*4 projects. Competitor ad scrapers and creative generation co-pilots for Instagram and Facebook placements.*
 
 ### Meta Ad Library competitor intelligence
 
@@ -191,13 +178,12 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ### Ad creative generation and asset staging
 
-*3 projects. Generative AI creative assistants producing hook copy, carousel formats, and Instagram-compatible aspect ratios.*
+*2 projects. Generative AI creative assistants producing hook copy, carousel formats, and Instagram-compatible creative concepts.*
 
 | Project | What it does |
 |---|---|
-| <a id="dv0x-creative-ad-agent"></a>[**DV0x/creative-ad-agent**](https://github.com/DV0x/creative-ad-agent) | Creative production co-pilot with 2 in-process tools that analyzes Ad Library exemplars and generates hook-first static and carousel concepts. |
+| <a id="dv0x-creative-ad-agent"></a>[**DV0x/creative-ad-agent**](https://github.com/DV0x/creative-ad-agent) | Creative production co-pilot with 2 in-process tools that extracts core value propositions and testimonials from brand landing pages to generate hook-first ad concepts. |
 | <a id="tenfoldmarc-meta-ads-generator-skill"></a>[**tenfoldmarc/meta-ads-generator-skill**](https://github.com/tenfoldmarc/meta-ads-generator-skill) | Claude Code agent skill designed to guide models through generating compliant Meta ad copy, headline variations, and creative staging files. |
-| <a id="guimatheus92-mcp-video-analyzer"></a>[**guimatheus92/mcp-video-analyzer**](https://github.com/guimatheus92/mcp-video-analyzer) | Multimodal video analysis server with 8 tools for evaluating video ad hooks, transcript pacing, and creative aspect ratios for Instagram Reels. |
 
 ---
 
