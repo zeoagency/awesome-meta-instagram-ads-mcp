@@ -1,0 +1,30 @@
+# Inner generation scripts and toolchain
+/scripts/
+
+# Internal research specifications and template reverse-engineering models
+/specs/
+
+# Raw and normalized evaluation datasets
+/data/
+
+# Python runtime artifacts and environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+ENV/
+
+# OS and IDE metadata
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
