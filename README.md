@@ -8,25 +8,62 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ## Contents
 
+- [**Developer Comparison Matrix (27)**](#developer-comparison-matrix)
 1. [Campaign lifecycle and budget execution (9)](#1-campaign-lifecycle-and-budget-execution)
    - [Automated campaign and ad set launching (4)](#automated-campaign-and-ad-set-launching)
    - [Budget pacing and automated pause triggers (3)](#budget-pacing-and-automated-pause-triggers)
    - [Mutation safety gates and dry-run execution (2)](#mutation-safety-gates-and-dry-run-execution)
-2. [Performance reporting and Insights analytics (6)](#2-performance-reporting-and-insights-analytics)
+2. [Performance reporting and Insights analytics (4)](#2-performance-reporting-and-insights-analytics)
    - [Real-time Marketing API Insights reporting (3)](#real-time-marketing-api-insights-reporting)
-   - [SQLite and edge-cached reporting daemons (3)](#sqlite-and-edge-cached-reporting-daemons)
-3. [Cross-platform advertising orchestrators (8)](#3-cross-platform-advertising-orchestrators)
+   - [SQLite and edge-cached reporting daemons (1)](#sqlite-and-edge-cached-reporting-daemons)
+3. [Cross-platform advertising orchestrators (7)](#3-cross-platform-advertising-orchestrators)
    - [Universal advertising routers and schema abstractions (3)](#universal-advertising-routers-and-schema-abstractions)
-   - [Multi-channel performance marketing skill packs (5)](#multi-channel-performance-marketing-skill-packs)
+   - [Multi-channel performance marketing skill packs (4)](#multi-channel-performance-marketing-skill-packs)
 4. [Conversion tracking and CAPI engineering (2)](#4-conversion-tracking-and-capi-engineering)
    - [Conversions API (CAPI) event dispatch (1)](#conversions-api-capi-event-dispatch)
    - [Pixel validation and SHA-256 PII linters (1)](#pixel-validation-and-sha-256-pii-linters)
-5. [Creative intelligence and Ad Library discovery (6)](#5-creative-intelligence-and-ad-library-discovery)
+5. [Creative intelligence and Ad Library discovery (5)](#5-creative-intelligence-and-ad-library-discovery)
    - [Meta Ad Library competitor intelligence (2)](#meta-ad-library-competitor-intelligence)
-   - [Ad creative generation and asset staging (4)](#ad-creative-generation-and-asset-staging)
-6. [Developer Comparison Matrix (31)](#developer-comparison-matrix)
-7. [Resources](#resources)
-8. [Reference](#reference)
+   - [Ad creative generation and asset staging (3)](#ad-creative-generation-and-asset-staging)
+- [Resources](#resources)
+- [Reference](#reference)
+- [Contributing](#contributing)
+
+---
+
+## Developer Comparison Matrix
+
+*27 projects. Side-by-side technical comparison across API mutations, dynamic multi-account routing, server-side CAPI tracking, and safety guardrails. Project names jump directly to their detailed section entries.*
+
+| Project | Stars | Writes | Multi-Acc | CAPI | Ad Lib | Safety | Runtime | Tier |
+|---|---|---|---|:---:|:---:|---|---|---|
+| [**byadsco/meta-ads-mcp**](#byadsco-meta-ads-mcp) | ⭐ 16 | ✅ CRUD | ✅ Dynamic | ✅ | ✅ | 🛡️ Paced | TypeScript | Tier 1 |
+| [**oliverames/meta-mcp-server**](#oliverames-meta-mcp-server) | ⭐ 36 | ✅ CRUD | ✅ Dynamic | — | ✅ | — | TypeScript | Tier 1 |
+| [**Draivix/aidvertaiser**](#draivix-aidvertaiser) | ⭐ 20 | ✅ CRUD | ✅ Dynamic | ✅ | — | — | Python | Tier 1 |
+| [**mikusnuz/meta-ads-mcp**](#mikusnuz-meta-ads-mcp) | ⭐ 79 | ✅ CRUD | ✅ Dynamic | — | ✅ | — | TypeScript | Tier 2 |
+| [**brandu-mos/konquest-meta-ads-mcp**](#brandu-mos-konquest-meta-ads-mcp) | ⭐ 44 | ✅ CRUD | ✅ Dynamic | — | — | — | Python | Tier 1 |
+| [**gomarble-ai/facebook-ads-mcp-server**](#gomarble-ai-facebook-ads-mcp-server) | ⭐ 366 | 🔍 Read | ✅ Dynamic | — | — | — | Python | Tier 2 |
+| [**dengineproblem/meta-ads-mcp-extended**](#dengineproblem-meta-ads-mcp-extended) | ⭐ 8 | ✅ CRUD | ✅ Dynamic | ✅ | ✅ | 🛡️ Paced | Python | Tier 2 |
+| [**attainmentlabs/meta-ads-mcp**](#attainmentlabs-meta-ads-mcp) | ⭐ 13 | ✅ CRUD | ⚠️ Single | ✅ | — | 🛡️ Dry-Run | Python | Tier 2 |
+| [**EfrainTorres/armavita-meta-ads-mcp**](#efraintorres-armavita-meta-ads-mcp) | ⭐ 74 | ✅ CRUD | ✅ Dynamic | ✅ | ✅ | 🛡️ Dry-Run | Rust | Tier 1 |
+| [**pipeboard-co/meta-ads-mcp**](#pipeboard-co-meta-ads-mcp) | ⭐ 1.3k | ✅ CRUD | ✅ Dynamic | — | ✅ | — | Python | Tier 1 |
+| [**serkanhaslak/meta-mcp**](#serkanhaslak-meta-mcp) | ⭐ 10 | ✅ CRUD | ✅ Dynamic | ✅ | — | 🛡️ Paced | TypeScript | Tier 1 |
+| [**mathiaschu/meta-ads-analyzer**](#mathiaschu-meta-ads-analyzer) | ⭐ 429 | 🔍 Read | ⚠️ Single | — | — | — | Python/Skill | Tier 2 |
+| [**brijr/meta-mcp**](#brijr-meta-mcp) | ⭐ 200 | ✅ CRUD | ✅ Dynamic | — | — | — | TypeScript | Tier 1 |
+| [**markifact/markifact-mcp**](#markifact-markifact-mcp) | ⭐ 48 | ✅ CRUD | ✅ Dynamic | — | — | 🛡️ Dry-Run | TypeScript | Tier 1 |
+| [**amekala/ads-mcp**](#amekala-ads-mcp) | ⭐ 94 | ✅ CRUD | ✅ Dynamic | — | ✅ | 🛡️ Dry-Run | Python/Skill | Tier 1 |
+| [**itallstartedwithaidea/advertising-hub**](#itallstartedwithaidea-advertising-hub) | ⭐ 42 | ✅ CRUD | ✅ Dynamic | ✅ | ✅ | — | Python/Skill | Tier 1 |
+| [**irinabuht12-oss/google-meta-ads-ga4-mcp**](#irinabuht12-oss-google-meta-ads-ga4-mcp) | ⭐ 2.0k | ✅ CRUD | ✅ Dynamic | — | ✅ | — | Python/Skill | Tier 1 |
+| [**irinabuht12-oss/marketing-skills**](#irinabuht12-oss-marketing-skills) | ⭐ 1.6k | 🔍 Read | ✅ Dynamic | — | ✅ | — | Python/Skill | Tier 2 |
+| [**eduardocornelsen/full-funnel-ai-analytics**](#eduardocornelsen-full-funnel-ai-analytics) | ⭐ 22 | 🔍 Read | ⚠️ Single | — | — | 🛡️ Dry-Run | Python | Tier 2 |
+| [**Dataslayer-AI/Marketing-skills**](#dataslayer-ai-marketing-skills) | ⭐ 23 | 🔍 Read | ✅ Dynamic | — | — | — | Python | Tier 1 |
+| [**Lifecycle-Innovations-Limited/claude-ops**](#lifecycle-innovations-limited-claude-ops) | ⭐ 210 | 🔍 Read | ✅ Dynamic | ✅ | ✅ | 🛡️ Dry-Run | Python/Skill | Tier 1 |
+| [**aleksUIX/pixellint**](#aleksuix-pixellint) | ⭐ 0 | 🔍 Read | ✅ Dynamic | ✅ | — | — | Rust | Tier 1 |
+| [**proxy-intell/facebook-ads-library-mcp**](#proxy-intell-facebook-ads-library-mcp) | ⭐ 300 | 🔍 Read | ⚠️ Single | — | ✅ | — | Python | Tier 1 |
+| [**RamsesAguirre777/facebook-ads-library-mcp**](#ramsesaguirre777-facebook-ads-library-mcp) | ⭐ 256 | 🔍 Read | ⚠️ Single | — | ✅ | — | Python | Tier 2 |
+| [**DV0x/creative-ad-agent**](#dv0x-creative-ad-agent) | ⭐ 117 | 🔍 Read | ⚠️ Single | — | ✅ | — | TypeScript | Tier 2 |
+| [**tenfoldmarc/meta-ads-generator-skill**](#tenfoldmarc-meta-ads-generator-skill) | ⭐ 22 | 🔍 Read | ⚠️ Single | — | ✅ | — | Python/Skill | Tier 3 |
+| [**guimatheus92/mcp-video-analyzer**](#guimatheus92-mcp-video-analyzer) | ⭐ 71 | 🔍 Read | ⚠️ Single | — | — | 🛡️ Dry-Run | TypeScript | Tier 2 |
 
 ---
 
@@ -68,7 +105,7 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ## 2. Performance reporting and Insights analytics
 
-*6 projects. Read-only servers, breakdown analyzers, and local caching daemons querying the Marketing API Insights endpoints.*
+*4 projects. Read-only servers, breakdown analyzers, and local caching daemons querying the Marketing API Insights endpoints.*
 
 ### Real-time Marketing API Insights reporting
 
@@ -82,19 +119,17 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ### SQLite and edge-cached reporting daemons
 
-*3 projects. Implementations running local SQLite or Cloudflare D1 caching workers to shield the agent from Meta rate limits.*
+*1 project. Implementation running an edge Cloudflare D1 SQLite worker to shield the agent from Meta rate limits.*
 
 | Project | What it does |
 |---|---|
 | <a id="brijr-meta-mcp"></a>[**brijr/meta-mcp**](https://github.com/brijr/meta-mcp) | Serverless TypeScript MCP server deployed on Cloudflare Workers, using an edge D1 SQLite cache to answer performance queries in 12ms. |
-| <a id="berthojoris-sqlite-mcp"></a>[**berthojoris/sqlite-mcp**](https://github.com/berthojoris/sqlite-mcp) | Local caching daemon with 60 tools that synchronizes Meta Graph API insights into an embedded SQLite database to eliminate rate limits. |
-| <a id="madnh-mcp-server-sqlite"></a>[**madnh/mcp-server-sqlite**](https://github.com/madnh/mcp-server-sqlite) | Lean SQLite-backed analytical bridge with 10 tools for querying pre-aggregated advertising datasets without live Graph API roundtrips. |
 
 ---
 
 ## 3. Cross-platform advertising orchestrators
 
-*8 projects. Multi-network hubs and skill packs coordinating Meta Ads alongside Google Ads, TikTok, LinkedIn, and GA4.*
+*7 projects. Multi-network hubs and skill packs coordinating Meta Ads alongside Google Ads, TikTok, LinkedIn, and GA4.*
 
 ### Universal advertising routers and schema abstractions
 
@@ -108,14 +143,13 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ### Multi-channel performance marketing skill packs
 
-*5 projects. Curated agent instructions and operational prompt libraries for cross-channel advertising analytics and execution.*
+*4 projects. Curated agent instructions and operational prompt libraries for cross-channel advertising analytics and execution.*
 
 | Project | What it does |
 |---|---|
 | <a id="irinabuht12-oss-google-meta-ads-ga4-mcp"></a>[**irinabuht12-oss/google-meta-ads-ga4-mcp**](https://github.com/irinabuht12-oss/google-meta-ads-ga4-mcp) | Turnkey hosted multi-service platform featuring 250 tools that unifies Meta Ads, Google Ads, and GA4 analytics into a cohesive agent workspace. |
 | <a id="irinabuht12-oss-marketing-skills"></a>[**irinabuht12-oss/marketing-skills**](https://github.com/irinabuht12-oss/marketing-skills) | Domain-specific operational skill library teaching Claude Code agents how to structure multi-channel ad audits, ROAS benchmarks, and pacing reports. |
 | <a id="eduardocornelsen-full-funnel-ai-analytics"></a>[**eduardocornelsen/full-funnel-ai-analytics**](https://github.com/eduardocornelsen/full-funnel-ai-analytics) | Full-funnel marketing analytics server with 5 tools combining Meta Ads top-of-funnel reach metrics with post-click conversion analytics. |
-| <a id="wojtyniak-mcp-mcp"></a>[**wojtyniak/mcp-mcp**](https://github.com/wojtyniak/mcp-mcp) | Unified meta-router MCP server with dynamic tool discovery, proxying cross-platform advertising commands to downstream ad servers. |
 | <a id="dataslayer-ai-marketing-skills"></a>[**Dataslayer-AI/Marketing-skills**](https://github.com/Dataslayer-AI/Marketing-skills) | Specialized prompt engineering and schema skill pack connecting LLM agents to Dataslayer's multi-platform ad data connectors. |
 
 ---
@@ -144,7 +178,7 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ## 5. Creative intelligence and Ad Library discovery
 
-*6 projects. Competitor ad scrapers, creative hook synthesizers, and aspect-ratio linters for Instagram and Facebook placements.*
+*5 projects. Competitor ad scrapers, creative hook synthesizers, and aspect-ratio linters for Instagram and Facebook placements.*
 
 ### Meta Ad Library competitor intelligence
 
@@ -157,54 +191,13 @@ Official links: [Meta for Developers](https://developers.facebook.com/) · [Mark
 
 ### Ad creative generation and asset staging
 
-*4 projects. Generative AI creative assistants producing hook copy, carousel formats, and Instagram-compatible aspect ratios.*
+*3 projects. Generative AI creative assistants producing hook copy, carousel formats, and Instagram-compatible aspect ratios.*
 
 | Project | What it does |
 |---|---|
 | <a id="dv0x-creative-ad-agent"></a>[**DV0x/creative-ad-agent**](https://github.com/DV0x/creative-ad-agent) | Creative production co-pilot with 2 in-process tools that analyzes Ad Library exemplars and generates hook-first static and carousel concepts. |
 | <a id="tenfoldmarc-meta-ads-generator-skill"></a>[**tenfoldmarc/meta-ads-generator-skill**](https://github.com/tenfoldmarc/meta-ads-generator-skill) | Claude Code agent skill designed to guide models through generating compliant Meta ad copy, headline variations, and creative staging files. |
 | <a id="guimatheus92-mcp-video-analyzer"></a>[**guimatheus92/mcp-video-analyzer**](https://github.com/guimatheus92/mcp-video-analyzer) | Multimodal video analysis server with 8 tools for evaluating video ad hooks, transcript pacing, and creative aspect ratios for Instagram Reels. |
-| <a id="charlesdove977-carousel-builder"></a>[**charlesdove977/carousel-builder**](https://github.com/charlesdove977/carousel-builder) | Creative drafting skill that structures multi-card Instagram and Facebook carousel concepts with per-card headlines and visual prompts. |
-
----
-
-## Developer Comparison Matrix
-
-*31 projects. Side-by-side technical comparison across API surface coverage, write permissions, dynamic multi-account routing, and anti-ban safeguards. Project names jump directly to their detailed section entries.*
-
-| Project | Category | API Objects | Mutations | Dry-Run | Multi-Account | CAPI | Ad Library | Runtime | Transport | Rate Pacing | Tools | Stars | Tier |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [**byadsco/meta-ads-mcp**](#byadsco-meta-ads-mcp) | Campaign | Marketing API | ✅ Read/Write | ✅ Yes | ✅ Dynamic | ✅ Yes | ✅ Yes | TypeScript | stdio | ✅ Backoff | `142` | `16` | Tier 1 |
-| [**oliverames/meta-mcp-server**](#oliverames-meta-mcp-server) | Campaign | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ❌ No | ✅ Yes | TypeScript | stdio | ❌ Raw | `200` | `36` | Tier 1 |
-| [**Draivix/aidvertaiser**](#draivix-aidvertaiser) | Campaign | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ✅ Yes | ❌ No | Python | stdio | ❌ Raw | `50` | `20` | Tier 1 |
-| [**mikusnuz/meta-ads-mcp**](#mikusnuz-meta-ads-mcp) | Campaign | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ❌ No | ✅ Yes | TypeScript | stdio | ❌ Raw | `134` | `79` | Tier 2 |
-| [**brandu-mos/konquest-meta-ads-mcp**](#brandu-mos-konquest-meta-ads-mcp) | Campaign | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ❌ No | ❌ No | Python | stdio | ❌ Raw | `57` | `44` | Tier 1 |
-| [**gomarble-ai/facebook-ads-mcp-server**](#gomarble-ai-facebook-ads-mcp-server) | Campaign | Marketing API | 🔍 Read-Only | ❌ No | ✅ Dynamic | ❌ No | ❌ No | Python | stdio | ❌ Raw | `21` | `366` | Tier 2 |
-| [**dengineproblem/meta-ads-mcp-extended**](#dengineproblem-meta-ads-mcp-extended) | Campaign | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ✅ Yes | ✅ Yes | Python | stdio | ✅ Backoff | `59` | `8` | Tier 2 |
-| [**attainmentlabs/meta-ads-mcp**](#attainmentlabs-meta-ads-mcp) | Campaign | Marketing API | ✅ Read/Write | ✅ Yes | ⚠️ Single .env | ✅ Yes | ❌ No | Python | stdio | ❌ Raw | `13` | `13` | Tier 2 |
-| [**EfrainTorres/armavita-meta-ads-mcp**](#efraintorres-armavita-meta-ads-mcp) | Campaign | Marketing API | ✅ Read/Write | ✅ Yes | ✅ Dynamic | ✅ Yes | ✅ Yes | Other | stdio | ❌ Raw | `125` | `74` | Tier 1 |
-| [**pipeboard-co/meta-ads-mcp**](#pipeboard-co-meta-ads-mcp) | Performance | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ❌ No | ✅ Yes | Python | stdio | ❌ Raw | `42` | `1270` | Tier 1 |
-| [**serkanhaslak/meta-mcp**](#serkanhaslak-meta-mcp) | Performance | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ✅ Yes | ❌ No | TypeScript | stdio | ✅ Backoff | `77` | `10` | Tier 1 |
-| [**mathiaschu/meta-ads-analyzer**](#mathiaschu-meta-ads-analyzer) | Performance | Marketing API | 🔍 Read-Only | ❌ No | ⚠️ Single .env | ❌ No | ❌ No | Other | stdio | ❌ Raw | `0` | `429` | Tier 2 |
-| [**brijr/meta-mcp**](#brijr-meta-mcp) | Performance | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ❌ No | ❌ No | TypeScript | stdio | ❌ Raw | `39` | `200` | Tier 1 |
-| [**berthojoris/sqlite-mcp**](#berthojoris-sqlite-mcp) | Performance | Marketing API | 🔍 Read-Only | ❌ No | ⚠️ Single .env | ❌ No | ❌ No | TypeScript | stdio | ❌ Raw | `60` | `0` | Tier 1 |
-| [**madnh/mcp-server-sqlite**](#madnh-mcp-server-sqlite) | Performance | Marketing API | 🔍 Read-Only | ❌ No | ⚠️ Single .env | ❌ No | ❌ No | TypeScript | stdio | ❌ Raw | `10` | `0` | Tier 3 |
-| [**markifact/markifact-mcp**](#markifact-markifact-mcp) | Cross-platform | Marketing API | ✅ Read/Write | ✅ Yes | ✅ Dynamic | ❌ No | ❌ No | TypeScript | stdio | ❌ Raw | `8` | `48` | Tier 1 |
-| [**amekala/ads-mcp**](#amekala-ads-mcp) | Cross-platform | Marketing API | ✅ Read/Write | ✅ Yes | ✅ Dynamic | ❌ No | ✅ Yes | Other | stdio | ❌ Raw | `20` | `94` | Tier 1 |
-| [**itallstartedwithaidea/advertising-hub**](#itallstartedwithaidea-advertising-hub) | Cross-platform | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ✅ Yes | ✅ Yes | Other | stdio | ❌ Raw | `5` | `42` | Tier 1 |
-| [**irinabuht12-oss/google-meta-ads-ga4-mcp**](#irinabuht12-oss-google-meta-ads-ga4-mcp) | Cross-platform | Marketing API | ✅ Read/Write | ❌ No | ✅ Dynamic | ❌ No | ✅ Yes | Other | stdio | ❌ Raw | `250` | `2033` | Tier 1 |
-| [**irinabuht12-oss/marketing-skills**](#irinabuht12-oss-marketing-skills) | Cross-platform | Marketing API | 🔍 Read-Only | ❌ No | ✅ Dynamic | ❌ No | ✅ Yes | Other | stdio | ❌ Raw | `0` | `1639` | Tier 2 |
-| [**eduardocornelsen/full-funnel-ai-analytics**](#eduardocornelsen-full-funnel-ai-analytics) | Cross-platform | Marketing API | 🔍 Read-Only | ✅ Yes | ⚠️ Single .env | ❌ No | ❌ No | Python | stdio | ❌ Raw | `5` | `22` | Tier 2 |
-| [**wojtyniak/mcp-mcp**](#wojtyniak-mcp-mcp) | Cross-platform | Marketing API | 🔍 Read-Only | ❌ No | ⚠️ Single .env | ❌ No | ❌ No | Python | stdio | ❌ Raw | `1` | `23` | Tier 1 |
-| [**Dataslayer-AI/Marketing-skills**](#dataslayer-ai-marketing-skills) | Cross-platform | Marketing API | 🔍 Read-Only | ❌ No | ✅ Dynamic | ❌ No | ❌ No | Python | stdio | ❌ Raw | `4` | `23` | Tier 1 |
-| [**Lifecycle-Innovations-Limited/claude-ops**](#lifecycle-innovations-limited-claude-ops) | Conversion | Marketing API | 🔍 Read-Only | ✅ Yes | ✅ Dynamic | ✅ Yes | ✅ Yes | Other | stdio | ❌ Raw | `66` | `210` | Tier 1 |
-| [**aleksUIX/pixellint**](#aleksuix-pixellint) | Conversion | Marketing API | 🔍 Read-Only | ❌ No | ✅ Dynamic | ✅ Yes | ❌ No | Other | stdio | ❌ Raw | `3` | `0` | Tier 1 |
-| [**proxy-intell/facebook-ads-library-mcp**](#proxy-intell-facebook-ads-library-mcp) | Creative | Marketing API | 🔍 Read-Only | ❌ No | ⚠️ Single .env | ❌ No | ✅ Yes | Python | stdio | ❌ Raw | `8` | `300` | Tier 1 |
-| [**RamsesAguirre777/facebook-ads-library-mcp**](#ramsesaguirre777-facebook-ads-library-mcp) | Creative | Marketing API | 🔍 Read-Only | ❌ No | ⚠️ Single .env | ❌ No | ✅ Yes | Python | stdio | ❌ Raw | `2` | `256` | Tier 2 |
-| [**DV0x/creative-ad-agent**](#dv0x-creative-ad-agent) | Creative | Marketing API | 🔍 Read-Only | ❌ No | ⚠️ Single .env | ❌ No | ✅ Yes | TypeScript | stdio | ❌ Raw | `2` | `117` | Tier 2 |
-| [**tenfoldmarc/meta-ads-generator-skill**](#tenfoldmarc-meta-ads-generator-skill) | Creative | Marketing API | 🔍 Read-Only | ❌ No | ⚠️ Single .env | ❌ No | ✅ Yes | Other | stdio | ❌ Raw | `0` | `22` | Tier 3 |
-| [**guimatheus92/mcp-video-analyzer**](#guimatheus92-mcp-video-analyzer) | Creative | Marketing API | 🔍 Read-Only | ✅ Yes | ⚠️ Single .env | ❌ No | ❌ No | TypeScript | stdio | ❌ Raw | `8` | `71` | Tier 2 |
-| [**charlesdove977/carousel-builder**](#charlesdove977-carousel-builder) | Creative | Marketing API | 🔍 Read-Only | ❌ No | ⚠️ Single .env | ❌ No | ❌ No | Other | stdio | ❌ Raw | `0` | `41` | Tier 3 |
 
 ---
 
