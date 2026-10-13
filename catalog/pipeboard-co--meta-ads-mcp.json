@@ -1,0 +1,3723 @@
+{
+  "id": "pipeboard-co--meta-ads-mcp",
+  "repo": "pipeboard-co/meta-ads-mcp",
+  "url": "https://github.com/pipeboard-co/meta-ads-mcp",
+  "commit": "093062c6655682a20ff0814b468e0e877263d494",
+  "method": "runtime-tools-list",
+  "complete": true,
+  "notes": [
+    "Complete union of tools registered by open-source server with opt-in duplication, reports, and local image save enabled; default configuration omits these six tools.",
+    "get_login_link and search_ads_archive are enabled by default and may be disabled with their respective environment flags.",
+    "generate_report only validates inputs and returns a premium upgrade stub; it does not generate a report. Duplication tools forward requests to a Pipeboard service.",
+    "Schemas and descriptions are exact FastMCP list_tools output. Free-form dictionaries remain open where upstream specifies Dict[str, Any]; no undocumented nested schemas were invented.",
+    "Hosted Pipeboard service may differ from this open-source server; this extraction describes this repository commit only. No business tools or real credentials used."
+  ],
+  "tools": [
+    {
+      "name": "get_ad_accounts",
+      "description": "\nGet ad accounts accessible by a user.\n\namount_spent and balance are returned in currency units (e.g. USD dollars),\nnot cents.\n\nArgs:\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    user_id: Meta user ID or \"me\" for the current user\n    limit: Maximum number of accounts to return (default: 200)\n",
+      "inputSchema": {
+        "properties": {
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "user_id": {
+            "default": "me",
+            "title": "User Id",
+            "type": "string"
+          },
+          "limit": {
+            "default": 200,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "get_ad_accountsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/accounts.py#L42",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_account_info",
+      "description": "\nGet detailed information about a specific ad account.\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    fields: Optional comma-separated Graph API fields to return. When provided,\n            replaces the default field set. Useful for fetching extras like\n            funding_source_details, spend_cap, is_prepay_account, min_daily_budget,\n            disable_reason, capabilities. Default fields:\n            id, name, account_id, account_status, amount_spent, balance, currency,\n            age, business_city, business_country_code, timezone_name.\n            For prepaid accounts (is_prepay_account=true, common in Brazil), the\n            Business Manager \"available balance\" is the sum of funding_source_details\n            STORED_BALANCE entries plus coupons — the `balance` field alone is the\n            amount due to be billed, not the available pre-paid funds.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "fields": {
+            "default": "",
+            "title": "Fields",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_account_infoArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/accounts.py#L76",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_campaigns",
+      "description": "\nGet campaigns for a Meta Ads account with optional filtering.\n\nNote: By default, the Meta API returns a subset of available fields. \nOther fields like 'effective_status', 'spend_cap', 'budget_remaining',\n'promoted_object', 'source_campaign_id', etc., might be available but\nrequire specifying them in the API call (currently not exposed by this\ntool's parameters).\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    limit: Maximum number of campaigns to return (default: 10)\n    status_filter: Filter by effective status (e.g., 'ACTIVE', 'PAUSED', 'ARCHIVED').\n                   Maps to the 'effective_status' API parameter, which expects an array\n                   (this function handles the required JSON formatting). Leave empty for all statuses.\n    objective_filter: Filter by campaign objective(s). Can be a single objective string or a list of objectives.\n                     Valid objectives: 'OUTCOME_AWARENESS', 'OUTCOME_TRAFFIC', 'OUTCOME_ENGAGEMENT',\n                     'OUTCOME_LEADS', 'OUTCOME_SALES', 'OUTCOME_APP_PROMOTION'.\n                     Examples: 'OUTCOME_LEADS' or ['OUTCOME_LEADS', 'OUTCOME_SALES'].\n                     Leave empty for all objectives.\n    after: Pagination cursor to get the next set of results\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "limit": {
+            "default": 10,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "status_filter": {
+            "default": "",
+            "title": "Status Filter",
+            "type": "string"
+          },
+          "objective_filter": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            ],
+            "default": "",
+            "title": "Objective Filter"
+          },
+          "after": {
+            "default": "",
+            "title": "After",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_campaignsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/campaigns.py#L10",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "get_campaign_details",
+      "description": "\nGet detailed information about a specific campaign.\n\nNote: This function requests a specific set of fields ('id,name,objective,status,...'). \nThe Meta API offers many other fields for campaigns (e.g., 'effective_status', 'source_campaign_id', etc.) \nthat could be added to the 'fields' parameter in the code if needed.\n\nArgs:\n    campaign_id: Meta Ads campaign ID\n    access_token: Meta API access token (optional - will use cached token if not provided)\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "title": "get_campaign_detailsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/campaigns.py#L88",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "create_campaign",
+      "description": "\nCreate a new Facebook or Instagram ad campaign in a Meta Ads account. Use this to start\na new campaign with an ODAX objective (OUTCOME_LEADS, OUTCOME_SALES, OUTCOME_AWARENESS,\nOUTCOME_TRAFFIC, OUTCOME_ENGAGEMENT, OUTCOME_APP_PROMOTION), pick CBO (campaign budget\noptimization) or ABO (ad-set-level budgets), and set bid strategy, spend cap, and special\nad categories. This is the first step of the campaign group → ad set → ad hierarchy on\nMeta. Returns the new campaign id. Also known as: create campaign, new campaign, make\ncampaign, campaign group, ABO campaign, CBO campaign.\n\nNote: Campaigns do not support start_time for scheduling — set start_time on the ad set instead.\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    name: Campaign name\n    objective: Campaign objective (ODAX, outcome-based). Must be one of:\n               OUTCOME_AWARENESS, OUTCOME_TRAFFIC, OUTCOME_ENGAGEMENT,\n               OUTCOME_LEADS, OUTCOME_SALES, OUTCOME_APP_PROMOTION.\n               Note: Legacy objectives like BRAND_AWARENESS, LINK_CLICKS,\n               CONVERSIONS, APP_INSTALLS, etc. are not valid for new\n               campaigns and will cause a 400 error. Use the outcome-based\n               values above (e.g., BRAND_AWARENESS → OUTCOME_AWARENESS).\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    status: Initial campaign status (default: PAUSED)\n    special_ad_categories: List of special ad categories if applicable\n    daily_budget: Daily budget in account currency (in cents) as a string (only used if use_adset_level_budgets=False)\n    lifetime_budget: Lifetime budget in account currency (in cents) as a string (only used if use_adset_level_budgets=False)\n    buying_type: Buying type (e.g., 'AUCTION')\n    bid_strategy: Bid strategy (default: LOWEST_COST_WITHOUT_CAP). Must be one of: 'LOWEST_COST_WITHOUT_CAP', 'LOWEST_COST_WITH_BID_CAP', 'COST_CAP', 'LOWEST_COST_WITH_MIN_ROAS'. WARNING: If you use LOWEST_COST_WITH_BID_CAP or COST_CAP, all child ad sets will require bid_amount to be set.\n    bid_cap: Bid cap in account currency (in cents) as a string\n    spend_cap: Spending limit for the campaign in account currency (in cents) as a string\n    campaign_budget_optimization: Whether to enable campaign budget optimization (only used if use_adset_level_budgets=False)\n    ab_test_control_setups: Settings for A/B testing (e.g., [{\"name\":\"Creative A\", \"ad_format\":\"SINGLE_IMAGE\"}])\n    use_adset_level_budgets: If True, budgets will be set at the ad set level instead of campaign level (default: False)\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "objective": {
+            "title": "Objective",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "status": {
+            "default": "PAUSED",
+            "title": "Status",
+            "type": "string"
+          },
+          "special_ad_categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Special Ad Categories"
+          },
+          "daily_budget": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Daily Budget"
+          },
+          "lifetime_budget": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lifetime Budget"
+          },
+          "buying_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Buying Type"
+          },
+          "bid_strategy": {
+            "default": "LOWEST_COST_WITHOUT_CAP",
+            "title": "Bid Strategy",
+            "type": "string"
+          },
+          "bid_cap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Cap"
+          },
+          "spend_cap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Spend Cap"
+          },
+          "campaign_budget_optimization": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Campaign Budget Optimization"
+          },
+          "ab_test_control_setups": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ab Test Control Setups"
+          },
+          "use_adset_level_budgets": {
+            "default": false,
+            "title": "Use Adset Level Budgets",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "account_id",
+          "name",
+          "objective"
+        ],
+        "title": "create_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/campaigns.py#L115",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "update_campaign",
+      "description": "\nUpdate an existing campaign in a Meta Ads account.\n\nNote: Campaigns do not support start_time for scheduling — set start_time on the ad set instead.\n\nMigrating CBO (Advantage Campaign Budget) → ABO (ad set level budgets):\n    Pass `adset_budgets` with one entry per ad set in the campaign. Meta atomically\n    removes the campaign-level budget and assigns budgets at the ad set level in a\n    single call. This is Meta's documented mechanism — the legacy\n    `use_adset_level_budgets=true` flag attempts to clear `daily_budget`/`lifetime_budget`\n    but Meta silently ignores the empty values, so the migration does not persist.\n\nArgs:\n    campaign_id: Meta Ads campaign ID\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    name: New campaign name\n    status: New campaign status (e.g., 'ACTIVE', 'PAUSED')\n    special_ad_categories: List of special ad categories if applicable\n    daily_budget: New daily budget in account currency (in cents).\n    lifetime_budget: New lifetime budget in account currency (in cents).\n    bid_strategy: New bid strategy\n    bid_cap: New bid cap in account currency (in cents) as a string\n    spend_cap: New spending limit for the campaign in account currency (in cents) as a string\n    campaign_budget_optimization: Enable/disable campaign budget optimization\n    objective: New campaign objective (Note: May not always be updatable)\n    use_adset_level_budgets: Deprecated for CBO → ABO migration — use `adset_budgets`\n        instead. Kept for backwards compatibility; sends empty `daily_budget`/\n        `lifetime_budget` which Meta silently ignores in most cases.\n    adset_budgets: List of `{\"adset_id\": \"...\", \"daily_budget\": <cents>}` objects.\n        Use to migrate from CBO to ABO: Meta removes the campaign-level Advantage\n        budget and assigns the provided daily budgets at the ad set level in one\n        atomic call. Example:\n            [{\"adset_id\": \"1234\", \"daily_budget\": 5000},\n             {\"adset_id\": \"5678\", \"daily_budget\": 7000}]\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status"
+          },
+          "special_ad_categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Special Ad Categories"
+          },
+          "daily_budget": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Daily Budget"
+          },
+          "lifetime_budget": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lifetime Budget"
+          },
+          "bid_strategy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Strategy"
+          },
+          "bid_cap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Cap"
+          },
+          "spend_cap": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Spend Cap"
+          },
+          "campaign_budget_optimization": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Campaign Budget Optimization"
+          },
+          "objective": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Objective"
+          },
+          "use_adset_level_budgets": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Use Adset Level Budgets"
+          },
+          "adset_budgets": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Adset Budgets"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "title": "update_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/campaigns.py#L263",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "get_adsets",
+      "description": "\nGet ad sets for a Meta Ads account with optional filtering by campaign.\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    limit: Maximum number of ad sets to return (default: 10)\n    campaign_id: Optional campaign ID to filter by\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "limit": {
+            "default": 10,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "campaign_id": {
+            "default": "",
+            "title": "Campaign Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_adsetsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/adsets.py#L10",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "get_adset_details",
+      "description": "\nGet detailed information about a specific ad set.\n\nArgs:\n    adset_id: Meta Ads ad set ID\n    access_token: Meta API access token (optional - will use cached token if not provided)\n\nExample:\n    To call this function through MCP, pass the adset_id as the first argument:\n    {\n        \"args\": \"YOUR_ADSET_ID\"\n    }\n",
+      "inputSchema": {
+        "properties": {
+          "adset_id": {
+            "title": "Adset Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "adset_id"
+        ],
+        "title": "get_adset_detailsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/adsets.py#L50",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "create_adset",
+      "description": "\nCreate a new ad set in a Meta Ads account.\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    campaign_id: Meta Ads campaign ID this ad set belongs to\n    name: Ad set name\n    optimization_goal: Conversion optimization goal. Valid values depend on the campaign objective and destination_type.\n                      OUTCOME_ENGAGEMENT + destination_type=WEBSITE: OFFSITE_CONVERSIONS, LANDING_PAGE_VIEWS, LINK_CLICKS, IMPRESSIONS, REACH.\n                      OUTCOME_ENGAGEMENT + On Post (destination_type=ON_POST): POST_ENGAGEMENT, IMPRESSIONS, REACH. Also set promoted_object={page_id} at creation (immutable; without it create_ad fails with subcode 1885154). Do NOT use ON_AD here — ON_AD is the OUTCOME_LEADS instant-form destination and Meta rejects it for OUTCOME_ENGAGEMENT (subcode 1815715).\n                      OUTCOME_ENGAGEMENT + On Video (destination_type=ON_VIDEO): THRUPLAY, TWO_SECOND_CONTINUOUS_VIDEO_VIEWS.\n                      OUTCOME_ENGAGEMENT + On Event (destination_type=ON_EVENT): EVENT_RESPONSES, IMPRESSIONS, POST_ENGAGEMENT, REACH.\n                      OUTCOME_ENGAGEMENT + On Page (destination_type=ON_PAGE): PAGE_LIKES.\n                      OUTCOME_ENGAGEMENT + Messaging (MESSENGER/WHATSAPP/INSTAGRAM_DIRECT): CONVERSATIONS, LINK_CLICKS.\n                      OUTCOME_ENGAGEMENT \"Profile and Page visits\" (PROFILE_AND_PAGE_ENGAGEMENT with destination_type INSTAGRAM_PROFILE / FACEBOOK_PAGE / INSTAGRAM_PROFILE_AND_FACEBOOK_PAGE) is shown in Ads Manager but NOT supported via the Marketing API — Meta rejects every variant (code 100). Closest API-supported option is POST_ENGAGEMENT + ON_POST.\n                      OUTCOME_TRAFFIC + WEBSITE: LANDING_PAGE_VIEWS, LINK_CLICKS, IMPRESSIONS, REACH.\n                      OUTCOME_AWARENESS: REACH, IMPRESSIONS, AD_RECALL_LIFT, THRUPLAY.\n                      OUTCOME_LEADS: LEAD_GENERATION, QUALITY_LEAD (forms), QUALITY_CALL (calls), OFFSITE_CONVERSIONS, LINK_CLICKS (website).\n                      OUTCOME_SALES: OFFSITE_CONVERSIONS, VALUE, CONVERSATIONS, LINK_CLICKS, IMPRESSIONS, REACH.\n                      OUTCOME_APP_PROMOTION: APP_INSTALLS, APP_INSTALLS_AND_OFFSITE_CONVERSIONS, VALUE.\n    billing_event: How you're charged (e.g., 'IMPRESSIONS', 'LINK_CLICKS')\n    status: Initial ad set status (default: PAUSED)\n    daily_budget: Daily budget in account currency (in cents) as a string.\n                 CBO NOTE: Do NOT set this if the parent campaign already has a budget\n                 (Campaign Budget Optimization / CBO mode). Meta only allows budgets at one\n                 level: either the campaign OR the ad set, not both. If the campaign has a\n                 daily_budget or lifetime_budget, omit this field — the ad set will\n                 automatically use the campaign budget.\n    lifetime_budget: Lifetime budget in account currency (in cents) as a string.\n                    CBO NOTE: Do NOT set this if the parent campaign already has a budget\n                    (Campaign Budget Optimization / CBO mode). Omit this field when the\n                    campaign uses CBO — the ad set inherits the campaign budget automatically.\n    targeting: Targeting specs (age, location, interests, etc).\n              targeting_automation.advantage_audience defaults to 0 if not set (Meta API v24+ requirement).\n              Set to 1 to enable Advantage+ Audience (requires age_max>=65). Use search_interests for interest IDs.\n    bid_amount: Bid amount in account currency (in cents).\n               REQUIRED for: LOWEST_COST_WITH_BID_CAP, COST_CAP, TARGET_COST.\n               NOT USED by: LOWEST_COST_WITH_MIN_ROAS (uses bid_constraints instead).\n               May also be required if the parent campaign's bid strategy requires it.\n    bid_strategy: Bid strategy. Valid values:\n                 - 'LOWEST_COST_WITHOUT_CAP' (recommended) - no bid_amount required\n                 - 'LOWEST_COST_WITH_BID_CAP' - REQUIRES bid_amount\n                 - 'COST_CAP' - REQUIRES bid_amount\n                 - 'LOWEST_COST_WITH_MIN_ROAS' - REQUIRES bid_constraints with roas_average_floor,\n                   and optimization_goal='VALUE'. Does NOT use bid_amount.\n                 Note: 'LOWEST_COST' is NOT valid - use 'LOWEST_COST_WITHOUT_CAP'.\n                 Campaign-level bid strategy may constrain ad set choices.\n    bid_constraints: Bid constraints dict. Required for LOWEST_COST_WITH_MIN_ROAS.\n                    Use {\"roas_average_floor\": <value>} where value = target ROAS * 10000.\n                    Example: 2.0x ROAS -> {\"roas_average_floor\": 20000}\n    bid_adjustments: Bid multipliers per targeting dimension. Pass-through to Meta.\n                    Shape: {\"user_groups\": {\"<dim>\": {\"<value>\": <float>, \"default\": <float>}}}\n                    Dims: age, gender, user_os, device_platform, position_type,\n                          publisher_platform, user_bucket, home_location, locale, etc.\n                    Multipliers are floats, typically 0.0-1.0.\n                    Example: {\"user_groups\": {\"user_os\": {\"iOS\": 0.9, \"Android\": 0.7, \"default\": 1.0}}}\n                    NOTE: Writing bid_adjustments requires a Meta app capability that must be\n                          allowlisted. Apps without it get OAuthException (#3).\n    start_time: Start time in ISO 8601 format (e.g., '2023-12-01T12:00:00-0800').\n               To schedule future delivery: set start_time to a future date and status=ACTIVE.\n               Meta will show effective_status as SCHEDULED and automatically begin delivery at start_time.\n               NOTE: Only ad set start_time controls delivery scheduling. Campaigns do not support start_time.\n    end_time: End time in ISO 8601 format. Required when lifetime_budget is specified.\n    dsa_beneficiary: DSA beneficiary for European compliance (person/org that benefits from ads).\n                    Required for EU-targeted ad sets along with dsa_payor.\n    dsa_payor: DSA payor for European compliance (person/org paying for the ads).\n               Required for EU-targeted ad sets along with dsa_beneficiary.\n    promoted_object: For APP_INSTALLS: app config, required application_id + object_store_url.\n                    For OUTCOME_ENGAGEMENT On-Post (destination_type=ON_POST): set {\"page_id\": \"<id>\"} at\n                    creation — required for ads (else create_ad fails with subcode 1885154) and immutable\n                    afterward (cannot be added via update_adset).\n    destination_type: Conversion location / where users go. Pass-through to Meta (no client-side validation).\n                     Common values: 'WEBSITE', 'WHATSAPP', 'MESSENGER', 'INSTAGRAM_DIRECT', 'APP', 'FACEBOOK',\n                     'SHOP_AUTOMATIC'. OUTCOME_ENGAGEMENT on-asset locations: 'ON_POST' (post engagement; needs\n                     promoted_object={page_id}), 'ON_PAGE' (PAGE_LIKES), 'ON_EVENT', 'ON_VIDEO'. 'ON_AD' is the\n                     OUTCOME_LEADS instant-form destination — do NOT use it for OUTCOME_ENGAGEMENT (Meta rejects\n                     it with subcode 1815715). Also supports multi-channel combos like 'MESSAGING_MESSENGER_WHATSAPP'.\n    is_dynamic_creative: Enable Dynamic Creative for this ad set.\n    frequency_control_specs: Frequency cap specs. MUST be set at creation time — Meta makes this field\n                             immutable after the ad set is created (error 1815198).\n                             Only works with OUTCOME_AWARENESS campaigns + optimization_goal REACH or THRUPLAY.\n                             Example: [{\"event\": \"IMPRESSIONS\", \"interval_days\": 7, \"max_frequency\": 1}]\n    multi_advertiser_ads: Set to 0 to opt out of Multi-Advertiser Ads, 1 to opt in.\n                         This is a TOP-LEVEL ad set parameter — do NOT put it inside the targeting object.\n    regional_regulated_categories: List of regional regulated categories for the ad set.\n                                   Required for ads targeting regulated regions (Taiwan, Australia, etc.).\n                                   Valid values: TAIWAN_FINSERV, TAIWAN_UNIVERSAL, AUSTRALIA_FINSERV,\n                                   INDIA_FINSERV, SINGAPORE_UNIVERSAL, THAILAND_UNIVERSAL.\n                                   Example: [\"TAIWAN_UNIVERSAL\"] or [\"TAIWAN_FINSERV\", \"TAIWAN_UNIVERSAL\"]\n    regional_regulation_identities: Dict of verified identity IDs for regional transparency compliance.\n                                    Required when regional_regulated_categories is set.\n                                    The identity IDs come from completing advertiser verification in Meta Business Settings.\n                                    Keys depend on the categories declared:\n                                    - TAIWAN_UNIVERSAL: taiwan_universal_beneficiary, taiwan_universal_payer\n                                    - TAIWAN_FINSERV: taiwan_finserv_beneficiary, taiwan_finserv_payer\n                                    - AUSTRALIA_FINSERV: australia_finserv_beneficiary, australia_finserv_payer\n                                    - SINGAPORE_UNIVERSAL: singapore_universal_beneficiary, singapore_universal_payer\n                                    Example: {\"taiwan_universal_beneficiary\": \"<id>\", \"taiwan_universal_payer\": \"<id>\"}\n    attribution_spec: Attribution window specification for the ad set. Controls how conversions are\n                     attributed to ads. Default is 7-day click if not specified.\n                     Example for 1-day click: [{\"event_type\": \"CLICK_THROUGH\", \"window_days\": 1}]\n                     Example for 1-day click + 1-day view: [{\"event_type\": \"CLICK_THROUGH\", \"window_days\": 1}, {\"event_type\": \"VIEW_THROUGH\", \"window_days\": 1}]\n                     Valid event_type values: CLICK_THROUGH, VIEW_THROUGH.\n                     Valid window_days values: 1, 7, 28 (depends on event_type and optimization_goal).\n    access_token: Meta API access token (optional - will use cached token if not provided)\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "optimization_goal": {
+            "title": "Optimization Goal",
+            "type": "string"
+          },
+          "billing_event": {
+            "title": "Billing Event",
+            "type": "string"
+          },
+          "status": {
+            "default": "PAUSED",
+            "title": "Status",
+            "type": "string"
+          },
+          "daily_budget": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Daily Budget"
+          },
+          "lifetime_budget": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lifetime Budget"
+          },
+          "targeting": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Targeting"
+          },
+          "bid_amount": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Amount"
+          },
+          "bid_strategy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Strategy"
+          },
+          "bid_constraints": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Constraints"
+          },
+          "bid_adjustments": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Adjustments"
+          },
+          "start_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Start Time"
+          },
+          "end_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "End Time"
+          },
+          "dsa_beneficiary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Dsa Beneficiary"
+          },
+          "dsa_payor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Dsa Payor"
+          },
+          "promoted_object": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Promoted Object"
+          },
+          "destination_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Destination Type"
+          },
+          "is_dynamic_creative": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Dynamic Creative"
+          },
+          "frequency_control_specs": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Frequency Control Specs"
+          },
+          "multi_advertiser_ads": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Multi Advertiser Ads"
+          },
+          "regional_regulated_categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Regional Regulated Categories"
+          },
+          "regional_regulation_identities": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Regional Regulation Identities"
+          },
+          "attribution_spec": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Attribution Spec"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "account_id",
+          "campaign_id",
+          "name",
+          "optimization_goal",
+          "billing_event"
+        ],
+        "title": "create_adsetArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/adsets.py#L86",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "update_adset",
+      "description": "\nUpdate an ad set with new settings including frequency caps and budgets.\n\nArgs:\n    adset_id: Meta Ads ad set ID\n    name: New ad set name\n    frequency_control_specs: Frequency control specs\n                             (e.g. [{\"event\": \"IMPRESSIONS\", \"interval_days\": 7, \"max_frequency\": 3}])\n    bid_strategy: Bid strategy. Valid values:\n                 - 'LOWEST_COST_WITHOUT_CAP' (recommended) - no bid_amount required\n                 - 'LOWEST_COST_WITH_BID_CAP' - REQUIRES bid_amount\n                 - 'COST_CAP' - REQUIRES bid_amount\n                 - 'LOWEST_COST_WITH_MIN_ROAS' - REQUIRES bid_constraints with roas_average_floor\n                 Note: 'LOWEST_COST' is NOT valid - use 'LOWEST_COST_WITHOUT_CAP'.\n    bid_amount: Bid amount in cents. Required for LOWEST_COST_WITH_BID_CAP, COST_CAP, TARGET_COST.\n               NOT USED by LOWEST_COST_WITH_MIN_ROAS (uses bid_constraints instead).\n    bid_constraints: Bid constraints dict. Required for LOWEST_COST_WITH_MIN_ROAS.\n                    Use {\"roas_average_floor\": <value>} where value = target ROAS * 10000.\n                    Example: 2.0x ROAS -> {\"roas_average_floor\": 20000}\n    bid_adjustments: Bid multipliers per targeting dimension. Pass-through to Meta.\n                    Shape: {\"user_groups\": {\"<dim>\": {\"<value>\": <float>, \"default\": <float>}}}\n                    See create_adset for full docs and dim list.\n                    NOTE: Writing requires a Meta app capability that must be allowlisted.\n    status: Update ad set status (ACTIVE, PAUSED, etc.)\n    targeting: Complete targeting specifications (replaces existing targeting)\n    optimization_goal: Conversion optimization goal (e.g., 'LINK_CLICKS', 'CONVERSIONS', 'VALUE')\n    daily_budget: Daily budget in account currency (in cents)\n    lifetime_budget: Lifetime budget in account currency (in cents)\n    is_dynamic_creative: Enable/disable Dynamic Creative for this ad set.\n                        WARNING: This field is immutable after ad set creation. Meta's API will\n                        return success but silently ignore the change. To change this, create a new ad set.\n    start_time: Start time in ISO 8601 format (e.g., '2023-12-01T12:00:00-0800').\n               Use with status=ACTIVE to schedule the ad set for future delivery (effective_status will be SCHEDULED until start_time).\n    end_time: End time in ISO 8601 format. Required when lifetime_budget is specified.\n    dsa_beneficiary: DSA beneficiary for European compliance (person/org that benefits from ads).\n                    Required for EU-targeted ad sets along with dsa_payor.\n    dsa_payor: DSA payor for European compliance (person/org paying for the ads).\n               Required for EU-targeted ad sets along with dsa_beneficiary.\n    multi_advertiser_ads: Set to 0 to opt out of Multi-Advertiser Ads, 1 to opt in.\n                         This is a TOP-LEVEL ad set parameter — do NOT put it inside the targeting object.\n    regional_regulated_categories: List of regional regulated categories for the ad set.\n                                   Required for ads targeting regulated regions (Taiwan, Australia, etc.).\n                                   Valid values: TAIWAN_FINSERV, TAIWAN_UNIVERSAL, AUSTRALIA_FINSERV,\n                                   INDIA_FINSERV, SINGAPORE_UNIVERSAL, THAILAND_UNIVERSAL.\n                                   Set to null/empty to remove existing categories.\n    regional_regulation_identities: Dict of verified identity IDs for regional transparency compliance.\n                                    Required when regional_regulated_categories is set.\n                                    Set individual keys to null to remove them.\n    attribution_spec: Attribution window specification for the ad set.\n                     WARNING: Meta no longer supports updating attribution_spec after ad set creation\n                     (error 1504040). To change attribution windows, create a new ad set instead.\n                     This parameter is kept for compatibility but will be rejected by Meta's API.\n                     Valid event_type values: CLICK_THROUGH, VIEW_THROUGH.\n                     Valid window_days values: 1, 7, 28 (depends on event_type and optimization_goal).\n    access_token: Meta API access token (optional - will use cached token if not provided)\n",
+      "inputSchema": {
+        "properties": {
+          "adset_id": {
+            "title": "Adset Id",
+            "type": "string"
+          },
+          "frequency_control_specs": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Frequency Control Specs"
+          },
+          "bid_strategy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Strategy"
+          },
+          "bid_amount": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Amount"
+          },
+          "bid_constraints": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Constraints"
+          },
+          "bid_adjustments": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Adjustments"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status"
+          },
+          "targeting": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Targeting"
+          },
+          "optimization_goal": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Optimization Goal"
+          },
+          "daily_budget": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Daily Budget"
+          },
+          "lifetime_budget": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lifetime Budget"
+          },
+          "is_dynamic_creative": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Dynamic Creative"
+          },
+          "start_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Start Time"
+          },
+          "end_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "End Time"
+          },
+          "dsa_beneficiary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Dsa Beneficiary"
+          },
+          "dsa_payor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Dsa Payor"
+          },
+          "multi_advertiser_ads": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Multi Advertiser Ads"
+          },
+          "regional_regulated_categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Regional Regulated Categories"
+          },
+          "regional_regulation_identities": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Regional Regulation Identities"
+          },
+          "attribution_spec": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Attribution Spec"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "adset_id"
+        ],
+        "title": "update_adsetArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/adsets.py#L496",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "get_ads",
+      "description": "\nGet ads for a Meta Ads account with optional filtering.\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    limit: Maximum number of ads to return (default: 10)\n    campaign_id: Optional campaign ID to filter by\n    adset_id: Optional ad set ID to filter by\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "limit": {
+            "default": 10,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "campaign_id": {
+            "default": "",
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "adset_id": {
+            "default": "",
+            "title": "Adset Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_adsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L497",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "get_ad_details",
+      "description": "\nGet detailed information about a specific ad.\n\nArgs:\n    ad_id: Meta Ads ad ID\n    access_token: Meta API access token (optional - will use cached token if not provided)\n",
+      "inputSchema": {
+        "properties": {
+          "ad_id": {
+            "title": "Ad Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "title": "get_ad_detailsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L542",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "get_creative_details",
+      "description": "Get detailed information about a specific ad creative by its ID.\n\nArgs:\n    creative_id: Meta Ads creative ID (required)\n    access_token: Meta API access token (optional)\n",
+      "inputSchema": {
+        "properties": {
+          "creative_id": {
+            "title": "Creative Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "creative_id"
+        ],
+        "title": "get_creative_detailsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L565",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "create_ad",
+      "description": "\nCreate a new ad with an existing creative.\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    name: Ad name\n    adset_id: Ad set ID where this ad will be placed\n    creative_id: ID of an existing creative to use\n    status: Initial ad status (default: PAUSED)\n    bid_amount: Optional bid amount in account currency (in cents)\n    tracking_specs: Optional tracking specifications (e.g., for pixel events).\n                  Example: [{\"action.type\":\"offsite_conversion\",\"fb_pixel\":[\"YOUR_PIXEL_ID\"]}]\n    access_token: Meta API access token (optional - will use cached token if not provided)\n\nNote:\n    Dynamic Creative creatives require the parent ad set to have `is_dynamic_creative=true`.\n    Otherwise, ad creation will fail with error_subcode 1885998.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "adset_id": {
+            "title": "Adset Id",
+            "type": "string"
+          },
+          "creative_id": {
+            "title": "Creative Id",
+            "type": "string"
+          },
+          "status": {
+            "default": "PAUSED",
+            "title": "Status",
+            "type": "string"
+          },
+          "bid_amount": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Amount"
+          },
+          "tracking_specs": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Tracking Specs"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "account_id",
+          "name",
+          "adset_id",
+          "creative_id"
+        ],
+        "title": "create_adArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L617",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "get_ad_creatives",
+      "description": "\nGet creative details for a specific ad. Requires an ad_id (not account_id). Use get_ads first to find ad IDs.\n\nArgs:\n    ad_id: Meta Ads ad ID (required)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n",
+      "inputSchema": {
+        "properties": {
+          "ad_id": {
+            "title": "Ad Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "title": "get_ad_creativesArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L689",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "get_ad_image",
+      "description": "\nGet, download, and visualize the image attached to an existing Meta ad.\n\nTakes a Meta ad ID and returns the image the ad is currently serving.\nIf all you have is an image hash (no ad), use get_image_by_hash instead.\n\nArgs:\n    ad_id: Meta Ads ad ID\n    access_token: Meta API access token (optional - will use cached token if not provided)\n\nReturns:\n    The ad image ready for direct visual analysis\n",
+      "inputSchema": {
+        "properties": {
+          "ad_id": {
+            "title": "Ad Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "title": "get_ad_imageArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L769",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "get_image_by_hash",
+      "description": "\nGet, download, and visualize a Meta ad image by its hash.\n\nUse this when you have an image_hash without an ad — e.g. the hash\nreturned by upload_ad_image / bulk_upload_ad_images, or one referenced\nin a creative (object_story_spec.link_data.image_hash, asset_feed_spec\nimages[].hash, etc.). To view the image of an existing ad, prefer\nget_ad_image(ad_id).\n\nArgs:\n    account_id: Meta Ads account ID (act_XXXXXXXXX or bare numeric — both accepted)\n    image_hash: Meta image hash\n    access_token: Meta API access token (optional - will use cached token if not provided)\n\nReturns:\n    The image ready for direct visual analysis\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "image_hash": {
+            "title": "Image Hash",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "account_id",
+          "image_hash"
+        ],
+        "title": "get_image_by_hashArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L922",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "get_ad_video",
+      "description": "\nGet video details and source URL for a Meta ad video creative. Returns the video source URL\n(direct download link), thumbnail URL, processing status, and metadata (title, description,\nduration).\n\nAlso useful for polling after bulk_upload_ad_videos: ``video_status`` is\n``\"processing\"`` while Meta is still transcoding and ``\"ready\"`` when the\nreal video frames (and a usable thumbnail) are available. Calling\ncreate_ad_creative before status is \"ready\" returns an error because the\nonly thumbnail Meta returns during processing is a generic placeholder\nthat would be permanently stored on the creative.\n\nProvide either ad_id (to auto-extract the video from the ad creative) or video_id directly.\nProviding account_id is strongly recommended — it enables the advideos edge which works\nwith Business Manager tokens (avoids error 100/33 and error #10 on account-uploaded videos).\n\nArgs:\n    ad_id: Meta Ads ad ID (will extract video_id from the ad creative)\n    video_id: Meta video ID (use this if you already have it from get_ad_creatives)\n    account_id: Ad account ID (e.g. \"act_123\" or \"123\"). Enables advideos edge lookup.\n    access_token: Meta API access token (optional - will use cached token if not provided)\n",
+      "inputSchema": {
+        "properties": {
+          "ad_id": {
+            "default": "",
+            "title": "Ad Id",
+            "type": "string"
+          },
+          "video_id": {
+            "default": "",
+            "title": "Video Id",
+            "type": "string"
+          },
+          "account_id": {
+            "default": "",
+            "title": "Account Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "title": "get_ad_videoArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L1005",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "save_ad_image_locally",
+      "description": "\nGet, download, and save a Meta ad image locally, returning the file path.\n\nArgs:\n    ad_id: Meta Ads ad ID\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    output_dir: Directory to save the image file (default: 'ad_images')\n\nReturns:\n    The file path to the saved image, or an error message string.\n",
+      "inputSchema": {
+        "properties": {
+          "ad_id": {
+            "title": "Ad Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "output_dir": {
+            "default": "ad_images",
+            "title": "Output Dir",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "title": "save_ad_image_locallyArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L1154",
+      "scope": "meta-ads",
+      "capability": "creatives",
+      "availability": "Opt-in META_ADS_ENABLE_SAVE_AD_IMAGE_LOCALLY."
+    },
+    {
+      "name": "update_ad",
+      "description": "\nUpdate an ad with new settings.\n\nArgs:\n    ad_id: Meta Ads ad ID\n    name: New ad name\n    status: Update ad status (ACTIVE, PAUSED, etc.)\n    bid_amount: Bid amount in account currency (in cents for USD)\n    tracking_specs: Optional tracking specifications (e.g., for pixel events).\n    creative_id: ID of the creative to associate with this ad (changes the ad's image/content)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n",
+      "inputSchema": {
+        "properties": {
+          "ad_id": {
+            "title": "Ad Id",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status"
+          },
+          "bid_amount": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Bid Amount"
+          },
+          "tracking_specs": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Tracking Specs"
+          },
+          "creative_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Creative Id"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "title": "update_adArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L1279",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "upload_ad_image",
+      "description": "\nUpload an image to use in Meta Ads creatives.\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    file: Data URL or raw base64 string of the image (e.g., \"data:image/png;base64,iVBORw0KG...\")\n    image_url: Direct URL to an image to fetch and upload\n    name: Optional name for the image (default: filename)\n\nReturns:\n    JSON object with:\n      - image_hash: Pass this to create_ad_creative when building the ad,\n        or to get_image_by_hash to view the image later.\n      - images: List of {hash, url, width, height, name}. The url is a\n        Meta CDN link you can fetch directly to view the image — no need\n        to call any other tool right after upload.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "file": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "File"
+          },
+          "image_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Url"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "upload_ad_imageArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L1368",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "compute_image_crops",
+      "description": "\nCompute image_crops coordinates for a source image of the given dimensions.\n\nReturns the image_crops dict ready to pass directly to create_ad_creative\nor bulk_create_ad_creatives. For each crop key the result is the largest\ncentered region that fits within the source image while matching the key's\naspect ratio — equivalent to \"Original\" crop (no content is cut off beyond\nwhat the ratio requires).\n\nArgs:\n    image_width: Width of the source image in pixels (e.g. 1080).\n    image_height: Height of the source image in pixels (e.g. 1080).\n    crop_keys: Optional list of specific crop keys to compute. Defaults to\n        all 6 keys accepted by Meta's API:\n          \"100x100\"  — 1:1 square (Feed, Marketplace, Search)\n          \"100x72\"   — ~1.39:1 horizontal (Marketplace, some placements)\n          \"400x500\"  — 4:5 portrait (Feed on mobile, Stories fallback)\n          \"400x150\"  — ~2.67:1 wide banner (Audience Network)\n          \"600x360\"  — ~1.67:1 horizontal (Right column, some placements)\n          \"90x160\"   — 9:16 tall portrait (Stories)\n\nReturns:\n    JSON with the image_crops dict (ready for copy-paste into create_ad_creative),\n    plus validation notes for any invalid keys requested.\n",
+      "inputSchema": {
+        "properties": {
+          "image_width": {
+            "title": "Image Width",
+            "type": "integer"
+          },
+          "image_height": {
+            "title": "Image Height",
+            "type": "integer"
+          },
+          "crop_keys": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Crop Keys"
+          }
+        },
+        "required": [
+          "image_width",
+          "image_height"
+        ],
+        "title": "compute_image_cropsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L1591",
+      "scope": "supporting",
+      "capability": "utilities"
+    },
+    {
+      "name": "create_ad_creative",
+      "description": "\nCreate a new ad creative using an uploaded image hash, video ID, or an existing post.\n\nSupports six creative modes:\n- **Existing post**: Provide object_story_id (format: {page_id}_{post_id}) to promote an existing\n  organic or published post. No image_hash or video_id required. Optionally combine with\n  asset_customization_rules to attach a 9:16 video for Story/Reels placements.\n- **Simple image/video**: Single image_hash or video_id with object_story_spec\n- **Multi-variant copy**: Use plural text params (messages[], headlines[], descriptions[]) to test\n  multiple text variants with a single image/video. No optimization_type or is_dynamic_creative needed.\n- **Placement Asset Customization (dual-aspect, non-DC)**: Serve different aspect ratios per placement\n  on a STANDARD ad set without is_dynamic_creative and without the one-ad-per-ad-set cap. Set\n  optimization_type=\"PLACEMENT\" and pass videos=[{video_id, label}, ...] (or images=[{image_hash,\n  label}, ...]) together with asset_customization_rules whose customization_spec references those\n  labels via video_label/image_label. Every label in the rules MUST appear on a videos[]/images[]\n  entry, or Meta returns error_subcode=1487390 (\"Adcreative Create Failed\").\n- **Dynamic Creative**: Multiple variants with dynamic_creative_spec (requires is_dynamic_creative on ad set)\n- **FLEX/DOF (Advantage+)**: Set optimization_type=\"DEGREES_OF_FREEDOM\" for Meta to auto-optimize\n  across all asset combinations without requiring is_dynamic_creative on the ad set\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    image_hash: Hash of a single uploaded image (cannot be used with image_hashes or video_id)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    name: Creative name\n    page_id: Facebook Page ID (string or int; coerced to string)\n    link_url: Destination URL for the ad. Required unless using lead_gen_form_id or\n             reminder_data — with one exception: if asset_customization_rules is also\n             set, link_url is required even for Lead ads. Meta accepts the creative\n             without link_urls but rejects the ad at create_ad time with error 1885800\n             (\"Asset Customization Ads require a link\"). The URL is never shown to the\n             user when lead_gen_form_id is set (the CTA opens the form), but Meta still\n             demands one be present on the creative. Pass any valid URL in that case\n             (e.g. the Facebook page URL or your site root).\n    message: Single ad copy/text (cannot be used with messages)\n    messages: List of primary text variants for multi-variant copy testing (cannot be used with message).\n              Each entry can be a plain string, OR a dict {\"text\": \"...\", \"adlabels\": [{\"name\": \"...\"}]}\n              when used with asset_customization_rules that reference body_label.\n    headline: Single headline for simple ads (cannot be used with headlines)\n    headlines: List of headline variants for multi-variant copy testing (cannot be used with headline).\n              Each entry can be a plain string, OR a dict {\"text\": \"...\", \"adlabels\": [{\"name\": \"...\"}]}\n              when used with asset_customization_rules that reference title_label.\n              Meta enforces the actual length limit; do not pre-truncate.\n    description: Single description for simple ads (cannot be used with descriptions)\n    descriptions: List of description variants for multi-variant copy testing (cannot be used with description).\n              Each entry can be a plain string, OR a dict {\"text\": \"...\", \"adlabels\": [{\"name\": \"...\"}]}\n              when used with asset_customization_rules that reference description_label.\n    image_hashes: List of image hashes for FLEX creatives (up to 10, cannot be used with image_hash or video_id).\n                 IMPORTANT: When optimization_type=\"DEGREES_OF_FREEDOM\" (FLEX/Advantage+ mode),\n                 only ONE image is served at delivery time regardless of how many hashes you provide.\n                 The Meta API accepts multiple hashes without error and they all appear in\n                 asset_feed_spec, but Meta silently collapses to a single image at serving time.\n                 Use image_hashes with multiple entries only in non-DOF (regular dynamic creative)\n                 mode. In DOF mode, pass a single hash.\n    video_id: Meta video ID for video creatives (cannot be used with image_hash or image_hashes).\n              Upload a video first via the Meta API, then use the returned video ID here.\n              IMPORTANT: When also providing instagram_actor_id, both instagram_actor_id AND\n              ad_formats=[\"SINGLE_VIDEO\"] must be present — otherwise Meta returns error 1443048\n              (\"object_story_spec ill formed\"). This is handled automatically: video creatives\n              that include instagram_actor_id are routed through asset_feed_spec so that\n              ad_formats=[\"SINGLE_VIDEO\"] is always included in the API request.\n    thumbnail_url: Thumbnail image URL for video creatives. Recommended when using video_id.\n                  Meta will auto-generate a thumbnail if not provided — Pipeboard\n                  will fetch the best available frame from the uploaded video.\n                  IMPORTANT: when the video was just uploaded via\n                  bulk_upload_ad_videos, Meta needs a few seconds to transcode\n                  it. If create_ad_creative is called before transcoding\n                  completes, the only thumbnail Meta returns is a generic\n                  processing-state placeholder, which would be permanently\n                  stored on the creative. In that case create_ad_creative\n                  returns an error with video_status: \"processing\" — wait\n                  a few seconds (poll with get_ad_video until video_status\n                  is \"ready\") and retry, or pass thumbnail_url explicitly\n                  (any public image URL works).\n    optimization_type: Optional. Valid values:\n                      - \"DEGREES_OF_FREEDOM\": FLEX (Advantage+) creatives where Meta auto-optimizes\n                        across all asset combinations. At least one multi-variant asset field required.\n                        NOTE: Meta ignores asset_customization_rules for DOF creatives.\n                        NOTE: When using DEGREES_OF_FREEDOM with image_hashes, providing multiple\n                        hashes is accepted by the API without error, but Meta silently serves only\n                        ONE image at delivery time. A warning is included in the response if multiple\n                        hashes are detected. To serve multiple images, omit optimization_type and\n                        enable is_dynamic_creative on the ad set instead.\n                      - \"PLACEMENT\": Placement Asset Customization. Use with videos[]/images[] (with\n                        labels) and asset_customization_rules (with video_label/image_label references)\n                        to serve different aspect ratios per placement (e.g., 1:1 Feed + 9:16 Reels).\n                      Other values are passed through to Meta as-is.\n    dynamic_creative_spec: Dynamic creative optimization settings\n    call_to_action_type: Call to action button type. Meta enum — free-form values\n                        (e.g. 'MAKE_RESERVATION', 'RESERVE', 'BOOK_TABLE') are rejected with\n                        code 100. Pick from the documented list. Common values:\n                          BOOK_NOW         — restaurants, salons, clinics, appointments (use this for\n                                             reservations — there is no MAKE_RESERVATION enum)\n                          LEARN_MORE, SHOP_NOW, SIGN_UP, SUBSCRIBE, GET_QUOTE, CONTACT_US,\n                          DOWNLOAD, WATCH_MORE, GET_OFFER, APPLY_NOW, CALL_NOW, MESSAGE_PAGE,\n                          SEE_MENU, ORDER_NOW, BUY_NOW, WHATSAPP_MESSAGE, GET_DIRECTIONS,\n                          BUY_TICKETS, EVENT_RSVP, BOOK_TRAVEL.\n                        When using CALL_NOW, also provide phone_number.\n    lead_gen_form_id: Lead generation form ID for lead generation campaigns. Required when using\n                     lead generation CTAs like 'SIGN_UP', 'GET_OFFER', 'SUBSCRIBE', etc.\n    instagram_actor_id: Instagram account ID for Instagram placements (must be a string\n                       to avoid JavaScript integer precision loss for IDs exceeding\n                       Number.MAX_SAFE_INTEGER). Sent as instagram_user_id inside\n                       object_story_spec (Meta deprecated instagram_actor_id in Jan 2026).\n                       IMPORTANT for video creatives: Meta requires ad_formats=[\"SINGLE_VIDEO\"]\n                       in asset_feed_spec alongside instagram_user_id in object_story_spec —\n                       omitting either causes error 1443048 (\"object_story_spec ill formed\").\n                       This is auto-handled: video_id + instagram_actor_id always routes through\n                       asset_feed_spec so ad_formats=[\"SINGLE_VIDEO\"] is included automatically.\n    ad_formats: List of ad format strings for asset_feed_spec (e.g., [\"AUTOMATIC_FORMAT\"] for\n               Flexible ads, [\"SINGLE_IMAGE\"] for single image, [\"SINGLE_VIDEO\"] for video).\n               When optimization_type is \"DEGREES_OF_FREEDOM\" with image_hashes, defaults to\n               [\"AUTOMATIC_FORMAT\"] (Flexible format). For video creatives, defaults to\n               [\"SINGLE_VIDEO\"]. Otherwise defaults to [\"SINGLE_IMAGE\"].\n    asset_customization_rules: List of placement-specific asset overrides for asset_feed_spec.\n    phone_number: Phone number for CALL_NOW call-to-action ads (click-to-call).\n                 Required when call_to_action_type is CALL_NOW. Use E.164 format\n                 (e.g., \"+18005551234\"). The number is sent to Meta as\n                 call_to_action.value.link = \"tel:<phone_number>\" (Meta v24\n                 rejects a literal \"phone_number\" key with code 100). Common\n                 use case: geo-routed call ads with different phone numbers\n                 per ad set.\n    creative_features_spec: Advantage+ Creative feature opt-ins/opt-outs. Controls individual\n               creative enhancements like image_touchups, text_optimizations, inline_comment,\n               add_text_overlay, music, 3d_animation, etc. Each feature is a dict with\n               \"enroll_status\" set to \"OPT_IN\" or \"OPT_OUT\".\n               Example: {\"image_touchups\": {\"enroll_status\": \"OPT_IN\"},\n                        \"inline_comment\": {\"enroll_status\": \"OPT_IN\"}}\n               Sent to Meta as degrees_of_freedom_spec.creative_features_spec.\n    url_tags: URL tracking parameters appended to the destination URL (e.g.,\n             \"utm_source=facebook&utm_medium=cpc&utm_campaign=spring_sale\").\n             Sets the url_tags field on the creative.\n    caption: Display URL shown in the ad (e.g., \"example.com/shoes\"). Sets the\n            caption field in link_data. If not provided, Meta auto-generates it\n            from the destination URL. Only applies to image (link_data) creatives.\n    image_crops: Crop coordinates for different aspect ratios. Applied in link_data for\n                image creatives.\n\n                Use the compute_image_crops tool first to get the correct coordinates\n                for your specific image dimensions — it computes centered crop boxes\n                for any source size automatically.\n\n                Valid crop keys (only these 6 are accepted by Meta's API):\n                  \"100x100\"  — 1:1 square (Feed, Marketplace, Search)\n                  \"100x72\"   — ~1.39:1 horizontal (Marketplace, some placements)\n                  \"400x500\"  — 4:5 portrait (Feed on mobile, Stories fallback)\n                  \"400x150\"  — ~2.67:1 wide banner (Audience Network)\n                  \"600x360\"  — ~1.67:1 horizontal (Right column, some placements)\n                  \"90x160\"   — 9:16 tall portrait (Stories)\n\n                Format: {\"100x100\": [[x1,y1],[x2,y2]], \"400x500\": [[x1,y1],[x2,y2]]}\n                Coordinates are pixel-based (top-left and bottom-right corners).\n                The bounding box aspect ratio must match the key ratio as closely as possible.\n                Image origin (0,0) is the upper-left corner.\n\n                Omit to let Meta auto-crop (default for horizontal is 1.91:1 recommended).\n    object_story_id: ID of an existing organic or published Facebook/Instagram post to promote\n                    as an ad. Format: \"{page_id}_{post_id}\" (e.g., \"124965744226834_3888007311337206\").\n                    When provided, image_hash and video_id are not required. page_id is also not\n                    required (it is encoded in the story ID). Combine with asset_customization_rules\n                    to attach a 9:16 video for Story/Reels placements while the organic post\n                    serves as the feed creative — a common \"Use Existing Post\" workflow.\n                    Example: object_story_id=\"124965744226834_3888007311337206\",\n                             asset_customization_rules=[{\"placement_groups\": [\"STORY\"],\n                               \"customization_spec\": {\"video_ids\": [\"890310874031162\"]}}]\n    disable_all_enhancements: When True, opts out of all Advantage+ Creative enhancements by\n                    setting every known creative_features_spec key (image_touchups,\n                    text_optimizations, video_auto_crop, etc.) to OPT_OUT and also\n                    disabling contextual_multi_ads. Use when you want full creative\n                    control without Meta's auto-modifications.\n    event_id: Facebook Event ID for EVENT_RESPONSES campaigns. Required for\n             event RSVP/ticket ads so the event card renders properly. Placed\n             inside link_data.event_id, and also inside call_to_action.value\n             when call_to_action_type is EVENT_RSVP or BUY_TICKETS. Use with\n             link_url set to the Facebook event URL\n             (https://www.facebook.com/events/EVENT_ID).\n    asset_customization_rules: Lets you assign different images or videos to specific placement groups\n               (e.g., feed vs. stories). Only valid with image_hashes or plural asset params.\n               Each rule uses a user-friendly format that is automatically translated to\n               Meta's API format (adlabels + customization_spec positions):\n                 - placement_groups: list of placement group names\n                   Valid values: FEED, STORY, MESSENGER, INSTREAM_VIDEO, SEARCH, SHOP,\n                   AUDIENCE_NETWORK\n                 - customization_spec: dict specifying the asset to use for those placements\n                   Supported keys: image_hashes (list), video_ids (list),\n                   bodies, titles, descriptions (text overrides)\n               All image hashes referenced in rules must also be in image_hashes.\n               Example (feed gets one image, stories gets another):\n               [\n                 {\"placement_groups\": [\"FEED\"],\n                  \"customization_spec\": {\"image_hashes\": [\"<feed_hash>\"]}},\n                 {\"placement_groups\": [\"STORY\"],\n                  \"customization_spec\": {\"image_hashes\": [\"<story_hash>\"]}}\n               ]\n    videos: List of video objects for placement asset customization (multiple videos with\n               different aspect ratios). Each entry: {\"video_id\": \"...\", \"thumbnail_url\": \"...\",\n               \"label\": \"my_label\"}. The \"label\" field is converted to adlabels for use with\n               asset_customization_rules video_label references. Cannot be used with video_id.\n               Use with optimization_type=\"PLACEMENT\" and asset_customization_rules.\n    images: List of image objects for placement asset customization (multiple images with\n               different aspect ratios). Each entry: {\"image_hash\": \"...\", \"label\": \"my_label\"}.\n               The \"label\" field is converted to adlabels for use with asset_customization_rules\n               image_label references. Cannot be used with image_hash or image_hashes.\n               Use with optimization_type=\"PLACEMENT\" and asset_customization_rules.\n    reminder_data: Inline reminder event data for Instagram Reminder Ads\n                  (REMINDERS_SET optimization goal). Placed in\n                  object_story_spec.link_data.reminder_data. Use this instead of\n                  upcoming_events (which requires an existing ig_upcoming_event_id).\n                  Required fields:\n                    - event_name (str): Display title of the reminder event\n                    - start_time (int): Event start as a Unix timestamp (seconds)\n                    - end_time (int): Event end as a Unix timestamp (seconds)\n                  Example:\n                    {\"event_name\": \"Summer Sale\", \"start_time\": 1745596800, \"end_time\": 1745611200}\n                  The ad set must use optimization_goal=REMINDERS_SET and the placement\n                  must be restricted to Instagram feeds/stories. link_url is still\n                  recommended (the URL users visit after the reminder fires).\n    facebook_branded_content: Branded content settings for Facebook partnership ads.\n                  Used when a brand sponsors a creator's content on Facebook.\n                  Format: {\"sponsor_page_id\": \"<page_id>\"} where sponsor_page_id is the\n                  Facebook Page ID of the sponsoring brand. Passed as a top-level field\n                  on the ad creative. The creator's page should be set as page_id.\n    instagram_branded_content: Branded content settings for Instagram partnership ads.\n                  Used when a brand sponsors a creator's content on Instagram.\n                  Format: {\"sponsor_id\": \"<instagram_user_id>\"} where sponsor_id is the\n                  Instagram account ID of the sponsoring brand. Passed as a top-level\n                  field on the ad creative.\n\nReturns:\n    JSON response with created creative details\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "image_hash": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Hash"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "page_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Page Id"
+          },
+          "link_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Link Url"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Message"
+          },
+          "messages": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "type": "object"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Messages"
+          },
+          "headline": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Headline"
+          },
+          "headlines": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "type": "object"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Headlines"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Description"
+          },
+          "descriptions": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "type": "object"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Descriptions"
+          },
+          "image_hashes": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Hashes"
+          },
+          "video_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Video Id"
+          },
+          "thumbnail_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Thumbnail Url"
+          },
+          "optimization_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Optimization Type"
+          },
+          "dynamic_creative_spec": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Dynamic Creative Spec"
+          },
+          "call_to_action_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Call To Action Type"
+          },
+          "lead_gen_form_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lead Gen Form Id"
+          },
+          "instagram_actor_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Instagram Actor Id"
+          },
+          "ad_formats": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ad Formats"
+          },
+          "asset_customization_rules": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Asset Customization Rules"
+          },
+          "creative_features_spec": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Creative Features Spec"
+          },
+          "phone_number": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Phone Number"
+          },
+          "url_tags": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url Tags"
+          },
+          "caption": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Caption"
+          },
+          "image_crops": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Crops"
+          },
+          "object_story_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Object Story Id"
+          },
+          "disable_all_enhancements": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Disable All Enhancements"
+          },
+          "event_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Event Id"
+          },
+          "reminder_data": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Reminder Data"
+          },
+          "videos": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Videos"
+          },
+          "images": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Images"
+          },
+          "facebook_branded_content": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Facebook Branded Content"
+          },
+          "instagram_branded_content": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Instagram Branded Content"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "create_ad_creativeArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L1762",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "update_ad_creative",
+      "description": "\nUpdate an existing ad creative's name or optimization settings.\n\nIMPORTANT — Meta API limitation: The Meta API does NOT allow updating content\nfields (message, headline, description, CTA, image, video, URL) on existing\ncreatives. Only the creative `name` and optimization settings (asset_feed_spec)\ncan be changed. To change ad content, create a new creative with the desired\ncontent and update the ad to reference the new creative via `update_ad`.\n\nArgs:\n    creative_id: Meta Ads creative ID to update\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    name: New creative name (this is the most reliable update)\n    message: New ad copy/text — NOTE: Meta API may reject this on existing creatives\n    messages: List of primary text variants — NOTE: Meta API may reject this on existing creatives\n    headline: Single headline — NOTE: Meta API may reject this on existing creatives\n    headlines: New list of headlines — NOTE: Meta API may reject this on existing creatives\n    description: Single description — NOTE: Meta API may reject this on existing creatives\n    descriptions: New list of descriptions — NOTE: Meta API may reject this on existing creatives\n    optimization_type: Set to \"DEGREES_OF_FREEDOM\" for FLEX (Advantage+) creatives\n    dynamic_creative_spec: New dynamic creative optimization settings\n    call_to_action_type: New call to action button type — NOTE: Meta API may reject this on existing creatives\n    lead_gen_form_id: Lead generation form ID for lead generation campaigns\n    ad_formats: List of ad format strings for asset_feed_spec (e.g., [\"AUTOMATIC_FORMAT\"] for\n               Flexible ads, [\"SINGLE_IMAGE\"] for single image)\n    creative_features_spec: Dict of Advantage+ Creative feature opt-ins/opt-outs.\n               Each key is a feature name, value is {\"enroll_status\": \"OPT_IN\"|\"OPT_OUT\"}.\n               Sent as a top-level field (not inside degrees_of_freedom_spec).\n\nReturns:\n    JSON response with updated creative details\n",
+      "inputSchema": {
+        "properties": {
+          "creative_id": {
+            "title": "Creative Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Message"
+          },
+          "messages": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "type": "object"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Messages"
+          },
+          "headline": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Headline"
+          },
+          "headlines": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "type": "object"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Headlines"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Description"
+          },
+          "descriptions": {
+            "anyOf": [
+              {
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "type": "object"
+                    }
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Descriptions"
+          },
+          "optimization_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Optimization Type"
+          },
+          "dynamic_creative_spec": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Dynamic Creative Spec"
+          },
+          "call_to_action_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Call To Action Type"
+          },
+          "lead_gen_form_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lead Gen Form Id"
+          },
+          "ad_formats": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ad Formats"
+          },
+          "creative_features_spec": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Creative Features Spec"
+          }
+        },
+        "required": [
+          "creative_id"
+        ],
+        "title": "update_ad_creativeArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L2964",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "search_pages_by_name",
+      "description": "\nSearch for pages by name within an account.\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    search_term: Search term to find pages by name (optional - returns all pages if not provided)\n\nReturns:\n    JSON response with matching pages\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "search_term": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Search Term"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "search_pages_by_nameArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L3351",
+      "scope": "supporting",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_account_pages",
+      "description": "\nGet pages associated with a Meta Ads account.\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n\nReturns:\n    JSON response with pages associated with the account\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_account_pagesArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads.py#L3374",
+      "scope": "supporting",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_insights",
+      "description": "\nGet performance insights for a campaign, ad set, ad or account.\n\nArgs:\n    object_id: ID of the campaign, ad set, ad or account. You can also use the alias parameters below.\n    account_id: Alias for object_id when querying account-level insights\n    campaign_id: Alias for object_id when querying campaign-level insights\n    adset_id: Alias for object_id when querying ad-set-level insights\n    ad_id: Alias for object_id when querying ad-level insights\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    time_range: Either a preset time range string or a dictionary with \"since\" and \"until\" dates in YYYY-MM-DD format\n               Preset options: today, yesterday, this_month, last_month, this_quarter, maximum, data_maximum, \n               last_3d, last_7d, last_14d, last_28d, last_30d, last_90d, last_week_mon_sun, \n               last_week_sun_sat, last_quarter, last_year, this_week_mon_today, this_week_sun_today, this_year\n               Dictionary example: {\"since\":\"2023-01-01\",\"until\":\"2023-01-31\"}\n    breakdown: Optional breakdown dimension. Valid values include:\n               Demographic: age, gender, country, region, dma\n               Platform/Device: device_platform, platform_position, publisher_platform, impression_device\n               NOTE: platform_position is a Meta-restricted breakdown — Meta requires it to be paired\n               with publisher_platform (otherwise \"(#100) ... (action_type, platform_position) is invalid\").\n               When you pass platform_position, this tool auto-adds publisher_platform, and the\n               action-typed fields (actions, action_values, conversions, cost_per_action_type) are\n               returned per placement, so you get leads/CPL/conversions broken down by placement.\n               Creative Assets: ad_format_asset, body_asset, call_to_action_asset, description_asset,\n                              image_asset, link_url_asset, title_asset, video_asset, media_type,\n                              creative_relaxation_asset_type, flexible_format_asset_type,\n                              gen_ai_asset_type\n               NOTE: Asset breakdowns (image_asset, video_asset, etc.) only return data for ads\n               running with Dynamic Creative; for non-DCO ads, expect empty rows.\n               NOTE: media_type collides with the default action_breakdowns=[action_type], so\n               this tool auto-overrides action_breakdowns to [] when you pass media_type.\n               Action-typed metrics (actions, action_values, conversions) are still returned\n               but are no longer sliced by action_type alongside media_type.\n               media_asset_url, media_creator, media_destination_url, media_format,\n               media_origin_url, and media_text_content are NOT supported by Meta's Insights API\n               (Meta returns \"(#100) Tried accessing nonexisting field\"). Use the asset breakdowns\n               above instead.\n               Campaign/Ad Attributes: breakdown_ad_objective, breakdown_reporting_ad_id, app_id, product_id\n               Conversion Tracking: coarse_conversion_value, conversion_destination, standard_event_content_type,\n                                   signal_source_bucket, is_conversion_id_modeled, fidelity_type, redownload\n               Time-based: hourly_stats_aggregated_by_advertiser_time_zone, \n                          hourly_stats_aggregated_by_audience_time_zone, frequency_value\n               Extensions/Landing: ad_extension_domain, ad_extension_url, landing_destination, \n                                  mdsa_landing_destination\n               Attribution: sot_attribution_model_type, sot_attribution_window, sot_channel, \n                           sot_event_type, sot_source\n               Mobile/SKAN: skan_campaign_id, skan_conversion_id, skan_version, postback_sequence_index\n               CRM/Business: crm_advertiser_l12_territory_ids, crm_advertiser_subvertical_id,\n                            crm_advertiser_vertical_id, crm_ult_advertiser_id, user_persona_id, user_persona_name\n               Advanced: hsid, is_auto_advance, is_rendered_as_delayed_skip_ad, mmm, place_page_id,\n                        marketing_messages_btn_name, impression_view_time_advertiser_hour_v2, comscore_market,\n                        comscore_market_code\n    level: Level of aggregation (ad, adset, campaign, account)\n    limit: Maximum number of results to return per page (default: 25, Meta API allows much higher values)\n    after: Pagination cursor to get the next set of results. Use the 'after' cursor from previous response's paging.next field.\n    action_attribution_windows: Optional list of attribution windows (e.g., [\"1d_click\", \"7d_click\", \"1d_view\"]).\n               When specified, actions include additional fields for each window. The 'value' field always shows 7d_click.\n    action_breakdowns: Optional list of action_breakdowns to apply to action-typed metrics. Pass [] to disable\n               the default action_type slicing (required when combining action data with breakdowns that collide\n               with action_type, e.g. media_type — auto-applied for media_type when not set).\n               Meta supports values like action_type, action_target_id, action_destination, etc.\n    compact: When True, strips redundant action-type duplicates from the response\n             (omni_*, onsite_web_*, offsite_conversion.fb_pixel_*, etc.) to reduce\n             payload size by ~60%. The canonical action types (purchase, add_to_cart,\n             view_content, etc.) are always preserved. Default: False.\n\nNote on response size: This tool always returns a fixed set of fields (impressions, clicks,\nspend, cpc, cpm, ctr, reach, actions, action_values, etc.) and cannot filter to a subset.\nFor large result sets (50+ rows), the actions/action_values arrays can make responses very\nlarge (1–2MB+). If you only need specific metrics like spend or impressions, consider using\nbulk_get_insights with compact=true and the fields parameter:\n    bulk_get_insights(level=\"ad\", account_ids=[...], compact=true, fields=[\"spend\", \"impressions\"])\nbulk_get_insights supports level=\"ad\", \"adset\", \"campaign\", and \"account\".\n",
+      "inputSchema": {
+        "properties": {
+          "object_id": {
+            "default": "",
+            "title": "Object Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "time_range": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              }
+            ],
+            "default": "maximum",
+            "title": "Time Range"
+          },
+          "breakdown": {
+            "default": "",
+            "title": "Breakdown",
+            "type": "string"
+          },
+          "level": {
+            "default": "ad",
+            "title": "Level",
+            "type": "string"
+          },
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "after": {
+            "default": "",
+            "title": "After",
+            "type": "string"
+          },
+          "action_attribution_windows": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Action Attribution Windows"
+          },
+          "action_breakdowns": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Action Breakdowns"
+          },
+          "compact": {
+            "default": false,
+            "title": "Compact",
+            "type": "boolean"
+          },
+          "account_id": {
+            "default": "",
+            "title": "Account Id",
+            "type": "string"
+          },
+          "campaign_id": {
+            "default": "",
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "adset_id": {
+            "default": "",
+            "title": "Adset Id",
+            "type": "string"
+          },
+          "ad_id": {
+            "default": "",
+            "title": "Ad Id",
+            "type": "string"
+          }
+        },
+        "title": "get_insightsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/insights.py#L56",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    },
+    {
+      "name": "get_login_link",
+      "description": "\nGet a clickable login link for Meta Ads authentication.\n\nNOTE: This method requires your own Facebook app (META_APP_ID). If you would\nrather not run one, use the hosted MCP at https://meta-ads.mcp.pipeboard.co/\ninstead, which authenticates with a Pipeboard API token.\n\nArgs:\n    access_token: Meta API access token (optional - will use cached token if not provided)\n\nReturns:\n    A clickable resource link for Meta authentication\n",
+      "inputSchema": {
+        "properties": {
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "title": "get_login_linkArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/authentication.py#L45",
+      "scope": "supporting",
+      "capability": "utilities"
+    },
+    {
+      "name": "search_ads_archive",
+      "description": "\nSearch the Facebook Ads Library archive.\n\nArgs:\n    search_terms: The search query for ads.\n    ad_reached_countries: List of country codes (e.g., [\"US\", \"GB\"]).\n    access_token: Meta API access token (optional - will use cached token if not provided).\n    ad_type: Type of ads to search for (e.g., POLITICAL_AND_ISSUE_ADS, HOUSING_ADS, ALL).\n    limit: Maximum number of ads to return.\n    fields: Comma-separated string of fields to retrieve for each ad.\n\nExample Usage via curl equivalent:\n    curl -G \\\n    -d \"search_terms='california'\" \\\n    -d \"ad_type=POLITICAL_AND_ISSUE_ADS\" \\\n    -d \"ad_reached_countries=['US']\" \\\n    -d \"fields=ad_snapshot_url,spend\" \\\n    -d \"access_token=<ACCESS_TOKEN>\" \\\n    \"https://graph.facebook.com/<API_VERSION>/ads_archive\"\n",
+      "inputSchema": {
+        "properties": {
+          "search_terms": {
+            "title": "Search Terms",
+            "type": "string"
+          },
+          "ad_reached_countries": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Ad Reached Countries",
+            "type": "array"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "ad_type": {
+            "default": "ALL",
+            "title": "Ad Type",
+            "type": "string"
+          },
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "fields": {
+            "default": "ad_creation_time,ad_creative_body,ad_creative_link_caption,ad_creative_link_description,ad_creative_link_title,ad_delivery_start_time,ad_delivery_stop_time,ad_snapshot_url,currency,demographic_distribution,funding_entity,impressions,page_id,page_name,publisher_platform,region_distribution,spend",
+            "title": "Fields",
+            "type": "string"
+          }
+        },
+        "required": [
+          "search_terms",
+          "ad_reached_countries"
+        ],
+        "title": "search_ads_archiveArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/ads_library.py#L14",
+      "scope": "meta-ads",
+      "capability": "ad-library"
+    },
+    {
+      "name": "create_budget_schedule",
+      "description": "\nCreate a budget schedule for a Meta Ads campaign.\n\nAllows scheduling budget increases based on anticipated high-demand periods.\nThe times should be provided as Unix timestamps.\n\nArgs:\n    campaign_id: Meta Ads campaign ID.\n    budget_value: Amount of budget increase. Interpreted based on budget_value_type.\n    budget_value_type: Type of budget value - \"ABSOLUTE\" or \"MULTIPLIER\".\n    time_start: Unix timestamp for when the high demand period should start.\n    time_end: Unix timestamp for when the high demand period should end.\n    access_token: Meta API access token (optional - will use cached token if not provided).\n    \nReturns:\n    A JSON string containing the ID of the created budget schedule or an error message.\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "budget_value": {
+            "title": "Budget Value",
+            "type": "integer"
+          },
+          "budget_value_type": {
+            "title": "Budget Value Type",
+            "type": "string"
+          },
+          "time_start": {
+            "title": "Time Start",
+            "type": "integer"
+          },
+          "time_end": {
+            "title": "Time End",
+            "type": "integer"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          }
+        },
+        "required": [
+          "campaign_id",
+          "budget_value",
+          "budget_value_type",
+          "time_start",
+          "time_end"
+        ],
+        "title": "create_budget_scheduleArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/budget_schedules.py#L11",
+      "scope": "meta-ads",
+      "capability": "automation"
+    },
+    {
+      "name": "search_interests",
+      "description": "\nSearch for interest targeting options by keyword.\n\nArgs:\n    query: Search term for interests (e.g., \"baseball\", \"cooking\", \"travel\")\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    limit: Maximum number of results to return (default: 25)\n\nReturns:\n    JSON string containing interest data with id, name, audience_size, and path fields\n",
+      "inputSchema": {
+        "properties": {
+          "query": {
+            "title": "Query",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "title": "search_interestsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/targeting.py#L10",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "get_interest_suggestions",
+      "description": "\nGet interest suggestions based on existing interests.\n\nArgs:\n    interest_list: List of interest names to get suggestions for (e.g., [\"Basketball\", \"Soccer\"])\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    limit: Maximum number of suggestions to return (default: 25)\n\nReturns:\n    JSON string containing suggested interests with id, name, audience_size, and description fields\n",
+      "inputSchema": {
+        "properties": {
+          "interest_list": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Interest List",
+            "type": "array"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "interest_list"
+        ],
+        "title": "get_interest_suggestionsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/targeting.py#L39",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "estimate_audience_size",
+      "description": "\nEstimate audience size for targeting specifications using Meta's delivery_estimate API.\n\nThis function provides comprehensive audience estimation for complex targeting combinations\nincluding demographics, geography, interests, and behaviors. It also maintains backwards\ncompatibility for simple interest validation.\n\nArgs:\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX) - required for comprehensive estimation\n    targeting: Complete targeting specification including demographics, geography, interests, etc.\n              Example: {\n                  \"age_min\": 25,\n                  \"age_max\": 65,\n                  \"geo_locations\": {\"countries\": [\"PL\"]},\n                  \"flexible_spec\": [\n                      {\"interests\": [{\"id\": \"6003371567474\"}]},\n                      {\"interests\": [{\"id\": \"6003462346642\"}]}\n                  ]\n              }\n    optimization_goal: Optimization goal for estimation (default: \"REACH\"). \n                      Options: \"REACH\", \"LINK_CLICKS\", \"IMPRESSIONS\", \"CONVERSIONS\", etc.\n    interest_list: [DEPRECATED - for backwards compatibility] List of interest names to validate\n    interest_fbid_list: [DEPRECATED - for backwards compatibility] List of interest IDs to validate\n\nReturns:\n    JSON string with audience estimation results including estimated_audience_size,\n    reach_estimate, and targeting validation\n",
+      "inputSchema": {
+        "properties": {
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "account_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Account Id"
+          },
+          "targeting": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Targeting"
+          },
+          "optimization_goal": {
+            "default": "REACH",
+            "title": "Optimization Goal",
+            "type": "string"
+          },
+          "interest_list": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Interest List"
+          },
+          "interest_fbid_list": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Interest Fbid List"
+          }
+        },
+        "title": "estimate_audience_sizeArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/targeting.py#L68",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "search_behaviors",
+      "description": "\nGet all available behavior targeting options.\n\nArgs:\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    limit: Maximum number of results to return (default: 50)\n\nReturns:\n    JSON string containing behavior targeting options with id, name, audience_size bounds, path, and description\n",
+      "inputSchema": {
+        "properties": {
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "limit": {
+            "default": 50,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "search_behaviorsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/targeting.py#L461",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "search_demographics",
+      "description": "\nGet demographic targeting options.\n\nArgs:\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    demographic_class: Type of demographics to retrieve. Options: 'demographics', 'life_events', \n                      'industries', 'income', 'family_statuses', 'user_device', 'user_os' (default: 'demographics')\n    limit: Maximum number of results to return (default: 50)\n\nReturns:\n    JSON string containing demographic targeting options with id, name, audience_size bounds, path, and description\n",
+      "inputSchema": {
+        "properties": {
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "demographic_class": {
+            "default": "demographics",
+            "title": "Demographic Class",
+            "type": "string"
+          },
+          "limit": {
+            "default": 50,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "search_demographicsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/targeting.py#L486",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "search_geo_locations",
+      "description": "\nSearch for geographic targeting locations.\n\nArgs:\n    query: Search term for locations (e.g., \"New York\", \"California\", \"Japan\")\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    location_types: Types of locations to search. Options: ['country', 'region', 'city', 'zip', \n                   'geo_market', 'electoral_district']. If not specified, searches all types.\n    limit: Maximum number of results to return (default: 25)\n\nReturns:\n    JSON string containing location data with key, name, type, and geographic hierarchy information\n",
+      "inputSchema": {
+        "properties": {
+          "query": {
+            "title": "Query",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "location_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Location Types"
+          },
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "title": "search_geo_locationsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/targeting.py#L513",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "generate_report",
+      "description": "\nGenerate comprehensive Meta Ads performance reports.\n\n**This is a premium feature available with Pipeboard Pro.**\n\nArgs:\n    account_id: Meta Ads account ID (format: act_XXXXXXXXX)\n    access_token: Meta API access token (optional - will use cached token if not provided)\n    report_type: Type of report to generate (account, campaign, comparison)\n    time_range: Time period for the report (e.g., 'last_30d', 'last_7d', 'this_month')\n    campaign_ids: Specific campaign IDs (required for campaign/comparison reports)\n    export_format: Output format for the report (pdf, json, html)\n    report_name: Custom name for the report (auto-generated if not provided)\n    include_sections: Specific sections to include in the report\n    breakdowns: Audience breakdown dimensions (age, gender, country, etc.)\n    comparison_period: Time period for comparison analysis\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "report_type": {
+            "default": "account",
+            "title": "Report Type",
+            "type": "string"
+          },
+          "time_range": {
+            "default": "last_30d",
+            "title": "Time Range",
+            "type": "string"
+          },
+          "campaign_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Campaign Ids"
+          },
+          "export_format": {
+            "default": "pdf",
+            "title": "Export Format",
+            "type": "string"
+          },
+          "report_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Report Name"
+          },
+          "include_sections": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Include Sections"
+          },
+          "breakdowns": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Breakdowns"
+          },
+          "comparison_period": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Comparison Period"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "generate_reportArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/reports.py#L14",
+      "scope": "unrelated",
+      "capability": "unrelated",
+      "availability": "Opt-in META_ADS_ENABLE_REPORTS; implementation only returns a premium upgrade message."
+    },
+    {
+      "name": "duplicate_campaign",
+      "description": "\nDuplicate a Meta Ads campaign with all its ad sets and ads.\n\nRecommended: Use this to run robust experiments.\n\nArgs:\n    campaign_id: Meta Ads campaign ID to duplicate\n    name_suffix: Suffix to add to the duplicated campaign name\n    include_ad_sets: Whether to duplicate ad sets within the campaign\n    include_ads: Whether to duplicate ads within ad sets\n    include_creatives: Whether to duplicate ad creatives\n    copy_schedule: Whether to copy the campaign schedule\n    new_daily_budget: Override the daily budget for the new campaign\n    new_start_time: Override start time for duplicated ad sets (ISO 8601, e.g. 2026-03-10T00:00:00-0500)\n    new_end_time: Override end time for duplicated ad sets (ISO 8601, e.g. 2026-03-20T23:59:59-0500)\n    new_status: Status for the new campaign (ACTIVE or PAUSED)\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "name_suffix": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": " - Copy",
+            "title": "Name Suffix"
+          },
+          "include_ad_sets": {
+            "default": true,
+            "title": "Include Ad Sets",
+            "type": "boolean"
+          },
+          "include_ads": {
+            "default": true,
+            "title": "Include Ads",
+            "type": "boolean"
+          },
+          "include_creatives": {
+            "default": true,
+            "title": "Include Creatives",
+            "type": "boolean"
+          },
+          "copy_schedule": {
+            "default": false,
+            "title": "Copy Schedule",
+            "type": "boolean"
+          },
+          "new_daily_budget": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Daily Budget"
+          },
+          "new_start_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Start Time"
+          },
+          "new_end_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New End Time"
+          },
+          "new_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "PAUSED",
+            "title": "New Status"
+          },
+          "pb_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Pb Token"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "title": "duplicate_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/duplication.py#L30",
+      "scope": "meta-ads",
+      "capability": "automation",
+      "availability": "Opt-in META_ADS_ENABLE_DUPLICATION."
+    },
+    {
+      "name": "duplicate_adset",
+      "description": "\nDuplicate a Meta Ads ad set with its ads.\n\nRecommended: Use this to run robust experiments.\n\nArgs:\n    adset_id: Meta Ads ad set ID to duplicate\n    target_campaign_id: Campaign ID to move the duplicated ad set to (optional)\n    name_suffix: Suffix to add to the duplicated ad set name\n    include_ads: Whether to duplicate ads within the ad set\n    include_creatives: Whether to duplicate ad creatives\n    new_daily_budget: Override the daily budget for the new ad set\n    new_targeting: Override targeting settings for the new ad set\n    new_start_time: Override start time for the duplicated ad set (ISO 8601, e.g. 2026-03-10T00:00:00-0500)\n    new_end_time: Override end time for the duplicated ad set (ISO 8601, e.g. 2026-03-20T23:59:59-0500)\n    new_status: Status for the new ad set (ACTIVE or PAUSED)\n",
+      "inputSchema": {
+        "properties": {
+          "adset_id": {
+            "title": "Adset Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "target_campaign_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Target Campaign Id"
+          },
+          "name_suffix": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": " - Copy",
+            "title": "Name Suffix"
+          },
+          "include_ads": {
+            "default": true,
+            "title": "Include Ads",
+            "type": "boolean"
+          },
+          "include_creatives": {
+            "default": true,
+            "title": "Include Creatives",
+            "type": "boolean"
+          },
+          "new_daily_budget": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Daily Budget"
+          },
+          "new_targeting": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Targeting"
+          },
+          "new_start_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Start Time"
+          },
+          "new_end_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New End Time"
+          },
+          "new_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "PAUSED",
+            "title": "New Status"
+          },
+          "pb_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Pb Token"
+          }
+        },
+        "required": [
+          "adset_id"
+        ],
+        "title": "duplicate_adsetArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/duplication.py#L81",
+      "scope": "meta-ads",
+      "capability": "automation",
+      "availability": "Opt-in META_ADS_ENABLE_DUPLICATION."
+    },
+    {
+      "name": "duplicate_ad",
+      "description": "\nDuplicate a Meta Ads ad.\n\nRecommended: Use this to run robust experiments.\n\nArgs:\n    ad_id: Meta Ads ad ID to duplicate\n    target_adset_id: Ad set ID to move the duplicated ad to (optional)\n    name_suffix: Suffix to add to the duplicated ad name\n    duplicate_creative: Whether to duplicate the ad creative\n    new_creative_name: Override name for the duplicated creative\n    new_status: Status for the new ad (ACTIVE or PAUSED)\n",
+      "inputSchema": {
+        "properties": {
+          "ad_id": {
+            "title": "Ad Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "target_adset_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Target Adset Id"
+          },
+          "name_suffix": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": " - Copy",
+            "title": "Name Suffix"
+          },
+          "duplicate_creative": {
+            "default": true,
+            "title": "Duplicate Creative",
+            "type": "boolean"
+          },
+          "new_creative_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Creative Name"
+          },
+          "new_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "PAUSED",
+            "title": "New Status"
+          },
+          "pb_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Pb Token"
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "title": "duplicate_adArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/duplication.py#L135",
+      "scope": "meta-ads",
+      "capability": "automation",
+      "availability": "Opt-in META_ADS_ENABLE_DUPLICATION."
+    },
+    {
+      "name": "duplicate_creative",
+      "description": "\nDuplicate a Meta Ads creative.\n\nRecommended: Use this to run robust experiments.\n\nArgs:\n    creative_id: Meta Ads creative ID to duplicate\n    name_suffix: Suffix to add to the duplicated creative name\n    new_primary_text: Override the primary text for the new creative\n    new_headline: Override the headline for the new creative\n    new_description: Override the description for the new creative\n    new_cta_type: Override the call-to-action type for the new creative\n    new_destination_url: Override the destination URL for the new creative\n    new_creative_features_spec: Override / merge into the duplicate's\n        degrees_of_freedom_spec.creative_features_spec. Use individual\n        feature keys (e.g. image_touchups, image_uncrop, text_optimizations,\n        video_auto_crop) with {\"enroll_status\": \"OPT_IN\" | \"OPT_OUT\"} values.\n        Merged on top of the source creative's surviving creative_features_spec\n        entries. NOTE: the legacy \"standard_enhancements\" key is rejected by\n        Meta on POST (error_subcode 3858504); pass individual feature keys\n        instead. The duplication response surfaces a warning when the source\n        had standard_enhancements so callers know what to set here.\n",
+      "inputSchema": {
+        "properties": {
+          "creative_id": {
+            "title": "Creative Id",
+            "type": "string"
+          },
+          "access_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Access Token"
+          },
+          "name_suffix": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": " - Copy",
+            "title": "Name Suffix"
+          },
+          "new_primary_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Primary Text"
+          },
+          "new_headline": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Headline"
+          },
+          "new_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Description"
+          },
+          "new_cta_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Cta Type"
+          },
+          "new_destination_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Destination Url"
+          },
+          "new_creative_features_spec": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "New Creative Features Spec"
+          },
+          "pb_token": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Pb Token"
+          }
+        },
+        "required": [
+          "creative_id"
+        ],
+        "title": "duplicate_creativeArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/pipeboard-co/meta-ads-mcp/blob/093062c6655682a20ff0814b468e0e877263d494/meta_ads_mcp/core/duplication.py#L177",
+      "scope": "meta-ads",
+      "capability": "automation",
+      "availability": "Opt-in META_ADS_ENABLE_DUPLICATION."
+    }
+  ],
+  "reviewed": true,
+  "review": "Parent compared every description and parameter name against registered Python definitions and inspected implementations and optional-registration conditions; corrected stub and CRUD labels.",
+  "displayNotes": [
+    "41-tool union with optional registrations enabled; default configuration exposes 35. Optional tools are labeled below.",
+    "generate_report is an upgrade stub. Duplication forwards to Pipeboard; the hosted service may expose a different inventory."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "irinabuht12-oss--google-ads-meta-ads-mcp",
+  "repo": "irinabuht12-oss/google-ads-meta-ads-mcp",
+  "url": "https://github.com/irinabuht12-oss/google-ads-meta-ads-mcp",
+  "commit": "029dd696d0f46d4ee0bfc0ae3f335a3841d6af99",
+  "method": "unavailable",
+  "complete": false,
+  "notes": [
+    "Hosted-only documentation repository; no server implementation or registered tool definitions are published in the checkout.",
+    "server.json publishes the Streamable HTTP endpoint https://connector.get-ryze.ai/mcp, not tool input schemas.",
+    "Anonymous initialize and tools/list both return HTTP 401 invalid_token: Missing or invalid access token. See accompanying HTTP evidence file.",
+    "README/llms.txt publish tool names and prose, but no complete inputSchema. No full tool schemas found on the linked developers page. Partial names are intentionally excluded; tools=[] does not mean the hosted server has zero tools.",
+    "All namespaces, including Google Ads, GA4, and Search Console, remain inaccessible; Meta tool implementations and scope cannot be verified."
+  ],
+  "tools": [],
+  "reviewed": true,
+  "review": "Parent inspected repository remote manifest, named-only documentation and both saved 401 responses. No schema records are invented; excluded for unavailable full inventory.",
+  "displayNotes": [
+    "Full inventory unavailable: hosted initialize and tools/list require authentication (HTTP 401), and the provider publishes no complete tool schemas. Zero captured records does not mean the service has zero tools."
+  ]
+}

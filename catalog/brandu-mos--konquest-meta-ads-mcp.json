@@ -1,0 +1,2616 @@
+{
+  "id": "brandu-mos--konquest-meta-ads-mcp",
+  "repo": "brandu-mos/konquest-meta-ads-mcp",
+  "url": "https://github.com/brandu-mos/konquest-meta-ads-mcp",
+  "commit": "762c224b060b233b66fb9af8a2f3865303ed757b",
+  "method": "runtime-tools-list",
+  "complete": true,
+  "notes": [
+    "Complete for the current public upstream open-core checkout: 57 runtime registrations, despite stale server log claiming 55.",
+    "Premium tools are conditional on engine/loop.py existing; this private premium marker and premium modules are absent from public upstream and therefore those branches register no tools. Premium bundle cannot be cataloged from this repository.",
+    "Upstream dependency mcp>=1.6.0 currently resolves to incompatible mcp 2.3.0. Extraction pins compatible mcp 1.30.0; pydantic 2.14.1.",
+    "Descriptions and full inputSchema copied verbatim from FastMCP list_tools(); unconstrained JSON-string payloads stay strings. No tool execution, Meta API calls, or credentials used."
+  ],
+  "tools": [
+    {
+      "name": "check_token_status",
+      "description": "\nCheck Meta API token health, permissions, and rate limit status.\n\nReturns token validity, granted permissions, missing permissions,\nand current rate limit usage percentage.\n",
+      "inputSchema": {
+        "properties": {},
+        "title": "check_token_statusArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/accounts.py#L22",
+      "scope": "supporting",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_ad_accounts",
+      "description": "\nList all ad accounts accessible to the authenticated user.\n\nReturns account IDs, names, statuses, currencies, and timezones\nfor all accounts in your business portfolio.\n\nArgs:\n    limit: Maximum number of accounts to return (default 50).\n",
+      "inputSchema": {
+        "properties": {
+          "limit": {
+            "default": 50,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "get_ad_accountsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/accounts.py#L33",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_account_info",
+      "description": "\nGet detailed information about a specific ad account.\n\nReturns account configuration, status, spend data, pixel info,\nand connected assets.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_account_infoArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/accounts.py#L100",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_account_pages",
+      "description": "\nList Facebook Pages available for ads on a specific ad account.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_account_pagesArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/accounts.py#L155",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_instagram_identities",
+      "description": "\nList Instagram accounts available for ads on a specific ad account.\n\nReturns instagram_user_id (the canonical identifier) for each account.\nThis is the first step in the Instagram identity resolution ladder.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_instagram_identitiesArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/accounts.py#L186",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "discover_all_accounts",
+      "description": "\nDiscover all ad accounts, their pages, pixels, and Instagram accounts.\n\nUsed to generate or update the account registry (config/accounts.yaml).\nReturns a comprehensive mapping of all accessible assets.\n",
+      "inputSchema": {
+        "properties": {},
+        "title": "discover_all_accountsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/accounts.py#L227",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_campaigns",
+      "description": "\nList campaigns for an ad account with status and budget info.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    status_filter: Filter by effective_status: 'ACTIVE', 'PAUSED', 'ARCHIVED', or 'ALL'.\n        If not set, returns all campaigns.\n    limit: Maximum results per page (default 50, max 100).\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "status_filter": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status Filter"
+          },
+          "limit": {
+            "default": 50,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_campaignsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/campaigns.py#L57",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "get_campaign_details",
+      "description": "\nGet detailed information about a specific campaign including\nbudget, objective, bid strategy, special categories, and issues.\n\nArgs:\n    campaign_id: Campaign ID (numeric string).\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "title": "get_campaign_detailsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/campaigns.py#L145",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "create_campaign",
+      "description": "\nCreate a new campaign (always PAUSED, no exceptions).\n\nRuns naming enforcement, pre-write validation, creates the campaign,\nverifies post-write, and logs the mutation.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    name: Campaign name following convention: Objective | Product | Funnel | BudgetModel.\n        If not following convention, provide product/funnel/budget_model for auto-correction.\n    objective: Must be an outcome-based objective:\n        OUTCOME_AWARENESS, OUTCOME_ENGAGEMENT, OUTCOME_LEADS,\n        OUTCOME_SALES, OUTCOME_TRAFFIC, OUTCOME_APP_PROMOTION.\n    special_ad_categories: Comma-separated special categories if applicable.\n    product: Product/offer name for naming convention (e.g., 'Consulting', 'VitC').\n    funnel: Funnel stage for naming: TOFU, MOFU, BOFU, RT.\n    budget_model: ABO or CBO for naming convention.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "objective": {
+            "title": "Objective",
+            "type": "string"
+          },
+          "special_ad_categories": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Special Ad Categories"
+          },
+          "product": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Product"
+          },
+          "funnel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Funnel"
+          },
+          "budget_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Budget Model"
+          }
+        },
+        "required": [
+          "account_id",
+          "name",
+          "objective"
+        ],
+        "title": "create_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/campaigns.py#L191",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "update_campaign",
+      "description": "\nUpdate an existing campaign. Supervised write - validates before applying.\n\nTakes a pre-write snapshot for rollback, validates the update payload,\napplies via Meta API, and verifies post-write state.\n\nArgs:\n    campaign_id: Campaign ID to update.\n    name: New campaign name. Subject to naming enforcement.\n    daily_budget: New daily budget in currency units (e.g., 50.0 for EUR 50).\n        Mutually exclusive with lifetime_budget.\n    lifetime_budget: New lifetime budget in currency units.\n        Mutually exclusive with daily_budget.\n    status: New status. Allowed: 'PAUSED', 'ACTIVE', 'ARCHIVED'.\n        Activating requires confirmation-level validation.\n    start_time: New start time (ISO 8601 format).\n    end_time: New end time / stop_time (ISO 8601 format).\n    special_ad_categories: Comma-separated categories or empty string to clear.\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "daily_budget": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Daily Budget"
+          },
+          "lifetime_budget": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lifetime Budget"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status"
+          },
+          "start_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Start Time"
+          },
+          "end_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "End Time"
+          },
+          "special_ad_categories": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Special Ad Categories"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "title": "update_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/campaigns.py#L473",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "get_adsets",
+      "description": "\nList ad sets for an account or filtered by campaign.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    campaign_id: Optional campaign ID to filter ad sets for that campaign only.\n    status_filter: Filter by effective_status: 'ACTIVE', 'PAUSED', 'ARCHIVED', or 'ALL'.\n    limit: Maximum results per page (default 50).\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "campaign_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Campaign Id"
+          },
+          "status_filter": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status Filter"
+          },
+          "limit": {
+            "default": 50,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_adsetsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/adsets.py#L70",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "get_adset_details",
+      "description": "\nGet detailed ad set information including targeting, optimization,\nlearning stage, frequency caps, and attribution settings.\n\nArgs:\n    adset_id: Ad set ID (numeric string).\n",
+      "inputSchema": {
+        "properties": {
+          "adset_id": {
+            "title": "Adset Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "adset_id"
+        ],
+        "title": "get_adset_detailsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/adsets.py#L156",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "create_adset",
+      "description": "\nCreate a new ad set (always PAUSED, no exceptions).\n\nRuns Advantage+ audience enforcement, parent campaign inspection, ABO/CBO\nenforcement, ICP signal mapping, narrowing detection, pre-write validation,\ncreates the ad set, and verifies post-write.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    campaign_id: Parent campaign ID. Must be PAUSED or ACTIVE.\n    name: Ad set name. Greek text validated.\n    optimization_goal: e.g. 'OFFSITE_CONVERSIONS', 'LINK_CLICKS', 'LEAD_GENERATION', 'REACH'.\n        Must be compatible with parent campaign objective.\n    billing_event: Usually 'IMPRESSIONS'. Also: 'LINK_CLICKS', 'THRUPLAY'.\n    daily_budget: Daily budget in EUR (e.g., 15.00). Required for ABO campaigns. Omit for CBO.\n    lifetime_budget: Lifetime budget in EUR. Alternative to daily_budget. Requires end_time.\n    targeting_json: JSON string of targeting spec. Advantage+ mode uses signals as suggestions.\n        Example: '{\"geo_locations\":{\"countries\":[\"GR\"]},\"age_min\":25,\"age_max\":55}'\n    promoted_object_json: JSON string of promoted object. Required for OUTCOME_SALES/LEADS.\n        Example: '{\"pixel_id\":\"123456789012345\",\"custom_event_type\":\"PURCHASE\"}'\n    start_time: ISO 8601 start time. Optional (defaults to immediately when activated).\n    end_time: ISO 8601 end time. Required if using lifetime_budget.\n    audience_mode: 'advantage_plus' (default, recommended), 'manual', 'broad',\n        'existing_audience', 'restricted' (disables Advantage+).\n    icp_name: ICP name from concept selection for signal derivation.\n    icp_signals_json: Pre-built ICP signals JSON with interests/behaviors/demographics.\n    experiment_type: If 'strict_audience_test', allows Advantage+ OFF.\n    explicit_tracking_mode: Operator-declared tracking mode override.\n        'instant_form', 'messaging', 'page_engagement' allow writes without pixel.\n        If not set, system infers intended flow and enforces pixel for website paths.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "optimization_goal": {
+            "title": "Optimization Goal",
+            "type": "string"
+          },
+          "billing_event": {
+            "default": "IMPRESSIONS",
+            "title": "Billing Event",
+            "type": "string"
+          },
+          "daily_budget": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Daily Budget"
+          },
+          "lifetime_budget": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lifetime Budget"
+          },
+          "targeting_json": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Targeting Json"
+          },
+          "promoted_object_json": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Promoted Object Json"
+          },
+          "start_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Start Time"
+          },
+          "end_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "End Time"
+          },
+          "audience_mode": {
+            "default": "advantage_plus",
+            "title": "Audience Mode",
+            "type": "string"
+          },
+          "icp_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Icp Name"
+          },
+          "icp_signals_json": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Icp Signals Json"
+          },
+          "experiment_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Experiment Type"
+          },
+          "explicit_tracking_mode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Explicit Tracking Mode"
+          },
+          "naming_audience_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Naming Audience Type"
+          },
+          "naming_age_range": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Naming Age Range"
+          },
+          "naming_geo": {
+            "default": "GR",
+            "title": "Naming Geo",
+            "type": "string"
+          },
+          "naming_exclusion_flag": {
+            "default": "None",
+            "title": "Naming Exclusion Flag",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id",
+          "campaign_id",
+          "name",
+          "optimization_goal"
+        ],
+        "title": "create_adsetArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/adsets.py#L226",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "update_adset",
+      "description": "\nUpdate an existing ad set. Supervised write - validates before applying.\n\nTakes a pre-write snapshot for rollback, validates the update payload,\napplies via Meta API, and verifies post-write state.\n\nNote on budgets: ABO/CBO rules are enforced. If the parent campaign uses CBO\n(has campaign-level budget), ad set budget updates are blocked. Budget updates\nare only allowed for ABO ad sets (parent campaign has no budget).\n\nNote on targeting: targeting_json must be a valid Meta targeting spec JSON object.\nPartial updates are supported - Meta merges provided fields with existing targeting.\nTo clear a field, set it explicitly to null in the JSON.\n\nArgs:\n    adset_id: Ad set ID to update.\n    name: New ad set name. Subject to naming enforcement.\n    status: New status. Allowed: 'PAUSED', 'ACTIVE', 'ARCHIVED'.\n        Activating requires confirmation-level validation.\n    daily_budget: New daily budget in currency units (e.g., 15.0 for EUR 15).\n        Only allowed for ABO ad sets. Mutually exclusive with lifetime_budget.\n    lifetime_budget: New lifetime budget in currency units.\n        Only allowed for ABO ad sets. Mutually exclusive with daily_budget.\n    targeting_json: JSON string of targeting spec to apply.\n        Example: '{\"geo_locations\":{\"countries\":[\"GR\"]},\"age_min\":25,\"age_max\":55}'\n    start_time: New start time (ISO 8601 format).\n    end_time: New end time (ISO 8601 format).\n",
+      "inputSchema": {
+        "properties": {
+          "adset_id": {
+            "title": "Adset Id",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status"
+          },
+          "daily_budget": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Daily Budget"
+          },
+          "lifetime_budget": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lifetime Budget"
+          },
+          "targeting_json": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Targeting Json"
+          },
+          "start_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Start Time"
+          },
+          "end_time": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "End Time"
+          }
+        },
+        "required": [
+          "adset_id"
+        ],
+        "title": "update_adsetArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/adsets.py#L861",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "get_ads",
+      "description": "\nList ads for an account, campaign, or ad set.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    campaign_id: Optional - filter ads by campaign.\n    adset_id: Optional - filter ads by ad set (takes precedence over campaign_id).\n    status_filter: Filter by effective_status: 'ACTIVE', 'PAUSED', 'ARCHIVED', or 'ALL'.\n    limit: Maximum results per page (default 50).\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "campaign_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Campaign Id"
+          },
+          "adset_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Adset Id"
+          },
+          "status_filter": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status Filter"
+          },
+          "limit": {
+            "default": 50,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_adsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ads.py#L226",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "get_ad_details",
+      "description": "\nGet detailed ad information including creative reference,\ntracking specs, conversion specs, issues, and recommendations.\n\nArgs:\n    ad_id: Ad ID (numeric string).\n",
+      "inputSchema": {
+        "properties": {
+          "ad_id": {
+            "title": "Ad Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "title": "get_ad_detailsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ads.py#L294",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "create_ad_from_manifest",
+      "description": "\nCreate an ad from a manifest entry (always PAUSED, manifest-driven, no exceptions).\n\nLoads the manifest entry, detects creative mode, resolves identity,\nchecks for duplicates, validates pre-write, creates the ad,\nand verifies post-write.\n\nINSTAGRAM GATE: Enforced via placement_mode parameter.\n- full_meta (default): requires IG identity, BLOCKS if unavailable\n- facebook_only: explicit FB-only, no IG placements\n- instagram_only: requires IG identity, BLOCKS if unavailable\n\nFor video ads: provide meta_video_id from upload_video_asset + poll_video_processing.\nThe video must be in 'ready' state before calling this tool.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    adset_id: Target ad set ID.\n    logical_creative_id: ID of the creative entry in the manifest (e.g., 'lc_example_brand_001').\n    manifest_json: JSON string containing the manifest or a single creative entry.\n        Must include the logical_creative_id entry with variants, CTA, etc.\n    ad_name: Name for the ad. Greek text validated.\n    page_id: Facebook Page ID for the ad identity.\n    destination_url: Primary destination URL for the ad CTA.\n    primary_text: Primary text / message body. Required for manual mode, optional for auto/hybrid.\n    cta_type: Call to action type (default 'SHOP_NOW'). See VALID_CTA_TYPES.\n    headline: Optional headline text. Auto-generated if copy_mode='auto' and not provided.\n    description: Optional description text. Auto-generated if copy_mode='auto' and not provided.\n    instagram_user_id: Optional IG user ID. If not provided, attempts resolution from account.\n    destination_url_override: If set, overrides manifest URL. Logged explicitly.\n    cta_override: If set, overrides manifest CTA. Logged explicitly.\n    primary_text_override: If set, overrides manifest primary text. Logged explicitly.\n    headline_override: If set, overrides manifest headline. Logged explicitly.\n    copy_mode: 'manual' (default), 'auto' (generate from vault), 'hybrid' (fill gaps).\n    angle_name: Marketing angle for auto/hybrid copy generation.\n    icp_name: Target ICP for auto/hybrid copy generation.\n    funnel_stage: 'tofu', 'mofu', 'bofu' for copy tone/structure.\n    dry_run: If true, runs all validation but does not create the ad. Returns what would be created.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "adset_id": {
+            "title": "Adset Id",
+            "type": "string"
+          },
+          "logical_creative_id": {
+            "title": "Logical Creative Id",
+            "type": "string"
+          },
+          "manifest_json": {
+            "title": "Manifest Json",
+            "type": "string"
+          },
+          "ad_name": {
+            "title": "Ad Name",
+            "type": "string"
+          },
+          "page_id": {
+            "title": "Page Id",
+            "type": "string"
+          },
+          "destination_url": {
+            "title": "Destination Url",
+            "type": "string"
+          },
+          "primary_text": {
+            "default": "",
+            "title": "Primary Text",
+            "type": "string"
+          },
+          "cta_type": {
+            "default": "SHOP_NOW",
+            "title": "Cta Type",
+            "type": "string"
+          },
+          "headline": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Headline"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Description"
+          },
+          "instagram_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Instagram User Id"
+          },
+          "meta_video_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Meta Video Id"
+          },
+          "destination_url_override": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Destination Url Override"
+          },
+          "cta_override": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cta Override"
+          },
+          "primary_text_override": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Primary Text Override"
+          },
+          "headline_override": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Headline Override"
+          },
+          "copy_mode": {
+            "default": "manual",
+            "title": "Copy Mode",
+            "type": "string"
+          },
+          "angle_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Angle Name"
+          },
+          "icp_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Icp Name"
+          },
+          "funnel_stage": {
+            "default": "tofu",
+            "title": "Funnel Stage",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": false,
+            "title": "Dry Run",
+            "type": "boolean"
+          },
+          "placement_mode": {
+            "default": "full_meta",
+            "title": "Placement Mode",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id",
+          "adset_id",
+          "logical_creative_id",
+          "manifest_json",
+          "ad_name",
+          "page_id",
+          "destination_url"
+        ],
+        "title": "create_ad_from_manifestArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ads.py#L333",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "update_ad",
+      "description": "\nUpdate an existing ad. Supervised write - validates before applying.\n\nTakes a pre-write snapshot for rollback, validates the update payload,\napplies via Meta API, and verifies post-write state.\n\nNote on creative_id: Swaps the creative attached to this ad. The new creative\nmust already exist (created via create_multi_asset_ad or the Meta UI).\nThis does NOT create a new creative - it re-points the ad to an existing one.\n\nArgs:\n    ad_id: Ad ID to update.\n    name: New ad name. Subject to naming enforcement.\n    status: New status. Allowed: 'PAUSED', 'ACTIVE', 'ARCHIVED'.\n        Activating requires confirmation-level validation.\n    creative_id: ID of an existing creative to attach to this ad.\n        Format: numeric string (e.g., '120239290442460377').\n",
+      "inputSchema": {
+        "properties": {
+          "ad_id": {
+            "title": "Ad Id",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status"
+          },
+          "creative_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Creative Id"
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "title": "update_adArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ads.py#L942",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "get_ad_creatives",
+      "description": "\nList ad creatives for an account or specific ad, with image hash resolution.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789'). Used for image hash resolution.\n    ad_id: Optional ad ID. If provided, returns the creative for that specific ad.\n    limit: Max results when listing account creatives (default 50).\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "ad_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ad Id"
+          },
+          "limit": {
+            "default": 50,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "get_ad_creativesArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/creatives.py#L210",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "get_creative_details",
+      "description": "\nGet full creative details including mode classification, media URLs,\nobject_story_spec, asset_feed_spec, and degrees_of_freedom_spec.\n\nArgs:\n    creative_id: Creative ID (numeric string).\n    account_id: Optional account ID for image hash resolution. If not provided,\n        image hashes will not be resolved to URLs.\n",
+      "inputSchema": {
+        "properties": {
+          "creative_id": {
+            "title": "Creative Id",
+            "type": "string"
+          },
+          "account_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Account Id"
+          }
+        },
+        "required": [
+          "creative_id"
+        ],
+        "title": "get_creative_detailsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/creatives.py#L294",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "create_ad_creative",
+      "description": "\nCreate a standalone single-image ad creative.\n\nReturns creative_id for use in ad creation (create_ad_from_manifest)\nor ad update (update_ad creative swap).\n\nRequires a Facebook Page ID. Instagram identity is auto-resolved\nfrom the page - if unavailable, creative is created for Facebook only.\n\nSingle-image creatives only in v1. For video, carousel, or dynamic\ncreatives, use create_multi_asset_ad.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    page_id: Facebook Page ID for the creative.\n    image_hash: Image hash from upload_ad_image.\n    link_url: CTA destination URL.\n    primary_text: Main ad copy text (the \"message\").\n    headline: Optional headline (appears below image).\n    description: Optional description text.\n    cta_type: Call-to-action type. Default 'LEARN_MORE'.\n        Valid: LEARN_MORE, SHOP_NOW, SIGN_UP, SUBSCRIBE, CONTACT_US,\n        GET_OFFER, BOOK_TRAVEL, DOWNLOAD, APPLY_NOW, WATCH_MORE,\n        GET_QUOTE, SEND_MESSAGE, ORDER_NOW, NO_BUTTON.\n    name: Optional creative name. Subject to naming enforcement.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "page_id": {
+            "title": "Page Id",
+            "type": "string"
+          },
+          "image_hash": {
+            "title": "Image Hash",
+            "type": "string"
+          },
+          "link_url": {
+            "title": "Link Url",
+            "type": "string"
+          },
+          "primary_text": {
+            "title": "Primary Text",
+            "type": "string"
+          },
+          "headline": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Headline"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Description"
+          },
+          "cta_type": {
+            "default": "LEARN_MORE",
+            "title": "Cta Type",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          }
+        },
+        "required": [
+          "account_id",
+          "page_id",
+          "image_hash",
+          "link_url",
+          "primary_text"
+        ],
+        "title": "create_ad_creativeArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/creatives.py#L381",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "update_ad_creative",
+      "description": "\nUpdate an existing ad creative's name.\n\nIMPORTANT: Meta API does NOT allow changing copy, headline, CTA, or link URL\non existing creatives. Creative content is immutable after creation.\n\nTo change ad copy: create a NEW creative with create_ad_creative, then swap\nit on the ad with update_ad(creative_id=new_creative_id).\n\nArgs:\n    creative_id: Creative ID to update.\n    name: New creative name.\n",
+      "inputSchema": {
+        "properties": {
+          "creative_id": {
+            "title": "Creative Id",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          }
+        },
+        "required": [
+          "creative_id"
+        ],
+        "title": "update_ad_creativeArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/creatives.py#L597",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "get_insights",
+      "description": "\nGet performance insights for any Meta Ads object (account, campaign, ad set, or ad).\n\nReturns normalized metrics with objective-aware extraction: purchases/ROAS for ecommerce,\nleads/CPL for lead_gen, reach/frequency for awareness.\n\nArgs:\n    object_id: Account ID (act_XXX), campaign ID, ad set ID, or ad ID.\n    time_range: Date preset ('last_7d', 'last_30d', 'this_month', etc.)\n        or explicit range 'YYYY-MM-DD,YYYY-MM-DD'.\n    breakdowns: Comma-separated breakdown dimensions (e.g. 'age,gender').\n        Supported: age, gender, country, region, impression_device,\n        platform_position, publisher_platform, device_platform, product_id.\n    level: Aggregation level when querying account/campaign: 'campaign', 'adset', 'ad'.\n        Omit for object-level insights.\n    archetype: Account archetype for metric selection: 'ecommerce', 'lead_gen',\n        'awareness', 'traffic', 'hybrid', 'messages'. Default 'hybrid' (all metrics).\n    compact: If true, return a compact operator-friendly summary alongside raw data.\n    limit: Max rows for breakdown or level queries (default 50).\n",
+      "inputSchema": {
+        "properties": {
+          "object_id": {
+            "title": "Object Id",
+            "type": "string"
+          },
+          "time_range": {
+            "default": "last_7d",
+            "title": "Time Range",
+            "type": "string"
+          },
+          "breakdowns": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Breakdowns"
+          },
+          "level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Level"
+          },
+          "archetype": {
+            "default": "hybrid",
+            "title": "Archetype",
+            "type": "string"
+          },
+          "compact": {
+            "default": true,
+            "title": "Compact",
+            "type": "boolean"
+          },
+          "limit": {
+            "default": 50,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "object_id"
+        ],
+        "title": "get_insightsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/insights.py#L326",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    },
+    {
+      "name": "get_bulk_insights",
+      "description": "\nGet performance insights across all accessible ad accounts in one call.\n\nAggregates spend, impressions, clicks, conversions, ROAS across accounts.\nUses accounts from the Meta API (not accounts.yaml).\n\nArgs:\n    time_range: 'today', 'yesterday', 'last_3d', 'last_7d', 'last_14d', 'last_30d'.\n    level: 'account' (one row per account). Campaign-level bulk is not supported.\n    limit_accounts: Max accounts to query (default 20).\n",
+      "inputSchema": {
+        "properties": {
+          "time_range": {
+            "default": "last_7d",
+            "title": "Time Range",
+            "type": "string"
+          },
+          "level": {
+            "default": "account",
+            "title": "Level",
+            "type": "string"
+          },
+          "limit_accounts": {
+            "default": 20,
+            "title": "Limit Accounts",
+            "type": "integer"
+          }
+        },
+        "title": "get_bulk_insightsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/insights.py#L472",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    },
+    {
+      "name": "get_pixel_info",
+      "description": "\nGet pixel status, connections, last fired time, and availability.\n\nArgs:\n    pixel_id: Pixel ID (numeric string).\n",
+      "inputSchema": {
+        "properties": {
+          "pixel_id": {
+            "title": "Pixel Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "pixel_id"
+        ],
+        "title": "get_pixel_infoArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/pixels.py#L186",
+      "scope": "meta-ads",
+      "capability": "tracking"
+    },
+    {
+      "name": "get_pixel_events",
+      "description": "\nGet events received by a pixel in the last 24 hours,\nbroken down by event type and hourly counts.\n\nArgs:\n    pixel_id: Pixel ID (numeric string).\n",
+      "inputSchema": {
+        "properties": {
+          "pixel_id": {
+            "title": "Pixel Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "pixel_id"
+        ],
+        "title": "get_pixel_eventsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/pixels.py#L212",
+      "scope": "meta-ads",
+      "capability": "tracking"
+    },
+    {
+      "name": "get_event_stats",
+      "description": "\nGet event statistics with archetype-aware diagnostic analysis.\n\nChecks event coverage, parameter completeness, diagnostic flags,\nand classifies overall tracking health.\n\nArgs:\n    pixel_id: Pixel ID (numeric string).\n    archetype: Account archetype for requirement matching:\n        'ecommerce', 'lead_gen', 'awareness', 'traffic', 'hybrid', 'messages'.\n",
+      "inputSchema": {
+        "properties": {
+          "pixel_id": {
+            "title": "Pixel Id",
+            "type": "string"
+          },
+          "archetype": {
+            "default": "hybrid",
+            "title": "Archetype",
+            "type": "string"
+          }
+        },
+        "required": [
+          "pixel_id"
+        ],
+        "title": "get_event_statsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/pixels.py#L260",
+      "scope": "meta-ads",
+      "capability": "tracking"
+    },
+    {
+      "name": "send_test_event",
+      "description": "\nSend a test event via the Conversions API Test Events endpoint.\n\nArgs:\n    pixel_id: Pixel ID (numeric string).\n    event_name: Event name to send (default 'PageView').\n    test_event_code: Test event code from Events Manager.\n        If not provided, generates a temporary one.\n    custom_data: Optional JSON string of custom_data params\n        (e.g., '{\"value\": 10.00, \"currency\": \"EUR\"}').\n",
+      "inputSchema": {
+        "properties": {
+          "pixel_id": {
+            "title": "Pixel Id",
+            "type": "string"
+          },
+          "event_name": {
+            "default": "PageView",
+            "title": "Event Name",
+            "type": "string"
+          },
+          "test_event_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Test Event Code"
+          },
+          "custom_data": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Custom Data"
+          }
+        },
+        "required": [
+          "pixel_id"
+        ],
+        "title": "send_test_eventArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/pixels.py#L359",
+      "scope": "meta-ads",
+      "capability": "tracking"
+    },
+    {
+      "name": "run_tracking_diagnostic",
+      "description": "\nRun comprehensive tracking diagnostic for an ad account.\n\nChecks all connected pixels, event coverage, parameter completeness,\nand Meta diagnostic flags. Returns archetype-aware health classification\nwith severity-ranked issues and fix suggestions.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    archetype: Account archetype for requirement matching.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "archetype": {
+            "default": "hybrid",
+            "title": "Archetype",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "run_tracking_diagnosticArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/pixels.py#L437",
+      "scope": "meta-ads",
+      "capability": "tracking"
+    },
+    {
+      "name": "get_catalog_info",
+      "description": "\nGet catalog details including product count, vertical, name,\nand connected event sources (pixels).\n\nArgs:\n    catalog_id: Product catalog ID (numeric string).\n",
+      "inputSchema": {
+        "properties": {
+          "catalog_id": {
+            "title": "Catalog Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "catalog_id"
+        ],
+        "title": "get_catalog_infoArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/catalogs.py#L28",
+      "scope": "meta-ads",
+      "capability": "catalogs"
+    },
+    {
+      "name": "get_catalog_products",
+      "description": "\nList products in a catalog with price, availability, review status, and URLs.\n\nArgs:\n    catalog_id: Product catalog ID.\n    limit: Max products to return (default 25, max 100).\n    filter_availability: Optional filter: 'in stock', 'out of stock', 'discontinued'.\n",
+      "inputSchema": {
+        "properties": {
+          "catalog_id": {
+            "title": "Catalog Id",
+            "type": "string"
+          },
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "filter_availability": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Filter Availability"
+          }
+        },
+        "required": [
+          "catalog_id"
+        ],
+        "title": "get_catalog_productsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/catalogs.py#L85",
+      "scope": "meta-ads",
+      "capability": "catalogs"
+    },
+    {
+      "name": "get_product_sets",
+      "description": "\nList product sets in a catalog with product counts and filter rules.\n\nArgs:\n    catalog_id: Product catalog ID.\n",
+      "inputSchema": {
+        "properties": {
+          "catalog_id": {
+            "title": "Catalog Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "catalog_id"
+        ],
+        "title": "get_product_setsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/catalogs.py#L169",
+      "scope": "meta-ads",
+      "capability": "catalogs"
+    },
+    {
+      "name": "validate_catalog_connections",
+      "description": "\nValidate the catalog-pixel-account-page connection chain\nand run diagnostic health assessment.\n\nFor DPA (Dynamic Product Ads) to work, the full chain must be connected:\nCatalog -> Pixel -> Ad Account -> Page\n\nArgs:\n    catalog_id: Product catalog ID.\n    account_id: Optional ad account ID to verify connection.\n    pixel_id: Optional pixel ID to verify catalog-pixel link.\n    page_id: Optional page ID to verify catalog-page link.\n",
+      "inputSchema": {
+        "properties": {
+          "catalog_id": {
+            "title": "Catalog Id",
+            "type": "string"
+          },
+          "account_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Account Id"
+          },
+          "pixel_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Pixel Id"
+          },
+          "page_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Page Id"
+          }
+        },
+        "required": [
+          "catalog_id"
+        ],
+        "title": "validate_catalog_connectionsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/catalogs.py#L203",
+      "scope": "meta-ads",
+      "capability": "catalogs"
+    },
+    {
+      "name": "create_product_set",
+      "description": "\nCreate a product set with filter rules for DPA targeting.\n\nArgs:\n    catalog_id: Product catalog ID.\n    name: Product set name.\n    filter_json: JSON string of filter rules.\n        Example: '{\"product_type\":{\"i_contains\":\"shoes\"}}'\n",
+      "inputSchema": {
+        "properties": {
+          "catalog_id": {
+            "title": "Catalog Id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "filter_json": {
+            "title": "Filter Json",
+            "type": "string"
+          }
+        },
+        "required": [
+          "catalog_id",
+          "name",
+          "filter_json"
+        ],
+        "title": "create_product_setArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/catalogs.py#L468",
+      "scope": "meta-ads",
+      "capability": "catalogs"
+    },
+    {
+      "name": "update_product_set",
+      "description": "\nUpdate a product set name or filter rules.\n\nArgs:\n    product_set_id: Product set ID to update.\n    name: New name.\n    filter_json: New filter rules as JSON string.\n",
+      "inputSchema": {
+        "properties": {
+          "product_set_id": {
+            "title": "Product Set Id",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "filter_json": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Filter Json"
+          }
+        },
+        "required": [
+          "product_set_id"
+        ],
+        "title": "update_product_setArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/catalogs.py#L518",
+      "scope": "meta-ads",
+      "capability": "catalogs"
+    },
+    {
+      "name": "list_custom_audiences",
+      "description": "\nList custom audiences for an ad account with type classification,\nsize estimates, delivery status, and diagnostic warnings.\n\nFlags audiences that are unusable, too small, too broad, stale, or errored.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    limit: Max audiences to return (default 50).\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "limit": {
+            "default": 50,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "list_custom_audiencesArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/audiences.py#L152",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "search_interests",
+      "description": "\nSearch for interest-based targeting options.\n\nReturns matching interests with audience size estimates, topic category, and path.\n\nArgs:\n    query: Search term (e.g., 'yoga', 'hospitality', 'skincare').\n    limit: Max results (default 20).\n",
+      "inputSchema": {
+        "properties": {
+          "query": {
+            "title": "Query",
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "title": "search_interestsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/targeting.py#L38",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "search_behaviors",
+      "description": "\nSearch or list behavior-based targeting options.\n\nIf query is provided, filters by keyword. Otherwise returns all behaviors.\n\nArgs:\n    query: Optional search term (e.g., 'travel', 'small business').\n    limit: Max results (default 30).\n",
+      "inputSchema": {
+        "properties": {
+          "query": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Query"
+          },
+          "limit": {
+            "default": 30,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "search_behaviorsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/targeting.py#L99",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "search_geo_locations",
+      "description": "\nSearch geographic locations for ad targeting.\n\nArgs:\n    query: Location search term (e.g., 'Greece', 'Athens', 'Crete').\n    location_type: Type of location: 'country', 'region', 'city', 'zip',\n        'geo_market', 'electoral_district'. Default 'country'.\n    limit: Max results (default 10).\n",
+      "inputSchema": {
+        "properties": {
+          "query": {
+            "title": "Query",
+            "type": "string"
+          },
+          "location_type": {
+            "default": "country",
+            "title": "Location Type",
+            "type": "string"
+          },
+          "limit": {
+            "default": 10,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "title": "search_geo_locationsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/targeting.py#L154",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "get_interest_suggestions",
+      "description": "\nGet related interest suggestions from seed interests.\n\nAccepts a comma-separated list of interest IDs or names and returns\nMeta's suggested related interests for targeting expansion.\n\nArgs:\n    interest_list: Comma-separated interest IDs (numeric) or interest names.\n        Example IDs: '6003139266461,6003017845981'\n        Example names: 'yoga,meditation'\n    limit: Max suggestions to return (default 20).\n",
+      "inputSchema": {
+        "properties": {
+          "interest_list": {
+            "title": "Interest List",
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "interest_list"
+        ],
+        "title": "get_interest_suggestionsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/targeting.py#L222",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "search_demographics",
+      "description": "\nSearch or list demographic targeting options.\n\nReturns demographic categories: life events, education, work,\nfinancial, relationship, home ownership, parental status, etc.\n\nIf query is provided, filters by keyword. Otherwise returns all demographics.\n\nArgs:\n    query: Optional search term (e.g., 'homeowner', 'new job', 'university').\n    limit: Max results (default 30).\n",
+      "inputSchema": {
+        "properties": {
+          "query": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Query"
+          },
+          "limit": {
+            "default": 30,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "search_demographicsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/targeting.py#L278",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "estimate_audience_size",
+      "description": "\nEstimate audience reach for a targeting specification.\n\nReturns estimated daily reach (lower/upper bounds) for the given\ntargeting spec on the specified account.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    targeting_json: JSON string of targeting spec.\n        Example: '{\"geo_locations\":{\"countries\":[\"GR\"]},\"age_min\":25,\"age_max\":55}'\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "targeting_json": {
+            "title": "Targeting Json",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id",
+          "targeting_json"
+        ],
+        "title": "estimate_audience_sizeArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/targeting.py#L336",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "upload_ad_image",
+      "description": "\nUpload an image from URL into Meta ad images library.\n\nDownloads the image from the provided URL, then uploads it to Meta\nvia multipart form upload. Returns the image hash needed for creative\ncreation (create_ad_creative, create_multi_asset_ad) and ad building.\n\nSupported formats: JPG, PNG. Max size: 30MB.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    image_url: Public URL of the image to upload.\n    name: Optional name for the image in the library.\n        Defaults to filename from URL.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "image_url": {
+            "title": "Image Url",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          }
+        },
+        "required": [
+          "account_id",
+          "image_url"
+        ],
+        "title": "upload_ad_imageArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/images.py#L21",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "get_ad_image",
+      "description": "\nRetrieve metadata and URL for an uploaded ad image by hash.\n\nReturns the image URL, dimensions, name, and other metadata.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    image_hash: Image hash from upload_ad_image.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "image_hash": {
+            "title": "Image Hash",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id",
+          "image_hash"
+        ],
+        "title": "get_ad_imageArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/images.py#L177",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "upload_video_asset",
+      "description": "\nUpload a local video file to a Meta ad account.\n\nValidates the file, uploads via simple upload (for files < 1GB),\nand returns the meta_video_id for use in ad creation.\nThe video enters processing after upload - use poll_video_processing\nto check when it's ready.\n\nArgs:\n    account_id: Ad account ID (e.g., 'act_123456789').\n    video_path: Local filesystem path to the video file (.mp4 or .mov).\n    title: Optional title for the video in Meta.\n    description: Optional description.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "video_path": {
+            "title": "Video Path",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Description"
+          }
+        },
+        "required": [
+          "account_id",
+          "video_path"
+        ],
+        "title": "upload_video_assetArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/video.py#L82",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "poll_video_processing",
+      "description": "\nPoll video processing status until ready, failed, or max attempts reached.\n\nArgs:\n    video_id: Meta video ID from upload_video_asset.\n    max_attempts: Maximum poll attempts (default 30 = 5 minutes at 10s interval).\n    poll_interval_seconds: Seconds between polls (default 10).\n",
+      "inputSchema": {
+        "properties": {
+          "video_id": {
+            "title": "Video Id",
+            "type": "string"
+          },
+          "max_attempts": {
+            "default": 30,
+            "title": "Max Attempts",
+            "type": "integer"
+          },
+          "poll_interval_seconds": {
+            "default": 10,
+            "title": "Poll Interval Seconds",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "video_id"
+        ],
+        "title": "poll_video_processingArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/video.py#L227",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "generate_names",
+      "description": "\nGenerate correctly named Meta Ads object following naming convention.\n\nConvention (learned from ExampleBrand):\n- Campaign: Objective | Product | Funnel | BudgetModel\n- Ad Set: AudienceType | AgeRange | Geo | ExclusionFlag\n- Ad: Hook | Format | Version\n\nArgs:\n    object_type: 'campaign', 'adset', or 'ad'.\n    objective: For campaigns: Sales, Traffic, Leads, Awareness, Engagement.\n    product: For campaigns: product/offer name (client-specific).\n    funnel: For campaigns: TOFU, MOFU, BOFU, RT.\n    budget_model: For campaigns: ABO, CBO.\n    audience_type: For ad sets: Broad, Broad-Interest, RT-WV-30d, etc.\n    age_range: For ad sets: 24-55, 18-45, All.\n    geo: Country code (default GR).\n    exclusion_flag: For ad sets: Adv, ExPurch, None.\n    hook: For ads: concept name in kebab-case (e.g., Employee-Blame).\n    format_code: For ads: REEL, VID, IMG, REEL+FEED.\n    version: For ads: V1, V2, V3.\n",
+      "inputSchema": {
+        "properties": {
+          "object_type": {
+            "title": "Object Type",
+            "type": "string"
+          },
+          "objective": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Objective"
+          },
+          "product": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Product"
+          },
+          "funnel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Funnel"
+          },
+          "budget_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Budget Model"
+          },
+          "audience_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Audience Type"
+          },
+          "age_range": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Age Range"
+          },
+          "geo": {
+            "default": "GR",
+            "title": "Geo",
+            "type": "string"
+          },
+          "exclusion_flag": {
+            "default": "None",
+            "title": "Exclusion Flag",
+            "type": "string"
+          },
+          "hook": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hook"
+          },
+          "format_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Format Code"
+          },
+          "version": {
+            "default": "V1",
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "object_type"
+        ],
+        "title": "generate_namesArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/naming.py#L146",
+      "scope": "supporting",
+      "capability": "utilities"
+    },
+    {
+      "name": "create_multi_asset_ad",
+      "description": "\nCreate an ad with enforced identity, multi-asset support, and verification.\n\nSupports two asset modes (not mixed):\n- VIDEO: If 9:16 and/or 1:1 videos provided, creates ONE ad with\n  asset_feed_spec and placement mapping. Single video = simple mode.\n- STATIC IMAGE: If 2+ of image_1x1_hash/image_4x5_hash/image_9x16_hash\n  provided, creates ONE ad with asset_feed_spec and placement mapping.\n  Single image hash not accepted here - use create_ad_creative instead.\n\nMixed video + image is blocked. Provide one type only.\n\nINSTAGRAM GATE: Enforced via placement_mode.\n- full_meta (default): requires IG identity, BLOCKS if unavailable\n- facebook_only: explicit FB-only, no IG placements\n- instagram_only: requires IG identity, BLOCKS if unavailable\n\nArgs:\n    account_id: Ad account ID.\n    adset_id: Target ad set ID.\n    page_id: Facebook Page ID.\n    ad_name: Ad name.\n    primary_text: Main ad copy. Required for manual, auto-generated for auto/hybrid.\n    headline: Headline text. Auto-generated for auto/hybrid if empty.\n    destination_url: CTA destination URL.\n    cta_type: CTA type (default LEARN_MORE).\n    video_9x16_id: Vertical video ID (for Stories/Reels).\n    video_1x1_id: Square video ID (for Feed).\n    description: Optional description.\n    copy_mode: 'manual' (default), 'auto' (generate from vault), 'hybrid'.\n    angle_name: Marketing angle for auto/hybrid copy generation.\n    icp_name: Target ICP for auto/hybrid copy generation.\n    funnel_stage: 'tofu', 'mofu', 'bofu' for copy structure.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "adset_id": {
+            "title": "Adset Id",
+            "type": "string"
+          },
+          "page_id": {
+            "title": "Page Id",
+            "type": "string"
+          },
+          "ad_name": {
+            "title": "Ad Name",
+            "type": "string"
+          },
+          "primary_text": {
+            "default": "",
+            "title": "Primary Text",
+            "type": "string"
+          },
+          "headline": {
+            "default": "",
+            "title": "Headline",
+            "type": "string"
+          },
+          "destination_url": {
+            "default": "",
+            "title": "Destination Url",
+            "type": "string"
+          },
+          "cta_type": {
+            "default": "LEARN_MORE",
+            "title": "Cta Type",
+            "type": "string"
+          },
+          "video_9x16_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Video 9X16 Id"
+          },
+          "video_1x1_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Video 1X1 Id"
+          },
+          "image_1x1_hash": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image 1X1 Hash"
+          },
+          "image_4x5_hash": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image 4X5 Hash"
+          },
+          "image_9x16_hash": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image 9X16 Hash"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Description"
+          },
+          "copy_mode": {
+            "default": "manual",
+            "title": "Copy Mode",
+            "type": "string"
+          },
+          "angle_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Angle Name"
+          },
+          "icp_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Icp Name"
+          },
+          "funnel_stage": {
+            "default": "tofu",
+            "title": "Funnel Stage",
+            "type": "string"
+          },
+          "placement_mode": {
+            "default": "full_meta",
+            "title": "Placement Mode",
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id",
+          "adset_id",
+          "page_id",
+          "ad_name"
+        ],
+        "title": "create_multi_asset_adArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ad_builder.py#L154",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "upload_video_resumable",
+      "description": "\nUpload a video file using resumable upload (supports files >100MB up to 4GB).\n\nUse this for large files that fail with upload_video_asset.\nAutomatically chunks the file and uploads sequentially.\n\nArgs:\n    account_id: Ad account ID.\n    video_path: Local path to .mp4 or .mov file.\n    title: Optional title (defaults to filename).\n    chunk_size_mb: Chunk size in MB (default 20).\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "video_path": {
+            "title": "Video Path",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "chunk_size_mb": {
+            "default": 20,
+            "title": "Chunk Size Mb",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "account_id",
+          "video_path"
+        ],
+        "title": "upload_video_resumableArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ops.py#L29",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "bulk_rename_objects",
+      "description": "\nRename multiple Meta Ads objects in one call.\n\nArgs:\n    renames_json: JSON array of rename specs:\n        [{object_id: '...', new_name: '...', object_type: 'campaign|adset|ad'}, ...]\n",
+      "inputSchema": {
+        "properties": {
+          "renames_json": {
+            "title": "Renames Json",
+            "type": "string"
+          }
+        },
+        "required": [
+          "renames_json"
+        ],
+        "title": "bulk_rename_objectsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ops.py#L129",
+      "scope": "meta-ads",
+      "capability": "automation"
+    },
+    {
+      "name": "delete_campaign_structure",
+      "description": "\nDelete entire campaign structure (ads -> adsets -> campaigns) in correct order.\n\nArgs:\n    account_id: Ad account ID.\n    campaign_ids_json: JSON array of campaign IDs to delete. If not provided with\n        delete_all_active=True, deletes all non-deleted campaigns.\n    delete_all_active: If True and no campaign_ids, targets all campaigns.\n    confirm: Must be True to actually delete. False = dry run showing what would be deleted.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "campaign_ids_json": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Campaign Ids Json"
+          },
+          "delete_all_active": {
+            "default": false,
+            "title": "Delete All Active",
+            "type": "boolean"
+          },
+          "confirm": {
+            "default": false,
+            "title": "Confirm",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "delete_campaign_structureArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ops.py#L169",
+      "scope": "meta-ads",
+      "capability": "automation"
+    },
+    {
+      "name": "diagnose_pixel_on_site",
+      "description": "\nDiagnose pixel installation on a website via headless browser check.\n\nChecks: pixel script presence, consent/cookie blocking, Lead event setup,\nComplianz/cookie banner status.\n\nRequires browser MCP (Puppeteer) to be available.\n\nArgs:\n    url: Website URL to check.\n    pixel_id: Optional specific pixel ID to look for.\n",
+      "inputSchema": {
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "pixel_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Pixel Id"
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "title": "diagnose_pixel_on_siteArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ops.py#L270",
+      "scope": "meta-ads",
+      "capability": "tracking"
+    },
+    {
+      "name": "resolve_page_identity",
+      "description": "\nResolve full identity for a Facebook Page: page details + Instagram business account.\n\nUses the 3-step IG resolution ladder (registry -> promote_pages -> ad account).\nFalls back to direct page query if account_id not provided.\n\nArgs:\n    page_id: Facebook Page ID.\n    account_id: Optional ad account ID for improved IG resolution.\n",
+      "inputSchema": {
+        "properties": {
+          "page_id": {
+            "title": "Page Id",
+            "type": "string"
+          },
+          "account_id": {
+            "default": null,
+            "title": "Account Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "page_id"
+        ],
+        "title": "resolve_page_identityArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/ops.py#L365",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "read_client_vault",
+      "description": "\nRead all client intelligence from the Obsidian vault for ad operations.\n\nAuto-resolves: brand voice, ICPs, angles, objections, profile IDs.\nIf critical files are missing, returns explicit blockers.\n\nArgs:\n    account_id: Ad account ID. Resolved to client slug via registry.\n    include_context: If True, also reads campaign history, assets, constraints.\n",
+      "inputSchema": {
+        "properties": {
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "include_context": {
+            "default": false,
+            "title": "Include Context",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "title": "read_client_vaultArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/vault_reader.py#L128",
+      "scope": "supporting",
+      "capability": "utilities"
+    },
+    {
+      "name": "duplicate_campaign",
+      "description": "\nDuplicate a campaign (and optionally its child ad sets and ads) within the same account.\n\nAll created objects are PAUSED. When include_ads=True, ads are duplicated\nwith their existing creative references (creatives are reused, not copied).\n\nSame-account only. Cross-account duplication is not supported.\n\nArgs:\n    campaign_id: Source campaign ID to duplicate.\n    account_id: Ad account ID. Must match the source campaign's account.\n    name_suffix: Appended to source names (default \" - Copy\").\n        Must result in valid names per naming convention.\n    include_adsets: Whether to duplicate child ad sets (default True).\n    adset_budget_override: Override all duplicated ad set budgets (EUR).\n        Only applies to ABO campaigns. If None, copies source budgets.\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "name_suffix": {
+            "default": " - Copy",
+            "title": "Name Suffix",
+            "type": "string"
+          },
+          "include_adsets": {
+            "default": true,
+            "title": "Include Adsets",
+            "type": "boolean"
+          },
+          "include_ads": {
+            "default": false,
+            "title": "Include Ads",
+            "type": "boolean"
+          },
+          "adset_budget_override": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Adset Budget Override"
+          }
+        },
+        "required": [
+          "campaign_id",
+          "account_id"
+        ],
+        "title": "duplicate_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/duplication.py#L39",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "duplicate_adset",
+      "description": "\nDuplicate a single ad set into a target campaign within the same account.\n\nAll created objects are PAUSED. Does not duplicate child ads.\nSame-account only.\n\nArgs:\n    adset_id: Source ad set ID to duplicate.\n    target_campaign_id: Campaign to place the duplicated ad set in.\n    account_id: Ad account ID (must match source).\n    name_suffix: Appended to source name (default \" - Copy\").\n    budget_override: Override budget in EUR. If None, copies source budget.\n",
+      "inputSchema": {
+        "properties": {
+          "adset_id": {
+            "title": "Adset Id",
+            "type": "string"
+          },
+          "target_campaign_id": {
+            "title": "Target Campaign Id",
+            "type": "string"
+          },
+          "account_id": {
+            "title": "Account Id",
+            "type": "string"
+          },
+          "name_suffix": {
+            "default": " - Copy",
+            "title": "Name Suffix",
+            "type": "string"
+          },
+          "budget_override": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Budget Override"
+          }
+        },
+        "required": [
+          "adset_id",
+          "target_campaign_id",
+          "account_id"
+        ],
+        "title": "duplicate_adsetArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/duplication.py#L506",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "run_setup_check",
+      "description": "\nCheck MCP setup readiness and return structured results.\n\nValidates token, permissions, account access, pages, Instagram identity,\npixels, and local configuration. Returns pass/warn/fail for each check\nwith exact fix instructions for failures.\n\nRead-only. Does not modify any configuration or Meta settings.\n",
+      "inputSchema": {
+        "properties": {},
+        "title": "run_setup_checkArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/brandu-mos/konquest-meta-ads-mcp/blob/762c224b060b233b66fb9af8a2f3865303ed757b/meta_ads_mcp/core/setup.py#L20",
+      "scope": "supporting",
+      "capability": "utilities"
+    }
+  ],
+  "reviewed": true,
+  "review": "Parent compared all 57 descriptions and parameter names to Python registrations and inspected conditional premium registration and Meta implementation modules.",
+  "displayNotes": [
+    "Complete public open-core inventory. Private premium modules are absent and excluded."
+  ]
+}

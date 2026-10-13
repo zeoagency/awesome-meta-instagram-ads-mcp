@@ -1,42 +1,21 @@
-# Contributing to Awesome Meta & Instagram Ads MCP
+# Contributing
 
-This list includes MCP servers, command-line tools (CLIs), and SDKs with explicit Meta advertising support, including Facebook and Instagram ads.
+This directory groups MCPs by what their registered tools actually do. CLI and SDK companions are listed separately.
 
-## Inclusion criteria
+## Add or update an MCP
 
-A project must satisfy both requirements:
+1. Pin an upstream commit or a versioned hosted schema. Inspect the actual registration path; README feature claims do not establish tools.
+2. Enumerate the full tool list, following pagination. Capture exact names, complete descriptions, and full JSON input schemas, including nested fields, required arguments, enums, defaults, constraints, and referenced definitions.
+3. Inspect each tool implementation. Label its scope `meta-ads`, `supporting`, or `unrelated`; assign its capability from its behavior. A generic Graph transport needs explicit implemented advertising usage to qualify.
+4. Include pinned source links and extraction evidence. Explain conditional registrations, private modules, dependency constraints, and unavailable descriptions. Never infer a schema from a tool name or promotional text.
+5. Add the reviewed snapshot to `catalog/`. Run `python tooling/render_catalog.py` to update the MCP page, capability directory, coverage page, and complete tool-name index. Run `uv run --with jsonschema tooling/check_catalog.py` to check full-schema coverage and local links. Review the generated changes.
 
-1. It implements an MCP server, advertising CLI, or relevant SDK/library; or it provides a usable hosted MCP connection with documented Meta advertising operations.
-2. Its primary documentation and implementation, or its hosted connection manifest and documented operations, demonstrate Meta advertising functionality: campaign/ad management, advertising Insights, targeting or audiences, ad creatives, catalogs for ads, Ad Library research, or Meta Pixel/Conversions API integration and validation.
+A complete public/open-core inventory can qualify when proprietary modules are absent and that limitation is explicit. A hosted MCP needs an accessible full `tools/list` response or complete provider-published schemas; connection manifests and example workflows alone are insufficient for the detailed catalog. Record failed or incomplete extractions on the coverage page instead of ranking them as verified inventories.
 
-Multi-platform projects qualify when their Meta advertising integration is explicit. Official Business SDKs qualify because they implement Marketing API advertising objects. Projects with multiple interfaces appear once, with those interfaces identified in the entry.
+## Keep the scope focused
 
-## Exclusions
+Qualifying tools work with Meta advertising campaigns, Insights, audiences, ad creatives, advertising catalogs, lead ads, Ad Library research, or Meta Pixel/Conversions API integration and validation. Multi-platform servers qualify through their implemented Meta tools. Keep every tool in each snapshot, including unrelated tools, so readers can see the complete server surface; unrelated tools never determine its advertising groups.
 
-- Organic-only publishing, profiles, followers, messaging, moderation, and social listening tools.
-- Standalone agent skills, prompts, setup scripts, and workflow collections that only use another project's MCP, CLI, or SDK.
-- Generic creative or image generators without a Meta advertising integration.
-- Mock-data demonstrations presented as real advertising integrations.
-- General-purpose Graph API wrappers without implemented advertising objects or operations.
-- Advertising guides, courses, general marketing resources, and unrelated tools.
+Exclude standalone skills, prompts, generic image generators, organic-only social tools, and mock-data demonstrations. CLI and SDK entries must implement advertising operations and belong in [companions](docs/companions.md).
 
-## Verify before submitting
-
-- Read the upstream documentation and inspect the relevant source files, tool registrations, and package or CLI entry points. A project name or an SDK dependency alone is insufficient evidence.
-- For hosted MCPs, verify the remote connection manifest and documented Meta operations. Label the entry as hosted; do not imply that the repository contains the server implementation.
-- Confirm that the upstream link resolves and provides installation or connection instructions.
-- Distinguish read-only reporting from campaign mutations. Distinguish public Ad Library scraping, third-party scraping APIs, and the official Meta Ad Library API.
-- Describe implemented behavior. Do not convert plans, optional proprietary modules, skills, or examples into shipped features.
-- Include the supporting upstream documentation and source links in your pull request. State whether verification used source inspection, hosted-service documentation, or live execution.
-
-## Entry format
-
-Add one entry under its primary category, following the existing table format:
-
-```markdown
-| [owner/repo](https://github.com/owner/repo) | Short factual description of its Meta advertising functionality. |
-```
-
-Use the additional delivery, type, or package columns where the category includes them. Keep descriptions concise and written in English. Sort entries alphabetically within each category, with the official Meta CLI first in its category.
-
-Avoid star counts, tool totals, undocumented rankings, marketing language, untested performance claims, and blanket safety or compliance guarantees. Update the contents links when changing categories, and check that all local links and table rows remain valid.
+Use concise English around verbatim upstream definitions. Do not add star rankings, promotional tiers, unsupported safety guarantees, or general marketing guides. A tool inventory establishes its exposed interface; it does not prove that authenticated live advertising operations succeed.

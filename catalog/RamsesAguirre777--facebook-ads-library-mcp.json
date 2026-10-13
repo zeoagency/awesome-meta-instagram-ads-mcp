@@ -1,0 +1,93 @@
+{
+  "id": "RamsesAguirre777--facebook-ads-library-mcp",
+  "repo": "RamsesAguirre777/facebook-ads-library-mcp",
+  "url": "https://github.com/RamsesAguirre777/facebook-ads-library-mcp",
+  "commit": "ea3c877855c16fb4594f640634d06f85e414eadb",
+  "method": "runtime-tools-list",
+  "complete": true,
+  "notes": [
+    "Enumerated all registered tools using the FastMCP in-process client tools/list; no business tool was called and no credentials or browser installation were needed.",
+    "Requirements have no upper version bounds; schemas reflect the installed FastMCP version recorded in the evidence note. Parameter choices mentioned in docstrings are not JSON Schema enums."
+  ],
+  "tools": [
+    {
+      "name": "search_ad_library",
+      "description": "Search the public Facebook Ad Library for a keyword in a given country (works for commercial ads, any country — no token). Renders the SPA with a headless browser, scrolls past the first page, and returns structured ad cards: advertiser, run date, creative count, landing domain, CTA button, headline and body copy. Pass advertiser_page_id to pull every ad from one Page.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "default": "",
+            "type": "string"
+          },
+          "country": {
+            "default": "MX",
+            "type": "string"
+          },
+          "active_status": {
+            "default": "active",
+            "type": "string"
+          },
+          "media_type": {
+            "default": "all",
+            "type": "string"
+          },
+          "ad_type": {
+            "default": "all",
+            "type": "string"
+          },
+          "advertiser_page_id": {
+            "default": "",
+            "type": "string"
+          },
+          "wait_seconds": {
+            "default": 8,
+            "type": "integer"
+          },
+          "scroll_rounds": {
+            "default": 8,
+            "type": "integer"
+          }
+        }
+      },
+      "source": "https://github.com/RamsesAguirre777/facebook-ads-library-mcp/blob/ea3c877855c16fb4594f640634d06f85e414eadb/facebook_ads_mcp_complete.py#L176",
+      "scope": "meta-ads",
+      "capability": "ad-library",
+      "parameterNotes": "Args:\n    query: keyword(s) to search (advertiser name, product, angle...). Optional if\n           advertiser_page_id is given.\n    country: ISO country code the ads were delivered in (MX, US, ES, ...)\n    active_status: active | inactive | all\n    ad_type: all | political_and_issue_ads | employment_ads | housing_ads | financial_products_and_services_ads\n    media_type: all | image | meme | video | none\n    advertiser_page_id: if set, target that Page's \"all ads\" view instead of a keyword\n           search. This view is heavier client-rendered and does not always hydrate\n           headless — a keyword search of the advertiser's name is the more reliable path.\n    wait_seconds: how long to let the SPA hydrate before scraping (raise if results are empty)\n    scroll_rounds: infinite-scroll cycles to load more ads past the first ~24\n           (0 = first render only, fast; 8 default; 15+ for a deep sweep)"
+    },
+    {
+      "name": "scrape_ad_library_url",
+      "description": "Scrape any Facebook Ad Library URL you already have (a prefilled search, an advertiser's 'view all ads' page, a shared filter link) and return structured ad cards plus the raw rendered text.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "wait_seconds": {
+            "default": 8,
+            "type": "integer"
+          },
+          "scroll_rounds": {
+            "default": 8,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "source": "https://github.com/RamsesAguirre777/facebook-ads-library-mcp/blob/ea3c877855c16fb4594f640634d06f85e414eadb/facebook_ads_mcp_complete.py#L260",
+      "scope": "meta-ads",
+      "capability": "ad-library",
+      "parameterNotes": "Args:\n    url: a facebook.com/ads/library/... URL\n    wait_seconds: SPA hydration wait before scraping\n    scroll_rounds: infinite-scroll cycles to load more cards (0 = first render only)"
+    }
+  ],
+  "reviewed": true,
+  "review": "Parent matched both explicit decorator descriptions, every parameter and default against source; included separate Args documentation omitted from runtime descriptions.",
+  "displayNotes": [
+    "Uses headless-browser Ad Library scraping. Source parameter notes are included separately; prose options are not enforced schema enums."
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "id": "attainmentlabs--meta-ads-mcp",
+  "repo": "attainmentlabs/meta-ads-mcp",
+  "url": "https://github.com/attainmentlabs/meta-ads-mcp",
+  "commit": "82d29b127c129d12489a46ec4b7e39443114aea1",
+  "method": "runtime-tools-list",
+  "complete": true,
+  "notes": [
+    "Extracted using FastMCP.list_tools() with mcp 1.30.0 and pydantic 2.14.1; dependencies are lower-bounded and upstream has no lockfile.",
+    "Upstream mcp[cli]>=1.0 resolves to incompatible mcp 2.x; extraction pins compatible mcp 1.30.0 (<2) because FastMCP import was removed in 2.x.",
+    "All 13 registered tools operate on the configured Meta ad account or its campaign assets. No business tool was called; no credentials needed.",
+    "Preserves actual unconstrained list item schemas. Ads object keys, valid objectives/CTAs/statuses and bounded limits documented or enforced in code are not encoded as JSON Schema constraints by upstream."
+  ],
+  "tools": [
+    {
+      "name": "create_meta_campaign",
+      "description": "Create a complete Meta ad campaign: campaign, ad set, creatives, and ads.\n\nEach item in `ads` is a dict with:\n  - name (str): ad name\n  - image_path (str): absolute path to image file on disk\n  - primary_text (str): ad body copy\n  - headline (str): ad headline\n  - link (str): destination URL\n  - cta (str, optional): call-to-action button, default \"LEARN_MORE\"\n  - description (str, optional): ad description text\n\ndaily_budget_cents: budget in cents. 1000 = $10/day, 3000 = $30/day.\n\ndry_run: when True (default), simulates all API calls without spending money.\nSet dry_run=False to actually deploy. All campaigns start as PAUSED regardless.\nconfirm: required when dry_run=False. This is the approval gate.\n\nValid objectives: OUTCOME_TRAFFIC, OUTCOME_AWARENESS, OUTCOME_ENGAGEMENT,\nOUTCOME_LEADS, OUTCOME_SALES, OUTCOME_APP_PROMOTION\n\nValid CTAs: LEARN_MORE, SIGN_UP, DOWNLOAD, SHOP_NOW, BOOK_NOW, GET_OFFER,\nSUBSCRIBE, CONTACT_US, APPLY_NOW, WATCH_MORE, INSTALL_MOBILE_APP\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_name": {
+            "title": "Campaign Name",
+            "type": "string"
+          },
+          "ad_set_name": {
+            "title": "Ad Set Name",
+            "type": "string"
+          },
+          "objective": {
+            "default": "OUTCOME_TRAFFIC",
+            "title": "Objective",
+            "type": "string"
+          },
+          "countries": {
+            "default": [
+              "US"
+            ],
+            "items": {},
+            "title": "Countries",
+            "type": "array"
+          },
+          "age_min": {
+            "default": 18,
+            "title": "Age Min",
+            "type": "integer"
+          },
+          "age_max": {
+            "default": 65,
+            "title": "Age Max",
+            "type": "integer"
+          },
+          "daily_budget_cents": {
+            "default": 1000,
+            "title": "Daily Budget Cents",
+            "type": "integer"
+          },
+          "optimization_goal": {
+            "default": "LINK_CLICKS",
+            "title": "Optimization Goal",
+            "type": "string"
+          },
+          "ads": {
+            "default": [],
+            "items": {},
+            "title": "Ads",
+            "type": "array"
+          },
+          "dry_run": {
+            "default": true,
+            "title": "Dry Run",
+            "type": "boolean"
+          },
+          "confirm": {
+            "default": false,
+            "title": "Confirm",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "campaign_name",
+          "ad_set_name"
+        ],
+        "title": "create_meta_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L358",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "get_ad_account_summary",
+      "description": "Get the configured Meta ad account summary.\n\nRead-only. Use this before campaign work to confirm the connected account,\ncurrency, timezone, spend, balance, and account status.\n",
+      "inputSchema": {
+        "properties": {},
+        "title": "get_ad_account_summaryArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L484",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "list_campaigns",
+      "description": "List recent campaigns in the configured Meta ad account.\n\nRead-only. Use this to find campaign IDs before status, insights, budget,\npause, activate, or bulk operations.\n",
+      "inputSchema": {
+        "properties": {
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "list_campaignsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L504",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "list_ad_sets",
+      "description": "List recent ad sets in the configured Meta ad account.\n\nRead-only. Use this to find ad set IDs before budget or status changes.\n",
+      "inputSchema": {
+        "properties": {
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "list_ad_setsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L516",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "list_ads",
+      "description": "List recent ads in the configured Meta ad account.\n\nRead-only. Use this to find ad IDs and inspect delivery status.\n",
+      "inputSchema": {
+        "properties": {
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "list_adsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L527",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "get_meta_insights",
+      "description": "Get Meta Ads performance insights.\n\nRead-only. object_id can be an ad account, campaign, ad set, or ad ID.\nLeave object_id blank to use the configured ad account. Use level for\naccount breakdowns such as campaign, adset, or ad.\n",
+      "inputSchema": {
+        "properties": {
+          "object_id": {
+            "default": "",
+            "title": "Object Id",
+            "type": "string"
+          },
+          "level": {
+            "default": "",
+            "title": "Level",
+            "type": "string"
+          },
+          "date_preset": {
+            "default": "last_7d",
+            "title": "Date Preset",
+            "type": "string"
+          },
+          "limit": {
+            "default": 25,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "get_meta_insightsArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L538",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    },
+    {
+      "name": "upload_ad_image",
+      "description": "Upload an image to the configured Meta ad account.\n\ndry_run defaults to True. Set dry_run=False and confirm=True to upload.\nReturns an image hash that can be used in ad creatives.\n",
+      "inputSchema": {
+        "properties": {
+          "image_path": {
+            "title": "Image Path",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": true,
+            "title": "Dry Run",
+            "type": "boolean"
+          },
+          "confirm": {
+            "default": false,
+            "title": "Confirm",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "image_path"
+        ],
+        "title": "upload_ad_imageArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L568",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "update_daily_budget",
+      "description": "Update daily budget for a campaign or ad set.\n\ndry_run defaults to True. Set dry_run=False and confirm=True after review.\nIf META_ADS_MAX_DAILY_BUDGET_CENTS is set, the budget cannot exceed it.\n",
+      "inputSchema": {
+        "properties": {
+          "object_id": {
+            "title": "Object Id",
+            "type": "string"
+          },
+          "daily_budget_cents": {
+            "title": "Daily Budget Cents",
+            "type": "integer"
+          },
+          "dry_run": {
+            "default": true,
+            "title": "Dry Run",
+            "type": "boolean"
+          },
+          "confirm": {
+            "default": false,
+            "title": "Confirm",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "object_id",
+          "daily_budget_cents"
+        ],
+        "title": "update_daily_budgetArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L591",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "bulk_update_campaign_status",
+      "description": "Bulk pause, activate, or delete campaigns.\n\nstatus must be PAUSED, ACTIVE, or DELETED. dry_run defaults to True.\nSet dry_run=False and confirm=True after reviewing the campaign IDs.\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_ids": {
+            "items": {},
+            "title": "Campaign Ids",
+            "type": "array"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "dry_run": {
+            "default": true,
+            "title": "Dry Run",
+            "type": "boolean"
+          },
+          "confirm": {
+            "default": false,
+            "title": "Confirm",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "campaign_ids",
+          "status"
+        ],
+        "title": "bulk_update_campaign_statusArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L630",
+      "scope": "meta-ads",
+      "capability": "automation"
+    },
+    {
+      "name": "get_campaign_status",
+      "description": "Get the status of a Meta campaign including its ad sets and ads.\n\nReturns campaign name, status, objective, and lists of ad sets and ads\nwith their statuses and budgets.\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "title": "get_campaign_statusArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L702",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "pause_campaign",
+      "description": "Pause a live Meta campaign. Safe to call on already-paused campaigns.",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "title": "pause_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L742",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "activate_campaign",
+      "description": "Activate (unpause) a Meta campaign. This will resume ad spending.\n\nThe campaign must have a valid payment method and approved creatives.\nSet confirm=True after reviewing the campaign in Ads Manager.\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "title": "Confirm",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "title": "activate_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L752",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "delete_campaign",
+      "description": "Permanently delete a Meta campaign. This cannot be undone.\n\nSet confirm=True after reviewing the campaign ID.\n",
+      "inputSchema": {
+        "properties": {
+          "campaign_id": {
+            "title": "Campaign Id",
+            "type": "string"
+          },
+          "confirm": {
+            "default": false,
+            "title": "Confirm",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "title": "delete_campaignArguments",
+        "type": "object"
+      },
+      "source": "https://github.com/attainmentlabs/meta-ads-mcp/blob/82d29b127c129d12489a46ec4b7e39443114aea1/meta_ads_mcp/server.py#L770",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    }
+  ],
+  "reviewed": true,
+  "review": "Parent matched every tool name, description, parameter name, required argument, and default signature against registered Python source; inspected campaign and reporting implementations.",
+  "displayNotes": [
+    "Unconstrained array items and prose-only options remain as upstream exposes them; no additional parameter constraints are inferred."
+  ]
+}

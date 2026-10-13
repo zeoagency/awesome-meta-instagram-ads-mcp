@@ -1,0 +1,16185 @@
+# EfrainTorres/armavita-meta-ads-mcp
+
+[Directory](../../README.md) · [Tool index](../tool-index.md) · [Upstream](https://github.com/EfrainTorres/armavita-meta-ads-mcp) · [Machine-readable snapshot](../../catalog/EfrainTorres--armavita-meta-ads-mcp.json)
+
+Complete registered tool snapshot. **125 tools captured.**
+
+Descriptions and input schemas reproduce upstream definitions. Capability labels come from source review.
+
+Repository revision: [`8ff63fa25608`](https://github.com/EfrainTorres/armavita-meta-ads-mcp/tree/8ff63fa256081cb907449eb8548d377dd64e500b). Method: `runtime-tools-list`.
+
+- Complete stdio tools/list snapshot from the current Rust default branch. Nested definitions and references are retained.
+
+## Tools
+
+- [apply_mutation_plan](#apply_mutation_plan)
+- [batch_catalog_items](#batch_catalog_items)
+- [batch_products](#batch_products)
+- [build_mutation_plan](#build_mutation_plan)
+- [change_ad_labels](#change_ad_labels)
+- [clone_ad](#clone_ad)
+- [clone_ad_set](#clone_ad_set)
+- [clone_campaign](#clone_campaign)
+- [configure_catalog_advertising](#configure_catalog_advertising)
+- [create_ad](#create_ad)
+- [create_ad_creative](#create_ad_creative)
+- [create_ad_set](#create_ad_set)
+- [create_business_asset](#create_business_asset)
+- [create_campaign](#create_campaign)
+- [create_campaign_budget_schedule](#create_campaign_budget_schedule)
+- [create_custom_audience](#create_custom_audience)
+- [create_custom_conversion](#create_custom_conversion)
+- [create_feed_error_report](#create_feed_error_report)
+- [create_insights_job](#create_insights_job)
+- [create_lead_form](#create_lead_form)
+- [create_lookalike_audience](#create_lookalike_audience)
+- [create_page_backed_instagram_account](#create_page_backed_instagram_account)
+- [create_reach_frequency_prediction](#create_reach_frequency_prediction)
+- [create_report](#create_report)
+- [create_test_lead](#create_test_lead)
+- [create_threads_account](#create_threads_account)
+- [delete_ad_media](#delete_ad_media)
+- [delete_business_asset](#delete_business_asset)
+- [delete_catalog_object](#delete_catalog_object)
+- [delete_custom_audience](#delete_custom_audience)
+- [delete_custom_conversion](#delete_custom_conversion)
+- [delete_test_lead](#delete_test_lead)
+- [discard_mutation_plan](#discard_mutation_plan)
+- [estimate_audience_size](#estimate_audience_size)
+- [generate_creative_previews](#generate_creative_previews)
+- [get_account_controls](#get_account_controls)
+- [get_mutation_plan](#get_mutation_plan)
+- [get_threads_account](#get_threads_account)
+- [grant_branded_content_ad_permission](#grant_branded_content_ad_permission)
+- [inspect_ad_object](#inspect_ad_object)
+- [list_ad_accounts](#list_ad_accounts)
+- [list_ad_creatives](#list_ad_creatives)
+- [list_ad_custom_derived_metrics](#list_ad_custom_derived_metrics)
+- [list_ad_images](#list_ad_images)
+- [list_ad_previews](#list_ad_previews)
+- [list_ad_sets](#list_ad_sets)
+- [list_ad_videos](#list_ad_videos)
+- [list_ads](#list_ads)
+- [list_branded_content_ad_permissions](#list_branded_content_ad_permissions)
+- [list_business_assets](#list_business_assets)
+- [list_business_datasets](#list_business_datasets)
+- [list_campaigns](#list_campaigns)
+- [list_catalog_resources](#list_catalog_resources)
+- [list_custom_audiences](#list_custom_audiences)
+- [list_custom_conversions](#list_custom_conversions)
+- [list_insights](#list_insights)
+- [list_pages](#list_pages)
+- [list_product_catalogs](#list_product_catalogs)
+- [list_product_sets](#list_product_sets)
+- [list_products](#list_products)
+- [list_reach_frequency_predictions](#list_reach_frequency_predictions)
+- [list_recommendations](#list_recommendations)
+- [manage_ad_comment](#manage_ad_comment)
+- [manage_ad_extensions](#manage_ad_extensions)
+- [manage_ad_label](#manage_ad_label)
+- [manage_ad_rules](#manage_ad_rules)
+- [manage_ad_studies](#manage_ad_studies)
+- [manage_budget_schedules](#manage_budget_schedules)
+- [manage_business_asset_access](#manage_business_asset_access)
+- [manage_catalog_connection](#manage_catalog_connection)
+- [manage_custom_audience_users](#manage_custom_audience_users)
+- [manage_instant_experiences](#manage_instant_experiences)
+- [manage_lead_subscription](#manage_lead_subscription)
+- [manage_value_rules](#manage_value_rules)
+- [query_targeting](#query_targeting)
+- [read_ad](#read_ad)
+- [read_ad_account](#read_ad_account)
+- [read_ad_assets](#read_ad_assets)
+- [read_ad_comments](#read_ad_comments)
+- [read_ad_creative](#read_ad_creative)
+- [read_ad_extensions](#read_ad_extensions)
+- [read_ad_image](#read_ad_image)
+- [read_ad_inventory](#read_ad_inventory)
+- [read_ad_rules](#read_ad_rules)
+- [read_ad_set](#read_ad_set)
+- [read_ad_studies](#read_ad_studies)
+- [read_budget_schedules](#read_budget_schedules)
+- [read_business_asset](#read_business_asset)
+- [read_campaign](#read_campaign)
+- [read_catalog_batch_status](#read_catalog_batch_status)
+- [read_catalog_object](#read_catalog_object)
+- [read_custom_audience](#read_custom_audience)
+- [read_custom_conversion](#read_custom_conversion)
+- [read_dataset_quality](#read_dataset_quality)
+- [read_insights_job](#read_insights_job)
+- [read_insights_job_results](#read_insights_job_results)
+- [read_instant_experiences](#read_instant_experiences)
+- [read_lead_data](#read_lead_data)
+- [read_reach_frequency_prediction](#read_reach_frequency_prediction)
+- [read_value_rules](#read_value_rules)
+- [revoke_branded_content_ad_permission](#revoke_branded_content_ad_permission)
+- [search_ads_archive](#search_ads_archive)
+- [search_behaviors](#search_behaviors)
+- [search_demographics](#search_demographics)
+- [search_geo_locations](#search_geo_locations)
+- [search_interests](#search_interests)
+- [send_capi_events](#send_capi_events)
+- [send_marketplace_signal](#send_marketplace_signal)
+- [set_lead_form_status](#set_lead_form_status)
+- [share_custom_audience](#share_custom_audience)
+- [suggest_interests](#suggest_interests)
+- [update_account_controls](#update_account_controls)
+- [update_ad](#update_ad)
+- [update_ad_creative](#update_ad_creative)
+- [update_ad_set](#update_ad_set)
+- [update_business_asset](#update_business_asset)
+- [update_campaign](#update_campaign)
+- [update_custom_audience](#update_custom_audience)
+- [update_custom_conversion](#update_custom_conversion)
+- [upload_ad_image_asset](#upload_ad_image_asset)
+- [upload_ad_video_asset](#upload_ad_video_asset)
+- [upload_catalog_feed](#upload_catalog_feed)
+- [upload_page_ad_media](#upload_page_ad_media)
+- [upsert_product](#upsert_product)
+- [write_catalog_object](#write_catalog_object)
+
+<a id="apply_mutation_plan"></a>
+
+## `apply_mutation_plan`
+
+Scope: **supporting** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1441)
+
+Send one reviewed, frozen Meta request once per apply. Requires APPLY_LIVE_META_ADS_CHANGES; deletes, status=DELETED, and reach/frequency cancel or release also require CONFIRM_META_ADS_REMOVALS.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "apply_acknowledgement": {
+      "description": "Exact explicit approval phrase returned in the build guidance.",
+      "maxLength": 27,
+      "minLength": 27,
+      "pattern": "^APPLY_LIVE_META_ADS_CHANGES$",
+      "type": "string"
+    },
+    "confirmation_token": {
+      "maxLength": 64,
+      "minLength": 64,
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "plan_id": {
+      "maxLength": 32,
+      "minLength": 32,
+      "pattern": "^[0-9a-f]{32}$",
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for deletes, status=DELETED, and reach/frequency cancellation/release actions.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "plan_id",
+    "confirmation_token",
+    "apply_acknowledgement"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="batch_catalog_items"></a>
+
+## `batch_catalog_items`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L681)
+
+Upsert/delete bounded catalog items, including vertical, localized, geolocated, or versioned attributes. Returns an async handle; inspect read_catalog_batch_status before retrying.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CatalogBatchKind": {
+      "enum": [
+        "items",
+        "localized_items",
+        "geolocated_items",
+        "version_items"
+      ],
+      "type": "string"
+    },
+    "CatalogItemOperation": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "data": {
+              "additionalProperties": true,
+              "description": "Include the catalog identity inside data: PRODUCT_ITEM uses id; VEHICLE uses vehicle_id; FLIGHT uses origin_airport plus destination_airport. Other fields use the feed-format names documented for items_batch.",
+              "type": "object"
+            },
+            "localization": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CatalogLocalization"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Required only for localized_items."
+            },
+            "metadata": {
+              "additionalProperties": true,
+              "description": "Optional documented per-record metadata for geolocated/versioned items; cannot override method or data.",
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "operation": {
+              "const": "upsert",
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation",
+            "data"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "data": {
+              "additionalProperties": true,
+              "description": "Only identity fields, such as {\"id\":\"SKU-1\"} or {\"vehicle_id\":\"CAR-1\"}.",
+              "type": "object"
+            },
+            "localization": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CatalogLocalization"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "metadata": {
+              "additionalProperties": true,
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "operation": {
+              "const": "delete",
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation",
+            "data"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CatalogLocalization": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/CatalogLocalizationKind"
+        },
+        "value": {
+          "description": "Language/country code, or language|country for LANGUAGE_AND_COUNTRY.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "type": "object"
+    },
+    "CatalogLocalizationKind": {
+      "enum": [
+        "LANGUAGE",
+        "COUNTRY",
+        "LANGUAGE_AND_COUNTRY"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allow_upsert": {
+      "description": "Defaults to true for ordinary/geolocated/versioned batches; omitted for localized_items unless explicitly supplied. Localized batches require an existing base item.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "catalog_id": {
+      "type": "string"
+    },
+    "item_sub_type": {
+      "description": "Optional item subtype, only for items.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "item_type": {
+      "description": "Official item type, such as PRODUCT_ITEM, VEHICLE, HOTEL, FLIGHT or MEDIA_TITLE.",
+      "type": "string"
+    },
+    "item_version": {
+      "description": "Required only for version_items.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "$ref": "#/$defs/CatalogBatchKind"
+    },
+    "operations": {
+      "items": {
+        "$ref": "#/$defs/CatalogItemOperation"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "type": "array"
+    },
+    "removal_acknowledgement": {
+      "description": "Required when any operation deletes an item.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version": {
+      "description": "Optional catalog batch version; unavailable for geolocated_items.",
+      "format": "uint64",
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "catalog_id",
+    "kind",
+    "item_type",
+    "operations"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="batch_products"></a>
+
+## `batch_products`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1048)
+
+Submit bounded catalog upserts and deletions; delete operations require CONFIRM_META_ADS_REMOVALS, and ambiguous outcomes require reconciliation.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "BatchProductUpsert": {
+      "additionalProperties": false,
+      "description": "Product fields for Meta's batch/feed contract. Prices use decimal major\nunits because that contract differs from the single-product edge.",
+      "properties": {
+        "additional_fields": {
+          "additionalProperties": true,
+          "default": null,
+          "description": "Current Meta batch product fields not modeled above. These are flattened\ninto `data`; keys must not duplicate typed/control fields or contain secrets.",
+          "maxProperties": 128,
+          "minProperties": 1,
+          "type": "object"
+        },
+        "additional_image_urls": {
+          "default": null,
+          "items": {
+            "format": "uri",
+            "maxLength": 2048,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "availability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProductAvailability"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "brand": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProductCondition"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currency": {
+          "maxLength": 3,
+          "minLength": 3,
+          "pattern": "^[A-Za-z]{3}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gtin": {
+          "maxLength": 50,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "image_url": {
+          "format": "uri",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "manufacturer_part_number": {
+          "maxLength": 70,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "price_amount": {
+          "description": "Decimal major-unit amount without a currency suffix, such as `12.99`.",
+          "maxLength": 17,
+          "minLength": 1,
+          "pattern": "^[0-9]{1,12}(\\.[0-9]{1,4})?$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "retailer_product_group_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sale_price_amount": {
+          "description": "Optional decimal sale amount; requires `currency`.",
+          "maxLength": 17,
+          "minLength": 1,
+          "pattern": "^[0-9]{1,12}(\\.[0-9]{1,4})?$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "ProductAvailability": {
+      "enum": [
+        "available_for_order",
+        "discontinued",
+        "in_stock",
+        "mark_as_expired",
+        "mark_as_sold",
+        "out_of_stock",
+        "pending",
+        "preorder"
+      ],
+      "type": "string"
+    },
+    "ProductBatchOperation": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Idempotently set fields on one retailer ID, creating it when allowed.",
+          "properties": {
+            "operation": {
+              "const": "upsert",
+              "type": "string"
+            },
+            "product": {
+              "$ref": "#/$defs/BatchProductUpsert"
+            },
+            "retailer_id": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation",
+            "retailer_id",
+            "product"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Permanently delete one retailer ID from the catalog.",
+          "properties": {
+            "operation": {
+              "const": "delete",
+              "type": "string"
+            },
+            "retailer_id": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation",
+            "retailer_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ProductCondition": {
+      "enum": [
+        "cpo",
+        "new",
+        "open_box_new",
+        "refurbished",
+        "used",
+        "used_fair",
+        "used_good",
+        "used_like_new"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allow_upsert": {
+      "default": true,
+      "description": "Let upserts create retailer IDs that do not exist. Defaults to true.",
+      "type": "boolean"
+    },
+    "operations": {
+      "description": "One through 100 explicit upsert/delete operations with unique retailer IDs.",
+      "items": {
+        "$ref": "#/$defs/ProductBatchOperation"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "type": "array"
+    },
+    "product_catalog_id": {
+      "description": "Numeric Meta product-catalog ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Required when any operation deletes a product, after operator approval; omit for upserts.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "product_catalog_id",
+    "operations"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="build_mutation_plan"></a>
+
+## `build_mutation_plan`
+
+Scope: **supporting** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1420)
+
+Freeze one bounded Graph v26 create, update, or delete plan for campaigns, ad sets, ads, creatives, custom audiences, or reach/frequency. Common delivery writes are validate-only checked; no live change occurs until apply_mutation_plan.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "MutationActionInput": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "ad_account_id": {
+              "description": "Numeric Meta ad-account ID, with or without `act_`.",
+              "maxLength": 68,
+              "minLength": 1,
+              "pattern": "^(act_)?[0-9]{1,64}$",
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "Official Graph v26 form fields. Credentials, excluded messaging fields, and execution_options are rejected.",
+              "maxProperties": 63,
+              "minProperties": 1,
+              "type": "object"
+            },
+            "resource_type": {
+              "$ref": "#/$defs/MutationResourceType"
+            },
+            "type": {
+              "const": "create",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "resource_type",
+            "ad_account_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "ad_account_id": {
+              "description": "Numeric Meta ad-account ID, with or without `act_`.",
+              "maxLength": 68,
+              "minLength": 1,
+              "pattern": "^(act_)?[0-9]{1,64}$",
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "Official Graph v26 form fields. Credentials, excluded messaging fields, and execution_options are rejected.",
+              "maxProperties": 63,
+              "minProperties": 1,
+              "type": "object"
+            },
+            "object_id": {
+              "description": "Numeric Meta object ID.",
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            },
+            "resource_type": {
+              "$ref": "#/$defs/MutationResourceType"
+            },
+            "type": {
+              "const": "update",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "resource_type",
+            "ad_account_id",
+            "object_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "ad_account_id": {
+              "description": "Numeric Meta ad-account ID, with or without `act_`.",
+              "maxLength": 68,
+              "minLength": 1,
+              "pattern": "^(act_)?[0-9]{1,64}$",
+              "type": "string"
+            },
+            "object_id": {
+              "description": "Numeric Meta object ID.",
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            },
+            "resource_type": {
+              "$ref": "#/$defs/MutationResourceType"
+            },
+            "type": {
+              "const": "delete",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "resource_type",
+            "ad_account_id",
+            "object_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "MutationResourceType": {
+      "enum": [
+        "campaign",
+        "ad_set",
+        "ad",
+        "ad_creative",
+        "custom_audience",
+        "reach_frequency_prediction"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/MutationActionInput",
+      "description": "Exactly one frozen Graph mutation request. A plan is never described as atomic."
+    },
+    "reason": {
+      "description": "Short operator-visible reason retained with the local plan preview.",
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "reason",
+    "action"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="change_ad_labels"></a>
+
+## `change_ad_labels`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_library_mutations.rs#L487)
+
+Add or remove labels on one verified campaign, ad set, ad or creative. Other labels are preserved; removals require acknowledgement. At most 50 labels per call.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "LabelAssignmentAction": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "add",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "remove",
+              "type": "string"
+            },
+            "removal_acknowledgement": {
+              "maxLength": 25,
+              "minLength": 25,
+              "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "removal_acknowledgement"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "LabelObjectKind": {
+      "enum": [
+        "campaign",
+        "ad_set",
+        "ad",
+        "creative"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/LabelAssignmentAction"
+    },
+    "ad_account_id": {
+      "type": "string"
+    },
+    "label_ids": {
+      "items": {
+        "maxLength": 64,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 50,
+      "minItems": 1,
+      "type": "array"
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "object_kind": {
+      "$ref": "#/$defs/LabelObjectKind"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "object_id",
+    "object_kind",
+    "label_ids",
+    "action"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="clone_ad"></a>
+
+## `clone_ad`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L487)
+
+Copy one Meta ad through the v26 copies edge; defaults to PAUSED and repeated calls can duplicate it.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdCopyStatus": {
+      "enum": [
+        "ACTIVE",
+        "INHERITED_FROM_SOURCE",
+        "PAUSED"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Expected source ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "ad_id": {
+      "description": "Numeric source ad ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "name_suffix": {
+      "description": "Optional copy-name suffix. Omit for Meta's localized default.",
+      "maxLength": 100,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "$ref": "#/$defs/AdCopyStatus",
+      "default": "PAUSED",
+      "description": "Status for the copy. Defaults to `PAUSED`; other values can begin delivery."
+    },
+    "target_ad_set_id": {
+      "description": "Optional numeric destination ad-set ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "ad_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="clone_ad_set"></a>
+
+## `clone_ad_set`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L377)
+
+Copy one Meta ad set through the v26 copies edge; defaults to PAUSED and can optionally copy child ads.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdSetCopyRename": {
+      "additionalProperties": false,
+      "properties": {
+        "prefix": {
+          "description": "Optional prefix, from 1 through 100 characters.",
+          "maxLength": 100,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "strategy": {
+          "$ref": "#/$defs/AdSetRenameStrategy"
+        },
+        "suffix": {
+          "description": "Optional suffix, from 1 through 100 characters.",
+          "maxLength": 100,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "strategy"
+      ],
+      "type": "object"
+    },
+    "AdSetCopyStatus": {
+      "enum": [
+        "ACTIVE",
+        "INHERITED_FROM_SOURCE",
+        "PAUSED"
+      ],
+      "type": "string"
+    },
+    "AdSetRenameStrategy": {
+      "enum": [
+        "DEEP_RENAME",
+        "NO_RENAME",
+        "ONLY_TOP_LEVEL_RENAME"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Expected source ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "ad_set_id": {
+      "description": "Numeric source ad-set ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "deep_copy": {
+      "description": "Copy child ads. Defaults to false and is subject to Meta's copy limits.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "end_time": {
+      "description": "Optional UTC Unix end override; omit to inherit Meta's copy behavior.",
+      "format": "uint64",
+      "maximum": 4102444800,
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "rename": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetCopyRename"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional typed rename behavior."
+    },
+    "start_time": {
+      "description": "Optional UTC Unix start override; omit to inherit Meta's copy behavior.",
+      "format": "uint64",
+      "maximum": 4102444800,
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "status": {
+      "$ref": "#/$defs/AdSetCopyStatus",
+      "default": "PAUSED",
+      "description": "Status for the copy. Defaults to `PAUSED`."
+    },
+    "target_campaign_id": {
+      "description": "Optional numeric campaign ID for a different parent campaign.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "ad_set_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="clone_campaign"></a>
+
+## `clone_campaign`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L300)
+
+Copy one Meta campaign through the v26 copies edge; the copy defaults to PAUSED.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CampaignCopyRename": {
+      "additionalProperties": false,
+      "properties": {
+        "prefix": {
+          "description": "Optional prefix, from 1 through 100 characters.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "strategy": {
+          "$ref": "#/$defs/CampaignRenameStrategy",
+          "description": "Which copied object names Meta changes."
+        },
+        "suffix": {
+          "description": "Optional suffix, from 1 through 100 characters.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "strategy"
+      ],
+      "type": "object"
+    },
+    "CampaignCopyStatus": {
+      "enum": [
+        "ACTIVE",
+        "INHERITED_FROM_SOURCE",
+        "PAUSED"
+      ],
+      "type": "string"
+    },
+    "CampaignRenameStrategy": {
+      "enum": [
+        "DEEP_RENAME",
+        "NO_RENAME",
+        "ONLY_TOP_LEVEL_RENAME"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Expected source ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "campaign_id": {
+      "description": "Numeric source campaign ID.",
+      "type": "string"
+    },
+    "deep_copy": {
+      "description": "Copy child ads as well as the campaign. Defaults to false.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "rename": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignCopyRename"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional typed rename behavior. Omit for Meta's localized copy suffix."
+    },
+    "status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignCopyStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Status for the copy. Defaults to `PAUSED`."
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "campaign_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="configure_catalog_advertising"></a>
+
+## `configure_catalog_advertising`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L726)
+
+Configure catalog categories, generated images, collaborative-ad image banks, or marketplace partner seller/deal batches. Marketplace batches require removal acknowledgement; check their returned session with read_catalog_batch_status.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CatalogAdConfigurationAction": {
+      "enum": [
+        "create_categories",
+        "update_generated_images",
+        "set_collaborative_image_bank",
+        "submit_marketplace_deals",
+        "submit_marketplace_sellers"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/CatalogAdConfigurationAction"
+    },
+    "catalog_id": {
+      "type": "string"
+    },
+    "fields": {
+      "additionalProperties": true,
+      "description": "Categories/generated images: data array of objects. Image bank: ad_group_id, agency_business_id, backup_image_urls. Marketplace submissions: requests object following Meta's partner contract.",
+      "type": "object"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for partner submissions because their batch contract can replace or remove records.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "catalog_id",
+    "action",
+    "fields"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_ad"></a>
+
+## `create_ad`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L451)
+
+Create one Meta ad from an existing creative; defaults to PAUSED and repeated calls can duplicate it.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdCreateStatus": {
+      "enum": [
+        "ACTIVE",
+        "PAUSED"
+      ],
+      "type": "string"
+    },
+    "PixelTracking": {
+      "additionalProperties": false,
+      "properties": {
+        "pixel_id": {
+          "description": "Numeric Meta pixel/dataset ID for `offsite_conversion` tracking.",
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[0-9]{1,64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pixel_id"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "ad_creative_id": {
+      "description": "Numeric existing ad-creative ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "ad_set_id": {
+      "description": "Numeric destination ad-set ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "bid_amount": {
+      "description": "Optional bid amount in account-currency minor units.",
+      "format": "uint32",
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "conversion_domain": {
+      "description": "Optional website conversion domain without a scheme or path.",
+      "maxLength": 253,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Ad name, from 1 through 256 characters.",
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    },
+    "pixel_tracking": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PixelTracking"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional bounded pixel tracking for offsite conversions."
+    },
+    "status": {
+      "$ref": "#/$defs/AdCreateStatus",
+      "default": "PAUSED",
+      "description": "Delivery status. Defaults to `PAUSED`; `ACTIVE` can begin delivery."
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "name",
+    "ad_set_id",
+    "ad_creative_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_ad_creative"></a>
+
+## `create_ad_creative`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L505)
+
+Create one typed reusable Meta ad creative; repeated calls can duplicate it.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdCreativeContent": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Reuse an existing Page post identified as `page_id_post_id`.",
+          "properties": {
+            "kind": {
+              "const": "existing_post",
+              "type": "string"
+            },
+            "object_story_id": {
+              "maxLength": 129,
+              "minLength": 3,
+              "pattern": "^[0-9]{1,64}_[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "object_story_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Reuse authorized existing Instagram media, including partnership content.",
+          "properties": {
+            "kind": {
+              "const": "instagram_media",
+              "type": "string"
+            },
+            "source_instagram_media_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "source_instagram_media_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "One image with link/story copy.",
+          "properties": {
+            "call_to_action": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CreativeCallToAction"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "description": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "headline": {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "image": {
+              "$ref": "#/$defs/CreativeImageSource"
+            },
+            "instagram_user_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kind": {
+              "const": "image",
+              "type": "string"
+            },
+            "link_url": {
+              "format": "uri",
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            "page_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            },
+            "primary_text": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "page_id",
+            "image",
+            "link_url"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "One existing Meta video with a required link call to action.",
+          "properties": {
+            "call_to_action": {
+              "$ref": "#/$defs/CreativeCallToAction"
+            },
+            "description": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "headline": {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "instagram_user_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kind": {
+              "const": "video",
+              "type": "string"
+            },
+            "link_url": {
+              "format": "uri",
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            "page_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            },
+            "primary_text": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "thumbnail_url": {
+              "format": "uri",
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "video_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id",
+            "video_id",
+            "link_url",
+            "call_to_action"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "A bounded two-to-ten-card link carousel.",
+          "properties": {
+            "call_to_action": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CreativeCallToAction"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "cards": {
+              "items": {
+                "$ref": "#/$defs/CarouselCard"
+              },
+              "maxItems": 10,
+              "minItems": 2,
+              "type": "array"
+            },
+            "instagram_user_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kind": {
+              "const": "carousel",
+              "type": "string"
+            },
+            "link_url": {
+              "format": "uri",
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            "page_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            },
+            "primary_text": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "page_id",
+            "link_url",
+            "cards"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Bounded image and text variants using the documented v26 asset-feed shape.",
+          "properties": {
+            "call_to_action": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CreativeCallToActionType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "descriptions": {
+              "default": [],
+              "items": {
+                "maxLength": 1000,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 5,
+              "type": "array"
+            },
+            "headlines": {
+              "default": [],
+              "items": {
+                "maxLength": 255,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 5,
+              "type": "array"
+            },
+            "images": {
+              "items": {
+                "$ref": "#/$defs/CreativeImageSource"
+              },
+              "maxItems": 10,
+              "minItems": 1,
+              "type": "array"
+            },
+            "instagram_user_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kind": {
+              "const": "flexible_image",
+              "type": "string"
+            },
+            "link_url": {
+              "format": "uri",
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            "page_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            },
+            "primary_texts": {
+              "items": {
+                "maxLength": 2000,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 5,
+              "minItems": 1,
+              "type": "array"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id",
+            "link_url",
+            "images",
+            "primary_texts"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "A product-set creative with one closed catalog template.",
+          "properties": {
+            "call_to_action": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CreativeCallToActionType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "description": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "headline": {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "instagram_user_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kind": {
+              "const": "catalog",
+              "type": "string"
+            },
+            "link_url": {
+              "format": "uri",
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            },
+            "page_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            },
+            "primary_text": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "product_set_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id",
+            "product_set_id",
+            "link_url"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CarouselCard": {
+      "additionalProperties": false,
+      "properties": {
+        "call_to_action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CreativeCallToAction"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Optional card-specific call to action."
+        },
+        "description": {
+          "description": "Optional card description.",
+          "maxLength": 1000,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "headline": {
+          "description": "Card headline.",
+          "maxLength": 255,
+          "minLength": 1,
+          "type": "string"
+        },
+        "link_url": {
+          "description": "Card destination URL.",
+          "format": "uri",
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        },
+        "media": {
+          "$ref": "#/$defs/CarouselMedia",
+          "description": "Exactly one card media source."
+        }
+      },
+      "required": [
+        "link_url",
+        "headline",
+        "media"
+      ],
+      "type": "object"
+    },
+    "CarouselMedia": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            "kind": {
+              "const": "image",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "hash"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "video",
+              "type": "string"
+            },
+            "video_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "video_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CreativeCallToAction": {
+      "additionalProperties": false,
+      "properties": {
+        "button": {
+          "$ref": "#/$defs/CreativeCallToActionType",
+          "description": "Button type from the bounded commonly used v26 set."
+        },
+        "lead_form_id": {
+          "description": "Optional numeric lead-generation form ID.",
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[0-9]{1,64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "button"
+      ],
+      "type": "object"
+    },
+    "CreativeCallToActionType": {
+      "enum": [
+        "ADD_TO_CART",
+        "APPLY_NOW",
+        "BOOK_NOW",
+        "BUY_NOW",
+        "CONTACT_US",
+        "DONATE_NOW",
+        "DOWNLOAD",
+        "GET_OFFER",
+        "GET_QUOTE",
+        "LEARN_MORE",
+        "ORDER_NOW",
+        "SHOP_NOW",
+        "SIGN_UP",
+        "SUBSCRIBE",
+        "WATCH_MORE"
+      ],
+      "type": "string"
+    },
+    "CreativeImageSource": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Reuse an image from the ad account's image library.",
+          "properties": {
+            "hash": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            "kind": {
+              "const": "hash",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "hash"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Ask Meta to fetch an HTTPS image URL.",
+          "properties": {
+            "kind": {
+              "const": "url",
+              "type": "string"
+            },
+            "url": {
+              "format": "uri",
+              "maxLength": 4096,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "url"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "content": {
+      "$ref": "#/$defs/AdCreativeContent",
+      "description": "One closed, typed creative content mode."
+    },
+    "name": {
+      "description": "Creative name, from 1 through 256 characters.",
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    },
+    "url_tags": {
+      "description": "Optional query-string tags without a leading `?`; never include secrets.",
+      "maxLength": 2048,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "name",
+    "content"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_ad_set"></a>
+
+## `create_ad_set`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L341)
+
+Create one typed Meta ad set; delivery defaults to PAUSED and repeated calls can duplicate it.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdSetBid": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "format": "uint64",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "strategy": {
+              "const": "COST_CAP",
+              "type": "string"
+            }
+          },
+          "required": [
+            "strategy",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "strategy": {
+              "const": "LOWEST_COST_WITHOUT_CAP",
+              "type": "string"
+            }
+          },
+          "required": [
+            "strategy"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "format": "uint64",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "strategy": {
+              "const": "LOWEST_COST_WITH_BID_CAP",
+              "type": "string"
+            }
+          },
+          "required": [
+            "strategy",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "roas_average_floor": {
+              "format": "uint32",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "strategy": {
+              "const": "LOWEST_COST_WITH_MIN_ROAS",
+              "type": "string"
+            }
+          },
+          "required": [
+            "strategy",
+            "roas_average_floor"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "AdSetBillingEvent": {
+      "enum": [
+        "APP_INSTALLS",
+        "IMPRESSIONS",
+        "LINK_CLICKS",
+        "PAGE_LIKES",
+        "POST_ENGAGEMENT",
+        "PURCHASE",
+        "THRUPLAY"
+      ],
+      "type": "string"
+    },
+    "AdSetCreateStatus": {
+      "enum": [
+        "ACTIVE",
+        "PAUSED"
+      ],
+      "type": "string"
+    },
+    "AdSetDestinationType": {
+      "enum": [
+        "APP",
+        "FACEBOOK",
+        "FACEBOOK_PAGE",
+        "INSTAGRAM_DIRECT",
+        "INSTAGRAM_PROFILE",
+        "MESSENGER",
+        "ON_AD",
+        "ON_PAGE",
+        "ON_POST",
+        "SHOP_AUTOMATIC",
+        "WEBSITE"
+      ],
+      "type": "string"
+    },
+    "AdSetOptimizationGoal": {
+      "enum": [
+        "AD_RECALL_LIFT",
+        "APP_INSTALLS",
+        "CONVERSATIONS",
+        "EVENT_RESPONSES",
+        "IMPRESSIONS",
+        "LANDING_PAGE_VIEWS",
+        "LEAD_GENERATION",
+        "LINK_CLICKS",
+        "OFFSITE_CONVERSIONS",
+        "PAGE_LIKES",
+        "POST_ENGAGEMENT",
+        "QUALITY_LEAD",
+        "REACH",
+        "THRUPLAY",
+        "VALUE",
+        "VISIT_INSTAGRAM_PROFILE"
+      ],
+      "type": "string"
+    },
+    "AdSetPromotedObject": {
+      "description": "A typed common subset of Meta's objective-dependent promoted-object shapes.",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "application_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            },
+            "custom_event_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CustomEventType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "kind": {
+              "const": "app",
+              "type": "string"
+            },
+            "object_store_url": {
+              "format": "uri",
+              "maxLength": 2048,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "application_id",
+            "object_store_url"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "custom_event_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CustomEventType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "kind": {
+              "const": "pixel",
+              "type": "string"
+            },
+            "pixel_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "pixel_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "page",
+              "type": "string"
+            },
+            "page_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "custom_event_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CustomEventType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "kind": {
+              "const": "product_set",
+              "type": "string"
+            },
+            "product_set_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "product_set_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "AttributionEventType": {
+      "enum": [
+        "CLICK_THROUGH",
+        "ENGAGED_VIDEO_VIEW",
+        "VIEW_THROUGH"
+      ],
+      "type": "string"
+    },
+    "AttributionSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "event_type": {
+          "$ref": "#/$defs/AttributionEventType"
+        },
+        "window_days": {
+          "description": "Provider-dependent window from 1 through 28 days.",
+          "format": "uint8",
+          "maximum": 28,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "event_type",
+        "window_days"
+      ],
+      "type": "object"
+    },
+    "AudienceEstimateTargeting": {
+      "additionalProperties": false,
+      "properties": {
+        "age_max": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "age_min": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "age_range": {
+          "description": "Suggested age range for Advantage+ audience, as `[minimum, maximum]`.",
+          "items": {
+            "format": "uint8",
+            "maximum": 255,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "audience_network_positions": {
+          "items": {
+            "$ref": "#/$defs/AudienceNetworkPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "behaviors": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "custom_audiences": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "device_platforms": {
+          "items": {
+            "$ref": "#/$defs/DevicePlatform"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "excluded_custom_audiences": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "facebook_positions": {
+          "items": {
+            "$ref": "#/$defs/FacebookPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "flexible_spec": {
+          "items": {
+            "$ref": "#/$defs/FlexibleTargetingGroup"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "genders": {
+          "description": "`1` targets men and `2` targets women. Omit for all genders.",
+          "items": {
+            "format": "uint8",
+            "maximum": 255,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "geo_locations": {
+          "$ref": "#/$defs/EstimateGeoLocations"
+        },
+        "instagram_positions": {
+          "items": {
+            "$ref": "#/$defs/InstagramPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "interests": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "messenger_positions": {
+          "items": {
+            "$ref": "#/$defs/MessengerPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "publisher_platforms": {
+          "items": {
+            "$ref": "#/$defs/PublisherPlatform"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "targeting_automation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TargetingAutomation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "threads_positions": {
+          "items": {
+            "$ref": "#/$defs/ThreadsPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "user_age_unknown": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "geo_locations"
+      ],
+      "type": "object"
+    },
+    "AudienceNetworkPosition": {
+      "enum": [
+        "classic",
+        "rewarded_video"
+      ],
+      "type": "string"
+    },
+    "CreateAdSetBudget": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Daily budget in account-currency minor units.",
+          "properties": {
+            "amount": {
+              "format": "uint64",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "daily",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Lifetime budget in account-currency minor units; requires `end_time`.",
+          "properties": {
+            "amount": {
+              "format": "uint64",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "lifetime",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "The parent campaign owns the budget.",
+          "properties": {
+            "kind": {
+              "const": "campaign",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CustomEventType": {
+      "enum": [
+        "ADD_PAYMENT_INFO",
+        "ADD_TO_CART",
+        "ADD_TO_WISHLIST",
+        "COMPLETE_REGISTRATION",
+        "CONTACT",
+        "CONTENT_VIEW",
+        "INITIATED_CHECKOUT",
+        "LEAD",
+        "OTHER",
+        "PURCHASE",
+        "SEARCH",
+        "START_TRIAL",
+        "SUBMIT_APPLICATION",
+        "SUBSCRIBE"
+      ],
+      "type": "string"
+    },
+    "DevicePlatform": {
+      "enum": [
+        "connected_tv",
+        "desktop",
+        "mobile"
+      ],
+      "type": "string"
+    },
+    "EstimateGeoLocations": {
+      "additionalProperties": false,
+      "properties": {
+        "countries": {
+          "description": "One through 250 two-letter uppercase country codes.",
+          "items": {
+            "maxLength": 2,
+            "minLength": 2,
+            "type": "string"
+          },
+          "maxItems": 250,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "countries"
+      ],
+      "type": "object"
+    },
+    "FacebookPosition": {
+      "enum": [
+        "feed",
+        "right_hand_column",
+        "marketplace",
+        "story",
+        "search",
+        "instream_video",
+        "facebook_reels",
+        "facebook_reels_overlay",
+        "profile_feed",
+        "notification"
+      ],
+      "type": "string"
+    },
+    "FlexibleTargetingGroup": {
+      "additionalProperties": false,
+      "description": "Common flexible-targeting dimensions used by the Python server.",
+      "properties": {
+        "behaviors": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "custom_audiences": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "interests": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "FrequencyControlEvent": {
+      "enum": [
+        "IMPRESSIONS"
+      ],
+      "type": "string"
+    },
+    "FrequencyControlSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "event": {
+          "$ref": "#/$defs/FrequencyControlEvent",
+          "description": "Meta v26 currently supports `IMPRESSIONS` for write operations."
+        },
+        "interval_days": {
+          "description": "Frequency interval, from 1 through 90 days.",
+          "format": "uint8",
+          "maximum": 90,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_frequency": {
+          "description": "Maximum frequency, from 1 through 90.",
+          "format": "uint8",
+          "maximum": 90,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/$defs/FrequencyControlType"
+        }
+      },
+      "required": [
+        "event",
+        "interval_days",
+        "max_frequency",
+        "type"
+      ],
+      "type": "object"
+    },
+    "FrequencyControlType": {
+      "enum": [
+        "CAP",
+        "NONE",
+        "TARGET"
+      ],
+      "type": "string"
+    },
+    "InstagramPosition": {
+      "description": "Current v26 positions; removed Instagram `explore` is rejected.",
+      "enum": [
+        "stream",
+        "story",
+        "explore_home",
+        "reels",
+        "profile_feed",
+        "ig_search",
+        "profile_reels"
+      ],
+      "type": "string"
+    },
+    "MessengerPosition": {
+      "description": "Current v26 positions; removed Messenger `story` is rejected.",
+      "enum": [
+        "sponsored_messages"
+      ],
+      "type": "string"
+    },
+    "PlacementSoftOptOut": {
+      "additionalProperties": false,
+      "properties": {
+        "audience_network_positions": {
+          "items": {
+            "$ref": "#/$defs/AudienceNetworkPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "facebook_positions": {
+          "items": {
+            "$ref": "#/$defs/FacebookPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "instagram_positions": {
+          "items": {
+            "$ref": "#/$defs/InstagramPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "messenger_positions": {
+          "items": {
+            "$ref": "#/$defs/MessengerPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "threads_positions": {
+          "items": {
+            "$ref": "#/$defs/ThreadsPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "PublisherPlatform": {
+      "enum": [
+        "facebook",
+        "instagram",
+        "threads",
+        "messenger",
+        "audience_network"
+      ],
+      "type": "string"
+    },
+    "TargetingAutomation": {
+      "additionalProperties": false,
+      "properties": {
+        "advantage_audience": {
+          "description": "Explicit Advantage+ audience intent. Sent to Meta as `1` or `0`.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "advantage_audience"
+      ],
+      "type": "object"
+    },
+    "TargetingId": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Numeric Meta targeting or audience ID.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "ThreadsPosition": {
+      "enum": [
+        "threads_stream"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "attribution_spec": {
+      "items": {
+        "$ref": "#/$defs/AttributionSpec"
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "bid": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetBid"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional coherent bid strategy and its required control."
+    },
+    "billing_event": {
+      "$ref": "#/$defs/AdSetBillingEvent"
+    },
+    "budget": {
+      "$ref": "#/$defs/CreateAdSetBudget",
+      "description": "Explicit daily, lifetime, or parent-campaign budget intent."
+    },
+    "campaign_id": {
+      "description": "Numeric parent campaign ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "destination_type": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetDestinationType"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "dsa_beneficiary": {
+      "description": "DSA beneficiary text required by Meta for applicable regulated delivery.",
+      "maxLength": 512,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dsa_payor": {
+      "description": "DSA payor text required by Meta for applicable regulated delivery.",
+      "maxLength": 512,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "end_time": {
+      "description": "Optional UTC Unix end time. Required for a lifetime budget.",
+      "format": "uint64",
+      "maximum": 4102444800,
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "frequency_control_specs": {
+      "items": {
+        "$ref": "#/$defs/FrequencyControlSpec"
+      },
+      "maxItems": 4,
+      "minItems": 1,
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "is_dynamic_creative": {
+      "description": "Dynamic creative can only be selected when the ad set is created.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Ad-set name, from 1 through 256 plain-text characters.",
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    },
+    "optimization_goal": {
+      "$ref": "#/$defs/AdSetOptimizationGoal"
+    },
+    "placement_soft_opt_out": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PlacementSoftOptOut"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "promoted_object": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetPromotedObject"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "start_time": {
+      "description": "Optional UTC Unix start time, through 2100-01-01.",
+      "format": "uint64",
+      "maximum": 4102444800,
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "status": {
+      "$ref": "#/$defs/AdSetCreateStatus",
+      "default": "PAUSED",
+      "description": "Delivery status. Defaults to `PAUSED`; `ACTIVE` begins eligible delivery."
+    },
+    "targeting": {
+      "$ref": "#/$defs/AudienceEstimateTargeting",
+      "description": "Bounded common targeting. Include explicit Advantage+ audience intent."
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "campaign_id",
+    "name",
+    "optimization_goal",
+    "billing_event",
+    "budget",
+    "targeting"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_business_asset"></a>
+
+## `create_business_asset`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/asset_admin.rs#L392)
+
+Create a pixel, dataset, user, ad account or publisher blocklist. Business-user creation may invite the supplied email. Repeated calls may create duplicates; credentials are never tool inputs.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CreateBusinessAssetKind": {
+      "enum": [
+        "business_pixel",
+        "account_pixel",
+        "dataset",
+        "business_user",
+        "system_user",
+        "ad_account",
+        "publisher_block_list"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "fields": {
+      "additionalProperties": true,
+      "description": "Official v26 creation fields. Most require name; business users require email/role and may send an invitation. No token generation.",
+      "type": "object"
+    },
+    "kind": {
+      "$ref": "#/$defs/CreateBusinessAssetKind"
+    },
+    "parent_id": {
+      "description": "Business ID, except account_pixel and publisher_block_list use ad account ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind",
+    "parent_id",
+    "fields"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_campaign"></a>
+
+## `create_campaign`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L264)
+
+Create one typed Meta campaign; delivery defaults to PAUSED and repeated calls can duplicate it.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CampaignBidStrategy": {
+      "enum": [
+        "COST_CAP",
+        "LOWEST_COST_WITHOUT_CAP",
+        "LOWEST_COST_WITH_BID_CAP",
+        "LOWEST_COST_WITH_MIN_ROAS"
+      ],
+      "type": "string"
+    },
+    "CampaignBudget": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Daily campaign budget in account-currency minor units.",
+          "properties": {
+            "amount": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "daily",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Lifetime campaign budget in account-currency minor units.",
+          "properties": {
+            "amount": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "lifetime",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Budgets are set on child ad sets instead of this campaign.",
+          "properties": {
+            "kind": {
+              "const": "ad_set_level",
+              "type": "string"
+            },
+            "share_across_ad_sets": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "kind",
+            "share_across_ad_sets"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CampaignCreateStatus": {
+      "enum": [
+        "ACTIVE",
+        "PAUSED"
+      ],
+      "type": "string"
+    },
+    "CampaignObjective": {
+      "enum": [
+        "OUTCOME_APP_PROMOTION",
+        "OUTCOME_AWARENESS",
+        "OUTCOME_ENGAGEMENT",
+        "OUTCOME_LEADS",
+        "OUTCOME_SALES",
+        "OUTCOME_TRAFFIC"
+      ],
+      "type": "string"
+    },
+    "SpecialAdCategory": {
+      "enum": [
+        "CREDIT",
+        "EMPLOYMENT",
+        "FINANCIAL_PRODUCTS_SERVICES",
+        "HOUSING",
+        "ISSUES_ELECTIONS_POLITICS",
+        "ONLINE_GAMBLING_AND_GAMING"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "bid_strategy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignBidStrategy"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional campaign bid strategy. Bid amounts belong on ad sets."
+    },
+    "budget": {
+      "$ref": "#/$defs/CampaignBudget",
+      "description": "Exactly one campaign- or ad-set-level budget strategy."
+    },
+    "name": {
+      "description": "Campaign name, from 1 through 256 characters.",
+      "type": "string"
+    },
+    "objective": {
+      "$ref": "#/$defs/CampaignObjective",
+      "description": "Current outcome-based Meta campaign objective."
+    },
+    "special_ad_categories": {
+      "description": "Special-ad categories. Omit or use an empty list when none apply.",
+      "items": {
+        "$ref": "#/$defs/SpecialAdCategory"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "special_ad_category_countries": {
+      "description": "Two-letter country codes required by regulated special-ad categories.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "spend_cap": {
+      "description": "Optional account-currency spend cap in minor units.",
+      "format": "uint32",
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignCreateStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Delivery status. Defaults to `PAUSED`; use `ACTIVE` only to start delivery now."
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "name",
+    "objective",
+    "budget"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_campaign_budget_schedule"></a>
+
+## `create_campaign_budget_schedule`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L318)
+
+Create one bounded high-demand budget schedule; repeated calls can duplicate the schedule.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CampaignBudgetScheduleValue": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Absolute adjustment in account-currency minor units.",
+          "properties": {
+            "kind": {
+              "const": "absolute",
+              "type": "string"
+            },
+            "value": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Meta-defined integer multiplier value.",
+          "properties": {
+            "kind": {
+              "const": "multiplier",
+              "type": "string"
+            },
+            "value": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Expected owner ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "budget": {
+      "$ref": "#/$defs/CampaignBudgetScheduleValue",
+      "description": "Absolute or multiplier budget adjustment."
+    },
+    "campaign_id": {
+      "description": "Numeric Meta campaign ID.",
+      "type": "string"
+    },
+    "time_end": {
+      "description": "Unix end timestamp accepted by Meta; must be after `time_start`.",
+      "format": "uint32",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "time_start": {
+      "description": "Inclusive Unix start timestamp accepted by Meta, greater than zero.",
+      "format": "uint32",
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "campaign_id",
+    "budget",
+    "time_start",
+    "time_end"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_custom_audience"></a>
+
+## `create_custom_audience`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L642)
+
+Create one empty customer-list audience; repeated calls can create duplicates.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CustomerFileSource": {
+      "enum": [
+        "USER_PROVIDED_ONLY",
+        "PARTNER_PROVIDED_ONLY",
+        "BOTH_USER_AND_PARTNER_PROVIDED"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "customer_file_source": {
+      "$ref": "#/$defs/CustomerFileSource",
+      "description": "How the customer information was collected."
+    },
+    "description": {
+      "description": "Optional audience description, up to 1,000 characters.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Audience name, from 1 through 256 characters.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "name",
+    "customer_file_source"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_custom_conversion"></a>
+
+## `create_custom_conversion`
+
+Scope: **meta-ads** · Capability: **tracking** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L751)
+
+Create one bounded custom conversion; repeated calls can create duplicates.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CustomConversionActionSource": {
+      "enum": [
+        "app",
+        "business_messaging",
+        "chat",
+        "email",
+        "other",
+        "phone_call",
+        "physical_store",
+        "system_generated",
+        "website"
+      ],
+      "type": "string"
+    },
+    "CustomConversionEventType": {
+      "enum": [
+        "ADD_PAYMENT_INFO",
+        "ADD_TO_CART",
+        "ADD_TO_WISHLIST",
+        "COMPLETE_REGISTRATION",
+        "CONTACT",
+        "CONTENT_VIEW",
+        "CUSTOMIZE_PRODUCT",
+        "DONATE",
+        "FACEBOOK_SELECTED",
+        "FIND_LOCATION",
+        "INITIATED_CHECKOUT",
+        "LEAD",
+        "LISTING_INTERACTION",
+        "OTHER",
+        "PURCHASE",
+        "SCHEDULE",
+        "SEARCH",
+        "START_TRIAL",
+        "SUBMIT_APPLICATION",
+        "SUBSCRIBE"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_source_type": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CustomConversionActionSource"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional source channel for the event."
+    },
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "advanced_rule": {
+      "additionalProperties": true,
+      "description": "Optional current Meta advanced-rule object, encoded under a 16 KiB safety cap.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "custom_event_type": {
+      "$ref": "#/$defs/CustomConversionEventType",
+      "description": "Standard event used for reporting and optimization."
+    },
+    "default_conversion_value": {
+      "description": "Fixed value for events without a value. Must be finite and nonnegative.",
+      "format": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "Optional description, up to 1,024 characters.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "event_source_id": {
+      "description": "Numeric Pixel or dataset ID that emits the source events.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Conversion name, from 1 through 100 characters.",
+      "type": "string"
+    },
+    "rule": {
+      "additionalProperties": true,
+      "description": "Nonempty Meta custom-conversion rule object, encoded under a 16 KiB safety cap.",
+      "type": "object"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "name",
+    "event_source_id",
+    "rule",
+    "custom_event_type"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_feed_error_report"></a>
+
+## `create_feed_error_report`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L791)
+
+Request an error report for one feed upload; read its error_report field afterward. Repeated requests may regenerate the report.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "feed_upload_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "feed_upload_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_insights_job"></a>
+
+## `create_insights_job`
+
+Scope: **meta-ads** · Capability: **reporting** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L920)
+
+Start one async Meta Insights report run; repeated calls can create duplicate jobs.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ActionAttributionWindow": {
+      "enum": [
+        "1d_click",
+        "1d_ev",
+        "1d_sequenced",
+        "1d_view",
+        "28d_click",
+        "28d_sequenced",
+        "28d_view",
+        "28d_view_all_conversions",
+        "28d_view_first_conversion",
+        "7d_click",
+        "7d_sequenced",
+        "7d_view",
+        "7d_view_all_conversions",
+        "7d_view_first_conversion",
+        "custom",
+        "dda",
+        "default",
+        "incrementality",
+        "incrementality_all_conversions",
+        "incrementality_first_conversion",
+        "skan_click",
+        "skan_click_second_postback",
+        "skan_click_third_postback",
+        "skan_view",
+        "skan_view_second_postback",
+        "skan_view_third_postback"
+      ],
+      "type": "string"
+    },
+    "ActionReportTime": {
+      "enum": [
+        "impression",
+        "conversion",
+        "mixed",
+        "lifetime"
+      ],
+      "type": "string"
+    },
+    "InsightDatePreset": {
+      "enum": [
+        "data_maximum",
+        "last_14d",
+        "last_28d",
+        "last_30d",
+        "last_3d",
+        "last_7d",
+        "last_90d",
+        "last_month",
+        "last_quarter",
+        "last_week_mon_sun",
+        "last_week_sun_sat",
+        "last_year",
+        "maximum",
+        "this_month",
+        "this_quarter",
+        "this_week_mon_today",
+        "this_week_sun_today",
+        "this_year",
+        "today",
+        "yesterday"
+      ],
+      "type": "string"
+    },
+    "InsightFilter": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "operator": {
+          "$ref": "#/$defs/InsightFilterOperator"
+        },
+        "value": {
+          "description": "Scalar or bounded array of values, according to the chosen operator."
+        }
+      },
+      "required": [
+        "field",
+        "operator",
+        "value"
+      ],
+      "type": "object"
+    },
+    "InsightFilterOperator": {
+      "enum": [
+        "EQUAL",
+        "NOT_EQUAL",
+        "GREATER_THAN",
+        "GREATER_THAN_OR_EQUAL",
+        "LESS_THAN",
+        "LESS_THAN_OR_EQUAL",
+        "IN_RANGE",
+        "NOT_IN_RANGE",
+        "CONTAIN",
+        "NOT_CONTAIN",
+        "CONTAINS_ANY",
+        "CONTAINS_ALL",
+        "NOT_CONTAINS_ANY",
+        "STEM_MATCH",
+        "IN",
+        "NOT_IN",
+        "STARTS_WITH",
+        "ENDS_WITH",
+        "ANY",
+        "ALL",
+        "AFTER",
+        "BEFORE",
+        "ON_OR_AFTER",
+        "ON_OR_BEFORE",
+        "NONE",
+        "TOP"
+      ],
+      "type": "string"
+    },
+    "InsightLevel": {
+      "enum": [
+        "account",
+        "campaign",
+        "adset",
+        "ad"
+      ],
+      "type": "string"
+    },
+    "InsightOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "action_report_time": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ActionReportTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "default_summary": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "filtering": {
+          "description": "Meta filter objects: field (e.g. campaign.id), operator (e.g. IN), value.",
+          "items": {
+            "$ref": "#/$defs/InsightFilter"
+          },
+          "maxItems": 25,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "product_id_limit": {
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "sort": {
+          "description": "One sort, e.g. spend_descending or actions:link_click_ascending.",
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "summary": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 50,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "time_ranges": {
+          "description": "Overrides single-date selection; cannot be combined with time_increment.",
+          "items": {
+            "$ref": "#/$defs/InsightTimeRange"
+          },
+          "maxItems": 25,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "use_account_attribution_setting": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "use_unified_attribution_setting": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "InsightTimeRange": {
+      "additionalProperties": false,
+      "properties": {
+        "since": {
+          "description": "Inclusive start date in `YYYY-MM-DD` format.",
+          "type": "string"
+        },
+        "until": {
+          "description": "Inclusive end date in `YYYY-MM-DD` format.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "since",
+        "until"
+      ],
+      "type": "object"
+    },
+    "InsightsExportFormat": {
+      "enum": [
+        "csv",
+        "xls"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_attribution_windows": {
+      "description": "Meta v26.0 attribution windows. Values remain separate in each row.",
+      "items": {
+        "$ref": "#/$defs/ActionAttributionWindow"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "action_breakdowns": {
+      "description": "Action breakdown names; maximum 10.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "breakdowns": {
+      "description": "Dimension breakdown names; maximum 10.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "date_preset": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InsightDatePreset"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Meta-defined relative date window. Defaults to `maximum`."
+    },
+    "export_columns": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 50,
+      "minItems": 1,
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "export_format": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InsightsExportFormat"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional asynchronous export format: CSV or XLS."
+    },
+    "export_name": {
+      "maxLength": 255,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fields": {
+      "description": "Insight fields. Defaults to a compact performance bundle; maximum 50.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "level": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InsightLevel"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Aggregation level. Defaults to `ad`."
+    },
+    "object_id": {
+      "description": "Numeric account, campaign, ad-set, or ad ID. Account IDs may use `act_`.",
+      "type": "string"
+    },
+    "options": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InsightOptions"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "summary_action_breakdowns": {
+      "description": "Summary action breakdown names; maximum 10.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "time_increment": {
+      "description": "Time buckets: `1` through `90` days, `monthly`, or `all_days`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "time_range": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InsightTimeRange"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Inclusive calendar dates; mutually exclusive with `date_preset`."
+    }
+  },
+  "required": [
+    "object_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_lead_form"></a>
+
+## `create_lead_form`
+
+Scope: **meta-ads** · Capability: **leads** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/lead_forms.rs#L568)
+
+Create an Instant Form on a Page using bounded v26 questions, privacy policy, thank-you page and quality settings. Requires Page advertising access; content changes require a new form.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "cover_photo_relative_path": {
+      "description": "Optional JPEG/PNG below 15 MiB, relative to META_MEDIA_ROOT. Requires pages_manage_posts.",
+      "maxLength": 1024,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fields": {
+      "additionalProperties": true,
+      "description": "v26 form fields: name, locale, questions, privacy_policy, plus optional context_card,\ncustom_disclaimer, thank_you_page, tracking_parameters and quality/consent settings.",
+      "type": "object"
+    },
+    "gated_file_relative_path": {
+      "description": "Optional PDF/JPEG/PNG below 20 MiB, relative to META_MEDIA_ROOT. Requires thank_you_page.button_type=VIEW_ON_FACEBOOK.",
+      "maxLength": 1024,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "page_id",
+    "fields"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_lookalike_audience"></a>
+
+## `create_lookalike_audience`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L730)
+
+Create one typed country-based lookalike; repeated calls can create duplicates.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "LookalikeAudienceType": {
+      "enum": [
+        "similarity",
+        "reach"
+      ],
+      "type": "string"
+    },
+    "LookalikeSpecInput": {
+      "additionalProperties": false,
+      "properties": {
+        "allow_international_seeds": {
+          "description": "Permit Meta to find seed members outside the requested country.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "audience_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LookalikeAudienceType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Meta preset. Provide exactly one of `audience_type` or `ratio`."
+        },
+        "country": {
+          "description": "Two-letter country code.",
+          "type": "string"
+        },
+        "ratio": {
+          "description": "Custom top percentage as a fraction, 0.01 through 0.20 in 0.01 steps.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "starting_ratio": {
+          "description": "Optional range start in 0.01 steps; requires `ratio` and must be smaller.",
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "country"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "description": {
+      "description": "Optional description, up to 1,000 characters.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lookalike_spec": {
+      "$ref": "#/$defs/LookalikeSpecInput",
+      "description": "Typed country-based lookalike definition."
+    },
+    "name": {
+      "description": "Lookalike name, from 1 through 256 characters.",
+      "type": "string"
+    },
+    "origin_audience_id": {
+      "description": "Numeric seed custom-audience ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "name",
+    "origin_audience_id",
+    "lookalike_spec"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_page_backed_instagram_account"></a>
+
+## `create_page_backed_instagram_account`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_engagement.rs#L565)
+
+Create the Page-backed Instagram advertising identity for a Page without an Instagram account. Read its existing identities first; requires Page advertising access.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "page_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "page_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_reach_frequency_prediction"></a>
+
+## `create_reach_frequency_prediction`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1541)
+
+Create one bounded Graph v26 budget-to-reach quote without reserving inventory; verify the prediction list before retrying an ambiguous failure.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ReservationGender": {
+      "enum": [
+        "male",
+        "female"
+      ],
+      "type": "string"
+    },
+    "ReservationObjective": {
+      "enum": [
+        "BRAND_AWARENESS",
+        "LINK_CLICKS",
+        "POST_ENGAGEMENT",
+        "REACH",
+        "VIDEO_VIEWS",
+        "WEBSITE_CONVERSIONS"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without `act_`.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "age_max": {
+      "description": "Optional maximum age, 13 through 65.",
+      "format": "uint8",
+      "maximum": 65,
+      "minimum": 13,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "age_min": {
+      "description": "Optional minimum age, 13 through 65.",
+      "format": "uint8",
+      "maximum": 65,
+      "minimum": 13,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "budget": {
+      "description": "Expected lifetime budget in account-currency minor units.",
+      "format": "uint64",
+      "maximum": 9223372036854775807,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "country": {
+      "description": "One two-letter country code. Meta reservation predictions allow one country.",
+      "maxLength": 2,
+      "minLength": 2,
+      "pattern": "^[A-Za-z]{2}$",
+      "type": "string"
+    },
+    "facebook_page_id": {
+      "description": "Numeric advertiser Page ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "frequency_cap": {
+      "description": "Optional positive lifetime frequency cap.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "gender": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReservationGender"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Omit for all genders."
+    },
+    "instagram_business_account_id": {
+      "description": "Numeric Instagram professional-account ID when Instagram may deliver.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "objective": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReservationObjective"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Defaults to `REACH`; mobile-app installs are intentionally not exposed."
+    },
+    "start_time": {
+      "description": "Future Unix start timestamp.",
+      "format": "uint64",
+      "maximum": 4102444800,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "stop_time": {
+      "description": "Unix stop timestamp after start and no more than eight weeks ahead.",
+      "format": "uint64",
+      "maximum": 4102444800,
+      "minimum": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "facebook_page_id",
+    "budget",
+    "start_time",
+    "stop_time",
+    "country"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_report"></a>
+
+## `create_report`
+
+Scope: **meta-ads** · Capability: **reporting** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1298)
+
+Create a compact read-only performance summary for one Meta object and optional comparison period.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "InsightDatePreset": {
+      "enum": [
+        "data_maximum",
+        "last_14d",
+        "last_28d",
+        "last_30d",
+        "last_3d",
+        "last_7d",
+        "last_90d",
+        "last_month",
+        "last_quarter",
+        "last_week_mon_sun",
+        "last_week_sun_sat",
+        "last_year",
+        "maximum",
+        "this_month",
+        "this_quarter",
+        "this_week_mon_today",
+        "this_week_sun_today",
+        "this_year",
+        "today",
+        "yesterday"
+      ],
+      "type": "string"
+    },
+    "InsightTimeRange": {
+      "additionalProperties": false,
+      "properties": {
+        "since": {
+          "description": "Inclusive start date in `YYYY-MM-DD` format.",
+          "type": "string"
+        },
+        "until": {
+          "description": "Inclusive end date in `YYYY-MM-DD` format.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "since",
+        "until"
+      ],
+      "type": "object"
+    },
+    "ReportPeriod": {
+      "additionalProperties": false,
+      "properties": {
+        "date_preset": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InsightDatePreset"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Meta-defined relative date window. Defaults to `last_30d` for the current period."
+        },
+        "time_range": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InsightTimeRange"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Inclusive calendar dates; mutually exclusive with `date_preset`."
+        }
+      },
+      "type": "object"
+    },
+    "ReportScope": {
+      "enum": [
+        "account",
+        "campaign",
+        "ad_set",
+        "ad"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "comparison_period": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReportPeriod"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional second period returned separately for direct comparison."
+    },
+    "current_period": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReportPeriod"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Current reporting period. Defaults to `last_30d`."
+    },
+    "object_id": {
+      "description": "Numeric Meta account, campaign, ad-set, or ad ID. Account IDs may use `act_`.",
+      "type": "string"
+    },
+    "report_name": {
+      "description": "Short label returned with the report; maximum 120 characters.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scope": {
+      "$ref": "#/$defs/ReportScope",
+      "description": "Aggregation scope matching `object_id`."
+    }
+  },
+  "required": [
+    "object_id",
+    "scope"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_test_lead"></a>
+
+## `create_test_lead`
+
+Scope: **meta-ads** · Capability: **leads** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/lead_forms.rs#L619)
+
+Create one synthetic lead for an Instant Form to test lead retrieval and webhooks. Meta allows one test lead per form; delete the existing test lead before creating another.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "TestLeadConsent": {
+      "additionalProperties": false,
+      "properties": {
+        "checkbox_key": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "is_checked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "checkbox_key",
+        "is_checked"
+      ],
+      "type": "object"
+    },
+    "TestLeadField": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "maxLength": 2048,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 25,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "values"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "custom_disclaimer_responses": {
+      "items": {
+        "$ref": "#/$defs/TestLeadConsent"
+      },
+      "maxItems": 25,
+      "minItems": 1,
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "field_data": {
+      "description": "Optional answers using question keys. Omit to use Meta's synthetic defaults.",
+      "items": {
+        "$ref": "#/$defs/TestLeadField"
+      },
+      "maxItems": 25,
+      "minItems": 1,
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "form_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "form_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="create_threads_account"></a>
+
+## `create_threads_account`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1582)
+
+Create one Instagram- or Page-backed Threads account; v26 does not accept its ID as a creative input.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ThreadsAccountMode": {
+      "enum": [
+        "instagram_backed",
+        "page_backed"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "facebook_page_id": {
+      "description": "Required only for `page_backed`; omit for `instagram_backed`.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "instagram_business_account_id": {
+      "description": "Required only for `instagram_backed`; omit for `page_backed`.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "mode": {
+      "$ref": "#/$defs/ThreadsAccountMode"
+    }
+  },
+  "required": [
+    "mode"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="delete_ad_media"></a>
+
+## `delete_ad_media`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_library_mutations.rs#L504)
+
+Remove an image or video through its ad-account library edge. Requires CONFIRM_META_ADS_REMOVALS; check existing creative usage before deletion.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdLibraryMedia": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "image_hash": {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            "kind": {
+              "const": "image_hash",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "image_hash"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "image_id": {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            "kind": {
+              "const": "image_id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "image_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "video",
+              "type": "string"
+            },
+            "video_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "video_id"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "type": "string"
+    },
+    "media": {
+      "$ref": "#/$defs/AdLibraryMedia"
+    },
+    "removal_acknowledgement": {
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "media",
+    "removal_acknowledgement"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="delete_business_asset"></a>
+
+## `delete_business_asset`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/asset_admin.rs#L444)
+
+Remove a business user or delete a publisher blocklist after verifying its kind. Requires CONFIRM_META_ADS_REMOVALS.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "DeletableBusinessAsset": {
+      "enum": [
+        "business_user",
+        "publisher_block_list"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "$ref": "#/$defs/DeletableBusinessAsset"
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind",
+    "object_id",
+    "removal_acknowledgement"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="delete_catalog_object"></a>
+
+## `delete_catalog_object`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L626)
+
+Delete one catalog, set, feed, rule, product/group, hotel, or home listing after CONFIRM_META_ADS_REMOVALS. Live-set deletion is disabled unless explicitly enabled.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CatalogObjectKind": {
+      "enum": [
+        "catalog",
+        "product_set",
+        "product",
+        "product_group",
+        "feed",
+        "feed_rule",
+        "feed_schedule",
+        "feed_upload",
+        "feed_upload_error",
+        "hotel",
+        "hotel_room",
+        "flight",
+        "destination",
+        "vehicle",
+        "vehicle_offer",
+        "home_listing",
+        "automotive_model",
+        "media_title"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allow_live_product_set_deletion": {
+      "default": false,
+      "description": "Explicitly permit removing a catalog/product set currently used by live ads. Defaults to false.",
+      "type": "boolean"
+    },
+    "kind": {
+      "$ref": "#/$defs/CatalogObjectKind",
+      "description": "Catalog, product_set, product, product_group, feed, feed_rule, hotel, or home_listing."
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Exact phrase CONFIRM_META_ADS_REMOVALS.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind",
+    "object_id",
+    "removal_acknowledgement"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="delete_custom_audience"></a>
+
+## `delete_custom_audience`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L686)
+
+Permanently delete one custom audience after CONFIRM_META_ADS_REMOVALS; reconcile current state before retrying an ambiguous failure.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID that owns the audience, with or without `act_`.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "custom_audience_id": {
+      "description": "Numeric Meta custom-audience ID.",
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Exact destructive-action acknowledgement required after operator approval.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "custom_audience_id",
+    "removal_acknowledgement"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="delete_custom_conversion"></a>
+
+## `delete_custom_conversion`
+
+Scope: **meta-ads** · Capability: **tracking** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L797)
+
+Archive or delete one custom conversion after CONFIRM_META_ADS_REMOVALS; reconcile current state before retrying an ambiguous failure.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID that owns the conversion, with or without `act_`.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "custom_conversion_id": {
+      "description": "Numeric Meta custom-conversion ID to archive/delete.",
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Exact destructive-action acknowledgement required after operator approval.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "custom_conversion_id",
+    "removal_acknowledgement"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="delete_test_lead"></a>
+
+## `delete_test_lead`
+
+Scope: **meta-ads** · Capability: **leads** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/lead_forms.rs#L636)
+
+Delete a lead only after verifying it belongs to the form's test_leads edge. Requires CONFIRM_META_ADS_REMOVALS; never deletes submitted production leads.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "form_id": {
+      "description": "The lead must appear on this form's test_leads edge before deletion is allowed.",
+      "type": "string"
+    },
+    "lead_id": {
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "form_id",
+    "lead_id",
+    "removal_acknowledgement"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="discard_mutation_plan"></a>
+
+## `discard_mutation_plan`
+
+Scope: **supporting** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1480)
+
+Discard one pending local Meta mutation plan without contacting Meta.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "plan_id": {
+      "maxLength": 32,
+      "minLength": 32,
+      "pattern": "^[0-9a-f]{32}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "plan_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="estimate_audience_size"></a>
+
+## `estimate_audience_size`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1209)
+
+Estimate a bounded common v26 targeting spec as readiness plus lower and upper user bounds.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AudienceEstimateTargeting": {
+      "additionalProperties": false,
+      "properties": {
+        "age_max": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "age_min": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "age_range": {
+          "description": "Suggested age range for Advantage+ audience, as `[minimum, maximum]`.",
+          "items": {
+            "format": "uint8",
+            "maximum": 255,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "audience_network_positions": {
+          "items": {
+            "$ref": "#/$defs/AudienceNetworkPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "behaviors": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "custom_audiences": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "device_platforms": {
+          "items": {
+            "$ref": "#/$defs/DevicePlatform"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "excluded_custom_audiences": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "facebook_positions": {
+          "items": {
+            "$ref": "#/$defs/FacebookPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "flexible_spec": {
+          "items": {
+            "$ref": "#/$defs/FlexibleTargetingGroup"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "genders": {
+          "description": "`1` targets men and `2` targets women. Omit for all genders.",
+          "items": {
+            "format": "uint8",
+            "maximum": 255,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "geo_locations": {
+          "$ref": "#/$defs/EstimateGeoLocations"
+        },
+        "instagram_positions": {
+          "items": {
+            "$ref": "#/$defs/InstagramPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "interests": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "messenger_positions": {
+          "items": {
+            "$ref": "#/$defs/MessengerPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "publisher_platforms": {
+          "items": {
+            "$ref": "#/$defs/PublisherPlatform"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "targeting_automation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TargetingAutomation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "threads_positions": {
+          "items": {
+            "$ref": "#/$defs/ThreadsPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "user_age_unknown": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "geo_locations"
+      ],
+      "type": "object"
+    },
+    "AudienceNetworkPosition": {
+      "enum": [
+        "classic",
+        "rewarded_video"
+      ],
+      "type": "string"
+    },
+    "DevicePlatform": {
+      "enum": [
+        "connected_tv",
+        "desktop",
+        "mobile"
+      ],
+      "type": "string"
+    },
+    "EstimateGeoLocations": {
+      "additionalProperties": false,
+      "properties": {
+        "countries": {
+          "description": "One through 250 two-letter uppercase country codes.",
+          "items": {
+            "maxLength": 2,
+            "minLength": 2,
+            "type": "string"
+          },
+          "maxItems": 250,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "countries"
+      ],
+      "type": "object"
+    },
+    "FacebookPosition": {
+      "enum": [
+        "feed",
+        "right_hand_column",
+        "marketplace",
+        "story",
+        "search",
+        "instream_video",
+        "facebook_reels",
+        "facebook_reels_overlay",
+        "profile_feed",
+        "notification"
+      ],
+      "type": "string"
+    },
+    "FlexibleTargetingGroup": {
+      "additionalProperties": false,
+      "description": "Common flexible-targeting dimensions used by the Python server.",
+      "properties": {
+        "behaviors": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "custom_audiences": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "interests": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "InstagramPosition": {
+      "description": "Current v26 positions; removed Instagram `explore` is rejected.",
+      "enum": [
+        "stream",
+        "story",
+        "explore_home",
+        "reels",
+        "profile_feed",
+        "ig_search",
+        "profile_reels"
+      ],
+      "type": "string"
+    },
+    "MessengerPosition": {
+      "description": "Current v26 positions; removed Messenger `story` is rejected.",
+      "enum": [
+        "sponsored_messages"
+      ],
+      "type": "string"
+    },
+    "PublisherPlatform": {
+      "enum": [
+        "facebook",
+        "instagram",
+        "threads",
+        "messenger",
+        "audience_network"
+      ],
+      "type": "string"
+    },
+    "TargetingAutomation": {
+      "additionalProperties": false,
+      "properties": {
+        "advantage_audience": {
+          "description": "Explicit Advantage+ audience intent. Sent to Meta as `1` or `0`.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "advantage_audience"
+      ],
+      "type": "object"
+    },
+    "TargetingId": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Numeric Meta targeting or audience ID.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "ThreadsPosition": {
+      "enum": [
+        "threads_stream"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "targeting": {
+      "$ref": "#/$defs/AudienceEstimateTargeting",
+      "description": "Bounded common v26 targeting. At least one country is required."
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "targeting"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="generate_creative_previews"></a>
+
+## `generate_creative_previews`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/previews.rs#L51)
+
+Preview an existing creative or a draft specification before creating an ad. Supports Facebook, Instagram and Threads formats; creates no ad.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdPreviewFormat": {
+      "description": "Meta v26 preview formats. Availability depends on the creative and placement.",
+      "enum": [
+        "audience_network_instream_video",
+        "audience_network_instream_video_mobile",
+        "audience_network_outstream_video",
+        "audience_network_rewarded_video",
+        "biz_disco_feed_mobile",
+        "desktop_feed_standard",
+        "facebook_ifu_reels_mobile",
+        "facebook_profile_feed_desktop",
+        "facebook_profile_feed_mobile",
+        "facebook_profile_reels_mobile",
+        "facebook_reels_banner",
+        "facebook_reels_banner_desktop",
+        "facebook_reels_banner_feed_android",
+        "facebook_reels_banner_feed_android_large",
+        "facebook_reels_banner_fullscreen_ios",
+        "facebook_reels_banner_fullscreen_mobile",
+        "facebook_reels_mobile",
+        "facebook_reels_postloop",
+        "facebook_reels_postloop_feed",
+        "facebook_reels_similar_products_mobile",
+        "facebook_reels_sticker",
+        "facebook_story_mobile",
+        "facebook_story_sticker_mobile",
+        "instagram_explore_contextual",
+        "instagram_explore_grid_home",
+        "instagram_explore_immersive",
+        "instagram_feed_web",
+        "instagram_feed_web_m_site",
+        "instagram_lead_gen_multi_submit_ads",
+        "instagram_profile_feed",
+        "instagram_profile_reels",
+        "instagram_reels",
+        "instagram_reels_overlay",
+        "instagram_reels_web",
+        "instagram_reels_web_m_site",
+        "instagram_search_chain",
+        "instagram_search_grid",
+        "instagram_standard",
+        "instagram_story",
+        "instagram_story_effect_tray",
+        "instagram_story_web",
+        "instagram_story_web_m_site",
+        "instant_article_recirculation_ad",
+        "instant_article_standard",
+        "instream_banner_desktop",
+        "instream_banner_feed_ios",
+        "instream_banner_fullscreen_ios",
+        "instream_banner_fullscreen_mobile",
+        "instream_banner_immersive_mobile",
+        "instream_banner_mobile",
+        "instream_video_desktop",
+        "instream_video_fullscreen_ios",
+        "instream_video_fullscreen_mobile",
+        "instream_video_image",
+        "instream_video_immersive_mobile",
+        "instream_video_mobile",
+        "job_browser_desktop",
+        "job_browser_mobile",
+        "marketplace_mobile",
+        "messenger_mobile_inbox_media",
+        "messenger_mobile_story_media",
+        "mobile_banner",
+        "mobile_feed_basic",
+        "mobile_feed_standard",
+        "mobile_fullwidth",
+        "mobile_interstitial",
+        "mobile_medium_rectangle",
+        "mobile_native",
+        "right_column_standard",
+        "suggested_video_desktop",
+        "suggested_video_fullscreen_mobile",
+        "suggested_video_immersive_mobile",
+        "suggested_video_mobile",
+        "watch_feed_home",
+        "watch_feed_mobile",
+        "threads_stream"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "type": "string"
+    },
+    "ad_format": {
+      "$ref": "#/$defs/AdPreviewFormat"
+    },
+    "creative": {
+      "additionalProperties": true,
+      "description": "Existing creative as {\"id\":\"...\"}, or the bounded v26 creative specification to preview.",
+      "type": "object"
+    },
+    "options": {
+      "additionalProperties": true,
+      "description": "Optional v26 preview parameters: locale, dimensions, product IDs, dynamic specs and render options.",
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "creative",
+    "ad_format"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="get_account_controls"></a>
+
+## `get_account_controls`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L160)
+
+Read account-wide audience, placement, age, and campaign-error controls.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="get_mutation_plan"></a>
+
+## `get_mutation_plan`
+
+Scope: **supporting** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1462)
+
+Read one unexpired local Meta mutation-plan preview and status without exposing its frozen form.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "plan_id": {
+      "maxLength": 32,
+      "minLength": 32,
+      "pattern": "^[0-9a-f]{32}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "plan_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="get_threads_account"></a>
+
+## `get_threads_account`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1564)
+
+Resolve an associated, Instagram-backed, or Page-backed Threads account relationship.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ThreadsAccountMode": {
+      "enum": [
+        "associated",
+        "instagram_backed",
+        "page_backed"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "facebook_page_id": {
+      "description": "Required for `page_backed` mode.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "instagram_business_account_id": {
+      "description": "Required for `associated` and `instagram_backed` modes.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "mode": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ThreadsAccountMode"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Threads account relationship to discover. Defaults to `associated`."
+    }
+  },
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="grant_branded_content_ad_permission"></a>
+
+## `grant_branded_content_ad_permission`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1374)
+
+Grant one creator partnership-ad permission; verify current permissions before retrying an ambiguous failure.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "creator_instagram_account": {
+      "description": "Numeric creator Instagram account ID (`creator_instagram_account` in Meta v26).",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "creator_instagram_username": {
+      "description": "Creator username without `@` (`creator_instagram_username` in Meta v26).",
+      "maxLength": 30,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9._]{1,30}$",
+      "type": "string"
+    },
+    "instagram_business_account_id": {
+      "description": "Numeric brand Instagram professional-account ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "instagram_business_account_id",
+    "creator_instagram_account",
+    "creator_instagram_username"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="inspect_ad_object"></a>
+
+## `inspect_ad_object`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_inspection.rs#L312)
+
+Read selected v26 fields from an ad object. Use for full creative/targeting specs, review feedback, delivery issues, attribution settings, media status or audience rules; request only what is needed.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdObjectKind": {
+      "enum": [
+        "account",
+        "campaign",
+        "ad_set",
+        "ad",
+        "creative",
+        "custom_audience",
+        "saved_audience",
+        "video",
+        "label"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "fields": {
+      "description": "Opt into large specs, review feedback or diagnostics by selecting simple v26 field names.",
+      "items": {
+        "maxLength": 64,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 30,
+      "minItems": 1,
+      "type": "array"
+    },
+    "kind": {
+      "$ref": "#/$defs/AdObjectKind"
+    },
+    "object_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind",
+    "object_id",
+    "fields"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_ad_accounts"></a>
+
+## `list_ad_accounts`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L200)
+
+List Meta ad accounts visible to the configured user, with bounded cursor pagination.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "meta_user_id": {
+      "description": "Meta user context. Defaults to `me`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_cursor": {
+      "description": "`next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of accounts to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_ad_creatives"></a>
+
+## `list_ad_creatives`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L838)
+
+List compact creative metadata attached to one ad without large story or asset-feed specs.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_id": {
+      "description": "Numeric Meta ad ID.",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of creatives to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_ad_custom_derived_metrics"></a>
+
+## `list_ad_custom_derived_metrics`
+
+Scope: **meta-ads** · Capability: **reporting** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1316)
+
+List bounded custom derived metrics owned by one Meta Business under the v26 contract.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "DerivedMetricScope": {
+      "enum": [
+        "account",
+        "business",
+        "business_asset_group"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "business_id": {
+      "description": "Numeric Meta Business ID. In v26.0 this edge is not on an ad account.",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of metrics to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "scope": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DerivedMetricScope"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional v26.0 metric scope."
+    }
+  },
+  "required": [
+    "business_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_ad_images"></a>
+
+## `list_ad_images`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L872)
+
+List bounded ad-image metadata for an account; returns hashes and URLs, never image bytes.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "hashes": {
+      "description": "Optional image hashes to select. At most 50 bounded hash identifiers.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of images to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_ad_previews"></a>
+
+## `list_ad_previews`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1159)
+
+Render one bounded Meta ad-preview format; defaults to desktop feed to avoid probe requests.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdPreviewFormat": {
+      "description": "Meta v26 preview formats. Availability depends on the creative and placement.",
+      "enum": [
+        "audience_network_instream_video",
+        "audience_network_instream_video_mobile",
+        "audience_network_outstream_video",
+        "audience_network_rewarded_video",
+        "biz_disco_feed_mobile",
+        "desktop_feed_standard",
+        "facebook_ifu_reels_mobile",
+        "facebook_profile_feed_desktop",
+        "facebook_profile_feed_mobile",
+        "facebook_profile_reels_mobile",
+        "facebook_reels_banner",
+        "facebook_reels_banner_desktop",
+        "facebook_reels_banner_feed_android",
+        "facebook_reels_banner_feed_android_large",
+        "facebook_reels_banner_fullscreen_ios",
+        "facebook_reels_banner_fullscreen_mobile",
+        "facebook_reels_mobile",
+        "facebook_reels_postloop",
+        "facebook_reels_postloop_feed",
+        "facebook_reels_similar_products_mobile",
+        "facebook_reels_sticker",
+        "facebook_story_mobile",
+        "facebook_story_sticker_mobile",
+        "instagram_explore_contextual",
+        "instagram_explore_grid_home",
+        "instagram_explore_immersive",
+        "instagram_feed_web",
+        "instagram_feed_web_m_site",
+        "instagram_lead_gen_multi_submit_ads",
+        "instagram_profile_feed",
+        "instagram_profile_reels",
+        "instagram_reels",
+        "instagram_reels_overlay",
+        "instagram_reels_web",
+        "instagram_reels_web_m_site",
+        "instagram_search_chain",
+        "instagram_search_grid",
+        "instagram_standard",
+        "instagram_story",
+        "instagram_story_effect_tray",
+        "instagram_story_web",
+        "instagram_story_web_m_site",
+        "instant_article_recirculation_ad",
+        "instant_article_standard",
+        "instream_banner_desktop",
+        "instream_banner_feed_ios",
+        "instream_banner_fullscreen_ios",
+        "instream_banner_fullscreen_mobile",
+        "instream_banner_immersive_mobile",
+        "instream_banner_mobile",
+        "instream_video_desktop",
+        "instream_video_fullscreen_ios",
+        "instream_video_fullscreen_mobile",
+        "instream_video_image",
+        "instream_video_immersive_mobile",
+        "instream_video_mobile",
+        "job_browser_desktop",
+        "job_browser_mobile",
+        "marketplace_mobile",
+        "messenger_mobile_inbox_media",
+        "messenger_mobile_story_media",
+        "mobile_banner",
+        "mobile_feed_basic",
+        "mobile_feed_standard",
+        "mobile_fullwidth",
+        "mobile_interstitial",
+        "mobile_medium_rectangle",
+        "mobile_native",
+        "right_column_standard",
+        "suggested_video_desktop",
+        "suggested_video_fullscreen_mobile",
+        "suggested_video_immersive_mobile",
+        "suggested_video_mobile",
+        "watch_feed_home",
+        "watch_feed_mobile",
+        "threads_stream"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_format": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdPreviewFormat"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Common current placement format. Defaults to `desktop_feed_standard`."
+    },
+    "ad_id": {
+      "description": "Numeric Meta ad ID.",
+      "type": "string"
+    },
+    "height": {
+      "description": "Optional preview height in pixels, from 1 through 4096.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "locale": {
+      "description": "Optional Meta locale such as `en_US`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "width": {
+      "description": "Optional preview width in pixels, from 1 through 4096.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_ad_sets"></a>
+
+## `list_ad_sets`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L395)
+
+List Meta ad sets for an account or campaign with bounded cursor pagination.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "campaign_id": {
+      "description": "Numeric campaign ID. When set, list only that campaign's ad sets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_cursor": {
+      "description": "`next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of ad sets to return, from 1 through 100. Defaults to 10.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_ad_videos"></a>
+
+## `list_ad_videos`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L888)
+
+List bounded ad-video metadata for an account; never returns source media bytes.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of videos to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_ads"></a>
+
+## `list_ads`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L427)
+
+List compact Meta ad summaries for an account, campaign, or ad set with cursor pagination.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "ad_set_id": {
+      "description": "Optional numeric ad-set ID. Mutually exclusive with `campaign_id`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "campaign_id": {
+      "description": "Optional numeric campaign ID. Mutually exclusive with `ad_set_id`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of ads to return, from 1 through 100. Defaults to 10.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_branded_content_ad_permissions"></a>
+
+## `list_branded_content_ad_permissions`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1353)
+
+List account-level partnership-ad permissions for one Instagram professional account.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "creator_username": {
+      "description": "Optional creator username filter, with or without a leading `@`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "instagram_business_account_id": {
+      "description": "Numeric Instagram professional/business account ID (the v26.0 IG User node).",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of permissions to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "instagram_business_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_business_assets"></a>
+
+## `list_business_assets`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/asset_admin.rs#L372)
+
+Discover businesses, account/user access, pixels/datasets, activity logs, pixel event statistics and diagnostics, and publisher blocklists. Collection defines the parent and accepted filters.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "BusinessAssetCollection": {
+      "oneOf": [
+        {
+          "enum": [
+            "client_ad_accounts",
+            "pending_owned_ad_accounts",
+            "pending_client_ad_accounts",
+            "business_users",
+            "system_users",
+            "business_agencies",
+            "business_pixels",
+            "owned_pixels",
+            "client_pixels",
+            "datasets",
+            "account_activities",
+            "account_users",
+            "account_assigned_users",
+            "account_agencies",
+            "publisher_block_lists",
+            "pixel_assigned_users",
+            "pixel_agencies",
+            "pixel_shared_accounts",
+            "pixel_shared_agencies",
+            "pixel_stats",
+            "pixel_catalog_checks",
+            "pixel_offline_uploads",
+            "pixel_open_bridge_configurations",
+            "user_pages",
+            "user_catalogs"
+          ],
+          "type": "string"
+        },
+        {
+          "const": "businesses",
+          "description": "User ID, or me.",
+          "type": "string"
+        },
+        {
+          "const": "owned_ad_accounts",
+          "description": "Business ID.",
+          "type": "string"
+        },
+        {
+          "const": "account_pixels",
+          "description": "Ad account ID, with or without act_.",
+          "type": "string"
+        },
+        {
+          "const": "pixel_accounts",
+          "description": "Pixel ID; assigned users/accounts/shared accounts require query.business.",
+          "type": "string"
+        },
+        {
+          "const": "user_ad_accounts",
+          "description": "Business-user or system-user ID.",
+          "type": "string"
+        },
+        {
+          "const": "blocked_publishers",
+          "description": "Publisher blocklist ID.",
+          "type": "string"
+        }
+      ]
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "collection": {
+      "$ref": "#/$defs/BusinessAssetCollection"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    },
+    "parent_id": {
+      "description": "Parent described by collection. Only businesses accepts me.",
+      "type": "string"
+    },
+    "query": {
+      "additionalProperties": true,
+      "default": {},
+      "description": "Official filters for this collection, e.g. business, id_filter, since/until, aggregation.",
+      "type": "object"
+    }
+  },
+  "required": [
+    "collection",
+    "parent_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_business_datasets"></a>
+
+## `list_business_datasets`
+
+Scope: **meta-ads** · Capability: **tracking** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1104)
+
+List compact Ads Dataset metadata from a Meta business's current ads_dataset edge.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "business_id": {
+      "description": "Numeric Meta business ID.",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of datasets to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "business_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_campaigns"></a>
+
+## `list_campaigns`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L232)
+
+List campaigns for one Meta ad account with bounded v26 filters and cursor pagination.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CampaignDatePreset": {
+      "enum": [
+        "data_maximum",
+        "last_14d",
+        "last_28d",
+        "last_30d",
+        "last_3d",
+        "last_7d",
+        "last_90d",
+        "last_month",
+        "last_quarter",
+        "last_week_mon_sun",
+        "last_week_sun_sat",
+        "last_year",
+        "maximum",
+        "this_month",
+        "this_quarter",
+        "this_week_mon_today",
+        "this_week_sun_today",
+        "this_year",
+        "today",
+        "yesterday"
+      ],
+      "type": "string"
+    },
+    "CampaignEffectiveStatus": {
+      "enum": [
+        "ACTIVE",
+        "ARCHIVED",
+        "DELETED",
+        "IN_PROCESS",
+        "PAUSED",
+        "WITH_ISSUES"
+      ],
+      "type": "string"
+    },
+    "CampaignTimeRange": {
+      "additionalProperties": false,
+      "properties": {
+        "since": {
+          "description": "Start date in `YYYY-MM-DD` format.",
+          "type": "string"
+        },
+        "until": {
+          "description": "End date in `YYYY-MM-DD` format.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "since",
+        "until"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "date_preset": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignDatePreset"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Return campaigns in a Meta-defined relative date window."
+    },
+    "effective_status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignEffectiveStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Return only campaigns with this effective delivery status."
+    },
+    "is_completed": {
+      "description": "Filter by Meta's campaign-completion state.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "page_cursor": {
+      "description": "`next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of campaigns to return, from 1 through 100. Defaults to 10.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "time_range": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignTimeRange"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Return campaigns in this inclusive calendar-date window."
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_catalog_resources"></a>
+
+## `list_catalog_resources`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L588)
+
+Browse catalog items, feeds, diagnostics, event matching, assignments, upload errors, and schedules. One bounded page; collection determines the parent ID and filters.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CatalogCollection": {
+      "oneOf": [
+        {
+          "enum": [
+            "flights",
+            "destinations",
+            "vehicles",
+            "vehicle_offers",
+            "home_listings",
+            "automotive_models",
+            "data_sources",
+            "diagnostics",
+            "event_stats",
+            "event_sources",
+            "categories",
+            "agencies",
+            "feed_schedules",
+            "feed_uploads",
+            "suggested_feed_rules",
+            "product_overrides",
+            "product_sets_for_product",
+            "product_videos",
+            "collaborative_share_settings",
+            "creator_assets",
+            "version_configurations"
+          ],
+          "type": "string"
+        },
+        {
+          "const": "owned_catalogs",
+          "description": "Business ID.",
+          "type": "string"
+        },
+        {
+          "const": "client_catalogs",
+          "description": "Business ID.",
+          "type": "string"
+        },
+        {
+          "const": "product_sets",
+          "description": "Catalog ID; optional ancestor_id, parent_id, retailer_id, has_children.",
+          "type": "string"
+        },
+        {
+          "const": "product_groups",
+          "description": "Catalog ID.",
+          "type": "string"
+        },
+        {
+          "const": "products",
+          "description": "Catalog, product-set, or feed ID; optional filter/error_priority/error_type.",
+          "type": "string"
+        },
+        {
+          "const": "hotels",
+          "description": "Catalog, product-set, or feed ID; optional filter.",
+          "type": "string"
+        },
+        {
+          "const": "feeds",
+          "description": "Catalog ID.",
+          "type": "string"
+        },
+        {
+          "const": "assigned_users",
+          "description": "Catalog ID; business is required in query.",
+          "type": "string"
+        },
+        {
+          "const": "feed_rules",
+          "description": "Feed ID.",
+          "type": "string"
+        },
+        {
+          "const": "upload_errors",
+          "description": "Feed-upload ID; optional error_priority.",
+          "type": "string"
+        },
+        {
+          "const": "error_samples",
+          "description": "Feed-upload-error ID.",
+          "type": "string"
+        },
+        {
+          "const": "product_integrity",
+          "description": "Product ID.",
+          "type": "string"
+        },
+        {
+          "const": "collaborative_image_bank",
+          "description": "Catalog ID.",
+          "type": "string"
+        }
+      ]
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "collection": {
+      "$ref": "#/$defs/CatalogCollection"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    },
+    "parent_id": {
+      "description": "ID of the parent described by collection.",
+      "type": "string"
+    },
+    "query": {
+      "additionalProperties": true,
+      "default": {},
+      "description": "Only documented filters for the selected collection; use JSON objects, not encoded JSON strings.",
+      "type": "object"
+    }
+  },
+  "required": [
+    "collection",
+    "parent_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_custom_audiences"></a>
+
+## `list_custom_audiences`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L605)
+
+List compact custom-audience metadata without members, rules, or source payloads.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of audiences to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_custom_conversions"></a>
+
+## `list_custom_conversions`
+
+Scope: **meta-ads** · Capability: **tracking** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1067)
+
+List compact custom-conversion metadata for one Meta ad account.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of custom conversions to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_insights"></a>
+
+## `list_insights`
+
+Scope: **meta-ads** · Capability: **reporting** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L904)
+
+Read bounded Meta Insights rows without aggregating non-additive metrics such as reach. Prefer page_size 25-50 at ad level to avoid oversized model output.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ActionAttributionWindow": {
+      "enum": [
+        "1d_click",
+        "1d_ev",
+        "1d_sequenced",
+        "1d_view",
+        "28d_click",
+        "28d_sequenced",
+        "28d_view",
+        "28d_view_all_conversions",
+        "28d_view_first_conversion",
+        "7d_click",
+        "7d_sequenced",
+        "7d_view",
+        "7d_view_all_conversions",
+        "7d_view_first_conversion",
+        "custom",
+        "dda",
+        "default",
+        "incrementality",
+        "incrementality_all_conversions",
+        "incrementality_first_conversion",
+        "skan_click",
+        "skan_click_second_postback",
+        "skan_click_third_postback",
+        "skan_view",
+        "skan_view_second_postback",
+        "skan_view_third_postback"
+      ],
+      "type": "string"
+    },
+    "ActionReportTime": {
+      "enum": [
+        "impression",
+        "conversion",
+        "mixed",
+        "lifetime"
+      ],
+      "type": "string"
+    },
+    "InsightDatePreset": {
+      "enum": [
+        "data_maximum",
+        "last_14d",
+        "last_28d",
+        "last_30d",
+        "last_3d",
+        "last_7d",
+        "last_90d",
+        "last_month",
+        "last_quarter",
+        "last_week_mon_sun",
+        "last_week_sun_sat",
+        "last_year",
+        "maximum",
+        "this_month",
+        "this_quarter",
+        "this_week_mon_today",
+        "this_week_sun_today",
+        "this_year",
+        "today",
+        "yesterday"
+      ],
+      "type": "string"
+    },
+    "InsightFilter": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "operator": {
+          "$ref": "#/$defs/InsightFilterOperator"
+        },
+        "value": {
+          "description": "Scalar or bounded array of values, according to the chosen operator."
+        }
+      },
+      "required": [
+        "field",
+        "operator",
+        "value"
+      ],
+      "type": "object"
+    },
+    "InsightFilterOperator": {
+      "enum": [
+        "EQUAL",
+        "NOT_EQUAL",
+        "GREATER_THAN",
+        "GREATER_THAN_OR_EQUAL",
+        "LESS_THAN",
+        "LESS_THAN_OR_EQUAL",
+        "IN_RANGE",
+        "NOT_IN_RANGE",
+        "CONTAIN",
+        "NOT_CONTAIN",
+        "CONTAINS_ANY",
+        "CONTAINS_ALL",
+        "NOT_CONTAINS_ANY",
+        "STEM_MATCH",
+        "IN",
+        "NOT_IN",
+        "STARTS_WITH",
+        "ENDS_WITH",
+        "ANY",
+        "ALL",
+        "AFTER",
+        "BEFORE",
+        "ON_OR_AFTER",
+        "ON_OR_BEFORE",
+        "NONE",
+        "TOP"
+      ],
+      "type": "string"
+    },
+    "InsightLevel": {
+      "enum": [
+        "account",
+        "campaign",
+        "adset",
+        "ad"
+      ],
+      "type": "string"
+    },
+    "InsightOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "action_report_time": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ActionReportTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "default_summary": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "filtering": {
+          "description": "Meta filter objects: field (e.g. campaign.id), operator (e.g. IN), value.",
+          "items": {
+            "$ref": "#/$defs/InsightFilter"
+          },
+          "maxItems": 25,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "product_id_limit": {
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "sort": {
+          "description": "One sort, e.g. spend_descending or actions:link_click_ascending.",
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "summary": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 50,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "time_ranges": {
+          "description": "Overrides single-date selection; cannot be combined with time_increment.",
+          "items": {
+            "$ref": "#/$defs/InsightTimeRange"
+          },
+          "maxItems": 25,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "use_account_attribution_setting": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "use_unified_attribution_setting": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "InsightTimeRange": {
+      "additionalProperties": false,
+      "properties": {
+        "since": {
+          "description": "Inclusive start date in `YYYY-MM-DD` format.",
+          "type": "string"
+        },
+        "until": {
+          "description": "Inclusive end date in `YYYY-MM-DD` format.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "since",
+        "until"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_attribution_windows": {
+      "description": "Meta v26.0 attribution windows. Values remain separate in each row.",
+      "items": {
+        "$ref": "#/$defs/ActionAttributionWindow"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "action_breakdowns": {
+      "description": "Action breakdown names; maximum 10.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "breakdowns": {
+      "description": "Dimension breakdown names; maximum 10.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "date_preset": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InsightDatePreset"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Meta-defined relative date window. Defaults to `maximum`."
+    },
+    "fields": {
+      "description": "Insight fields. Defaults to a compact performance bundle; maximum 50.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "level": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InsightLevel"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Aggregation level. Defaults to `ad`."
+    },
+    "object_id": {
+      "description": "Numeric account, campaign, ad-set, or ad ID. Account IDs may use `act_`.",
+      "type": "string"
+    },
+    "options": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InsightOptions"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional filters, sorting, attribution settings, summaries and multiple date ranges."
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Rows to return, from 1 through 200. Defaults to 25; prefer 25-50 at ad level to keep output model-friendly.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "summary_action_breakdowns": {
+      "description": "Summary action breakdown names; maximum 10.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "time_increment": {
+      "description": "Time buckets: `1` through `90` days, `monthly`, or `all_days`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "time_range": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InsightTimeRange"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Inclusive calendar dates; mutually exclusive with `date_preset`."
+    }
+  },
+  "required": [
+    "object_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_pages"></a>
+
+## `list_pages`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1282)
+
+List or filter user-promotable, business-owned, or business-client Facebook Pages.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "PageSource": {
+      "enum": [
+        "user_promotable",
+        "business_owned",
+        "business_client"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "business_id": {
+      "description": "Required for business-owned or business-client pages; otherwise omit.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of Pages to request, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "query": {
+      "description": "Optional case-insensitive name or username filter applied to this page of results.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PageSource"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Page relationship to list. Defaults to `user_promotable`."
+    }
+  },
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_product_catalogs"></a>
+
+## `list_product_catalogs`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L977)
+
+List compact product-catalog metadata owned by one Meta business.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "business_id": {
+      "description": "Numeric Meta business ID.",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of catalogs to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "business_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_product_sets"></a>
+
+## `list_product_sets`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1012)
+
+List bounded product-set metadata and compact filter text from one catalog.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of product sets to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "product_catalog_id": {
+      "description": "Numeric Meta product-catalog ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_catalog_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_products"></a>
+
+## `list_products`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L996)
+
+List compact products from one Meta catalog without descriptions or media arrays.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of products to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "product_catalog_id": {
+      "description": "Numeric Meta product-catalog ID.",
+      "type": "string"
+    },
+    "return_only_approved_products": {
+      "description": "When true, ask Meta to return only approved products.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "product_catalog_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_reach_frequency_predictions"></a>
+
+## `list_reach_frequency_predictions`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1520)
+
+List compact reach-and-frequency predictions for one reservation-capable ad account.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of predictions to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="list_recommendations"></a>
+
+## `list_recommendations`
+
+Scope: **meta-ads** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1334)
+
+List advisory account recommendations without provider action payloads or signatures.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of recommendation envelopes to request, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_ad_comment"></a>
+
+## `manage_ad_comment`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_engagement.rs#L606)
+
+Reply to or hide/unhide a verified Facebook, Instagram or Threads ad comment. FB/IG deletion requires CONFIRM_META_ADS_REMOVALS. Threads supports text replies and hiding only; writes are one-shot.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdCommentAction": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "reply",
+              "type": "string"
+            },
+            "text": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "text"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "hidden": {
+              "type": "boolean"
+            },
+            "kind": {
+              "const": "set_hidden",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "hidden"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Available for Facebook/Instagram comments; Meta exposes no Threads ad-reply deletion API.",
+          "properties": {
+            "kind": {
+              "const": "delete",
+              "type": "string"
+            },
+            "removal_acknowledgement": {
+              "maxLength": 25,
+              "minLength": 25,
+              "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "removal_acknowledgement"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "AdCommentTarget": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Resolve the current creative's effective Page story before reading or writing comments.",
+          "properties": {
+            "ad_id": {
+              "type": "string"
+            },
+            "page_id": {
+              "type": "string"
+            },
+            "platform": {
+              "const": "facebook",
+              "type": "string"
+            }
+          },
+          "required": [
+            "platform",
+            "ad_id",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Resolve the current creative's effective Instagram media before reading or writing comments.",
+          "properties": {
+            "ad_id": {
+              "type": "string"
+            },
+            "platform": {
+              "const": "instagram",
+              "type": "string"
+            }
+          },
+          "required": [
+            "platform",
+            "ad_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Marketing API ad-media ID. Backed-account, catalog and boosted ads are unsupported by Meta.",
+          "properties": {
+            "media_id": {
+              "type": "string"
+            },
+            "platform": {
+              "const": "threads",
+              "type": "string"
+            }
+          },
+          "required": [
+            "platform",
+            "media_id"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/AdCommentAction"
+    },
+    "comment_id": {
+      "type": "string"
+    },
+    "comment_page_cursor": {
+      "description": "Threads only: cursor from read_ad_comments containing this reply, for bounded membership verification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "$ref": "#/$defs/AdCommentTarget"
+    }
+  },
+  "required": [
+    "target",
+    "comment_id",
+    "action"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_ad_extensions"></a>
+
+## `manage_ad_extensions`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_extensions.rs#L434)
+
+Apply a recommendation, create playable assets or store-location Page sets, set tracking defaults, translate value rules, or explicitly accept audience terms. Writes require approval and are sent once.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdExtensionChange": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Apply an existing Meta recommendation; this can alter live delivery and budgets.",
+          "properties": {
+            "action": {
+              "const": "apply_recommendation",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "recommendation_signature and optional SDK recommendation parameter maps.",
+              "type": "object"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "create_playable",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "app_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": "string"
+            },
+            "session_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source": {
+              "$ref": "#/$defs/PlayableSource"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id",
+            "name",
+            "source"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "create_place_page_set",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "asynchronous": {
+              "default": false,
+              "description": "Use Meta's asynchronous creation edge. Read the returned set to inspect it.",
+              "type": "boolean"
+            },
+            "location_types": {
+              "items": {
+                "$ref": "#/$defs/PlaceLocation"
+              },
+              "maxItems": 2,
+              "minItems": 1,
+              "type": "array"
+            },
+            "name": {
+              "type": "string"
+            },
+            "parent_page_id": {
+              "type": "string"
+            },
+            "targeted_area_type": {
+              "$ref": "#/$defs/TargetedArea"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id",
+            "name",
+            "parent_page_id",
+            "location_types",
+            "targeted_area_type"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "set_tracking_defaults",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "tracking_specs": {
+              "description": "Meta tracking_specs object or array to add at account level."
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id",
+            "tracking_specs"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Accept legal terms only after the user has reviewed and authorized those terms.",
+          "properties": {
+            "action": {
+              "const": "accept_custom_audience_terms",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "business_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "terms_acknowledgement": {
+              "maxLength": 33,
+              "minLength": 33,
+              "pattern": "^ACCEPT_META_CUSTOM_AUDIENCE_TERMS$",
+              "type": "string"
+            },
+            "tos_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id",
+            "tos_id",
+            "terms_acknowledgement"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "translate_value_rule_set",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "source": {
+              "additionalProperties": true,
+              "description": "Meta's source object for value-rule translation.",
+              "type": "object"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id",
+            "source"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "PlaceLocation": {
+      "enum": [
+        "home",
+        "recent"
+      ],
+      "type": "string"
+    },
+    "PlayableSource": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "url",
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "url"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "ZIP under META_MEDIA_ROOT, at most 5 MiB. The server streams it without extraction.",
+          "properties": {
+            "relative_path": {
+              "type": "string"
+            },
+            "type": {
+              "const": "local_zip",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "relative_path"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "TargetedArea": {
+      "enum": [
+        "CUSTOM_RADIUS",
+        "MARKETING_AREA",
+        "NONE"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "apply_acknowledgement": {
+      "description": "Required for every write except preview; these operations may affect live delivery.",
+      "maxLength": 27,
+      "minLength": 27,
+      "pattern": "^APPLY_LIVE_META_ADS_CHANGES$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operation": {
+      "$ref": "#/$defs/AdExtensionChange"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for deletions, including status=DELETED updates.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_ad_label"></a>
+
+## `manage_ad_label`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_library_mutations.rs#L470)
+
+Create, rename or delete an ad-account label. Existing labels are checked against the account; deletion requires removal acknowledgement.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdLabelAction": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "create",
+              "type": "string"
+            },
+            "name": {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "name"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "rename",
+              "type": "string"
+            },
+            "label_id": {
+              "type": "string"
+            },
+            "name": {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "label_id",
+            "name"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "delete",
+              "type": "string"
+            },
+            "label_id": {
+              "type": "string"
+            },
+            "removal_acknowledgement": {
+              "maxLength": 25,
+              "minLength": 25,
+              "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "label_id",
+            "removal_acknowledgement"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/AdLabelAction"
+    },
+    "ad_account_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "action"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_ad_rules"></a>
+
+## `manage_ad_rules`
+
+Scope: **meta-ads** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_automation.rs#L1009)
+
+Create disabled rules, update, preview, execute or delete. Live writes need explicit approval; preview only evaluates.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdRuleChange": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "create",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "name, evaluation_spec, execution_spec, schedule_spec, status, ui_creation_source. Defaults to DISABLED.",
+              "type": "object"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "update",
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "name, evaluation_spec, execution_spec, schedule_spec, status.",
+              "type": "object"
+            },
+            "rule_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "delete",
+              "type": "string"
+            },
+            "rule_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Evaluate an existing rule without executing its actions.",
+          "properties": {
+            "action": {
+              "const": "preview",
+              "type": "string"
+            },
+            "rule_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Execute the rule now; it may change bids, budgets or delivery.",
+          "properties": {
+            "action": {
+              "const": "execute",
+              "type": "string"
+            },
+            "rule_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_id"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "apply_acknowledgement": {
+      "description": "Required for every write except preview; these operations may affect live delivery.",
+      "maxLength": 27,
+      "minLength": 27,
+      "pattern": "^APPLY_LIVE_META_ADS_CHANGES$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operation": {
+      "$ref": "#/$defs/AdRuleChange"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for deletions, including status=DELETED updates.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_ad_studies"></a>
+
+## `manage_ad_studies`
+
+Scope: **meta-ads** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_automation.rs#L1042)
+
+Create or edit Business studies, cells and objectives, or delete a study. Study eligibility remains subject to Meta.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdStudyChange": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "create",
+              "type": "string"
+            },
+            "business_id": {
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "Required: name, cells, start_time, end_time. Optional v26 study fields include type, objectives, confidence_level, creative_test_config.",
+              "type": "object"
+            }
+          },
+          "required": [
+            "action",
+            "business_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "update",
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "study_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "study_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "update_cell",
+              "type": "string"
+            },
+            "cell_id": {
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "name, description, adaccounts, ads, adsets, campaigns, creation_template.",
+              "type": "object"
+            }
+          },
+          "required": [
+            "action",
+            "cell_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "update_objective",
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "name, type, is_primary, adspixels, applications, customconversions, offsite_datasets, offline_conversion_data_sets, product_catalogs, product_sets.",
+              "type": "object"
+            },
+            "objective_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "objective_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Delete the study using Meta's DELETE endpoint; does not delete its ads.",
+          "properties": {
+            "action": {
+              "const": "delete",
+              "type": "string"
+            },
+            "study_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "study_id"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "apply_acknowledgement": {
+      "description": "Required for every write except preview; these operations may affect live delivery.",
+      "maxLength": 27,
+      "minLength": 27,
+      "pattern": "^APPLY_LIVE_META_ADS_CHANGES$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operation": {
+      "$ref": "#/$defs/AdStudyChange"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for deletions, including status=DELETED updates.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_budget_schedules"></a>
+
+## `manage_budget_schedules`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/budget_schedules.rs#L240)
+
+Create an ad-set budget schedule or update/delete a campaign or ad-set schedule. Changes can affect live spending.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "BudgetScheduleChange": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Campaign creation remains available in create_campaign_budget_schedule.",
+          "properties": {
+            "action": {
+              "const": "create_ad_set",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "ad_set_id": {
+              "type": "string"
+            },
+            "budget": {
+              "$ref": "#/$defs/CampaignBudgetScheduleValue"
+            },
+            "time_end": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "time_start": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id",
+            "ad_set_id",
+            "budget",
+            "time_start",
+            "time_end"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "update",
+              "type": "string"
+            },
+            "budget": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CampaignBudgetScheduleValue"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "schedule_id": {
+              "type": "string"
+            },
+            "time_end": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "time_start": {
+              "description": "When changing dates, provide both start and end.",
+              "format": "uint32",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "action",
+            "schedule_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "delete",
+              "type": "string"
+            },
+            "schedule_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "schedule_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CampaignBudgetScheduleValue": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Absolute adjustment in account-currency minor units.",
+          "properties": {
+            "kind": {
+              "const": "absolute",
+              "type": "string"
+            },
+            "value": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Meta-defined integer multiplier value.",
+          "properties": {
+            "kind": {
+              "const": "multiplier",
+              "type": "string"
+            },
+            "value": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "apply_acknowledgement": {
+      "description": "Required for every write except preview; these operations may affect live delivery.",
+      "maxLength": 27,
+      "minLength": 27,
+      "pattern": "^APPLY_LIVE_META_ADS_CHANGES$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operation": {
+      "$ref": "#/$defs/BudgetScheduleChange"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for deletions, including status=DELETED updates.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_business_asset_access"></a>
+
+## `manage_business_asset_access`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/asset_admin.rs#L428)
+
+Assign users/agencies, share pixels with ad accounts, claim/remove business accounts, or append blocked publishers. Removal actions require CONFIRM_META_ADS_REMOVALS.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AssetAccessAction": {
+      "enum": [
+        "assign_account_user",
+        "remove_account_user",
+        "assign_account_agency",
+        "remove_account_agency",
+        "assign_pixel_user",
+        "assign_pixel_agency",
+        "remove_pixel_agency",
+        "share_pixel_account",
+        "unshare_pixel_account",
+        "claim_business_ad_account",
+        "remove_business_ad_account",
+        "remove_business_agency",
+        "append_blocked_publishers",
+        "configure_pixel_app_links"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/AssetAccessAction"
+    },
+    "fields": {
+      "additionalProperties": true,
+      "description": "User actions: user/tasks. Agency actions: business/permitted_tasks. Pixel sharing: account_id/business. Claim/remove account: adaccount_id. Blocklist append: publisher_urls array. Pixel app links: applink_autosetup boolean.",
+      "type": "object"
+    },
+    "parent_id": {
+      "description": "Account, pixel, business or blocklist ID as selected by action.",
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "action",
+    "parent_id",
+    "fields"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_catalog_connection"></a>
+
+## `manage_catalog_connection`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L643)
+
+Connect catalog event sources, assign users/agencies, connect a Page store, or associate supplementary feeds. Removals require CONFIRM_META_ADS_REMOVALS.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CatalogConnectionAction": {
+      "enum": [
+        "connect_event_sources",
+        "disconnect_event_sources",
+        "assign_user",
+        "remove_user",
+        "assign_agency",
+        "remove_agency",
+        "connect_store",
+        "associate_supplementary_feeds"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/CatalogConnectionAction"
+    },
+    "fields": {
+      "additionalProperties": true,
+      "description": "Event sources: external_event_sources array of IDs. Users: user plus tasks. Agencies: business plus permitted_tasks/roles. Store: page. Supplementary feeds: assoc_data.",
+      "type": "object"
+    },
+    "parent_id": {
+      "description": "Catalog ID, or feed ID for associate_supplementary_feeds.",
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for disconnect/remove actions and supplementary-feed association changes.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "action",
+    "parent_id",
+    "fields"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_custom_audience_users"></a>
+
+## `manage_custom_audience_users`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L709)
+
+Add, remove, or session-replace bounded customer rows with field-specific hashing; removal or replace requires CONFIRM_META_ADS_REMOVALS.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AudienceUserOperation": {
+      "enum": [
+        "ADD",
+        "REMOVE",
+        "REPLACE"
+      ],
+      "type": "string"
+    },
+    "ReplaceAudienceSession": {
+      "additionalProperties": false,
+      "properties": {
+        "batch_sequence": {
+          "description": "Positive batch sequence. A new session must start at 1.",
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "last_batch": {
+          "description": "True only for the final batch in this replace session.",
+          "type": "boolean"
+        },
+        "session_id": {
+          "description": "Advertiser-generated positive 64-bit identifier, unique within the ad account.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "session_id",
+        "batch_sequence",
+        "last_batch"
+      ],
+      "type": "object"
+    },
+    "UserIdentifierSchema": {
+      "enum": [
+        "EMAIL_SHA256",
+        "PHONE_SHA256",
+        "MOBILE_ADVERTISER_ID",
+        "UID",
+        "EMAIL",
+        "PHONE",
+        "GEN",
+        "DOBY",
+        "DOBM",
+        "DOBD",
+        "LAST_NAME",
+        "FIRST_NAME",
+        "FIRST_INITIAL",
+        "CITY",
+        "STATE",
+        "ZIP",
+        "COUNTRY",
+        "MADID",
+        "APPUID",
+        "EXTERN_ID",
+        "LOOKALIKE_VALUE"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID that owns the audience, with or without `act_`.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "app_ids": {
+      "description": "Optional numeric app IDs for app-scoped identifiers; required for UID.",
+      "items": {
+        "maxLength": 64,
+        "minLength": 1,
+        "pattern": "^[0-9]{1,64}$",
+        "type": "string"
+      },
+      "maxItems": 50,
+      "minItems": 1,
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "custom_audience_id": {
+      "description": "Numeric Meta custom-audience ID.",
+      "type": "string"
+    },
+    "data": {
+      "description": "Rows whose values exactly match the schema order. PII is normalized and\nSHA-256 hashed locally. Meta identifiers, EXTERN_ID, and LOOKALIKE_VALUE\nuse the plaintext wire shown by Meta's tagged v26 examples; verify the\ndocumented SDK/example conflict on the target account.",
+      "items": {
+        "items": {
+          "maxLength": 512,
+          "type": "string"
+        },
+        "maxItems": 15,
+        "minItems": 1,
+        "type": "array"
+      },
+      "maxItems": 1000,
+      "minItems": 1,
+      "type": "array"
+    },
+    "operation": {
+      "$ref": "#/$defs/AudienceUserOperation",
+      "description": "Membership operation. Replace and remove are destructive; the combined\ntool must be annotated destructive and non-idempotent."
+    },
+    "removal_acknowledgement": {
+      "description": "Required for REMOVE or REPLACE after operator approval; omit for ADD.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "replace_session": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReplaceAudienceSession"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Required only for REPLACE. Reuse one unique session ID for all sequential\nbatches and set `last_batch` on the final batch."
+    },
+    "schema": {
+      "description": "Ordered identifier columns. Scalar EMAIL_SHA256, PHONE_SHA256,\nMOBILE_ADVERTISER_ID, and UID modes must be used alone; all other\nentries form a multi-key schema. Duplicate columns are rejected.",
+      "items": {
+        "$ref": "#/$defs/UserIdentifierSchema"
+      },
+      "maxItems": 15,
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "custom_audience_id",
+    "operation",
+    "schema",
+    "data"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_instant_experiences"></a>
+
+## `manage_instant_experiences`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_experiences.rs#L431)
+
+Create drafts/elements, edit unpublished experiences, publish, hide or delete elements. Whole-experience deletion is not supported by Meta.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CanvasElementKind": {
+      "enum": [
+        "button",
+        "carousel",
+        "existing_post",
+        "footer",
+        "header",
+        "lead_form",
+        "photo",
+        "product_list",
+        "product_set",
+        "store_locator",
+        "template_video",
+        "text",
+        "video"
+      ],
+      "type": "string"
+    },
+    "ExperienceChange": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Creates a draft. Publish it separately after reviewing the preview.",
+          "properties": {
+            "action": {
+              "const": "create",
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "name, background_color, body_element_ids, enable_swipe_to_open, hero_asset_facebook_post_id, hero_asset_instagram_media_id, source_template_id.",
+              "type": "object"
+            }
+          },
+          "required": [
+            "action",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Only unpublished experiences can be edited.",
+          "properties": {
+            "action": {
+              "const": "update",
+              "type": "string"
+            },
+            "experience_id": {
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "type": "object"
+            }
+          },
+          "required": [
+            "action",
+            "experience_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "publish",
+              "type": "string"
+            },
+            "experience_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "experience_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Meta supports hiding an experience, not deleting the whole Canvas.",
+          "properties": {
+            "action": {
+              "const": "set_hidden",
+              "type": "string"
+            },
+            "experience_id": {
+              "type": "string"
+            },
+            "hidden": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "action",
+            "experience_id",
+            "hidden"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "create_element",
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "kind": {
+              "$ref": "#/$defs/CanvasElementKind"
+            }
+          },
+          "required": [
+            "action",
+            "kind",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Supported by the Instant Experiences guide; may be restricted if the element is in use.",
+          "properties": {
+            "action": {
+              "const": "delete_element",
+              "type": "string"
+            },
+            "element_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "element_id"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "apply_acknowledgement": {
+      "maxLength": 27,
+      "minLength": 27,
+      "pattern": "^APPLY_LIVE_META_ADS_CHANGES$",
+      "type": "string"
+    },
+    "operation": {
+      "$ref": "#/$defs/ExperienceChange"
+    },
+    "page_id": {
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Required to hide an experience or delete an element.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "page_id",
+    "operation",
+    "apply_acknowledgement"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_lead_subscription"></a>
+
+## `manage_lead_subscription`
+
+Scope: **meta-ads** · Capability: **leads** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/lead_forms.rs#L665)
+
+Subscribe the configured app to a Page's leadgen webhook, or disconnect the app and ALL its Page subscriptions with removal acknowledgement. Requires Page metadata permission and an existing hosted webhook callback.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "LeadSubscriptionAction": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Subscribe the configured app to leadgen. Requires a previously configured webhook callback.",
+          "properties": {
+            "kind": {
+              "const": "subscribe",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Disconnect the configured app from this Page, including ALL its other subscribed fields.",
+          "properties": {
+            "kind": {
+              "const": "unsubscribe_app",
+              "type": "string"
+            },
+            "removal_acknowledgement": {
+              "maxLength": 25,
+              "minLength": 25,
+              "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "removal_acknowledgement"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/LeadSubscriptionAction"
+    },
+    "page_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "page_id",
+    "action"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="manage_value_rules"></a>
+
+## `manage_value_rules`
+
+Scope: **meta-ads** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_automation.rs#L1075)
+
+Create, update or delete value-rule sets. Attach existing sets through an ad-set mutation plan using value_rule_set_id.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ValueRuleChange": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "create",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "name, rules (array), product_type, entry_point.",
+              "type": "object"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "update",
+              "type": "string"
+            },
+            "fields": {
+              "additionalProperties": true,
+              "description": "name, rules (array), entry_point, is_default_setting.",
+              "type": "object"
+            },
+            "rule_set_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_set_id",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "delete",
+              "type": "string"
+            },
+            "rule_set_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_set_id"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "apply_acknowledgement": {
+      "description": "Required for every write except preview; these operations may affect live delivery.",
+      "maxLength": 27,
+      "minLength": 27,
+      "pattern": "^APPLY_LIVE_META_ADS_CHANGES$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operation": {
+      "$ref": "#/$defs/ValueRuleChange"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for deletions, including status=DELETED updates.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="query_targeting"></a>
+
+## `query_targeting`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_inspection.rs#L360)
+
+Browse, search, suggest, validate or describe account targeting; estimate delivery and read minimum budgets. Accepts bounded documented v26 parameters for the selected operation.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "TargetingOperation": {
+      "enum": [
+        "browse",
+        "search",
+        "suggestions",
+        "validate",
+        "describe",
+        "delivery_estimate",
+        "minimum_budgets",
+        "broad_categories"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "type": "string"
+    },
+    "operation": {
+      "$ref": "#/$defs/TargetingOperation"
+    },
+    "options": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReadOptions"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "parameters": {
+      "additionalProperties": true,
+      "type": "object"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "operation",
+    "parameters"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad"></a>
+
+## `read_ad`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L439)
+
+Read compact metadata for one Meta ad by numeric ID.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_id": {
+      "description": "Numeric Meta ad ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_account"></a>
+
+## `read_ad_account`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L216)
+
+Read metadata for one Meta ad account by numeric ID.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_assets"></a>
+
+## `read_ad_assets`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_engagement.rs#L533)
+
+Discover eligible Instagram identities, existing Page posts, Instagram/partner media, and Threads ad media for advertising. One bounded page; request extra fields only when needed.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdAssetTarget": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "page_instagram_accounts",
+              "type": "string"
+            },
+            "page_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "ad_account_id": {
+              "type": "string"
+            },
+            "kind": {
+              "const": "ad_account_instagram_accounts",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "ad_account_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "page_backed_instagram_accounts",
+              "type": "string"
+            },
+            "page_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Existing published Page posts for reuse in an ad creative; no post publishing.",
+          "properties": {
+            "kind": {
+              "const": "page_posts",
+              "type": "string"
+            },
+            "page_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Existing Page photo IDs for advertising and Instant Experience elements.",
+          "properties": {
+            "kind": {
+              "const": "page_photos",
+              "type": "string"
+            },
+            "page_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Existing Page video IDs for advertising and Instant Experience elements.",
+          "properties": {
+            "kind": {
+              "const": "page_videos",
+              "type": "string"
+            },
+            "page_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "instagram_user_id": {
+              "type": "string"
+            },
+            "kind": {
+              "const": "instagram_media",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "instagram_user_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Authorized partner content eligible for partnership ads.",
+          "properties": {
+            "instagram_user_id": {
+              "type": "string"
+            },
+            "kind": {
+              "const": "partnership_media",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "instagram_user_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "instagram_media_detail",
+              "type": "string"
+            },
+            "media_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "media_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Inspect ad media returned by Meta for a Threads ad; organic publishing is separate.",
+          "properties": {
+            "kind": {
+              "const": "threads_ad_media",
+              "type": "string"
+            },
+            "media_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "media_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "options": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReadOptions"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "target": {
+      "$ref": "#/$defs/AdAssetTarget"
+    }
+  },
+  "required": [
+    "target"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_comments"></a>
+
+## `read_ad_comments`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_engagement.rs#L595)
+
+Read comments for a Facebook/Instagram ad's current creative, or direct replies for Threads ad media. FB/IG can read a verified comment's replies; Threads nested replies are unavailable.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdCommentTarget": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Resolve the current creative's effective Page story before reading or writing comments.",
+          "properties": {
+            "ad_id": {
+              "type": "string"
+            },
+            "page_id": {
+              "type": "string"
+            },
+            "platform": {
+              "const": "facebook",
+              "type": "string"
+            }
+          },
+          "required": [
+            "platform",
+            "ad_id",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Resolve the current creative's effective Instagram media before reading or writing comments.",
+          "properties": {
+            "ad_id": {
+              "type": "string"
+            },
+            "platform": {
+              "const": "instagram",
+              "type": "string"
+            }
+          },
+          "required": [
+            "platform",
+            "ad_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Marketing API ad-media ID. Backed-account, catalog and boosted ads are unsupported by Meta.",
+          "properties": {
+            "media_id": {
+              "type": "string"
+            },
+            "platform": {
+              "const": "threads",
+              "type": "string"
+            }
+          },
+          "required": [
+            "platform",
+            "media_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "options": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReadOptions"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "parent_comment_id": {
+      "description": "Optional verified parent comment for Facebook/Instagram replies. Threads supports direct ad replies only.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "$ref": "#/$defs/AdCommentTarget"
+    }
+  },
+  "required": [
+    "target"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_creative"></a>
+
+## `read_ad_creative`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L856)
+
+Read compact metadata for one Meta ad creative by numeric ID.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_creative_id": {
+      "description": "Numeric Meta ad-creative ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_creative_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_extensions"></a>
+
+## `read_ad_extensions`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_extensions.rs#L418)
+
+Inspect creative insights, playable assets, store-location Page sets, account tracking defaults or custom-audience terms.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdExtensionRead": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "creative_insights",
+              "type": "string"
+            },
+            "creative_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "creative_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "playables",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "playable",
+              "type": "string"
+            },
+            "playable_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "playable_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "cloud_playables",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "cloud_playable",
+              "type": "string"
+            },
+            "playable_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "playable_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "place_page_sets",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Read the set returned by synchronous or asynchronous creation.",
+          "properties": {
+            "action": {
+              "const": "place_page_set",
+              "type": "string"
+            },
+            "place_page_set_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "place_page_set_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "tracking_defaults",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "custom_audience_terms",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "operation": {
+      "$ref": "#/$defs/AdExtensionRead"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_image"></a>
+
+## `read_ad_image`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L545)
+
+Return one ad's primary image as bounded native MCP image content from approved Meta CDNs.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_id": {
+      "description": "Numeric Meta ad ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_inventory"></a>
+
+## `read_ad_inventory`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_inspection.rs#L344)
+
+Read account creatives, saved audiences, labels, ad volume and recommendation signatures, or audience health, upload sessions and sharing. Use list_business_assets for change history.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AccountCollection": {
+      "oneOf": [
+        {
+          "enum": [
+            "creatives",
+            "saved_audiences",
+            "labels",
+            "creatives_by_labels",
+            "ads_by_labels",
+            "ad_sets_by_labels",
+            "campaigns_by_labels",
+            "audience_funnel",
+            "ad_volume"
+          ],
+          "type": "string"
+        },
+        {
+          "const": "recommendations",
+          "description": "Includes the signature needed to apply a recommendation.",
+          "type": "string"
+        }
+      ]
+    },
+    "AdInventoryTarget": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "ad_account_id": {
+              "type": "string"
+            },
+            "collection": {
+              "$ref": "#/$defs/AccountCollection"
+            },
+            "kind": {
+              "const": "account",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "ad_account_id",
+            "collection"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "collection": {
+              "$ref": "#/$defs/AudienceCollection"
+            },
+            "custom_audience_id": {
+              "type": "string"
+            },
+            "kind": {
+              "const": "audience",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "custom_audience_id",
+            "collection"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "collection": {
+              "$ref": "#/$defs/LabelCollection"
+            },
+            "kind": {
+              "const": "label",
+              "type": "string"
+            },
+            "label_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "label_id",
+            "collection"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "AudienceCollection": {
+      "enum": [
+        "health",
+        "sessions",
+        "shared_accounts",
+        "shared_account_info",
+        "ads"
+      ],
+      "type": "string"
+    },
+    "LabelCollection": {
+      "enum": [
+        "creatives",
+        "ads",
+        "ad_sets",
+        "campaigns"
+      ],
+      "type": "string"
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "filters": {
+      "additionalProperties": true,
+      "description": "Only the documented parameters for the selected collection are accepted.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "options": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReadOptions"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "target": {
+      "$ref": "#/$defs/AdInventoryTarget"
+    }
+  },
+  "required": [
+    "target"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_rules"></a>
+
+## `read_ad_rules`
+
+Scope: **meta-ads** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_automation.rs#L995)
+
+List or inspect Meta automated rules and execution history.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdRuleRead": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "list",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "read",
+              "type": "string"
+            },
+            "rule_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Rules governing a campaign, ad set or ad.",
+          "properties": {
+            "action": {
+              "const": "governing_object",
+              "type": "string"
+            },
+            "object_id": {
+              "type": "string"
+            },
+            "pass_evaluation": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "action",
+            "object_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "history",
+              "type": "string"
+            },
+            "action_filter": {
+              "description": "Meta history action, for example PAUSED or CHANGED_BUDGET.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "hide_no_changes": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "object_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "rule_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "account_history",
+              "type": "string"
+            },
+            "action_filter": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "evaluation_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/RuleEvaluationType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "hide_no_changes": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "object_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "RuleEvaluationType": {
+      "enum": [
+        "SCHEDULE",
+        "TRIGGER"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "operation": {
+      "$ref": "#/$defs/AdRuleRead"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_set"></a>
+
+## `read_ad_set`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L411)
+
+Read details for one Meta ad set by numeric ID.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_set_id": {
+      "description": "Numeric Meta ad-set ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_set_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_ad_studies"></a>
+
+## `read_ad_studies`
+
+Scope: **meta-ads** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_automation.rs#L1028)
+
+List Business A/B studies, inspect cells and objectives, or retrieve objective results.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdStudyRead": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "list",
+              "type": "string"
+            },
+            "business_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "business_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "list_account",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "impacting_account",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Studies containing a campaign or ad set.",
+          "properties": {
+            "action": {
+              "const": "list_delivery_object",
+              "type": "string"
+            },
+            "object_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "object_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "read",
+              "type": "string"
+            },
+            "study_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "study_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "cells",
+              "type": "string"
+            },
+            "study_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "study_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "read_cell",
+              "type": "string"
+            },
+            "cell_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "cell_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "cell_entities",
+              "type": "string"
+            },
+            "cell_id": {
+              "type": "string"
+            },
+            "entity": {
+              "$ref": "#/$defs/StudyCellEntity"
+            }
+          },
+          "required": [
+            "action",
+            "cell_id",
+            "entity"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "objectives",
+              "type": "string"
+            },
+            "study_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "study_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Includes results and last_updated_results by default.",
+          "properties": {
+            "action": {
+              "const": "results",
+              "type": "string"
+            },
+            "breakdowns": {
+              "items": {
+                "$ref": "#/$defs/StudyBreakdown"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            },
+            "ds": {
+              "description": "Optional Meta result date selector.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "objective_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "objective_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "StudyBreakdown": {
+      "enum": [
+        "age",
+        "cell_id",
+        "country",
+        "gender"
+      ],
+      "type": "string"
+    },
+    "StudyCellEntity": {
+      "enum": [
+        "ad_accounts",
+        "ad_sets",
+        "campaigns"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "operation": {
+      "$ref": "#/$defs/AdStudyRead"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_budget_schedules"></a>
+
+## `read_budget_schedules`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/budget_schedules.rs#L224)
+
+List campaign/ad-set budget schedules or read a high-demand period.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "BudgetScheduleRead": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "list",
+              "type": "string"
+            },
+            "ad_object_id": {
+              "description": "Campaign or ad-set ID.",
+              "type": "string"
+            },
+            "time_start": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "time_stop": {
+              "description": "Read-filter spelling is time_stop; writes use time_end.",
+              "format": "uint32",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "action",
+            "ad_object_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "read",
+              "type": "string"
+            },
+            "schedule_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "schedule_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "operation": {
+      "$ref": "#/$defs/BudgetScheduleRead"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_business_asset"></a>
+
+## `read_business_asset`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/asset_admin.rs#L346)
+
+Read business, account, pixel settings, user, or publisher blocklist details. Choose fields for a bounded result; dataset details use list_business_assets with datasets/id_filter.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "BusinessAssetKind": {
+      "enum": [
+        "business",
+        "ad_account",
+        "pixel",
+        "business_user",
+        "system_user",
+        "publisher_block_list"
+      ],
+      "type": "string"
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "$ref": "#/$defs/BusinessAssetKind"
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    }
+  },
+  "required": [
+    "kind",
+    "object_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_campaign"></a>
+
+## `read_campaign`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L248)
+
+Read compact metadata for one Meta campaign by numeric ID.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "campaign_id": {
+      "description": "Numeric Meta campaign ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "campaign_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_catalog_batch_status"></a>
+
+## `read_catalog_batch_status`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L705)
+
+Read completion, warnings, and errors for a catalog item, product-set, hotel-room, or pricing-variable batch handle.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CatalogBatchStatusKind": {
+      "enum": [
+        "items",
+        "product_sets",
+        "hotel_rooms",
+        "pricing_variables",
+        "marketplace_deals",
+        "marketplace_sellers"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "catalog_id": {
+      "type": "string"
+    },
+    "handle": {
+      "description": "Batch handle, or session_id returned by marketplace partner submissions.",
+      "type": "string"
+    },
+    "include_invalid_ids": {
+      "default": false,
+      "description": "Ask for invalid request IDs for item batches only.",
+      "type": "boolean"
+    },
+    "kind": {
+      "$ref": "#/$defs/CatalogBatchStatusKind"
+    }
+  },
+  "required": [
+    "catalog_id",
+    "kind",
+    "handle"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_catalog_object"></a>
+
+## `read_catalog_object`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L561)
+
+Read catalog, product, set, feed, upload, rule, or vertical-item details with bounded selectable fields.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CatalogObjectKind": {
+      "enum": [
+        "catalog",
+        "product_set",
+        "product",
+        "product_group",
+        "feed",
+        "feed_rule",
+        "feed_schedule",
+        "feed_upload",
+        "feed_upload_error",
+        "hotel",
+        "hotel_room",
+        "flight",
+        "destination",
+        "vehicle",
+        "vehicle_offer",
+        "home_listing",
+        "automotive_model",
+        "media_title"
+      ],
+      "type": "string"
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "$ref": "#/$defs/CatalogObjectKind"
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    }
+  },
+  "required": [
+    "kind",
+    "object_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_custom_audience"></a>
+
+## `read_custom_audience`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L624)
+
+Read compact aggregate metadata for one custom audience; never returns members.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "custom_audience_id": {
+      "description": "Numeric custom-audience ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "custom_audience_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_custom_conversion"></a>
+
+## `read_custom_conversion`
+
+Scope: **meta-ads** · Capability: **tracking** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1086)
+
+Read one custom conversion, with bounded rule text and explicit truncation flags.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "custom_conversion_id": {
+      "description": "Numeric Meta custom-conversion ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "custom_conversion_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_dataset_quality"></a>
+
+## `read_dataset_quality`
+
+Scope: **meta-ads** · Capability: **tracking** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1123)
+
+Read compact ingestion and matching quality for one Ads Dataset owned by a Meta business.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "business_id": {
+      "description": "Numeric Meta Business ID that owns the dataset.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "dataset_id": {
+      "description": "Numeric Ads Dataset ID returned by `list_business_datasets`.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "business_id",
+    "dataset_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_insights_job"></a>
+
+## `read_insights_job`
+
+Scope: **meta-ads** · Capability: **reporting** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L941)
+
+Read status and bounded error metadata for one async Meta Insights report run.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "report_run_id": {
+      "description": "Numeric async report-run ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "report_run_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_insights_job_results"></a>
+
+## `read_insights_job_results`
+
+Scope: **meta-ads** · Capability: **reporting** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L959)
+
+Read one bounded cursor page from a completed async Meta Insights report run.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Rows to return, from 1 through 200. Defaults to 50.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "report_run_id": {
+      "description": "Numeric async report-run ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "report_run_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_instant_experiences"></a>
+
+## `read_instant_experiences`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_experiences.rs#L408)
+
+List Page Instant Experiences, inspect elements/templates, or return preview HTML. Uses Page authorization internally.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ExperienceRead": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "list",
+              "type": "string"
+            },
+            "is_hidden": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "is_published": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "read",
+              "type": "string"
+            },
+            "experience_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "experience_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "list_elements",
+              "type": "string"
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "read_element",
+              "type": "string"
+            },
+            "element_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "element_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Returns bounded preview HTML; does not notify other users.",
+          "properties": {
+            "action": {
+              "const": "preview",
+              "type": "string"
+            },
+            "experience_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "experience_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Read the template's document ID, then read that document's body_elements.",
+          "properties": {
+            "action": {
+              "const": "template",
+              "type": "string"
+            },
+            "template_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "template_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "operation": {
+      "$ref": "#/$defs/ExperienceRead"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    },
+    "page_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "page_id",
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_lead_data"></a>
+
+## `read_lead_data`
+
+Scope: **meta-ads** · Capability: **leads** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/lead_forms.rs#L530)
+
+Read Instant Forms, submitted leads, test leads, or Page webhook subscriptions. Compact pages omit lead answers unless fields requests field_data; single-lead reads include answers. Requires Page/lead access.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "LeadReadTarget": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "forms",
+              "type": "string"
+            },
+            "page_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "form_id": {
+              "type": "string"
+            },
+            "kind": {
+              "const": "form",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "form_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Read leads from one form or ad. Requires leads_retrieval and Page lead access.",
+          "properties": {
+            "kind": {
+              "const": "leads",
+              "type": "string"
+            },
+            "object_id": {
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/LeadSource"
+            }
+          },
+          "required": [
+            "kind",
+            "source",
+            "object_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "lead",
+              "type": "string"
+            },
+            "lead_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "lead_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "form_id": {
+              "type": "string"
+            },
+            "kind": {
+              "const": "test_leads",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "form_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Lists the apps subscribed to this Page; no callback hosting is provided here.",
+          "properties": {
+            "kind": {
+              "const": "subscriptions",
+              "type": "string"
+            },
+            "page_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "LeadSource": {
+      "enum": [
+        "form",
+        "ad"
+      ],
+      "type": "string"
+    },
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "options": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReadOptions"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Select extra fields, including field_data for submitted answers; default pages are compact."
+    },
+    "target": {
+      "$ref": "#/$defs/LeadReadTarget"
+    }
+  },
+  "required": [
+    "target"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_reach_frequency_prediction"></a>
+
+## `read_reach_frequency_prediction`
+
+Scope: **meta-ads** · Capability: **campaigns-read** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1499)
+
+Read one bounded Meta reach-and-frequency prediction and its capped budget curve.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "rf_prediction_id": {
+      "description": "Numeric reach-and-frequency prediction ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "rf_prediction_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="read_value_rules"></a>
+
+## `read_value_rules`
+
+Scope: **meta-ads** · Capability: **automation** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_automation.rs#L1061)
+
+List Meta value-rule sets or inspect a set and its rules.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ReadOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "description": "Simple field names; omit for compact defaults. No Graph field expansion.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "page_cursor": {
+          "description": "Opaque next_cursor from the preceding result.",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page_size": {
+          "description": "One bounded page, default 25.",
+          "format": "uint16",
+          "maximum": 100,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "ValueRuleProduct": {
+      "enum": [
+        "AUDIENCE",
+        "LEADGEN_ADS",
+        "OMNI_CHANNEL"
+      ],
+      "type": "string"
+    },
+    "ValueRuleRead": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "list",
+              "type": "string"
+            },
+            "ad_account_id": {
+              "type": "string"
+            },
+            "product_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ValueRuleProduct"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "status": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ValueRuleStatus"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "action",
+            "ad_account_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "read",
+              "type": "string"
+            },
+            "rule_set_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_set_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "rules",
+              "type": "string"
+            },
+            "rule_set_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "rule_set_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "ValueRuleStatus": {
+      "enum": [
+        "ACTIVE",
+        "DELETED",
+        "DRAFT"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "operation": {
+      "$ref": "#/$defs/ValueRuleRead"
+    },
+    "options": {
+      "$ref": "#/$defs/ReadOptions"
+    }
+  },
+  "required": [
+    "operation"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="revoke_branded_content_ad_permission"></a>
+
+## `revoke_branded_content_ad_permission`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1397)
+
+Revoke one creator partnership-ad permission after CONFIRM_META_ADS_REMOVALS; verify current permissions before retrying an ambiguous failure.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "creator_instagram_account": {
+      "description": "Numeric creator Instagram account ID (`creator_instagram_account` in Meta v26).",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "creator_instagram_username": {
+      "description": "Creator username without `@` (`creator_instagram_username` in Meta v26).",
+      "maxLength": 30,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9._]{1,30}$",
+      "type": "string"
+    },
+    "instagram_business_account_id": {
+      "description": "Numeric brand Instagram professional-account ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Exact phrase proving the operator approved this removal.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "instagram_business_account_id",
+    "creator_instagram_account",
+    "creator_instagram_username",
+    "removal_acknowledgement"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="search_ads_archive"></a>
+
+## `search_ads_archive`
+
+Scope: **meta-ads** · Capability: **ad-library** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L820)
+
+Search Meta's public Ads Library with typed v26 filters and bounded cursor results.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ArchiveActiveStatus": {
+      "enum": [
+        "active",
+        "all",
+        "inactive"
+      ],
+      "type": "string"
+    },
+    "ArchiveAdType": {
+      "enum": [
+        "all",
+        "employment_ads",
+        "financial_products_and_services_ads",
+        "housing_ads",
+        "political_and_issue_ads"
+      ],
+      "type": "string"
+    },
+    "ArchiveMediaType": {
+      "enum": [
+        "all",
+        "image",
+        "meme",
+        "video",
+        "none"
+      ],
+      "type": "string"
+    },
+    "ArchivePublisherPlatform": {
+      "enum": [
+        "facebook",
+        "instagram",
+        "audience_network",
+        "messenger",
+        "oculus",
+        "threads"
+      ],
+      "type": "string"
+    },
+    "ArchiveSearchType": {
+      "enum": [
+        "keyword_unordered",
+        "keyword_exact_phrase"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_active_status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ArchiveActiveStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Defaults to Meta's active-only behavior."
+    },
+    "ad_delivery_date_max": {
+      "description": "Inclusive maximum delivery date in `YYYY-MM-DD` format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ad_delivery_date_min": {
+      "description": "Inclusive minimum delivery date in `YYYY-MM-DD` format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ad_reached_countries": {
+      "description": "Reached-country filters as two-letter codes, or `ALL` by itself.",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 25,
+      "minItems": 1,
+      "type": "array"
+    },
+    "ad_type": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ArchiveAdType"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Defaults to `all`."
+    },
+    "languages": {
+      "description": "ISO language codes, at most 20.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "media_type": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ArchiveMediaType"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of ads to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "publisher_platforms": {
+      "items": {
+        "$ref": "#/$defs/ArchivePublisherPlatform"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "search_page_ids": {
+      "description": "Facebook Page IDs. At most 10. Required unless search text is supplied.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "search_terms": {
+      "description": "Search text, at most 100 characters. Required unless page IDs are supplied.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "search_type": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ArchiveSearchType"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "ad_reached_countries"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="search_behaviors"></a>
+
+## `search_behaviors`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1228)
+
+List current Meta behavior-targeting categories with bounded cursor pagination.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of behavior categories to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="search_demographics"></a>
+
+## `search_demographics`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1245)
+
+List one current Meta demographic targeting class with bounded cursor pagination.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "DemographicClass": {
+      "enum": [
+        "demographics",
+        "life_events",
+        "industries",
+        "income",
+        "family_statuses",
+        "user_device",
+        "user_os"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "demographic_class": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DemographicClass"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Defaults to `demographics`, which retrieves all documented demographic classes."
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of demographic categories to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="search_geo_locations"></a>
+
+## `search_geo_locations`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1264)
+
+Autocomplete current Meta geo targets and return stable keys plus compact hierarchy data.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "GeoLocationType": {
+      "enum": [
+        "country",
+        "country_group",
+        "region",
+        "city",
+        "zip",
+        "geo_market",
+        "electoral_district"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "location_types": {
+      "description": "Optional documented location categories. Omit to search all categories.",
+      "items": {
+        "$ref": "#/$defs/GeoLocationType"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of locations to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "query": {
+      "description": "Location text to autocomplete, from 1 through 100 characters.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "query"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="search_interests"></a>
+
+## `search_interests`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1175)
+
+Autocomplete current Meta interest targets with bounded audience-size ranges.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of interests to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "query": {
+      "description": "Case-sensitive interest text to autocomplete, from 1 through 100 characters.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "query"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="send_capi_events"></a>
+
+## `send_capi_events`
+
+Scope: **meta-ads** · Capability: **tracking** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1141)
+
+Submit a bounded Conversions API event batch; matchable PII is normalized and SHA-256 hashed locally.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CapiActionSource": {
+      "enum": [
+        "website",
+        "app",
+        "chat",
+        "business_messaging",
+        "email",
+        "phone_call",
+        "physical_store",
+        "system_generated",
+        "other"
+      ],
+      "type": "string"
+    },
+    "CapiContentInput": {
+      "additionalProperties": false,
+      "properties": {
+        "delivery_category": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CapiDeliveryCategory"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "item_price": {
+          "format": "double",
+          "maximum": 1000000000000.0,
+          "minimum": 0.0,
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "product_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "quantity": {
+          "format": "uint32",
+          "maximum": 1000000,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "product_id"
+      ],
+      "type": "object"
+    },
+    "CapiContentType": {
+      "enum": [
+        "product",
+        "product_group"
+      ],
+      "type": "string"
+    },
+    "CapiCustomDataInput": {
+      "additionalProperties": false,
+      "properties": {
+        "content_category": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "content_name": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CapiContentType"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "contents": {
+          "items": {
+            "$ref": "#/$defs/CapiContentInput"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "currency": {
+          "description": "ISO 4217 currency code. Required when `value` is present.",
+          "maxLength": 3,
+          "minLength": 3,
+          "pattern": "^[A-Za-z]{3}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "num_items": {
+          "format": "uint32",
+          "maximum": 1000000,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "order_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "search_string": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value": {
+          "format": "double",
+          "maximum": 1000000000000.0,
+          "minimum": 0.0,
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "CapiDataProcessing": {
+      "description": "Meta currently documents Limited Data Use as the supported event-level\ndata-processing option. The adjacent tag keeps the option closed while the\nlocation enum prevents incoherent country/state combinations.",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "location": {
+              "$ref": "#/$defs/CapiLduLocation"
+            },
+            "option": {
+              "const": "ldu",
+              "type": "string"
+            }
+          },
+          "required": [
+            "option",
+            "location"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CapiDeliveryCategory": {
+      "enum": [
+        "in_store",
+        "curbside",
+        "home_delivery"
+      ],
+      "type": "string"
+    },
+    "CapiEventInput": {
+      "additionalProperties": false,
+      "properties": {
+        "action_source": {
+          "$ref": "#/$defs/CapiActionSource"
+        },
+        "app_data": {
+          "additionalProperties": true,
+          "description": "Provider-version-dependent Meta App Data object. Valid only for `app`\nevents and bounded to 16 KiB, eight levels, and credential-free values.\nKeep customer matching data in typed `user_data` so it is hashed locally.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "custom_data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CapiCustomDataInput"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_processing": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CapiDataProcessing"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Optional Limited Data Use setting. `automatic` asks Meta to determine\nlocation; named states emit Meta's documented US country/state codes."
+        },
+        "event_id": {
+          "description": "Advertiser-generated deduplication ID shared with the matching browser event.",
+          "maxLength": 256,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "event_name": {
+          "description": "Standard or custom event name.",
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "event_source_url": {
+          "description": "Required for `website`; must be credential-free HTTPS.",
+          "format": "uri",
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "event_time": {
+          "description": "Unix timestamp in seconds. Events older than seven days are rejected.",
+          "format": "uint64",
+          "maximum": 4102444800,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "opt_out": {
+          "description": "True limits use to attribution rather than ads-delivery optimization.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "referrer_url": {
+          "description": "Optional credential-free HTTPS referrer URL.",
+          "format": "uri",
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "user_data": {
+          "$ref": "#/$defs/CapiUserDataInput"
+        }
+      },
+      "required": [
+        "event_name",
+        "event_time",
+        "action_source",
+        "user_data"
+      ],
+      "type": "object"
+    },
+    "CapiGender": {
+      "enum": [
+        "male",
+        "female"
+      ],
+      "type": "string"
+    },
+    "CapiLduLocation": {
+      "enum": [
+        "automatic",
+        "california",
+        "colorado",
+        "connecticut",
+        "florida",
+        "oregon",
+        "texas",
+        "montana",
+        "delaware",
+        "nebraska",
+        "new_hampshire",
+        "new_jersey",
+        "minnesota",
+        "maryland",
+        "rhode_island"
+      ],
+      "type": "string"
+    },
+    "CapiUserDataInput": {
+      "additionalProperties": false,
+      "description": "Matching identifiers. Hashable fields accept raw values or 64-character\nSHA-256 hex digests and produce arrays under Meta's compact wire keys.",
+      "properties": {
+        "cities": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "client_ip_address": {
+          "maxLength": 64,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "client_user_agent": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "country_codes": {
+          "items": {
+            "maxLength": 64,
+            "minLength": 2,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "dates_of_birth": {
+          "description": "Raw dates use `YYYYMMDD`; pre-hashed SHA-256 values are also accepted.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 8,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "emails": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "external_ids": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "fb_login_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fbc": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fbp": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "first_names": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "genders": {
+          "items": {
+            "$ref": "#/$defs/CapiGender"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "last_names": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "lead_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phones": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "states": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "subscription_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zip_codes": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "dataset_id": {
+      "description": "Numeric Meta Dataset or Pixel ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "events": {
+      "description": "One through 50 events. Use `event_id` for browser/server deduplication.",
+      "items": {
+        "$ref": "#/$defs/CapiEventInput"
+      },
+      "maxItems": 50,
+      "minItems": 1,
+      "type": "array"
+    },
+    "partner_agent": {
+      "description": "Optional platform identifier for a technology-provider integration.",
+      "maxLength": 256,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "test_event_code": {
+      "description": "Optional code from Events Manager Test Events. Omit for production events.",
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_-]{1,128}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "dataset_id",
+    "events"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="send_marketplace_signal"></a>
+
+## `send_marketplace_signal`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L747)
+
+Send one marketplace partner conversion signal. Matching identifiers are hashed locally; use a stable event_id. Submission is single-shot and never retried automatically.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CapiGender": {
+      "enum": [
+        "male",
+        "female"
+      ],
+      "type": "string"
+    },
+    "CapiUserDataInput": {
+      "additionalProperties": false,
+      "description": "Matching identifiers. Hashable fields accept raw values or 64-character\nSHA-256 hex digests and produce arrays under Meta's compact wire keys.",
+      "properties": {
+        "cities": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "client_ip_address": {
+          "maxLength": 64,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "client_user_agent": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "country_codes": {
+          "items": {
+            "maxLength": 64,
+            "minLength": 2,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "dates_of_birth": {
+          "description": "Raw dates use `YYYYMMDD`; pre-hashed SHA-256 values are also accepted.",
+          "items": {
+            "maxLength": 64,
+            "minLength": 8,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "emails": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "external_ids": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "fb_login_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fbc": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fbp": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "first_names": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "genders": {
+          "items": {
+            "$ref": "#/$defs/CapiGender"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "last_names": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "lead_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phones": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "states": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "subscription_id": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zip_codes": {
+          "items": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "MarketplaceConversionType": {
+      "enum": [
+        "ATTRIBUTED",
+        "IN_SESSION"
+      ],
+      "type": "string"
+    },
+    "MarketplaceEventName": {
+      "enum": [
+        "ADD_TO_CART",
+        "OFFER_SUBMITTED",
+        "PURCHASE",
+        "PURCHASE_VIA_OFFER",
+        "TEST",
+        "VIEW_ITEM"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "catalog_id": {
+      "type": "string"
+    },
+    "conversion_type": {
+      "$ref": "#/$defs/MarketplaceConversionType"
+    },
+    "event_id": {
+      "description": "Stable ID for event deduplication; reuse it when checking an uncertain submission.",
+      "type": "string"
+    },
+    "event_name": {
+      "$ref": "#/$defs/MarketplaceEventName"
+    },
+    "event_source_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "event_time": {
+      "description": "Unix seconds, within the past seven days.",
+      "format": "uint64",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "offer_data": {
+      "additionalProperties": true,
+      "description": "Marketplace offer metadata; customer matching identifiers belong in user_data.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "order_data": {
+      "additionalProperties": true,
+      "description": "Marketplace order metadata; customer matching identifiers belong in user_data.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "user_data": {
+      "$ref": "#/$defs/CapiUserDataInput",
+      "description": "Raw matching identifiers are normalized and hashed locally, using the same boundary as send_capi_events."
+    }
+  },
+  "required": [
+    "catalog_id",
+    "event_name",
+    "conversion_type",
+    "event_id",
+    "event_time",
+    "user_data"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="set_lead_form_status"></a>
+
+## `set_lead_form_status`
+
+Scope: **meta-ads** · Capability: **leads** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/lead_forms.rs#L587)
+
+Archive or reactivate a Page's Instant Form. Archiving requires CONFIRM_META_ADS_REMOVALS. Meta does not support deleting forms or editing their content.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "LeadFormStatus": {
+      "enum": [
+        "ACTIVE",
+        "ARCHIVED"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "form_id": {
+      "type": "string"
+    },
+    "page_id": {
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Required when archiving a form.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "$ref": "#/$defs/LeadFormStatus"
+    }
+  },
+  "required": [
+    "page_id",
+    "form_id",
+    "status"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="share_custom_audience"></a>
+
+## `share_custom_audience`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/ad_library_mutations.rs#L525)
+
+Grant or revoke ad-account access to an owned Custom Audience. Grants preserve other recipients and default to targeting only. Revocation can stop recipient ads and requires removal acknowledgement.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AudienceSharingAction": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Grant access without removing existing recipients. Default permission is targeting only.",
+          "properties": {
+            "kind": {
+              "const": "add",
+              "type": "string"
+            },
+            "permissions": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/AudienceSharingPermission"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "relationship_type": {
+              "items": {
+                "maxLength": 64,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 25,
+              "minItems": 1,
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Removing access can stop the recipient's ads that use this audience.",
+          "properties": {
+            "kind": {
+              "const": "remove",
+              "type": "string"
+            },
+            "removal_acknowledgement": {
+              "maxLength": 25,
+              "minLength": 25,
+              "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "removal_acknowledgement"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "AudienceSharingPermission": {
+      "enum": [
+        "targeting",
+        "targeting_and_insights"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/AudienceSharingAction"
+    },
+    "ad_account_id": {
+      "type": "string"
+    },
+    "custom_audience_id": {
+      "type": "string"
+    },
+    "recipient_ad_account_ids": {
+      "items": {
+        "maxLength": 68,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 25,
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "custom_audience_id",
+    "recipient_ad_account_ids",
+    "action"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="suggest_interests"></a>
+
+## `suggest_interests`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1191)
+
+Suggest related Meta interest targets from a bounded list of seed names.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "interest_list": {
+      "description": "Case-sensitive interest names used as suggestion seeds. Accepts 1 through 25 terms.",
+      "items": {
+        "maxLength": 100,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 25,
+      "minItems": 1,
+      "type": "array"
+    },
+    "page_cursor": {
+      "description": "Opaque `next_cursor` from the previous response.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_size": {
+      "description": "Number of suggestions to return, from 1 through 100. Defaults to 25.",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "interest_list"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="update_account_controls"></a>
+
+## `update_account_controls`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L179)
+
+Set one or both bounded account-wide audience or placement control objects.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "type": "string"
+    },
+    "audience_controls": {
+      "additionalProperties": true,
+      "description": "Account-wide audience controls. Omit to leave this control family unchanged.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "placement_controls": {
+      "additionalProperties": true,
+      "description": "Account-wide placement controls. Omit to leave this control family unchanged.",
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="update_ad"></a>
+
+## `update_ad`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L469)
+
+Update explicitly supplied fields on one Meta ad; ACTIVE may begin delivery.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdUpdateStatus": {
+      "enum": [
+        "ACTIVE",
+        "ARCHIVED",
+        "PAUSED"
+      ],
+      "type": "string"
+    },
+    "PixelTracking": {
+      "additionalProperties": false,
+      "properties": {
+        "pixel_id": {
+          "description": "Numeric Meta pixel/dataset ID for `offsite_conversion` tracking.",
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[0-9]{1,64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pixel_id"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Expected owner ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "ad_creative_id": {
+      "description": "Swap to this numeric existing ad-creative ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ad_id": {
+      "description": "Numeric Meta ad ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "bid_amount": {
+      "description": "New bid amount in account-currency minor units.",
+      "format": "uint32",
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "conversion_domain": {
+      "description": "New website conversion domain without a scheme or path.",
+      "maxLength": 253,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "New ad name, from 1 through 256 characters.",
+      "maxLength": 256,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pixel_tracking": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PixelTracking"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Replace tracking with bounded offsite-conversion pixel tracking."
+    },
+    "status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdUpdateStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "New delivery status. Deletion is intentionally not exposed here."
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "ad_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="update_ad_creative"></a>
+
+## `update_ad_creative`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L525)
+
+Rename one Meta ad creative; content is immutable, so replace the creative to change it.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Expected owner ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "ad_creative_id": {
+      "description": "Numeric Meta ad-creative ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "name": {
+      "description": "New creative name, from 1 through 256 characters.",
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "ad_creative_id",
+    "name"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="update_ad_set"></a>
+
+## `update_ad_set`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L359)
+
+Update explicitly supplied fields on one Meta ad set; ACTIVE may begin delivery.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdSetBid": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "format": "uint64",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "strategy": {
+              "const": "COST_CAP",
+              "type": "string"
+            }
+          },
+          "required": [
+            "strategy",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "strategy": {
+              "const": "LOWEST_COST_WITHOUT_CAP",
+              "type": "string"
+            }
+          },
+          "required": [
+            "strategy"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "format": "uint64",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "strategy": {
+              "const": "LOWEST_COST_WITH_BID_CAP",
+              "type": "string"
+            }
+          },
+          "required": [
+            "strategy",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "roas_average_floor": {
+              "format": "uint32",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "strategy": {
+              "const": "LOWEST_COST_WITH_MIN_ROAS",
+              "type": "string"
+            }
+          },
+          "required": [
+            "strategy",
+            "roas_average_floor"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "AdSetBillingEvent": {
+      "enum": [
+        "APP_INSTALLS",
+        "IMPRESSIONS",
+        "LINK_CLICKS",
+        "PAGE_LIKES",
+        "POST_ENGAGEMENT",
+        "PURCHASE",
+        "THRUPLAY"
+      ],
+      "type": "string"
+    },
+    "AdSetDestinationType": {
+      "enum": [
+        "APP",
+        "FACEBOOK",
+        "FACEBOOK_PAGE",
+        "INSTAGRAM_DIRECT",
+        "INSTAGRAM_PROFILE",
+        "MESSENGER",
+        "ON_AD",
+        "ON_PAGE",
+        "ON_POST",
+        "SHOP_AUTOMATIC",
+        "WEBSITE"
+      ],
+      "type": "string"
+    },
+    "AdSetOptimizationGoal": {
+      "enum": [
+        "AD_RECALL_LIFT",
+        "APP_INSTALLS",
+        "CONVERSATIONS",
+        "EVENT_RESPONSES",
+        "IMPRESSIONS",
+        "LANDING_PAGE_VIEWS",
+        "LEAD_GENERATION",
+        "LINK_CLICKS",
+        "OFFSITE_CONVERSIONS",
+        "PAGE_LIKES",
+        "POST_ENGAGEMENT",
+        "QUALITY_LEAD",
+        "REACH",
+        "THRUPLAY",
+        "VALUE",
+        "VISIT_INSTAGRAM_PROFILE"
+      ],
+      "type": "string"
+    },
+    "AdSetPromotedObject": {
+      "description": "A typed common subset of Meta's objective-dependent promoted-object shapes.",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "application_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            },
+            "custom_event_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CustomEventType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "kind": {
+              "const": "app",
+              "type": "string"
+            },
+            "object_store_url": {
+              "format": "uri",
+              "maxLength": 2048,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "application_id",
+            "object_store_url"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "custom_event_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CustomEventType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "kind": {
+              "const": "pixel",
+              "type": "string"
+            },
+            "pixel_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "pixel_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "page",
+              "type": "string"
+            },
+            "page_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "page_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "custom_event_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CustomEventType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "kind": {
+              "const": "product_set",
+              "type": "string"
+            },
+            "product_set_id": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "product_set_id"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "AdSetUpdateStatus": {
+      "enum": [
+        "ACTIVE",
+        "ARCHIVED",
+        "PAUSED"
+      ],
+      "type": "string"
+    },
+    "AttributionEventType": {
+      "enum": [
+        "CLICK_THROUGH",
+        "ENGAGED_VIDEO_VIEW",
+        "VIEW_THROUGH"
+      ],
+      "type": "string"
+    },
+    "AttributionSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "event_type": {
+          "$ref": "#/$defs/AttributionEventType"
+        },
+        "window_days": {
+          "description": "Provider-dependent window from 1 through 28 days.",
+          "format": "uint8",
+          "maximum": 28,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "event_type",
+        "window_days"
+      ],
+      "type": "object"
+    },
+    "AudienceEstimateTargeting": {
+      "additionalProperties": false,
+      "properties": {
+        "age_max": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "age_min": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "age_range": {
+          "description": "Suggested age range for Advantage+ audience, as `[minimum, maximum]`.",
+          "items": {
+            "format": "uint8",
+            "maximum": 255,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "audience_network_positions": {
+          "items": {
+            "$ref": "#/$defs/AudienceNetworkPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "behaviors": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "custom_audiences": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "device_platforms": {
+          "items": {
+            "$ref": "#/$defs/DevicePlatform"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "excluded_custom_audiences": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "facebook_positions": {
+          "items": {
+            "$ref": "#/$defs/FacebookPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "flexible_spec": {
+          "items": {
+            "$ref": "#/$defs/FlexibleTargetingGroup"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "genders": {
+          "description": "`1` targets men and `2` targets women. Omit for all genders.",
+          "items": {
+            "format": "uint8",
+            "maximum": 255,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "geo_locations": {
+          "$ref": "#/$defs/EstimateGeoLocations"
+        },
+        "instagram_positions": {
+          "items": {
+            "$ref": "#/$defs/InstagramPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "interests": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "messenger_positions": {
+          "items": {
+            "$ref": "#/$defs/MessengerPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "publisher_platforms": {
+          "items": {
+            "$ref": "#/$defs/PublisherPlatform"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "targeting_automation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TargetingAutomation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "threads_positions": {
+          "items": {
+            "$ref": "#/$defs/ThreadsPosition"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "user_age_unknown": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "geo_locations"
+      ],
+      "type": "object"
+    },
+    "AudienceNetworkPosition": {
+      "enum": [
+        "classic",
+        "rewarded_video"
+      ],
+      "type": "string"
+    },
+    "CustomEventType": {
+      "enum": [
+        "ADD_PAYMENT_INFO",
+        "ADD_TO_CART",
+        "ADD_TO_WISHLIST",
+        "COMPLETE_REGISTRATION",
+        "CONTACT",
+        "CONTENT_VIEW",
+        "INITIATED_CHECKOUT",
+        "LEAD",
+        "OTHER",
+        "PURCHASE",
+        "SEARCH",
+        "START_TRIAL",
+        "SUBMIT_APPLICATION",
+        "SUBSCRIBE"
+      ],
+      "type": "string"
+    },
+    "DevicePlatform": {
+      "enum": [
+        "connected_tv",
+        "desktop",
+        "mobile"
+      ],
+      "type": "string"
+    },
+    "EstimateGeoLocations": {
+      "additionalProperties": false,
+      "properties": {
+        "countries": {
+          "description": "One through 250 two-letter uppercase country codes.",
+          "items": {
+            "maxLength": 2,
+            "minLength": 2,
+            "type": "string"
+          },
+          "maxItems": 250,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "countries"
+      ],
+      "type": "object"
+    },
+    "FacebookPosition": {
+      "enum": [
+        "feed",
+        "right_hand_column",
+        "marketplace",
+        "story",
+        "search",
+        "instream_video",
+        "facebook_reels",
+        "facebook_reels_overlay",
+        "profile_feed",
+        "notification"
+      ],
+      "type": "string"
+    },
+    "FlexibleTargetingGroup": {
+      "additionalProperties": false,
+      "description": "Common flexible-targeting dimensions used by the Python server.",
+      "properties": {
+        "behaviors": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "custom_audiences": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "interests": {
+          "items": {
+            "$ref": "#/$defs/TargetingId"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "FrequencyControlEvent": {
+      "enum": [
+        "IMPRESSIONS"
+      ],
+      "type": "string"
+    },
+    "FrequencyControlSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "event": {
+          "$ref": "#/$defs/FrequencyControlEvent",
+          "description": "Meta v26 currently supports `IMPRESSIONS` for write operations."
+        },
+        "interval_days": {
+          "description": "Frequency interval, from 1 through 90 days.",
+          "format": "uint8",
+          "maximum": 90,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_frequency": {
+          "description": "Maximum frequency, from 1 through 90.",
+          "format": "uint8",
+          "maximum": 90,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/$defs/FrequencyControlType"
+        }
+      },
+      "required": [
+        "event",
+        "interval_days",
+        "max_frequency",
+        "type"
+      ],
+      "type": "object"
+    },
+    "FrequencyControlType": {
+      "enum": [
+        "CAP",
+        "NONE",
+        "TARGET"
+      ],
+      "type": "string"
+    },
+    "InstagramPosition": {
+      "description": "Current v26 positions; removed Instagram `explore` is rejected.",
+      "enum": [
+        "stream",
+        "story",
+        "explore_home",
+        "reels",
+        "profile_feed",
+        "ig_search",
+        "profile_reels"
+      ],
+      "type": "string"
+    },
+    "MessengerPosition": {
+      "description": "Current v26 positions; removed Messenger `story` is rejected.",
+      "enum": [
+        "sponsored_messages"
+      ],
+      "type": "string"
+    },
+    "PlacementSoftOptOut": {
+      "additionalProperties": false,
+      "properties": {
+        "audience_network_positions": {
+          "items": {
+            "$ref": "#/$defs/AudienceNetworkPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "facebook_positions": {
+          "items": {
+            "$ref": "#/$defs/FacebookPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "instagram_positions": {
+          "items": {
+            "$ref": "#/$defs/InstagramPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "messenger_positions": {
+          "items": {
+            "$ref": "#/$defs/MessengerPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "threads_positions": {
+          "items": {
+            "$ref": "#/$defs/ThreadsPosition"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "PublisherPlatform": {
+      "enum": [
+        "facebook",
+        "instagram",
+        "threads",
+        "messenger",
+        "audience_network"
+      ],
+      "type": "string"
+    },
+    "TargetingAutomation": {
+      "additionalProperties": false,
+      "properties": {
+        "advantage_audience": {
+          "description": "Explicit Advantage+ audience intent. Sent to Meta as `1` or `0`.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "advantage_audience"
+      ],
+      "type": "object"
+    },
+    "TargetingId": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Numeric Meta targeting or audience ID.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "ThreadsPosition": {
+      "enum": [
+        "threads_stream"
+      ],
+      "type": "string"
+    },
+    "UpdateAdSetBudget": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "format": "uint64",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "daily",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "format": "uint64",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "lifetime",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "amount"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Expected owner ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "ad_set_id": {
+      "description": "Numeric Meta ad-set ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    },
+    "attribution_spec": {
+      "items": {
+        "$ref": "#/$defs/AttributionSpec"
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "bid": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetBid"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "billing_event": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetBillingEvent"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "budget": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UpdateAdSetBudget"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "destination_type": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetDestinationType"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "dsa_beneficiary": {
+      "maxLength": 512,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dsa_payor": {
+      "maxLength": 512,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "end_time": {
+      "description": "UTC Unix end time; `0` requests an ongoing daily-budget ad set.",
+      "format": "uint64",
+      "maximum": 4102444800,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "frequency_control_specs": {
+      "items": {
+        "$ref": "#/$defs/FrequencyControlSpec"
+      },
+      "maxItems": 4,
+      "minItems": 1,
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "name": {
+      "maxLength": 256,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "optimization_goal": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetOptimizationGoal"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "placement_soft_opt_out": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PlacementSoftOptOut"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "promoted_object": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetPromotedObject"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "start_time": {
+      "description": "Optional UTC Unix start time, through 2100-01-01.",
+      "format": "uint64",
+      "maximum": 4102444800,
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AdSetUpdateStatus"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "targeting": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AudienceEstimateTargeting"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "ad_set_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="update_business_asset"></a>
+
+## `update_business_asset`
+
+Scope: **supporting** · Capability: **accounts** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/asset_admin.rs#L412)
+
+Update verified business/account settings, pixel matching/cookie settings, user access or blocklist spec. Access reductions and spending-limit resets require CONFIRM_META_ADS_REMOVALS.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "BusinessAssetKind": {
+      "enum": [
+        "business",
+        "ad_account",
+        "pixel",
+        "business_user",
+        "system_user",
+        "publisher_block_list"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "fields": {
+      "additionalProperties": true,
+      "description": "Official v26 writable fields. Pixel: matching/cookie/data-use settings; account: spend_cap, timezone_id, name; blocklist: structured spec.",
+      "type": "object"
+    },
+    "kind": {
+      "$ref": "#/$defs/BusinessAssetKind",
+      "description": "Business, ad_account, pixel, business_user, or publisher_block_list; system-user node updates are unavailable."
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for replacing blocklist specs/user access, removing CAPI business access, or clearing/resetting spending limits.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "kind",
+    "object_id",
+    "fields"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="update_campaign"></a>
+
+## `update_campaign`
+
+Scope: **meta-ads** · Capability: **campaigns** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L282)
+
+Update explicitly supplied fields on one Meta campaign; ACTIVE may begin delivery.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CampaignBidStrategy": {
+      "enum": [
+        "COST_CAP",
+        "LOWEST_COST_WITHOUT_CAP",
+        "LOWEST_COST_WITH_BID_CAP",
+        "LOWEST_COST_WITH_MIN_ROAS"
+      ],
+      "type": "string"
+    },
+    "CampaignBudgetAmount": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Daily campaign budget in account-currency minor units.",
+          "properties": {
+            "amount": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "daily",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "amount"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Lifetime campaign budget in account-currency minor units.",
+          "properties": {
+            "amount": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "lifetime",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "amount"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CampaignObjective": {
+      "enum": [
+        "OUTCOME_APP_PROMOTION",
+        "OUTCOME_AWARENESS",
+        "OUTCOME_ENGAGEMENT",
+        "OUTCOME_LEADS",
+        "OUTCOME_SALES",
+        "OUTCOME_TRAFFIC"
+      ],
+      "type": "string"
+    },
+    "CampaignUpdateStatus": {
+      "enum": [
+        "ACTIVE",
+        "ARCHIVED",
+        "PAUSED"
+      ],
+      "type": "string"
+    },
+    "SpecialAdCategory": {
+      "enum": [
+        "CREDIT",
+        "EMPLOYMENT",
+        "FINANCIAL_PRODUCTS_SERVICES",
+        "HOUSING",
+        "ISSUES_ELECTIONS_POLITICS",
+        "ONLINE_GAMBLING_AND_GAMING"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Expected owner ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "bid_strategy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignBidStrategy"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "New campaign bid strategy. Bid amounts belong on ad sets."
+    },
+    "budget": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignBudgetAmount"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Set one campaign-level budget amount."
+    },
+    "campaign_id": {
+      "description": "Numeric Meta campaign ID.",
+      "type": "string"
+    },
+    "is_adset_budget_sharing_enabled": {
+      "description": "Enable or disable budget sharing between child ad sets.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "New campaign name, from 1 through 256 characters.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "objective": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignObjective"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "New outcome-based campaign objective, subject to Meta's state restrictions."
+    },
+    "special_ad_categories": {
+      "description": "Replace special-ad categories. An empty list clears them.",
+      "items": {
+        "$ref": "#/$defs/SpecialAdCategory"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "special_ad_category_countries": {
+      "description": "Replace special-ad-category countries. An empty list clears them.",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "spend_cap": {
+      "description": "New account-currency spend cap in minor units.",
+      "format": "uint32",
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CampaignUpdateStatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "New delivery status. Deletion is intentionally not exposed here."
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "campaign_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="update_custom_audience"></a>
+
+## `update_custom_audience`
+
+Scope: **meta-ads** · Capability: **audiences** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L663)
+
+Update the bounded name or description of one customer-list audience.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID, with or without the `act_` prefix.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "custom_audience_id": {
+      "description": "Numeric Meta custom-audience ID.",
+      "type": "string"
+    },
+    "description": {
+      "description": "New description, up to 1,000 characters. Use an empty string to clear it.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "New audience name, from 1 through 256 characters.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "custom_audience_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="update_custom_conversion"></a>
+
+## `update_custom_conversion`
+
+Scope: **meta-ads** · Capability: **tracking** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L774)
+
+Update only the current writable name, description, or default value fields.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Numeric Meta ad-account ID that owns the conversion, with or without `act_`.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "custom_conversion_id": {
+      "description": "Numeric Meta custom-conversion ID.",
+      "type": "string"
+    },
+    "default_conversion_value": {
+      "description": "New fixed value for events without a value. Must be finite and nonnegative.",
+      "format": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "New description, up to 1,024 characters. An empty string clears it.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "New nonempty name, up to 100 characters.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "custom_conversion_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="upload_ad_image_asset"></a>
+
+## `upload_ad_image_asset`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L563)
+
+Upload or cross-account-copy one JPEG/PNG ad image; local paths are confined to META_MEDIA_ROOT.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdImageAssetSource": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Stream a JPEG or PNG below 15 MiB from `META_MEDIA_ROOT`.",
+          "properties": {
+            "kind": {
+              "const": "local_file",
+              "type": "string"
+            },
+            "relative_path": {
+              "description": "Relative path below `META_MEDIA_ROOT`; absolute paths and traversal are rejected.",
+              "maxLength": 1024,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "relative_path"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Copy an existing ad image without downloading or re-encoding it.",
+          "properties": {
+            "image_hash": {
+              "description": "Image hash returned by `list_ad_images` on the source account.",
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            "kind": {
+              "const": "existing_account_image",
+              "type": "string"
+            },
+            "source_ad_account_id": {
+              "description": "Source ad-account ID, with or without `act_`.",
+              "maxLength": 68,
+              "minLength": 1,
+              "pattern": "^(act_)?[0-9]{1,64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "source_ad_account_id",
+            "image_hash"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Destination Meta ad-account ID, with or without `act_`.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/AdImageAssetSource",
+      "description": "A bounded local image or an existing image in another accessible account."
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "source"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="upload_ad_video_asset"></a>
+
+## `upload_ad_video_asset`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L584)
+
+Upload one local MP4/MOV from META_MEDIA_ROOT or ask Meta to fetch one public HTTPS video.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "AdVideoAssetSource": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "Stream an MP4 or MOV below 512 MiB from `META_MEDIA_ROOT`.",
+          "properties": {
+            "kind": {
+              "const": "local_file",
+              "type": "string"
+            },
+            "relative_path": {
+              "description": "Relative path below `META_MEDIA_ROOT`; absolute paths and traversal are rejected.",
+              "maxLength": 1024,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "relative_path"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Ask Meta to fetch a video from a public HTTPS URL.",
+          "properties": {
+            "kind": {
+              "const": "https_url",
+              "type": "string"
+            },
+            "url": {
+              "description": "Credential-free HTTPS URL. Query parameters are allowed for signed CDN URLs.",
+              "format": "uri",
+              "maxLength": 8192,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "url"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "ad_account_id": {
+      "description": "Destination Meta ad-account ID, with or without `act_`.",
+      "maxLength": 68,
+      "minLength": 1,
+      "pattern": "^(act_)?[0-9]{1,64}$",
+      "type": "string"
+    },
+    "description": {
+      "description": "Optional video description, up to 5,000 characters.",
+      "maxLength": 5000,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Optional internal video name, up to 255 characters.",
+      "maxLength": 255,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source": {
+      "$ref": "#/$defs/AdVideoAssetSource"
+    },
+    "title": {
+      "description": "Optional video title, up to 255 characters.",
+      "maxLength": 255,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "ad_account_id",
+    "source"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="upload_catalog_feed"></a>
+
+## `upload_catalog_feed`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L662)
+
+Upload a product, hotel-room, or pricing-variable feed from public HTTPS or a CSV/TSV/XML/JSON file under META_MEDIA_ROOT (64 MiB maximum). Defaults to update-only; full replacement requires CONFIRM_META_ADS_REMOVALS.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CatalogFeedFormat": {
+      "enum": [
+        "csv",
+        "tsv",
+        "xml",
+        "json"
+      ],
+      "type": "string"
+    },
+    "CatalogUploadKind": {
+      "enum": [
+        "feed",
+        "hotel_rooms",
+        "pricing_variables"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "$ref": "#/$defs/CatalogUploadKind"
+    },
+    "local_format": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CatalogFeedFormat"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Required with local_path: csv, tsv, xml, or json. Full feed validation runs in Meta."
+    },
+    "local_path": {
+      "description": "Alternatively stream a relative file below META_MEDIA_ROOT, up to 64 MiB. Choose exactly one source.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parent_id": {
+      "description": "Feed ID for feed, catalog ID for hotel_rooms or pricing_variables.",
+      "type": "string"
+    },
+    "removal_acknowledgement": {
+      "description": "Required for a full replacement upload (update_only=false).",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "standard": {
+      "description": "Optional provider standard for hotel_rooms/pricing_variables; omit for feed.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "update_only": {
+      "default": true,
+      "description": "Update existing items only. Defaults to true; false may create/delete items according to feed settings.",
+      "type": "boolean"
+    },
+    "url": {
+      "description": "Public HTTPS feed URL; credentials and signed credential query parameters are rejected.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "kind",
+    "parent_id"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="upload_page_ad_media"></a>
+
+## `upload_page_ad_media`
+
+Scope: **meta-ads** · Capability: **creatives** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/media_uploads.rs#L122)
+
+Upload unpublished Page photos or videos for ads and Instant Experiences. Returns Page media IDs, unlike account image hashes. Requires Page post permissions; local files stay within META_MEDIA_ROOT.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "PageAdMediaKind": {
+      "enum": [
+        "photo",
+        "video"
+      ],
+      "type": "string"
+    },
+    "PageAdMediaSource": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "description": "JPEG/PNG up to 15 MiB, or MP4/MOV up to 512 MiB, under META_MEDIA_ROOT.",
+          "properties": {
+            "kind": {
+              "const": "local_file",
+              "type": "string"
+            },
+            "relative_path": {
+              "maxLength": 1024,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "relative_path"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "description": "Meta downloads this credential-free public HTTPS URL.",
+          "properties": {
+            "kind": {
+              "const": "https_url",
+              "type": "string"
+            },
+            "url": {
+              "maxLength": 8192,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "url"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "alt_text": {
+      "description": "Photos only.",
+      "maxLength": 2048,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "media_kind": {
+      "$ref": "#/$defs/PageAdMediaKind"
+    },
+    "page_id": {
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/PageAdMediaSource"
+    },
+    "text": {
+      "description": "Photo caption or video description; does not publish a Page feed post.",
+      "maxLength": 2048,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "description": "Videos only.",
+      "maxLength": 255,
+      "minLength": 1,
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "page_id",
+    "media_kind",
+    "source"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="upsert_product"></a>
+
+## `upsert_product`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/server.rs#L1030)
+
+Create or update one catalog product by stable retailer ID through Meta's v26 product edge.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "ProductAvailability": {
+      "enum": [
+        "available_for_order",
+        "discontinued",
+        "in_stock",
+        "mark_as_expired",
+        "mark_as_sold",
+        "out_of_stock",
+        "pending",
+        "preorder"
+      ],
+      "type": "string"
+    },
+    "ProductCondition": {
+      "enum": [
+        "cpo",
+        "new",
+        "open_box_new",
+        "refurbished",
+        "used",
+        "used_fair",
+        "used_good",
+        "used_like_new"
+      ],
+      "type": "string"
+    },
+    "ProductUpsert": {
+      "additionalProperties": false,
+      "properties": {
+        "additional_fields": {
+          "additionalProperties": true,
+          "default": null,
+          "description": "Current Meta product fields not modeled above, such as vertical-specific\nattributes. Keys must not duplicate typed/control fields or contain secrets.",
+          "maxProperties": 47,
+          "minProperties": 1,
+          "type": "object"
+        },
+        "additional_image_urls": {
+          "default": null,
+          "description": "Up to ten public HTTPS secondary-image URLs.",
+          "items": {
+            "format": "uri",
+            "maxLength": 2048,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "availability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProductAvailability"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "brand": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "category": {
+          "maxLength": 250,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProductCondition"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currency": {
+          "description": "Three-letter ISO 4217 currency code. Required with either price.",
+          "maxLength": 3,
+          "minLength": 3,
+          "pattern": "^[A-Za-z]{3}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "description": "Product description, from 1 through 5,000 characters.",
+          "maxLength": 5000,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gtin": {
+          "maxLength": 50,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "image_url": {
+          "description": "Public HTTPS primary-image URL.",
+          "format": "uri",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "manufacturer_part_number": {
+          "maxLength": 70,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "Product title, from 1 through 200 characters.",
+          "maxLength": 200,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "price_minor_units": {
+          "description": "Regular price in the currency's minor units, such as 1299 for USD 12.99.",
+          "format": "uint64",
+          "maximum": 1000000000000000,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "retailer_id": {
+          "description": "Stable retailer/SKU ID, from 1 through 100 printable characters.",
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        },
+        "retailer_product_group_id": {
+          "description": "Stable retailer group ID for product variants.",
+          "maxLength": 100,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sale_price_minor_units": {
+          "description": "Optional sale price in the same minor units; requires `currency`.",
+          "format": "uint64",
+          "maximum": 1000000000000000,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "url": {
+          "description": "Public HTTPS landing-page URL.",
+          "format": "uri",
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "retailer_id"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allow_upsert": {
+      "default": true,
+      "description": "Create the retailer ID when absent. Defaults to true.",
+      "type": "boolean"
+    },
+    "product": {
+      "$ref": "#/$defs/ProductUpsert",
+      "description": "Stable retailer product ID plus the fields to set."
+    },
+    "product_catalog_id": {
+      "description": "Numeric Meta product-catalog ID.",
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[0-9]{1,64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_catalog_id",
+    "product"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+
+<a id="write_catalog_object"></a>
+
+## `write_catalog_object`
+
+Scope: **meta-ads** · Capability: **catalogs** · [Definition](https://github.com/EfrainTorres/armavita-meta-ads-mcp/blob/8ff63fa256081cb907449eb8548d377dd64e500b/src/catalog_admin.rs#L609)
+
+Create or update a catalog, product set, feed, feed rule, schedule, group, or supported item. Fields follow Graph v26; creation may duplicate objects. Feed deletion requires explicit acknowledgement.
+
+<details>
+<summary>Full input schema</summary>
+
+```json
+{
+  "$defs": {
+    "CatalogObjectKind": {
+      "enum": [
+        "catalog",
+        "product_set",
+        "product",
+        "product_group",
+        "feed",
+        "feed_rule",
+        "feed_schedule",
+        "feed_upload",
+        "feed_upload_error",
+        "hotel",
+        "hotel_room",
+        "flight",
+        "destination",
+        "vehicle",
+        "vehicle_offer",
+        "home_listing",
+        "automotive_model",
+        "media_title"
+      ],
+      "type": "string"
+    },
+    "CatalogWriteOperation": {
+      "enum": [
+        "create",
+        "update"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "fields": {
+      "additionalProperties": true,
+      "description": "Official v26 fields. Common fields: name, filter (sets), schedule/update_schedule (feeds), attribute/rule_type/params (rules). Schedules must be objects with credential-free HTTPS URLs.",
+      "type": "object"
+    },
+    "kind": {
+      "$ref": "#/$defs/CatalogObjectKind"
+    },
+    "operation": {
+      "$ref": "#/$defs/CatalogWriteOperation"
+    },
+    "removal_acknowledgement": {
+      "description": "Required when enabling feed deletion; otherwise omit.",
+      "maxLength": 25,
+      "minLength": 25,
+      "pattern": "^CONFIRM_META_ADS_REMOVALS$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_id": {
+      "description": "Create: business ID for catalog; catalog ID for sets/feeds/items/groups; feed ID for rules/schedules. Update: object ID.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind",
+    "operation",
+    "target_id",
+    "fields"
+  ],
+  "type": "object"
+}
+```
+
+</details>
+

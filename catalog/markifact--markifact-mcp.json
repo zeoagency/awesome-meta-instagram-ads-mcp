@@ -1,0 +1,292 @@
+{
+  "id": "markifact--markifact-mcp",
+  "repo": "markifact/markifact-mcp",
+  "url": "https://github.com/markifact/markifact-mcp",
+  "commit": "ac9c18645e4555a7a9bf22240daa2972b2461dd2",
+  "method": "published-schema",
+  "complete": true,
+  "notes": [
+    "10 complete records copied without schema or description modification from provider public discovery manifest https://api.markifact.com/.well-known/mcp.json (server version 1.0.6). Complete means every tool in the provider-published tools array has been preserved; authenticated runtime enumeration is unavailable.",
+    "Anonymous initialize and tools/list at https://api.markifact.com/mcp both returned HTTP 401 invalid_token. No credentials or business tools used.",
+    "Repository packages client plugins, prompts, and manifests; server implementation/registrations are not published. Source links use actual provider public definitions because no GitHub tool definition lines exist.",
+    "Public manifest includes 10 tools, whereas repository docs describe 8; includes report_markifact_feedback and prepare_media_upload (private/widget tool). All published tools retained.",
+    "No operation-specific schemas extracted: 1000+ discovered operations are not separately registered tools; run_operation and run_write_operation input_data schemas are intentionally open objects.",
+    "Scope classifications are conservative supporting: hosted implementation is unavailable, and generic tools support Meta Ads plus many other services. No claim of Meta-exclusive implementation.",
+    "OpenAPI/schema routes checked returned 404; public discovery manifest provides full tool input schemas. Published manifest completeness against authenticated tools/list cannot be verified; no concrete evidence of omitted registered tools was found.",
+    "Provider manifest version 1.0.6 captured 2026-10-13; repository revision pins configuration only. These are ten registered tool envelopes, not the dynamic operation catalog. The published operation_id schema explicitly documents Meta account selection and campaign-budget updates; operation-specific input schemas require authenticated discovery and are not expanded here."
+  ],
+  "tools": [
+    {
+      "name": "report_markifact_feedback",
+      "description": "Submit actionable product feedback to Markifact with the user's authorization.\n\nWhen you encounter a likely Markifact bug, missing capability, or product\nlimitation while completing a task, proactively tell the user what you found\nand offer to report it to Markifact. You may draft a concise proposed report\nfor the user to review.\n\nCall this tool only after either:\n1. the user explicitly asks you to submit the feedback, or\n2. you offered to report a discovered issue and the user explicitly agreed.\n\nIf the user's request already clearly authorizes submission, do not ask for\nredundant confirmation. Do not call this tool merely to ask for permission,\nand do not submit feedback silently.\n\nThis tool creates an irreversible feedback submission in Markifact's support\nworkflow. The submission contains the supplied feedback, relevant operation\nIDs, and account-associated contact and reference identifiers. After a\nsuccessful call, briefly tell the user that the feedback was submitted.\n\nReport only issues Markifact itself caused. Low-level operations such as\ngads_mutate or meta_ads_update_adset pass requests straight to the platform,\nso their responses are the platform's, not Markifact's. A write the platform\naccepted is complete; if the state differs later, something else changed it.\nIf you are unsure how a platform behaves, research its documentation. Never\nreport third-party policies, outages, rate limits, rejected content, campaign\nperformance, or user configuration.\n\nFor a potentially missing integration capability, use the normal operation\ndiscovery flow to check whether Markifact already provides a dedicated or\ngeneric operation that supports the requested action. Do not execute a write\noperation merely to test whether a capability exists.\n\nInclude only the minimum non-sensitive concrete evidence needed to understand the\nissue. Never include passwords, API keys, access tokens, authentication\ndetails, payment information, raw conversation history, complete request or\nresponse payloads, or unrelated personal or customer data. Summarize relevant\nerrors and behavior instead of copying raw data.\n\nAvoid duplicate or repetitive reports. Use `other` only when the feedback\ndoes not fit another category. Write the title and description in English.\nDo not promise that Markifact will respond or implement a fix.\n\nReturns JSON confirming whether the feedback was successfully submitted to\nMarkifact support.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "enum": [
+              "bug",
+              "feature_request",
+              "improvement",
+              "other"
+            ],
+            "type": "string",
+            "description": "Feedback type: bug, feature_request, improvement, or other."
+          },
+          "title": {
+            "type": "string",
+            "description": "Concise English title describing the Markifact issue, up to 140\ncharacters."
+          },
+          "description": {
+            "type": "string",
+            "description": "Concise English explanation of the expected behavior, actual\nbehavior, user impact, and minimal non-sensitive evidence, up to\n10,000 characters."
+          },
+          "impact": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "type": "string",
+            "description": "Severity based on blocked work and affected scope: low, medium,\nor high."
+          },
+          "operation_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Relevant Markifact operation IDs, when known."
+          }
+        },
+        "required": [
+          "category",
+          "title",
+          "description",
+          "impact"
+        ],
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "unrelated",
+      "capability": "unrelated"
+    },
+    {
+      "name": "find_operations",
+      "description": "Search for available Markifact operations that can be executed by the authenticated user.\n\nWorkflow: find_operations → get_operation_inputs → run_operation (read-only) or run_write_operation (when requires_approval: true).\nAfter selecting an operation_id, always call get_operation_inputs next. Never call run_operation / run_write_operation without first inspecting the schema via get_operation_inputs. Input shapes, nested objects, and field names vary per operation and cannot be guessed.\nReturned operation IDs are registry-backed Markifact operation IDs, not arbitrary action names.\n\nReturns JSON with matching operations containing operation_id, description, and app metadata.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "default": "",
+            "type": "string",
+            "description": "Keyword search over operation ids and descriptions. Use two to four words: the app name plus the entity or action, e.g. \"meta ads list ads\", \"gtm create tag\". Long sentences match too many operations. If the expected operation is not in the results, search again with a shorter query or a higher limit before concluding it does not exist."
+          },
+          "limit": {
+            "default": 5,
+            "type": "integer",
+            "description": "Maximum results to return (default 5)."
+          }
+        },
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "supporting",
+      "capability": "dispatch"
+    },
+    {
+      "name": "get_operation_inputs",
+      "description": "Get the input schema, required fields, defaults and constraints for an operation.\n\nRequired step between find_operations and run_operation/run_write_operation. Call this once per operation_id before executing it — schemas contain nested objects, account selectors, and field names that vary per operation and cannot be guessed.\nIf you already retrieved the schema for this operation_id earlier in the conversation, reuse it instead of calling again.\nOnly pass fields from this schema in run_operation/run_write_operation input_data for the same operation_id.\n\nReturns JSON schema describing the operation's inputs.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "operation_id": {
+            "type": "string",
+            "description": "Exact Markifact operation ID returned by find_operations, e.g. 'gads_get_report'."
+          }
+        },
+        "required": [
+          "operation_id"
+        ],
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "supporting",
+      "capability": "dispatch"
+    },
+    {
+      "name": "run_operation",
+      "description": "Execute a **read-only** Markifact operation, such as fetching reports,\nlisting records, selecting accounts, or looking up account details.\n\nUse this in direct response to the user's current request. Do not use it for startup checks or background context gathering.\n\nFor write/create/update/delete actions, use `run_write_operation` instead.\nOperations returned by `find_operations` with `requires_approval: true` MUST be executed via `run_write_operation`.\noperation_id must be an exact Markifact operation ID returned by find_operations for the authenticated user.\n\nNever call this without first inspecting the schema via `get_operation_inputs`. Input shapes, nested objects, and field names vary per operation and cannot be guessed.\ninput_data must contain only fields from the get_operation_inputs schema for the same operation_id.\n\nReporting tips\n- Reporting operations (GA4, Google Ads, Meta Ads, etc.) require account IDs. Use the relevant `select_accounts` operation first, treating user-provided account names as substring matches.\n- Never guess metric or dimension values. Use the relevant `list_report_fields` operation to confirm available fields before building a report.\n- For Google Ads, always prefer using the `gads_get_report` operation. Use `gads_run_gaql_query` only for advanced or unsupported reporting queries.\n\nFiles\n- Some operations may return `file_id` when datasets are too large. You will also receive a small `data_preview` for context.\n- You can reference any file ID in other operation inputs using this syntax: `{{file-id}}`, for example: `{\"data\": \"{{file-xe3fw}}\"}` (exactly as provided—do not modify or invent file ids).\n- When you pass a `file_id` to another operation, the file content will be automatically loaded and converted to the correct data type. JSON becomes Python dict/list, CSV/XLSX becomes a list of dicts (rows), and images/binary files become raw bytes. You do **not** need to handle parsing or conversion—just pass `{{file-id}}`.\n- The file ID is for you to move data between operations efficiently. When sharing results with the user, always share links using the `get_file_url` tool.\n\nReturns JSON with the operation result.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "operation_id": {
+            "type": "string",
+            "description": "Exact Markifact read operation ID returned by find_operations, e.g. \"meta_ads_select_accounts\", \"gads_list_report_fields\", \"ga4_get_report\"."
+          },
+          "input_data": {
+            "additionalProperties": true,
+            "type": "object",
+            "description": "Dict matching the selected operation's schema from get_operation_inputs. Pass {} if no inputs are needed."
+          }
+        },
+        "required": [
+          "operation_id",
+          "input_data"
+        ],
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "meta-ads",
+      "capability": "dispatch"
+    },
+    {
+      "name": "run_write_operation",
+      "description": "Execute a **write** operation that creates, updates, or deletes external data.\n\nUse this tool ONLY for operations marked with `requires_approval: true` in\n`find_operations` results. These are destructive actions like creating campaigns,\nupdating ad statuses, sending emails, etc.\noperation_id must be an exact Markifact operation ID returned by find_operations for the authenticated user.\n\n**APPROVAL REQUIRED**: Every call writes irreversibly to the user's live external accounts.\nBefore each invocation, summarize the exact change in plain language (operation, target account/resource, key field values)\nand wait for explicit user confirmation. Never call without user's confirmation, approval is CRITICAL.\n\nNever call this without first inspecting the schema via `get_operation_inputs`. Input shapes, nested objects, and field names vary per operation and cannot be guessed.\ninput_data must contain only fields from the get_operation_inputs schema for the same operation_id.\n\nWrite-operation tips\n- Always prefer a dedicated operation when one already matches the task.\n- Some platforms have a generic fallback operation for create, update, or remove mutations not covered by a dedicated operation, for example `gads_mutate` for Google Ads. Use the fallback before reporting a missing write feature.\n\nFiles\n- Some operations may return `file_id` when datasets are too large. You will also receive a small `data_preview` for context.\n- You can reference any file ID in other operation inputs using this syntax: `{{file-id}}`, for example: `{\"data\": \"{{file-xe3fw}}\"}` (exactly as provided—do not modify or invent file ids).\n- When you pass a `file_id` to another operation, the file content will be automatically loaded and converted to the correct data type. JSON becomes Python dict/list, CSV/XLSX becomes a list of dicts (rows), and images/binary files become raw bytes. You do **not** need to handle parsing or conversion—just pass `{{file-id}}`.\n- The file ID is for you to move data between operations efficiently. When sharing results with the user, always share links using the `get_file_url` tool.\n\nReturns JSON with the operation result.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "operation_id": {
+            "type": "string",
+            "description": "Exact Markifact write operation ID returned by find_operations, e.g. \"gads_create_campaign\", \"gads_edit_responsive_search_ad\", \"meta_ads_update_campaign_budget\", \"sheets_write_data\"."
+          },
+          "input_data": {
+            "additionalProperties": true,
+            "type": "object",
+            "description": "Dict matching the selected operation's schema from get_operation_inputs. Pass {} if no inputs are needed."
+          }
+        },
+        "required": [
+          "operation_id",
+          "input_data"
+        ],
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "meta-ads",
+      "capability": "dispatch"
+    },
+    {
+      "name": "list_connections",
+      "description": "List saved Markifact connections for an app/platform.\n\nA connection is a saved authenticated integration in Markifact. The\nreturned `id` is the `connection_id` used to choose which saved\nlogin/integration an operation should use.\n\nImportant:\n- `connection_id` is not an external platform account ID.\n- External account IDs, customer IDs, property IDs, and similar values are\n  separate operation inputs.\n- One connection may have access to multiple external accounts.\n    - In most cases, you don not need to provide `connection_id`.\n    If the user has only one connected login for a platform in their workspace,\n    operations usually use that connection automatically. Use this tool only\n    when the user wants a specific saved integration or has multiple\n    connections for the same platform.\n\nReturns JSON with available connections containing `id`, `type`, and\n`display_name`.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "connection_type": {
+            "default": "",
+            "type": "string",
+            "description": "Optional app/platform filter. Examples: 'gads', 'ga4',\n'meta_ads', 'hubspot', 'slack'. Leave empty to list all available\nconnections."
+          }
+        },
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "supporting",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_file_url",
+      "description": "Get a signed URL for a private file.\n\nUse this when an operation returns a `file_id` and you need a temporary,\ndirectly accessible URL. Operation `file_url` values are user-facing app URLs\nthat require Markifact authentication; call this tool to generate a signed URL that\nthe model or external tools can open directly. The signed URL expires after 1 hour.\n\nReturns a signed GCS URL for the file.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "description": "The file identifier or filename (e.g. \"file-abc123.json\", \"chart.png\")\nPass the full filename including its extension. If an extensionless prefix\nmatches multiple files, the tool returns an ambiguity error."
+          }
+        },
+        "required": [
+          "file_id"
+        ],
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "supporting",
+      "capability": "utilities"
+    },
+    {
+      "name": "read_file",
+      "description": "Inspect a file returned by a previous operation as numbered lines of text.\n\nUse this when an operation returns a `file_id` and you want to inspect the\nfile contents before deciding what to do next. This is mainly useful for\nexported JSON, CSV, logs, and similar files produced by Markifact\noperations.\n\nIt returns the file as numbered text lines so you can quickly review the\nstructure, schema, headers, sample rows, or specific sections in chunks.\n\nReturns formatted text with line numbers.\n\nAfter inspecting, you can use {{file-id}} in other tool inputs\nto pass the full parsed content for processing.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "description": "File identifier from previous operations (e.g., \"file-WWIIe\")"
+          },
+          "offset": {
+            "default": 0,
+            "type": "integer",
+            "description": "Starting line number (0-indexed, default: 0)"
+          },
+          "limit": {
+            "default": 100,
+            "type": "integer",
+            "description": "Number of lines to read (default: 100, max: 5000)"
+          }
+        },
+        "required": [
+          "file_id"
+        ],
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "supporting",
+      "capability": "utilities"
+    },
+    {
+      "name": "upload_media",
+      "description": "Upload an image or video asset for later operations.\n\nUse this when the user needs to provide media that will be reused in later tool calls, for example\ncreating Facebook ad image or video asset, or a Google Ads creative flow.\nThe tool returns file URLs that can be passed into later operations that accept uploaded media.\nOnly image and video uploads are supported.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "supporting",
+      "capability": "creatives"
+    },
+    {
+      "name": "prepare_media_upload",
+      "description": "Create a signed upload URL for a media file selected in the upload UI.\n\nReturns upload details including file_id, file_url, upload_url and upload_token,\nor a validation error.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "file_name": {
+            "type": "string",
+            "description": "Name of the selected media file."
+          },
+          "content_type": {
+            "type": "string",
+            "description": "Image or video MIME type of the selected file."
+          },
+          "file_size": {
+            "default": 0,
+            "type": "integer",
+            "description": "File size in bytes. Defaults to 0 if omitted."
+          }
+        },
+        "required": [
+          "file_name",
+          "content_type"
+        ],
+        "type": "object"
+      },
+      "source": "https://api.markifact.com/.well-known/mcp.json",
+      "scope": "supporting",
+      "capability": "creatives"
+    }
+  ],
+  "reviewed": true,
+  "review": "Parent compared every record with provider manifest, checked Meta route examples in parameter schemas, inspected hosted architecture and distinguished registered tool schemas from dynamic operation schemas. Runtime inventory not authenticated.",
+  "displayNotes": [
+    "All ten tools in the provider’s version 1.0.6 manifest captured on 2026-10-13. Anonymous runtime enumeration requires authentication; repository revision pins client configuration only.",
+    "These tools discover and dispatch dynamic operation IDs, including Meta advertising operations. Operation-specific schemas require authenticated discovery; the registered input_data objects remain open exactly as published."
+  ]
+}

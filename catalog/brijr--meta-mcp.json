@@ -1,0 +1,1566 @@
+{
+  "id": "brijr--meta-mcp",
+  "repo": "brijr/meta-mcp",
+  "url": "https://github.com/brijr/meta-mcp",
+  "commit": "664b20617a6aee529ff31f8093e85fca7db4b7be",
+  "method": "registered-source",
+  "complete": true,
+  "notes": [
+    "All 39 tools discovered from xmcp.config.ts tools path and registered with the installed MCP SDK using the exact upstream metadata and Zod input definitions. In-memory tools/list only; no business handlers called.",
+    "get_pages is supporting: its implementation lists Facebook Pages via me/accounts; remaining tools directly operate Meta advertising resources.",
+    "Dependency installation used --legacy-peer-deps for an upstream Wrangler/workers-types peer conflict; xmcp remains pinned at 0.6.5."
+  ],
+  "tools": [
+    {
+      "name": "get_ad_accounts",
+      "description": "List accessible Meta ad accounts for the connected workspace.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 500
+          },
+          "after": {
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/account/get_ad_accounts.ts#L10",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_custom_conversions",
+      "description": "List custom conversions for an ad account or a specific pixel.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "pixel_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/account/get_custom_conversions.ts#L11",
+      "scope": "meta-ads",
+      "capability": "tracking"
+    },
+    {
+      "name": "get_pages",
+      "description": "List Facebook Pages that can be used with the connected Meta identity.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "include_all_pages": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/account/get_pages.ts#L12",
+      "scope": "supporting",
+      "capability": "accounts"
+    },
+    {
+      "name": "get_pixels",
+      "description": "List Meta Pixels available on an ad account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/account/get_pixels.ts#L10",
+      "scope": "meta-ads",
+      "capability": "tracking"
+    },
+    {
+      "name": "validate_account",
+      "description": "Run a pre-flight validation check for an ad account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/account/validate_account.ts#L10",
+      "scope": "meta-ads",
+      "capability": "accounts"
+    },
+    {
+      "name": "create_ad_set",
+      "description": "Create a Meta ad set under a campaign.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "campaign_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "name": {
+            "type": "string"
+          },
+          "targeting": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          },
+          "optimization_goal": {
+            "type": "string",
+            "description": "Meta optimization goal, e.g. LINK_CLICKS, LANDING_PAGE_VIEWS, OFFSITE_CONVERSIONS, REACH, IMPRESSIONS, LEAD_GENERATION, THRUPLAY. Must be compatible with billing_event and the campaign objective."
+          },
+          "billing_event": {
+            "type": "string",
+            "description": "How you are charged, e.g. IMPRESSIONS, LINK_CLICKS, THRUPLAY. Must be a valid pairing for optimization_goal (e.g. OFFSITE_CONVERSIONS bills on IMPRESSIONS; LINK_CLICKS optimization can bill on LINK_CLICKS or IMPRESSIONS)."
+          },
+          "promoted_object": {
+            "description": "Required for conversion/lead objectives (e.g. OUTCOME_LEADS, OUTCOME_SALES). Example: { pixel_id, custom_event_type: 'PURCHASE' } or { page_id }.",
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {}
+          },
+          "budget": {
+            "type": "object",
+            "properties": {
+              "amount_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "currency": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3
+              },
+              "period": {
+                "type": "string",
+                "enum": [
+                  "daily",
+                  "lifetime"
+                ]
+              }
+            },
+            "required": [
+              "amount_minor",
+              "currency",
+              "period"
+            ]
+          },
+          "schedule": {
+            "type": "object",
+            "properties": {
+              "start_time": {
+                "type": "string",
+                "description": "ISO 8601 timestamp."
+              },
+              "end_time": {
+                "description": "ISO 8601 timestamp.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "start_time"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "bid_amount": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "meta_overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "campaign_id",
+          "name",
+          "targeting",
+          "optimization_goal",
+          "billing_event",
+          "budget"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/ad-sets/create_ad_set.ts#L39",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "delete_ad_set",
+      "description": "Delete a Meta ad set.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_set_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          }
+        },
+        "required": [
+          "ad_set_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/ad-sets/delete_ad_set.ts#L10",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "duplicate_ad_set",
+      "description": "Clone an existing ad set with optional overrides.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_set_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "ad_set_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/ad-sets/duplicate_ad_set.ts#L11",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "get_ad_set",
+      "description": "Get a Meta ad set by ID.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_set_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          }
+        },
+        "required": [
+          "ad_set_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/ad-sets/get_ad_set.ts#L10",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "list_ad_sets",
+      "description": "List ad sets under a campaign.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "campaign_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "status": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 500
+          },
+          "after": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/ad-sets/list_ad_sets.ts#L13",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "update_ad_set",
+      "description": "Update a Meta ad set.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_set_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "targeting": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          },
+          "budget": {
+            "type": "object",
+            "properties": {
+              "amount_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "currency": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3
+              },
+              "period": {
+                "type": "string",
+                "enum": [
+                  "daily",
+                  "lifetime"
+                ]
+              }
+            },
+            "required": [
+              "amount_minor",
+              "currency",
+              "period"
+            ]
+          },
+          "schedule": {
+            "type": "object",
+            "properties": {
+              "start_time": {
+                "type": "string",
+                "description": "ISO 8601 timestamp."
+              },
+              "end_time": {
+                "description": "ISO 8601 timestamp.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "start_time"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "bid_amount": {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "optimization_goal": {
+            "type": "string"
+          },
+          "billing_event": {
+            "type": "string"
+          },
+          "promoted_object": {
+            "description": "Promoted object for conversion/lead objectives, e.g. { pixel_id, custom_event_type } or { page_id }.",
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {}
+          },
+          "meta_overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "ad_set_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/ad-sets/update_ad_set.ts#L30",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "create_custom_audience",
+      "description": "Create a Meta custom audience.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "name": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          },
+          "meta_overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "account_id",
+          "name",
+          "source_type",
+          "config"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/audiences/create_custom_audience.ts#L19",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "create_lookalike_audience",
+      "description": "Create a Meta lookalike audience.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "source_audience_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "country": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2
+          },
+          "ratio": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 0.2
+          },
+          "name": {
+            "type": "string"
+          },
+          "meta_overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "account_id",
+          "source_audience_id",
+          "country",
+          "ratio"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/audiences/create_lookalike_audience.ts#L16",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "get_audience_size",
+      "description": "Estimate audience size for a Meta targeting specification.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "targeting": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "account_id",
+          "targeting"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/audiences/get_audience_size.ts#L14",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "get_targeting_options",
+      "description": "Search Meta targeting options such as interests and demographics.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/audiences/get_targeting_options.ts#L12",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "list_audiences",
+      "description": "List custom and saved Meta audiences.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "type": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 500
+          },
+          "after": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/audiences/list_audiences.ts#L13",
+      "scope": "meta-ads",
+      "capability": "audiences"
+    },
+    {
+      "name": "bulk_create_ads",
+      "description": "Create multiple Meta ads in a single tool call.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_set_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "ads": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "creative_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Meta object ID."
+                },
+                "creative_spec": {
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {}
+                },
+                "page_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Meta object ID."
+                },
+                "message": {
+                  "type": "string"
+                },
+                "headline": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "string"
+                },
+                "image_hash": {
+                  "type": "string"
+                },
+                "call_to_action": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "meta_overrides": {
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {}
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": {}
+            }
+          }
+        },
+        "required": [
+          "ad_set_id",
+          "ads"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/batch/bulk_create_ads.ts#L29",
+      "scope": "meta-ads",
+      "capability": "automation"
+    },
+    {
+      "name": "bulk_update_status",
+      "description": "Update status for many Meta objects at once.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "object_ids": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Meta object ID."
+            }
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "object_ids",
+          "status"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/batch/bulk_update_status.ts#L12",
+      "scope": "meta-ads",
+      "capability": "automation"
+    },
+    {
+      "name": "clone_campaign_structure",
+      "description": "Deep-clone a campaign with its ad sets and ads.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "campaign_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/batch/clone_campaign_structure.ts#L11",
+      "scope": "meta-ads",
+      "capability": "automation"
+    },
+    {
+      "name": "create_campaign",
+      "description": "Create a Meta campaign on an ad account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "name": {
+            "type": "string"
+          },
+          "objective": {
+            "type": "string"
+          },
+          "buying_type": {
+            "type": "string"
+          },
+          "special_ad_categories": {
+            "default": [],
+            "description": "Required by Meta on every campaign. Pass [] when no special ad category applies, or values like HOUSING, EMPLOYMENT, CREDIT, ISSUES_ELECTIONS_POLITICS, FINANCIAL_PRODUCTS_SERVICES, ONLINE_GAMBLING_AND_GAMING.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string"
+          },
+          "budget": {
+            "type": "object",
+            "properties": {
+              "amount_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "currency": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3
+              },
+              "period": {
+                "type": "string",
+                "enum": [
+                  "daily",
+                  "lifetime"
+                ]
+              }
+            },
+            "required": [
+              "amount_minor",
+              "currency",
+              "period"
+            ]
+          },
+          "meta_overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "account_id",
+          "name",
+          "objective"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/campaigns/create_campaign.ts#L27",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "delete_campaign",
+      "description": "Delete or archive a Meta campaign.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "campaign_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/campaigns/delete_campaign.ts#L10",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "get_campaign",
+      "description": "Get campaign details by campaign ID.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "campaign_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/campaigns/get_campaign.ts#L10",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "list_campaigns",
+      "description": "List campaigns on an ad account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "status": {
+            "type": "string"
+          },
+          "objective": {
+            "type": "string"
+          },
+          "date_range": {
+            "type": "object",
+            "properties": {
+              "since": {
+                "type": "string",
+                "description": "Start date in YYYY-MM-DD format."
+              },
+              "until": {
+                "type": "string",
+                "description": "End date in YYYY-MM-DD format."
+              }
+            },
+            "required": [
+              "since",
+              "until"
+            ]
+          },
+          "limit": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 500
+          },
+          "after": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/campaigns/list_campaigns.ts#L19",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "update_campaign",
+      "description": "Update a Meta campaign.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "campaign_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "budget": {
+            "type": "object",
+            "properties": {
+              "amount_minor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "currency": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3
+              },
+              "period": {
+                "type": "string",
+                "enum": [
+                  "daily",
+                  "lifetime"
+                ]
+              }
+            },
+            "required": [
+              "amount_minor",
+              "currency",
+              "period"
+            ]
+          },
+          "bid_strategy": {
+            "type": "string"
+          },
+          "meta_overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/campaigns/update_campaign.ts#L20",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "create_ad",
+      "description": "Create a Meta ad under an ad set.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_set_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "creative_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "meta_overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "ad_set_id",
+          "creative_id",
+          "name"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/creatives/create_ad.ts#L18",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "create_ad_creative",
+      "description": "Create a Meta ad creative.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "name": {
+            "type": "string"
+          },
+          "page_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "message": {
+            "type": "string"
+          },
+          "headline": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "image_hash": {
+            "type": "string"
+          },
+          "call_to_action": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "meta_overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "account_id",
+          "name"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/creatives/create_ad_creative.ts#L23",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "get_ad",
+      "description": "Get a Meta ad by ID.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/creatives/get_ad.ts#L10",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "get_ad_preview",
+      "description": "Generate ad previews for a creative and placement format.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "creative_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "ad_format": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "creative_id",
+          "ad_format"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/creatives/get_ad_preview.ts#L12",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "get_video_status",
+      "description": "Get processing status for a Meta video asset.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "video_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          }
+        },
+        "required": [
+          "video_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/creatives/get_video_status.ts#L10",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "list_ads",
+      "description": "List ads under an ad set or campaign.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_set_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "campaign_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "status": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 500
+          },
+          "after": {
+            "type": "string"
+          }
+        },
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/creatives/list_ads.ts#L14",
+      "scope": "meta-ads",
+      "capability": "campaigns-read"
+    },
+    {
+      "name": "update_ad",
+      "description": "Update a Meta ad.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "status": {
+            "type": "string"
+          },
+          "creative_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "name": {
+            "type": "string"
+          },
+          "meta_overrides": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {},
+            "description": "Arbitrary Meta API override fields."
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/creatives/update_ad.ts#L18",
+      "scope": "meta-ads",
+      "capability": "campaigns"
+    },
+    {
+      "name": "upload_image",
+      "description": "Upload an image to a Meta ad account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "image_base64": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/creatives/upload_image.ts#L13",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "upload_video",
+      "description": "Upload a video asset to a Meta ad account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "video_url": {
+            "type": "string"
+          },
+          "video_base64": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/creatives/upload_video.ts#L13",
+      "scope": "meta-ads",
+      "capability": "creatives"
+    },
+    {
+      "name": "compare_ads",
+      "description": "Compare metrics across multiple Meta ads.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_ids": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Meta object ID."
+            }
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "date_range": {
+            "type": "object",
+            "properties": {
+              "since": {
+                "type": "string",
+                "description": "Start date in YYYY-MM-DD format."
+              },
+              "until": {
+                "type": "string",
+                "description": "End date in YYYY-MM-DD format."
+              }
+            },
+            "required": [
+              "since",
+              "until"
+            ]
+          }
+        },
+        "required": [
+          "ad_ids"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/insights/compare_ads.ts#L13",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    },
+    {
+      "name": "get_ad_metrics",
+      "description": "Get key metrics for a Meta ad.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "date_range": {
+            "type": "object",
+            "properties": {
+              "since": {
+                "type": "string",
+                "description": "Start date in YYYY-MM-DD format."
+              },
+              "until": {
+                "type": "string",
+                "description": "End date in YYYY-MM-DD format."
+              }
+            },
+            "required": [
+              "since",
+              "until"
+            ]
+          }
+        },
+        "required": [
+          "ad_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/insights/get_ad_metrics.ts#L11",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    },
+    {
+      "name": "get_adset_metrics",
+      "description": "Get key metrics for a Meta ad set.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ad_set_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "date_range": {
+            "type": "object",
+            "properties": {
+              "since": {
+                "type": "string",
+                "description": "Start date in YYYY-MM-DD format."
+              },
+              "until": {
+                "type": "string",
+                "description": "End date in YYYY-MM-DD format."
+              }
+            },
+            "required": [
+              "since",
+              "until"
+            ]
+          }
+        },
+        "required": [
+          "ad_set_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/insights/get_adset_metrics.ts#L11",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    },
+    {
+      "name": "get_campaign_metrics",
+      "description": "Get key metrics for a Meta campaign.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "campaign_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "date_range": {
+            "type": "object",
+            "properties": {
+              "since": {
+                "type": "string",
+                "description": "Start date in YYYY-MM-DD format."
+              },
+              "until": {
+                "type": "string",
+                "description": "End date in YYYY-MM-DD format."
+              }
+            },
+            "required": [
+              "since",
+              "until"
+            ]
+          }
+        },
+        "required": [
+          "campaign_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/insights/get_campaign_metrics.ts#L11",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    },
+    {
+      "name": "get_conversion_data",
+      "description": "Get conversion-focused insight rows for a Meta object.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "level": {
+            "type": "string"
+          },
+          "date_range": {
+            "type": "object",
+            "properties": {
+              "since": {
+                "type": "string",
+                "description": "Start date in YYYY-MM-DD format."
+              },
+              "until": {
+                "type": "string",
+                "description": "End date in YYYY-MM-DD format."
+              }
+            },
+            "required": [
+              "since",
+              "until"
+            ]
+          }
+        },
+        "required": [
+          "object_id",
+          "level"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/insights/get_conversion_data.ts#L13",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    },
+    {
+      "name": "get_insights",
+      "description": "Pull Meta performance insights for a campaign, ad set, or ad.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Meta object ID."
+          },
+          "level": {
+            "type": "string"
+          },
+          "metrics": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "date_range": {
+            "type": "object",
+            "properties": {
+              "since": {
+                "type": "string",
+                "description": "Start date in YYYY-MM-DD format."
+              },
+              "until": {
+                "type": "string",
+                "description": "End date in YYYY-MM-DD format."
+              }
+            },
+            "required": [
+              "since",
+              "until"
+            ]
+          },
+          "breakdowns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "object_id",
+          "level",
+          "metrics"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "source": "https://github.com/brijr/meta-mcp/blob/664b20617a6aee529ff31f8093e85fca7db4b7be/src/tools/insights/get_insights.ts#L15",
+      "scope": "meta-ads",
+      "capability": "reporting"
+    }
+  ],
+  "reviewed": true,
+  "review": "Parent matched all captured names and pinned definition files to complete registered source, inspected extraction conversion and schemas, and reviewed scope/capability labels against implementations.",
+  "displayNotes": [
+    "Exact registered Zod definitions converted through the MCP SDK; this is a source snapshot, not an enumeration of a hosted deployment."
+  ]
+}
