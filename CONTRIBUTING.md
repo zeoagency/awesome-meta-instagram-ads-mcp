@@ -1,40 +1,42 @@
 # Contributing to Awesome Meta & Instagram Ads MCP
 
-Thank you for contributing! This repository maintains a curated, high-signal index of Model Context Protocol (MCP) servers and agent-facing tooling specifically for **Meta Ads and Instagram Ads automation**.
+This list includes MCP servers, command-line tools (CLIs), and SDKs with explicit Meta advertising support, including Facebook and Instagram ads.
 
----
+## Inclusion criteria
 
-## Scope & Inclusion Guidelines
+A project must satisfy both requirements:
 
-To maintain focus and utility for performance marketing engineers and agency developers, submissions must strictly satisfy the following criteria:
+1. It implements an MCP server, advertising CLI, or relevant SDK/library; or it provides a usable hosted MCP connection with documented Meta advertising operations.
+2. Its primary documentation and implementation, or its hosted connection manifest and documented operations, demonstrate Meta advertising functionality: campaign/ad management, advertising Insights, targeting or audiences, ad creatives, catalogs for ads, Ad Library research, or Meta Pixel/Conversions API integration and validation.
 
-### In Scope
-- **Meta Marketing API Integrations:** Campaign, ad set, ad, and creative CRUD, budget scheduling, bidding strategy adjustments, and Advantage+ automation.
-- **Instagram Advertising Specializations:** Creative asset staging for Instagram placements (Feed, Stories, Reels, Explore), aspect ratio linting (`9:16`, `4:5`, `1:1`), and Instagram Business Account actor binding.
-- **Conversion Tracking & Telemetry:** Meta Conversions API (CAPI) event dispatch, server-side deduplication (`event_id`), SHA-256 PII formatting, and Meta Pixel validation.
-- **Targeting & Custom Audiences:** Custom Audience syncing (CRM customer lists, website visitors), Lookalike Audience generation, and detailed targeting search.
-- **Dynamic Product Catalogs:** Commerce Manager catalog feeds, product set batch updates, and Advantage+ catalog ads.
-- **Reporting & Ad Intelligence:** Marketing API Insights reporting, breakdown dimensions, and Meta Ad Library competitor scraping.
+Multi-platform projects qualify when their Meta advertising integration is explicit. Official Business SDKs qualify because they implement Marketing API advertising objects. Projects with multiple interfaces appear once, with those interfaces identified in the entry.
 
-### Out of Scope (Will Be Rejected)
-- ❌ **Organic-Only Social Tooling:** Tools that schedule organic Facebook Page posts, publish organic Instagram feed photos, or read user profiles.
-- ❌ **Direct Messaging (DM) & Social Inbox Bots:** Customer service bots for Instagram Messaging or Facebook Messenger (unless explicitly configured for Click-to-Direct ad lead attribution).
-- ❌ **Comment Moderation & Social Listening:** Tools scraping organic post discussions or managing comments.
-- ❌ **Threads.net Organic Publishing:** Tools publishing to Threads via the organic Threads API.
-- ❌ **Generic Customer Support WhatsApp Bots:** WhatsApp Baileys or Cloud API messaging tools without paid ad campaign or CAPI attribution.
-- ❌ **Generic Graph API Wrappers:** Unspecialized SDK wrappers lacking advertising tools, schemas, or agent prompts.
+## Exclusions
 
----
+- Organic-only publishing, profiles, followers, messaging, moderation, and social listening tools.
+- Standalone agent skills, prompts, setup scripts, and workflow collections that only use another project's MCP, CLI, or SDK.
+- Generic creative or image generators without a Meta advertising integration.
+- Mock-data demonstrations presented as real advertising integrations.
+- General-purpose Graph API wrappers without implemented advertising objects or operations.
+- Advertising guides, courses, general marketing resources, and unrelated tools.
 
-## Submission Checklist
+## Verify before submitting
 
-When opening a Pull Request to add a project:
+- Read the upstream documentation and inspect the relevant source files, tool registrations, and package or CLI entry points. A project name or an SDK dependency alone is insufficient evidence.
+- For hosted MCPs, verify the remote connection manifest and documented Meta operations. Label the entry as hosted; do not imply that the repository contains the server implementation.
+- Confirm that the upstream link resolves and provides installation or connection instructions.
+- Distinguish read-only reporting from campaign mutations. Distinguish public Ad Library scraping, third-party scraping APIs, and the official Meta Ad Library API.
+- Describe implemented behavior. Do not convert plans, optional proprietary modules, skills, or examples into shipped features.
+- Include the supporting upstream documentation and source links in your pull request. State whether verification used source inspection, hosted-service documentation, or live execution.
 
-1. **Repository Quality:** The project must have a clear `README.md`, open source code, and working installation instructions.
-2. **Table Entry:** Add the project under its **single primary subcategory** in `README.md`:
-   ```markdown
-   | [**owner/repo**](https://github.com/owner/repo) | Concise factual description of what it actually does (15–25 words, third-person present tense). |
-   ```
-3. **Comparison Matrix:** Add a row to the `## Developer Comparison Matrix` documenting its API surface, mutation capability, dry-run mode, multi-account routing, CAPI support, runtime, and tools count.
-4. **Link Integrity:** Ensure internal anchors match the format `<a id="owner-repo"></a>`.
-5. **Formatting:** Avoid marketing hype, buzzwords, or unverified claims.
+## Entry format
+
+Add one entry under its primary category, following the existing table format:
+
+```markdown
+| [owner/repo](https://github.com/owner/repo) | Short factual description of its Meta advertising functionality. |
+```
+
+Use the additional delivery, type, or package columns where the category includes them. Keep descriptions concise and written in English. Sort entries alphabetically within each category, with the official Meta CLI first in its category.
+
+Avoid star counts, tool totals, undocumented rankings, marketing language, untested performance claims, and blanket safety or compliance guarantees. Update the contents links when changing categories, and check that all local links and table rows remain valid.
